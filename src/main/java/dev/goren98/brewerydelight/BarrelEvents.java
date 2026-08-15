@@ -2,6 +2,7 @@ package dev.goren98.brewerydelight;
 
 import dev.goren98.brewerydelight.barrel.BarrelInventory;
 import dev.goren98.brewerydelight.barrel.BarrelLogic;
+import dev.goren98.brewerydelight.barrel.BarrelMenu;
 import dev.goren98.brewerydelight.barrel.BarrelSavedData;
 import dev.goren98.brewerydelight.barrel.SmallBarrelPattern;
 import net.minecraft.core.BlockPos;
@@ -9,8 +10,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -40,19 +39,21 @@ public final class BarrelEvents {
         inv.configureWood(match.woodId());
         BarrelLogic.update(level, inv);
 
+        // Keep the vanilla chest title compact enough to stay inside the 9x1 GUI.
+        // Aroma/seasoning still remain visible, but in a shorter status format.
         StringBuilder title = new StringBuilder(match.displayName())
-                .append(" [Aroma: ").append(pretty(inv.getAroma()));
+                .append(" [").append(pretty(inv.getAroma()));
 
         if (!inv.getSeasoningTarget().isEmpty() && inv.getSeasoningCount() < BarrelInventory.SEASONING_REQUIRED) {
             String target = seasoningAroma(inv.getSeasoningTarget());
-            title.append(" | Seasoning: ").append(pretty(target))
+            title.append(" → ").append(pretty(target))
                     .append(' ').append(inv.getSeasoningCount())
                     .append('/').append(BarrelInventory.SEASONING_REQUIRED);
         }
         title.append(']');
 
         player.openMenu(new SimpleMenuProvider(
-                (id, playerInv, p) -> new ChestMenu(MenuType.GENERIC_9x1, id, playerInv, inv, 1),
+                (id, playerInv, p) -> new BarrelMenu(id, playerInv, inv),
                 Component.literal(title.toString())));
         player.displayClientMessage(Component.literal(match.displayName() + " ready"), true);
         event.setCanceled(true);
