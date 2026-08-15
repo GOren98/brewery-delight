@@ -10,7 +10,7 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 
 public class TestBrewItem extends Item {
-    public TestBrewItem(Properties properties) { super(properties.stacksTo(1)); }
+    public TestBrewItem(Properties properties) { super(properties.stacksTo(16)); }
 
     @Override
     public Component getName(ItemStack stack) {
