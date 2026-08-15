@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BrewingStandBlock;
 import net.minecraft.world.level.block.entity.BrewingStandBlockEntity;
@@ -30,9 +31,19 @@ public final class BrewingStandEvents {
 
     @SubscribeEvent
     public static void registerBrewingContainers(RegisterBrewingRecipesEvent event) {
-        // Validates Test Brew as a bottle-slot container. Distillation itself is custom
-        // because the design intentionally uses no top-slot reagent.
-        event.getBuilder().addContainer(ModItems.TEST_BREW.get());
+        /*
+         * Do NOT use Builder#addContainer here. Vanilla validates addContainer items as
+         * actual potion container items and throws for our custom bottle.
+         *
+         * Registering Test Brew as the input of an otherwise-unused brewing recipe makes
+         * BrewingStandMenu recognise it as a valid lower-slot input. The real distillation
+         * remains our custom no-top-ingredient process below. Barrier is deliberately used
+         * as the dummy top ingredient so normal survival brewing cannot trigger this recipe.
+         */
+        event.getBuilder().addRecipe(
+                Ingredient.of(ModItems.TEST_BREW.get()),
+                Ingredient.of(Items.BARRIER),
+                new ItemStack(ModItems.TEST_SPIRIT.get()));
     }
 
     @SubscribeEvent
