@@ -56,17 +56,22 @@ public final class BarrelLogic {
                     int gained = (int)(elapsed / duration);
                     int nextAge = Math.min(5, age + gained);
 
-                    // The barrel aroma is captured on the first aging step and remains the
-                    // aroma source for this bottle even if the barrel becomes seasoned later.
                     if (age == 0) stack.set(ModComponents.BARREL_AROMA.get(), inv.getAroma());
                     stack.set(ModComponents.AGE.get(), nextAge);
                     stack.set(ModComponents.BARREL_LEVEL.get(), nextAge);
-                    stack.set(ModComponents.STARTED_AT.get(), now - (elapsed % duration));
                     changed = true;
 
-                    if (nextAge >= 5 && !stack.getOrDefault(ModComponents.SEASONING_COUNTED.get(), false)) {
-                        inv.recordFullyAged(stack);
-                        stack.set(ModComponents.SEASONING_COUNTED.get(), true);
+                    if (nextAge >= 5) {
+                        // Fully-aged bottles no longer need a timer component. Removing it here
+                        // makes bottles from differently-timed groups identical again so they
+                        // can stack normally once taken out of the barrel.
+                        stack.remove(ModComponents.STARTED_AT.get());
+                        if (!stack.getOrDefault(ModComponents.SEASONING_COUNTED.get(), false)) {
+                            inv.recordFullyAged(stack);
+                            stack.set(ModComponents.SEASONING_COUNTED.get(), true);
+                        }
+                    } else {
+                        stack.set(ModComponents.STARTED_AT.get(), now - (elapsed % duration));
                     }
                 }
             }
