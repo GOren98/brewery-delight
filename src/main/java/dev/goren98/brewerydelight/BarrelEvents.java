@@ -28,20 +28,20 @@ public final class BarrelEvents {
         String back = sign.getBackText().getMessage(0, false).getString().trim();
         if (!front.equalsIgnoreCase("Barrel") && !back.equalsIgnoreCase("Barrel")) return;
 
-        BlockPos controller = SmallBarrelPattern.findController(level, clicked);
-        if (controller == null) {
+        SmallBarrelPattern.Match match = SmallBarrelPattern.find(level, clicked);
+        if (match == null) {
             player.displayClientMessage(Component.literal("Invalid Small Barrel structure"), true);
             event.setCanceled(true);
             return;
         }
 
         BarrelSavedData data = BarrelSavedData.get(level);
-        BarrelInventory inv = data.getOrCreate(controller);
+        BarrelInventory inv = data.getOrCreate(match.controller());
         BarrelLogic.update(level, inv);
         player.openMenu(new SimpleMenuProvider(
                 (id, playerInv, p) -> new ChestMenu(MenuType.GENERIC_9x1, id, playerInv, inv, 1),
-                Component.literal("Small Barrel")));
-        player.displayClientMessage(Component.literal("Barrel created"), true);
+                Component.literal(match.displayName())));
+        player.displayClientMessage(Component.literal(match.displayName() + " created"), true);
         event.setCanceled(true);
     }
 }
