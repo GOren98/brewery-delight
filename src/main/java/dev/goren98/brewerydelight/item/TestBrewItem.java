@@ -1,5 +1,6 @@
 package dev.goren98.brewerydelight.item;
 
+import dev.goren98.brewerydelight.barrel.BarrelLogic;
 import dev.goren98.brewerydelight.registry.ModComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -25,10 +26,25 @@ public class TestBrewItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         int stage = stack.getOrDefault(ModComponents.STAGE.get(), 0);
         int age = stack.getOrDefault(ModComponents.AGE.get(), 0);
+        long started = stack.getOrDefault(ModComponents.STARTED_AT.get(), 0L);
         tooltip.add(Component.literal(stage == 0 ? "Unfermented" : age == 0 ? "Ready" : "Aged: " + age + "/5")
                 .withStyle(ChatFormatting.GRAY));
-        if (stage == 0) tooltip.add(Component.literal("Ferments in a Small Barrel").withStyle(ChatFormatting.DARK_GRAY));
-        else if (age < 5) tooltip.add(Component.literal("Keep in barrel to age").withStyle(ChatFormatting.DARK_GRAY));
+
+        if (started > 0L) {
+            long duration = stage == 0 ? BarrelLogic.FERMENT_MS : BarrelLogic.AGE_MS;
+            if (stage == 0 || age < 5) {
+                long remaining = Math.max(0L, duration - (System.currentTimeMillis() - started));
+                long seconds = (remaining + 999L) / 1000L;
+                String label = stage == 0 ? "Fermentation" : "Next star";
+                tooltip.add(Component.literal(label + ": " + seconds + "s").withStyle(ChatFormatting.YELLOW));
+            } else {
+                tooltip.add(Component.literal("Fully aged").withStyle(ChatFormatting.GOLD));
+            }
+        } else if (stage == 0) {
+            tooltip.add(Component.literal("Put in a Small Barrel to ferment").withStyle(ChatFormatting.DARK_GRAY));
+        } else if (age < 5) {
+            tooltip.add(Component.literal("Put in a Small Barrel to age").withStyle(ChatFormatting.DARK_GRAY));
+        }
     }
 
     @Override
