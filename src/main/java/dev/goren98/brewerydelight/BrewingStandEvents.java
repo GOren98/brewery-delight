@@ -3,7 +3,13 @@ package dev.goren98.brewerydelight;
 import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.inventory.BrewingStandMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -48,8 +54,50 @@ public final class BrewingStandEvents {
 
     @SubscribeEvent
     public static void trackStand(PlayerInteractEvent.RightClickBlock event) {
-        if (!(event.getLevel().getBlockState(event.getPos()).getBlock() instanceof BrewingStandBlock)) return;
-        TRACKED.add(new StandKey(event.getLevel().dimension(), event.getPos().immutable()));
+        if (!(event.getLevel() instanceof ServerLevel level)
+                || !(event.getEntity() instanceof ServerPlayer player)
+                || !(level.getBlockState(event.getPos()).getBlock() instanceof BrewingStandBlock)
+                || !(level.getBlockEntity(event.getPos()) instanceof BrewingStandBlockEntity stand)) {
+            return;
+        }
+
+        StandKey key = new StandKey(level.dimension(), event.getPos().immutable());
+        TRACKED.add(key);
+
+        /*
+         * Use the normal BrewingStandMenu, but feed its two synced data values from our
+         * custom process. Index 0 is the vanilla brewing countdown, so the stock brewing
+         * screen now renders its normal bubbles/progress animation while Test Brew is
+         * being distilled even though there is deliberately no top-slot ingredient.
+         */
+        ContainerData displayData = new ContainerData() {
+            @Override
+            public int get(int index) {
+                if (index == 0) {
+                    int progress = PROGRESS.getOrDefault(key, 0);
+                    return progress > 0 ? Math.max(1, DISTILL_TICKS - progress) : 0;
+                }
+                if (index == 1) {
+                    return stand.getItem(4).is(Items.BLAZE_POWDER) ? 20 : 0;
+                }
+                return 0;
+            }
+
+            @Override
+            public void set(int index, int value) {
+                // Client-to-server writes are not used by the brewing screen.
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+        };
+
+        player.openMenu(new SimpleMenuProvider(
+                (id, playerInventory, p) -> new BrewingStandMenu(id, playerInventory, stand, displayData),
+                Component.translatable("container.brewing")));
+        event.setCanceled(true);
     }
 
     @SubscribeEvent
