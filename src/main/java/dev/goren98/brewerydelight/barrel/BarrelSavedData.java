@@ -37,6 +37,12 @@ public final class BarrelSavedData extends SavedData {
         barrels.forEach((pos, inv) -> {
             CompoundTag entry = new CompoundTag();
             entry.putLong("Pos", pos);
+            entry.putString("WoodId", inv.getWoodId());
+            entry.putString("Aroma", inv.getAroma());
+            entry.putString("LockedProduct", inv.getLockedProduct());
+            entry.putString("SeasoningTarget", inv.getSeasoningTarget());
+            entry.putInt("SeasoningCount", inv.getSeasoningCount());
+
             ListTag items = new ListTag();
             for (int i = 0; i < inv.getContainerSize(); i++) {
                 ItemStack stack = inv.getItem(i);
@@ -63,8 +69,15 @@ public final class BarrelSavedData extends SavedData {
             ListTag items = entry.getList("Items", Tag.TAG_COMPOUND);
             for (int j = 0; j < items.size(); j++) {
                 CompoundTag item = items.getCompound(j);
-                ItemStack.parse(provider, item.getCompound("Stack")).ifPresent(s -> inv.setItemSilently(item.getByte("Slot") & 255, s));
+                ItemStack.parse(provider, item.getCompound("Stack"))
+                        .ifPresent(s -> inv.setItemSilently(item.getByte("Slot") & 255, s));
             }
+            inv.loadMeta(
+                    entry.getString("WoodId"),
+                    entry.getString("Aroma"),
+                    entry.getString("LockedProduct"),
+                    entry.getString("SeasoningTarget"),
+                    entry.getInt("SeasoningCount"));
             data.barrels.put(entry.getLong("Pos"), inv);
         }
         return data;
