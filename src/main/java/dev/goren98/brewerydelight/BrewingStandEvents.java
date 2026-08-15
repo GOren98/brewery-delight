@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BrewingStandBlock;
 import net.minecraft.world.level.block.entity.BrewingStandBlockEntity;
@@ -31,9 +30,9 @@ public final class BrewingStandEvents {
 
     @SubscribeEvent
     public static void registerBrewingContainers(RegisterBrewingRecipesEvent event) {
-        // This makes Test Brew bottles valid occupants of the three lower brewing slots.
-        // Distillation itself is handled below because it intentionally needs no top ingredient.
-        event.getBuilder().addContainer(Ingredient.of(ModItems.TEST_BREW.get()));
+        // Validates Test Brew as a bottle-slot container. Distillation itself is custom
+        // because the design intentionally uses no top-slot reagent.
+        event.getBuilder().addContainer(ModItems.TEST_BREW.get());
     }
 
     @SubscribeEvent
