@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -37,7 +38,9 @@ public final class BarrelEvents {
         BarrelSavedData data = BarrelSavedData.get(level);
         BarrelInventory inv = data.getOrCreate(controller);
         BarrelLogic.update(level, inv);
-        player.openMenu(new SimpleMenuProvider((id, playerInv, p) -> ChestMenu.oneRow(id, playerInv, inv), Component.literal("Small Barrel")));
+        player.openMenu(new SimpleMenuProvider(
+                (id, playerInv, p) -> new ChestMenu(MenuType.GENERIC_9x1, id, playerInv, inv, 1),
+                Component.literal("Small Barrel")));
         player.displayClientMessage(Component.literal("Barrel created"), true);
         event.setCanceled(true);
     }
