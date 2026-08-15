@@ -9,9 +9,10 @@ import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 
 /**
- * Small Barrel: a 2x2x2 body of eight stairs. The stairs must form the barrel/cross silhouette:
- * bottom layer stairs are BOTTOM-half and face outward; top layer stairs are TOP-half and face outward.
- * The pattern may be rotated freely in the world.
+ * Small Barrel: a 2x2x2 body of eight stairs.
+ * Visual target: the lower layer is made from upside-down stairs (TOP half),
+ * the upper layer is made from normal stairs (BOTTOM half), producing the
+ * outward barrel silhouette shown in the reference build.
  */
 public final class SmallBarrelPattern {
     public static BlockPos findController(Level level, BlockPos signPos) {
@@ -27,9 +28,12 @@ public final class SmallBarrelPattern {
             BlockState state = level.getBlockState(origin.offset(x, y, z));
             if (!(state.getBlock() instanceof StairBlock)) return false;
             if (state.getValue(StairBlock.SHAPE) != StairsShape.STRAIGHT) return false;
-            Half expectedHalf = y == 0 ? Half.BOTTOM : Half.TOP;
+
+            // Lower layer must be upside-down stairs; upper layer must be normal stairs.
+            Half expectedHalf = y == 0 ? Half.TOP : Half.BOTTOM;
             if (state.getValue(StairBlock.HALF) != expectedHalf) return false;
 
+            // Each stair must face away from the center of the 2x2 barrel body.
             Direction facing = state.getValue(StairBlock.FACING);
             boolean outwardX = (x == 0 && facing == Direction.WEST) || (x == 1 && facing == Direction.EAST);
             boolean outwardZ = (z == 0 && facing == Direction.NORTH) || (z == 1 && facing == Direction.SOUTH);
