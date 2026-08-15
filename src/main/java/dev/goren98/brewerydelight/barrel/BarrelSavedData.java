@@ -25,6 +25,8 @@ public final class BarrelSavedData extends SavedData {
         return barrels.computeIfAbsent(controller.asLong(), p -> new BarrelInventory(this));
     }
 
+    public Iterable<BarrelInventory> inventories() { return barrels.values(); }
+
     public void remove(BlockPos controller) {
         if (barrels.remove(controller.asLong()) != null) setDirty();
     }
