@@ -37,11 +37,25 @@ public final class BarrelEvents {
 
         BarrelSavedData data = BarrelSavedData.get(level);
         BarrelInventory inv = data.getOrCreate(match.controller());
+        inv.configureWood(match.woodId());
         BarrelLogic.update(level, inv);
+
+        String title = match.displayName() + " [Aroma: " + pretty(inv.getAroma()) + "]";
         player.openMenu(new SimpleMenuProvider(
                 (id, playerInv, p) -> new ChestMenu(MenuType.GENERIC_9x1, id, playerInv, inv, 1),
-                Component.literal(match.displayName())));
-        player.displayClientMessage(Component.literal(match.displayName() + " created"), true);
+                Component.literal(title)));
+        player.displayClientMessage(Component.literal(match.displayName() + " ready"), true);
         event.setCanceled(true);
+    }
+
+    private static String pretty(String value) {
+        String[] parts = value.split("_");
+        StringBuilder out = new StringBuilder();
+        for (String part : parts) {
+            if (part.isEmpty()) continue;
+            if (!out.isEmpty()) out.append(' ');
+            out.append(Character.toUpperCase(part.charAt(0))).append(part.substring(1));
+        }
+        return out.toString();
     }
 }
