@@ -36,6 +36,13 @@ public class TestBrewItem extends Item {
         super.inventoryTick(stack, level, entity, slotId, isSelected);
         if (level.isClientSide) return;
         ensureInitialized(stack, level);
+
+        // STARTED_AT only means "currently inside a processing vessel". A bottle that
+        // reaches a player inventory must pause immediately and restart from a full
+        // interval when it is inserted into a barrel again.
+        if (stack.has(ModComponents.STARTED_AT.get())) {
+            stack.remove(ModComponents.STARTED_AT.get());
+        }
     }
 
     private void ensureInitialized(ItemStack stack, Level level) {
@@ -55,9 +62,7 @@ public class TestBrewItem extends Item {
     public Component getName(ItemStack stack) {
         int stage = stack.getOrDefault(ModComponents.STAGE.get(), initialStage);
         int age = stack.getOrDefault(ModComponents.AGE.get(), 0);
-        String name;
-        if (stage == 0) name = baseName + " Base";
-        else name = baseName;
+        String name = stage == 0 ? baseName + " Base" : baseName;
         String stars = "★".repeat(Math.max(0, Math.min(5, age)));
         return Component.literal(stars.isEmpty() ? name : name + " " + stars);
     }
@@ -79,27 +84,25 @@ public class TestBrewItem extends Item {
         if (shown.isEmpty()) {
             tooltip.add(Component.literal("No Aroma").withStyle(ChatFormatting.DARK_GRAY));
         } else {
-            shown.forEach((aroma, level) -> tooltip.add(
-                    Component.literal(pretty(aroma) + " " + roman(level)).withStyle(ChatFormatting.LIGHT_PURPLE)));
+            shown.forEach((aroma, aromaLevel) -> tooltip.add(
+                    Component.literal(pretty(aroma) + " " + roman(aromaLevel)).withStyle(ChatFormatting.LIGHT_PURPLE)));
         }
 
         if (stage == 0) tooltip.add(Component.literal("Base").withStyle(ChatFormatting.GRAY));
         else if (stage == 1) tooltip.add(Component.literal("Finished Brew").withStyle(ChatFormatting.GRAY));
         else tooltip.add(Component.literal("Spirit").withStyle(ChatFormatting.GRAY));
 
-        if (started > 0L) {
+        if (age >= 5) {
+            tooltip.add(Component.literal("Fully aged").withStyle(ChatFormatting.GOLD));
+        } else if (started > 0L) {
             long duration = stage == 0 ? BarrelLogic.FERMENT_MS : BarrelLogic.ageDuration(stage);
-            if (stage == 0 || age < 5) {
-                long remaining = Math.max(0L, duration - (System.currentTimeMillis() - started));
-                long seconds = (remaining + 999L) / 1000L;
-                String label = stage == 0 ? "Fermentation" : "Next aging";
-                tooltip.add(Component.literal(label + ": " + seconds + "s").withStyle(ChatFormatting.YELLOW));
-            } else {
-                tooltip.add(Component.literal("Fully aged").withStyle(ChatFormatting.GOLD));
-            }
+            long remaining = Math.max(0L, duration - (System.currentTimeMillis() - started));
+            long seconds = (remaining + 999L) / 1000L;
+            String label = stage == 0 ? "Fermentation" : "Next aging";
+            tooltip.add(Component.literal(label + ": " + seconds + "s").withStyle(ChatFormatting.YELLOW));
         } else if (stage == 0) {
             tooltip.add(Component.literal("Put in a Barrel to ferment").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (age < 5) {
+        } else {
             tooltip.add(Component.literal("Put in a Barrel to age").withStyle(ChatFormatting.DARK_GRAY));
         }
     }
