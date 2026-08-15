@@ -40,12 +40,27 @@ public final class BarrelEvents {
         inv.configureWood(match.woodId());
         BarrelLogic.update(level, inv);
 
-        String title = match.displayName() + " [Aroma: " + pretty(inv.getAroma()) + "]";
+        StringBuilder title = new StringBuilder(match.displayName())
+                .append(" [Aroma: ").append(pretty(inv.getAroma()));
+
+        if (!inv.getSeasoningTarget().isEmpty() && inv.getSeasoningCount() < BarrelInventory.SEASONING_REQUIRED) {
+            String target = seasoningAroma(inv.getSeasoningTarget());
+            title.append(" | Seasoning: ").append(pretty(target))
+                    .append(' ').append(inv.getSeasoningCount())
+                    .append('/').append(BarrelInventory.SEASONING_REQUIRED);
+        }
+        title.append(']');
+
         player.openMenu(new SimpleMenuProvider(
                 (id, playerInv, p) -> new ChestMenu(MenuType.GENERIC_9x1, id, playerInv, inv, 1),
-                Component.literal(title)));
+                Component.literal(title.toString())));
         player.displayClientMessage(Component.literal(match.displayName() + " ready"), true);
         event.setCanceled(true);
+    }
+
+    private static String seasoningAroma(String target) {
+        int split = target.indexOf('|');
+        return split >= 0 && split + 1 < target.length() ? target.substring(split + 1) : target;
     }
 
     private static String pretty(String value) {
