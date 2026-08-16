@@ -56,7 +56,6 @@ public final class BarrelInventory implements Container {
 
     public void recordFullyAged(ItemStack stack) {
         if (isSeasoned()) return;
-
         int primaryLevel = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         if (primaryLevel < 5) return;
         String primary = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
@@ -133,13 +132,22 @@ public final class BarrelInventory implements Container {
     public boolean canPlaceItem(int slot, ItemStack stack) {
         if (!isSupportedBottle(stack)) return false;
         String product = productOf(stack);
-        return lockedProduct.isEmpty() || lockedProduct.equals(product);
+        return !product.isEmpty() && (lockedProduct.isEmpty() || lockedProduct.equals(product));
     }
 
     public static boolean isSupportedBottle(ItemStack stack) {
-        return stack.is(ModItems.TEST_BREW.get())
-                || stack.is(ModItems.TEST_SPIRIT.get())
-                || stack.is(ModItems.TEST_LIQUEUR.get());
+        // Existing MVP items remain explicitly supported.
+        if (stack.is(ModItems.TEST_BREW.get()) || stack.is(ModItems.TEST_SPIRIT.get()) || stack.is(ModItems.TEST_LIQUEUR.get())) {
+            return true;
+        }
+
+        // Future content uses one generic bottle per category and stack components for product data.
+        if (stack.is(ModItems.SPIRIT_BOTTLE.get()) || stack.is(ModItems.LIQUEUR_BOTTLE.get())) return true;
+        if (stack.is(ModItems.BREW_BOTTLE.get())) {
+            int stage = stack.getOrDefault(ModComponents.STAGE.get(), 0);
+            return stage == 1 || (stage == 0 && stack.getOrDefault(ModComponents.FERMENTABLE.get(), true));
+        }
+        return false;
     }
 
     public static String productOf(ItemStack stack) {
