@@ -19,16 +19,18 @@ public class TestBrewItem extends Item {
     private final int initialStage;
     private final String baseName;
     private final String primaryAroma;
-    private final boolean randomBaseQuality;
+    private final int qualityMin;
+    private final int qualityMax;
 
     public TestBrewItem(Properties properties, String productId, int initialStage, String baseName,
-                        String primaryAroma, boolean randomBaseQuality) {
+                        String primaryAroma, int qualityMin, int qualityMax) {
         super(properties.stacksTo(16));
         this.productId = productId;
         this.initialStage = initialStage;
         this.baseName = baseName;
         this.primaryAroma = primaryAroma;
-        this.randomBaseQuality = randomBaseQuality;
+        this.qualityMin = Math.min(qualityMin, qualityMax);
+        this.qualityMax = Math.max(qualityMin, qualityMax);
     }
 
     @Override
@@ -37,9 +39,6 @@ public class TestBrewItem extends Item {
         if (level.isClientSide) return;
         ensureInitialized(stack, level);
 
-        // STARTED_AT only means "currently inside a processing vessel". A bottle that
-        // reaches a player inventory must pause immediately and restart from a full
-        // interval when it is inserted into a barrel again.
         if (stack.has(ModComponents.STARTED_AT.get())) {
             stack.remove(ModComponents.STARTED_AT.get());
         }
@@ -51,7 +50,9 @@ public class TestBrewItem extends Item {
         if (!stack.has(ModComponents.AGE.get())) stack.set(ModComponents.AGE.get(), 0);
         if (!stack.has(ModComponents.PRIMARY_AROMA.get())) stack.set(ModComponents.PRIMARY_AROMA.get(), primaryAroma);
         if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) {
-            int levelValue = randomBaseQuality && initialStage == 0 ? level.random.nextInt(5) : 5;
+            int levelValue = qualityMin == qualityMax
+                    ? qualityMin
+                    : qualityMin + level.random.nextInt(qualityMax - qualityMin + 1);
             stack.set(ModComponents.PRIMARY_LEVEL.get(), levelValue);
         }
         if (!stack.has(ModComponents.BARREL_LEVEL.get())) stack.set(ModComponents.BARREL_LEVEL.get(), 0);
@@ -78,7 +79,7 @@ public class TestBrewItem extends Item {
         int primaryLevel = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         String barrel = stack.getOrDefault(ModComponents.BARREL_AROMA.get(), "");
         int barrelLevel = stack.getOrDefault(ModComponents.BARREL_LEVEL.get(), 0);
-        if (primaryLevel > 0) shown.merge(primary, primaryLevel, Integer::sum);
+        if (!primary.isEmpty() && primaryLevel > 0) shown.merge(primary, primaryLevel, Integer::sum);
         if (!barrel.isEmpty() && barrelLevel > 0) shown.merge(barrel, barrelLevel, Integer::sum);
 
         if (shown.isEmpty()) {
@@ -90,7 +91,8 @@ public class TestBrewItem extends Item {
 
         if (stage == 0) tooltip.add(Component.literal("Base").withStyle(ChatFormatting.GRAY));
         else if (stage == 1) tooltip.add(Component.literal("Finished Brew").withStyle(ChatFormatting.GRAY));
-        else tooltip.add(Component.literal("Spirit").withStyle(ChatFormatting.GRAY));
+        else if (stage == 2) tooltip.add(Component.literal("Spirit").withStyle(ChatFormatting.GRAY));
+        else if (stage == 3) tooltip.add(Component.literal("Liqueur").withStyle(ChatFormatting.GRAY));
 
         if (age >= 5) {
             tooltip.add(Component.literal("Fully aged").withStyle(ChatFormatting.GOLD));
@@ -102,7 +104,7 @@ public class TestBrewItem extends Item {
             tooltip.add(Component.literal(label + ": " + seconds + "s").withStyle(ChatFormatting.YELLOW));
         } else if (stage == 0) {
             tooltip.add(Component.literal("Put in a Barrel to ferment").withStyle(ChatFormatting.DARK_GRAY));
-        } else {
+        } else if (stage >= 1) {
             tooltip.add(Component.literal("Put in a Barrel to age").withStyle(ChatFormatting.DARK_GRAY));
         }
     }
