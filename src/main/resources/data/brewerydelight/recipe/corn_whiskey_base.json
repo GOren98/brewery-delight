@@ -1,0 +1,41 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "tag": "c:crops/corn"
+    },
+    {
+      "tag": "c:crops/corn"
+    },
+    {
+      "tag": "c:crops/corn"
+    },
+    {
+      "tag": "c:crops/corn"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "brewerydelight:brew_bottle",
+    "count": 4,
+    "components": {
+      "brewerydelight:product_id": "corn_whiskey",
+      "brewerydelight:display_name": "Corn Whiskey",
+      "brewerydelight:stage": 0,
+      "brewerydelight:primary_aroma": "corn",
+      "brewerydelight:fermentable": false,
+      "brewerydelight:color": 12814902,
+      "brewerydelight:distill_product_id": "corn_whiskey",
+      "brewerydelight:distill_display_name": "Corn Whiskey",
+      "brewerydelight:distill_color": 12814902
+    }
+  },
+  "container": {
+    "id": "minecraft:glass_bottle"
+  }
+}

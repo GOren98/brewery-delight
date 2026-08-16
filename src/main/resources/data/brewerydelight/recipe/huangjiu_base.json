@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {"item": "minecraft:water_bucket"},
+    {"tag": "c:crops/rice"},
+    {"tag": "c:crops/millet"},
+    {"tag": "c:crops/millet"},
+    {"tag": "c:crops/millet"}
+  ],
+  "recipe_book_tab": "misc",
+  "result": {"id": "brewerydelight:brew_bottle", "count": 4, "components": {
+    "brewerydelight:product_id": "huangjiu",
+    "brewerydelight:display_name": "Huangjiu",
+    "brewerydelight:stage": 0,
+    "brewerydelight:primary_aroma": "millet",
+    "brewerydelight:fermentable": true,
+    "brewerydelight:color": 12089649,
+    "brewerydelight:distill_product_id": "baijiu",
+    "brewerydelight:distill_display_name": "Baijiu",
+    "brewerydelight:distill_color": 15132893
+  }},
+  "container": {"id": "minecraft:glass_bottle"}
+}

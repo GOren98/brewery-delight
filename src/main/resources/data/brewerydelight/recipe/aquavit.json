@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "item": "brewerydelight:neutral_spirit"
+    },
+    {
+      "tag": "c:crops/spiceleaf"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "brewerydelight:liqueur_bottle",
+    "count": 1,
+    "components": {
+      "brewerydelight:product_id": "aquavit",
+      "brewerydelight:display_name": "Aquavit",
+      "brewerydelight:stage": 3,
+      "brewerydelight:primary_aroma": "spiced",
+      "brewerydelight:color": 13746040
+    }
+  },
+  "container": {
+    "id": "minecraft:glass_bottle"
+  }
+}

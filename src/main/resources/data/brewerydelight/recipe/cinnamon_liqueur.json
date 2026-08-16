@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "item": "brewerydelight:neutral_spirit"
+    },
+    {
+      "tag": "c:crops/cinnamon"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "brewerydelight:liqueur_bottle",
+    "count": 1,
+    "components": {
+      "brewerydelight:product_id": "cinnamon_liqueur",
+      "brewerydelight:display_name": "Cinnamon Liqueur",
+      "brewerydelight:stage": 3,
+      "brewerydelight:primary_aroma": "cinnamon",
+      "brewerydelight:color": 10769970
+    }
+  },
+  "container": {
+    "id": "minecraft:glass_bottle"
+  }
+}

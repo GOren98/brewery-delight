@@ -1,0 +1,41 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "tag": "c:crops/blueberry"
+    },
+    {
+      "tag": "c:crops/blueberry"
+    },
+    {
+      "tag": "c:crops/blueberry"
+    },
+    {
+      "tag": "c:crops/blueberry"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "brewerydelight:brew_bottle",
+    "count": 4,
+    "components": {
+      "brewerydelight:product_id": "blueberry_wine",
+      "brewerydelight:display_name": "Blueberry Wine",
+      "brewerydelight:stage": 0,
+      "brewerydelight:primary_aroma": "blueberry",
+      "brewerydelight:fermentable": true,
+      "brewerydelight:color": 5269408,
+      "brewerydelight:distill_product_id": "blueberry_brandy",
+      "brewerydelight:distill_display_name": "Blueberry Brandy",
+      "brewerydelight:distill_color": 9790795
+    }
+  },
+  "container": {
+    "id": "minecraft:glass_bottle"
+  }
+}

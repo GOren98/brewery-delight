@@ -1,0 +1,6 @@
+{
+  "type":"farmersdelight:cooking","cookingtime":100,"experience":0.0,
+  "ingredients":[{"item":"minecraft:water_bucket"},{"tag":"c:crops/pineapple"},{"tag":"c:crops/pineapple"},{"tag":"c:crops/pineapple"},{"tag":"c:crops/pineapple"}],"recipe_book_tab":"misc",
+  "result":{"id":"brewerydelight:brew_bottle","count":4,"components":{"brewerydelight:product_id":"pineapple_wine","brewerydelight:display_name":"Pineapple Wine","brewerydelight:stage":0,"brewerydelight:primary_aroma":"pineapple","brewerydelight:fermentable":true,"brewerydelight:color":13940033,"brewerydelight:distill_product_id":"pineapple_brandy","brewerydelight:distill_display_name":"Pineapple Brandy","brewerydelight:distill_color":12950338}},
+  "container":{"id":"minecraft:glass_bottle"}
+}

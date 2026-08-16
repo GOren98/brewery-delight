@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "item": "brewerydelight:neutral_spirit"
+    },
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "brewerydelight:liqueur_bottle",
+    "count": 1,
+    "components": {
+      "brewerydelight:product_id": "advocaat",
+      "brewerydelight:display_name": "Advocaat",
+      "brewerydelight:stage": 3,
+      "brewerydelight:primary_aroma": "egg",
+      "brewerydelight:color": 14531402
+    }
+  },
+  "container": {
+    "id": "minecraft:glass_bottle"
+  }
+}

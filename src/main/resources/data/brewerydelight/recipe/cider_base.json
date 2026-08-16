@@ -1,0 +1,41 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "brewerydelight:brew_bottle",
+    "count": 4,
+    "components": {
+      "brewerydelight:product_id": "cider",
+      "brewerydelight:display_name": "Cider",
+      "brewerydelight:stage": 0,
+      "brewerydelight:primary_aroma": "apple",
+      "brewerydelight:fermentable": true,
+      "brewerydelight:color": 13011506,
+      "brewerydelight:distill_product_id": "apple_brandy",
+      "brewerydelight:distill_display_name": "Apple Brandy",
+      "brewerydelight:distill_color": 12155446
+    }
+  },
+  "container": {
+    "id": "minecraft:glass_bottle"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type":"farmersdelight:cooking","cookingtime":100,"experience":0.0,
+  "ingredients":[{"item":"brewerydelight:neutral_spirit"},{"tag":"c:crops/pecan"}],"recipe_book_tab":"misc",
+  "result":{"id":"brewerydelight:liqueur_bottle","count":1,"components":{"brewerydelight:product_id":"pecan_liqueur","brewerydelight:display_name":"Pecan Liqueur","brewerydelight:stage":3,"brewerydelight:primary_aroma":"pecan","brewerydelight:color":8737843}},
+  "container":{"id":"minecraft:glass_bottle"}
+}

@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {"item": "minecraft:water_bucket"},
+    {"tag": "c:crops/kiwi"},
+    {"tag": "c:crops/kiwi"},
+    {"tag": "c:crops/kiwi"},
+    {"tag": "c:crops/kiwi"}
+  ],
+  "recipe_book_tab": "misc",
+  "result": {"id": "brewerydelight:brew_bottle", "count": 4, "components": {
+    "brewerydelight:product_id": "kiwi_wine",
+    "brewerydelight:display_name": "Kiwi Wine",
+    "brewerydelight:stage": 0,
+    "brewerydelight:primary_aroma": "kiwi",
+    "brewerydelight:fermentable": true,
+    "brewerydelight:color": 8497485,
+    "brewerydelight:distill_product_id": "kiwi_brandy",
+    "brewerydelight:distill_display_name": "Kiwi Brandy",
+    "brewerydelight:distill_color": 12163917
+  }},
+  "container": {"id": "minecraft:glass_bottle"}
+}

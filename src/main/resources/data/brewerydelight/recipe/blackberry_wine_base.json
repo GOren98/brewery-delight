@@ -1,0 +1,41 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "tag": "c:crops/blackberry"
+    },
+    {
+      "tag": "c:crops/blackberry"
+    },
+    {
+      "tag": "c:crops/blackberry"
+    },
+    {
+      "tag": "c:crops/blackberry"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "brewerydelight:brew_bottle",
+    "count": 4,
+    "components": {
+      "brewerydelight:product_id": "blackberry_wine",
+      "brewerydelight:display_name": "Blackberry Wine",
+      "brewerydelight:stage": 0,
+      "brewerydelight:primary_aroma": "blackberry",
+      "brewerydelight:fermentable": true,
+      "brewerydelight:color": 5976683,
+      "brewerydelight:distill_product_id": "blackberry_brandy",
+      "brewerydelight:distill_display_name": "Blackberry Brandy",
+      "brewerydelight:distill_color": 9920583
+    }
+  },
+  "container": {
+    "id": "minecraft:glass_bottle"
+  }
+}

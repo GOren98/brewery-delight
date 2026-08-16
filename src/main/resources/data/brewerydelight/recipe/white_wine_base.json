@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {"item": "minecraft:water_bucket"},
+    {"tag": "c:crops/greengrape"},
+    {"tag": "c:crops/greengrape"},
+    {"tag": "c:crops/greengrape"},
+    {"tag": "c:crops/greengrape"}
+  ],
+  "recipe_book_tab": "misc",
+  "result": {"id": "brewerydelight:brew_bottle", "count": 4, "components": {
+    "brewerydelight:product_id": "white_wine",
+    "brewerydelight:display_name": "White Wine",
+    "brewerydelight:stage": 0,
+    "brewerydelight:primary_aroma": "white_grape",
+    "brewerydelight:fermentable": true,
+    "brewerydelight:color": 14272378,
+    "brewerydelight:distill_product_id": "brandy",
+    "brewerydelight:distill_display_name": "Brandy",
+    "brewerydelight:distill_color": 11823666
+  }},
+  "container": {"id": "minecraft:glass_bottle"}
+}

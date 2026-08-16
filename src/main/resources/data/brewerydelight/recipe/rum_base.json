@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {"item": "minecraft:water_bucket"},
+    {"item": "minecraft:sugar_cane"},
+    {"item": "minecraft:sugar_cane"},
+    {"item": "minecraft:sugar_cane"},
+    {"item": "minecraft:sugar_cane"}
+  ],
+  "recipe_book_tab": "misc",
+  "result": {"id": "brewerydelight:brew_bottle", "count": 4, "components": {
+    "brewerydelight:product_id": "rum",
+    "brewerydelight:display_name": "Rum",
+    "brewerydelight:stage": 0,
+    "brewerydelight:primary_aroma": "sugar_cane",
+    "brewerydelight:fermentable": false,
+    "brewerydelight:color": 10115629,
+    "brewerydelight:distill_product_id": "rum",
+    "brewerydelight:distill_display_name": "Rum",
+    "brewerydelight:distill_color": 10115629
+  }},
+  "container": {"id": "minecraft:glass_bottle"}
+}

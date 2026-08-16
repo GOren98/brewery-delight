@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "item": "brewerydelight:neutral_spirit"
+    },
+    {
+      "tag": "c:crops/banana"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "brewerydelight:liqueur_bottle",
+    "count": 1,
+    "components": {
+      "brewerydelight:product_id": "banana_liqueur",
+      "brewerydelight:display_name": "Banana Liqueur",
+      "brewerydelight:stage": 3,
+      "brewerydelight:primary_aroma": "banana",
+      "brewerydelight:color": 14468685
+    }
+  },
+  "container": {
+    "id": "minecraft:glass_bottle"
+  }
+}

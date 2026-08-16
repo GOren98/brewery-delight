@@ -1,0 +1,18 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 100,
+  "experience": 0.0,
+  "ingredients": [
+    {"item": "brewerydelight:neutral_spirit"},
+    {"tag": "c:crops/nutmeg"}
+  ],
+  "recipe_book_tab": "misc",
+  "result": {"id": "brewerydelight:liqueur_bottle", "count": 1, "components": {
+    "brewerydelight:product_id": "nutmeg_liqueur",
+    "brewerydelight:display_name": "Nutmeg Liqueur",
+    "brewerydelight:stage": 3,
+    "brewerydelight:primary_aroma": "nutmeg",
+    "brewerydelight:color": 8870978
+  }},
+  "container": {"id": "minecraft:glass_bottle"}
+}
