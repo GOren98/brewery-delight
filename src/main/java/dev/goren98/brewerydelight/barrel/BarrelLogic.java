@@ -38,7 +38,7 @@ public final class BarrelLogic {
 
             long elapsed = now - started;
 
-            if (stage == 0 && elapsed >= FERMENT_MS) {
+            if (stage == 0 && stack.getOrDefault(ModComponents.FERMENTABLE.get(), true) && elapsed >= FERMENT_MS) {
                 stack.set(ModComponents.STAGE.get(), 1);
                 stack.set(ModComponents.AGE.get(), 0);
                 int primary = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
@@ -88,6 +88,7 @@ public final class BarrelLogic {
         if (!stack.has(ModComponents.BLEND_AROMAS.get())) { stack.set(ModComponents.BLEND_AROMAS.get(), Map.of()); changed = true; }
         if (!stack.has(ModComponents.SEASONING_COUNTED.get())) { stack.set(ModComponents.SEASONING_COUNTED.get(), false); changed = true; }
 
+        // Preserve the exact behavior of legacy MVP items.
         if (stack.is(ModItems.TEST_SPIRIT.get())) {
             if (!stack.has(ModComponents.STAGE.get())) { stack.set(ModComponents.STAGE.get(), 2); changed = true; }
             if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), "test"); changed = true; }
@@ -99,13 +100,17 @@ public final class BarrelLogic {
                 stack.set(ModComponents.PRIMARY_LEVEL.get(), 1 + level.random.nextInt(5));
                 changed = true;
             }
-        } else {
+        } else if (stack.is(ModItems.TEST_BREW.get())) {
             if (!stack.has(ModComponents.STAGE.get())) { stack.set(ModComponents.STAGE.get(), 0); changed = true; }
             if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), "test"); changed = true; }
             if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) {
                 stack.set(ModComponents.PRIMARY_LEVEL.get(), level.random.nextInt(5));
                 changed = true;
             }
+        } else {
+            // Generic content receives identity/aroma from recipe components; never replace it with test data.
+            if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), ""); changed = true; }
+            if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) { stack.set(ModComponents.PRIMARY_LEVEL.get(), 0); changed = true; }
         }
         return changed;
     }
