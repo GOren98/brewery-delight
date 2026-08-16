@@ -32,6 +32,7 @@ import java.util.Set;
 @EventBusSubscriber(modid = BreweryDelight.MOD_ID)
 public final class BrewingStandEvents {
     private static final int PROCESS_TICKS = 400;
+    private static final int NEUTRAL_COLOR = 0xE7EFF0;
     private static final Set<StandKey> TRACKED = new HashSet<>();
     private static final Map<StandKey, Integer> PROGRESS = new HashMap<>();
 
@@ -245,7 +246,7 @@ public final class BrewingStandEvents {
     private static ItemStack makeSpirit(ItemStack base) {
         if (base.is(ModItems.NEUTRAL_BASE.get())) return makeNeutralSpirit(base.getCount());
 
-        // Legacy Test Brew path remains byte-for-byte equivalent in behavior.
+        // Legacy Test Brew path remains equivalent in behavior.
         if (base.is(ModItems.TEST_BREW.get())) {
             ItemStack spirit = new ItemStack(ModItems.TEST_SPIRIT.get(), base.getCount());
             copySpiritData(base, spirit, "test_spirit", "Test Spirit");
@@ -262,13 +263,18 @@ public final class BrewingStandEvents {
     private static void copySpiritData(ItemStack base, ItemStack spirit, String resultId, String resultName) {
         String aroma = base.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int level = base.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
+        int color = base.getOrDefault(ModComponents.DISTILL_COLOR.get(),
+                base.getOrDefault(ModComponents.COLOR.get(), 0xFFFFFF));
+
         spirit.set(ModComponents.PRODUCT_ID.get(), resultId);
         spirit.set(ModComponents.DISPLAY_NAME.get(), resultName);
         spirit.set(ModComponents.STAGE.get(), 2);
         spirit.set(ModComponents.AGE.get(), 0);
         spirit.set(ModComponents.PRIMARY_AROMA.get(), aroma);
         spirit.set(ModComponents.PRIMARY_LEVEL.get(), level <= 0 ? 0 : Math.min(5, level + 1));
+        spirit.set(ModComponents.COLOR.get(), color);
         spirit.set(ModComponents.BARREL_LEVEL.get(), 0);
+        spirit.set(ModComponents.AGING_AROMAS.get(), Map.of());
         spirit.set(ModComponents.BLEND_AROMAS.get(), Map.of());
         spirit.set(ModComponents.SEASONING_COUNTED.get(), false);
     }
@@ -281,8 +287,10 @@ public final class BrewingStandEvents {
         spirit.set(ModComponents.AGE.get(), 0);
         spirit.set(ModComponents.PRIMARY_AROMA.get(), "");
         spirit.set(ModComponents.PRIMARY_LEVEL.get(), 0);
+        spirit.set(ModComponents.COLOR.get(), NEUTRAL_COLOR);
         spirit.remove(ModComponents.BARREL_AROMA.get());
         spirit.set(ModComponents.BARREL_LEVEL.get(), 0);
+        spirit.set(ModComponents.AGING_AROMAS.get(), Map.of());
         spirit.set(ModComponents.BLEND_AROMAS.get(), Map.of());
         spirit.set(ModComponents.SEASONING_COUNTED.get(), false);
         return spirit;

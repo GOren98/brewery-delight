@@ -29,3 +29,17 @@ type="required"
 versionRange="[1.2,)"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="pamhc2crops"
+type="required"
+versionRange="[1.0.9,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="pamhc2trees"
+type="required"
+versionRange="[1.0.9,)"
+ordering="AFTER"
+side="BOTH"

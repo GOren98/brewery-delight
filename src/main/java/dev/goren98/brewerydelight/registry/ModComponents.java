@@ -33,6 +33,13 @@ public final class ModComponents {
     public static final Supplier<DataComponentType<Boolean>> FERMENTABLE = COMPONENTS.register("fermentable",
             () -> DataComponentType.<Boolean>builder().persistent(Codec.BOOL).build());
 
+    // RGB tint applied to the vanilla potion overlay. DISTILL_COLOR allows one base to
+    // keep its brew color while producing a differently-colored spirit.
+    public static final Supplier<DataComponentType<Integer>> COLOR = COMPONENTS.register("color",
+            () -> DataComponentType.<Integer>builder().persistent(Codec.INT).build());
+    public static final Supplier<DataComponentType<Integer>> DISTILL_COLOR = COMPONENTS.register("distill_color",
+            () -> DataComponentType.<Integer>builder().persistent(Codec.INT).build());
+
     public static final Supplier<DataComponentType<String>> PRIMARY_AROMA = COMPONENTS.register("primary_aroma",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
     public static final Supplier<DataComponentType<Integer>> PRIMARY_LEVEL = COMPONENTS.register("primary_level",
