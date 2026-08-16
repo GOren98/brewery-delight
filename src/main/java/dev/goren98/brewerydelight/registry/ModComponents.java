@@ -23,6 +23,17 @@ public final class ModComponents {
 
     public static final Supplier<DataComponentType<String>> PRODUCT_ID = COMPONENTS.register("product_id",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
+    public static final Supplier<DataComponentType<String>> DISPLAY_NAME = COMPONENTS.register("display_name",
+            () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
+
+    // Optional data-driven distillation target carried by a base bottle.
+    public static final Supplier<DataComponentType<String>> DISTILL_PRODUCT_ID = COMPONENTS.register("distill_product_id",
+            () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
+    public static final Supplier<DataComponentType<String>> DISTILL_DISPLAY_NAME = COMPONENTS.register("distill_display_name",
+            () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
+    public static final Supplier<DataComponentType<Boolean>> FERMENTABLE = COMPONENTS.register("fermentable",
+            () -> DataComponentType.<Boolean>builder().persistent(Codec.BOOL).build());
+
     public static final Supplier<DataComponentType<String>> PRIMARY_AROMA = COMPONENTS.register("primary_aroma",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
     public static final Supplier<DataComponentType<Integer>> PRIMARY_LEVEL = COMPONENTS.register("primary_level",
@@ -32,8 +43,6 @@ public final class ModComponents {
     public static final Supplier<DataComponentType<Integer>> BARREL_LEVEL = COMPONENTS.register("barrel_level",
             () -> DataComponentType.<Integer>builder().persistent(Codec.INT).build());
 
-    // Aroma added by the post-aging blending system. Source aromas remain separate so
-    // primary/barrel provenance is still available for seasoning and future mechanics.
     public static final Supplier<DataComponentType<Map<String, Integer>>> BLEND_AROMAS = COMPONENTS.register("blend_aromas",
             () -> DataComponentType.<Map<String, Integer>>builder()
                     .persistent(Codec.unboundedMap(Codec.STRING, Codec.INT))
