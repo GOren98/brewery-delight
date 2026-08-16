@@ -3,5 +3,8 @@
   "item.brewerydelight.test_spirit": "Test Spirit",
   "item.brewerydelight.neutral_base": "Neutral Base",
   "item.brewerydelight.neutral_spirit": "Neutral Spirit",
-  "item.brewerydelight.test_liqueur": "Test Liqueur"
+  "item.brewerydelight.test_liqueur": "Test Liqueur",
+  "item.brewerydelight.brew_bottle": "Brew",
+  "item.brewerydelight.spirit_bottle": "Spirit",
+  "item.brewerydelight.liqueur_bottle": "Liqueur"
 }
