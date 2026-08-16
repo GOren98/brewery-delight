@@ -5,6 +5,7 @@ import dev.goren98.brewerydelight.registry.ModItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class BarrelLogic {
@@ -45,6 +46,7 @@ public final class BarrelLogic {
                 if (primary > 0) stack.set(ModComponents.PRIMARY_LEVEL.get(), Math.min(5, primary + 1));
                 stack.remove(ModComponents.BARREL_AROMA.get());
                 stack.set(ModComponents.BARREL_LEVEL.get(), 0);
+                stack.set(ModComponents.AGING_AROMAS.get(), Map.of());
                 stack.set(ModComponents.STARTED_AT.get(), now);
                 changed = true;
                 continue;
@@ -55,9 +57,11 @@ public final class BarrelLogic {
                 if (elapsed >= duration) {
                     int gained = (int)(elapsed / duration);
                     int nextAge = Math.min(5, age + gained);
+                    int actualGain = nextAge - age;
 
-                    if (age == 0) stack.set(ModComponents.BARREL_AROMA.get(), inv.getAroma());
+                    if (actualGain > 0) addAgingAroma(stack, inv.getAroma(), actualGain);
                     stack.set(ModComponents.AGE.get(), nextAge);
+                    // Retained as total aging progress for compatibility and existing validation.
                     stack.set(ModComponents.BARREL_LEVEL.get(), nextAge);
                     changed = true;
 
@@ -77,6 +81,14 @@ public final class BarrelLogic {
         if (changed) inv.setChanged();
     }
 
+    private static void addAgingAroma(ItemStack stack, String aroma, int amount) {
+        if (aroma == null || aroma.isEmpty() || amount <= 0) return;
+        Map<String, Integer> aging = new LinkedHashMap<>(
+                stack.getOrDefault(ModComponents.AGING_AROMAS.get(), Map.of()));
+        aging.merge(aroma, amount, Integer::sum);
+        stack.set(ModComponents.AGING_AROMAS.get(), Map.copyOf(aging));
+    }
+
     private static boolean ensureInitialized(ServerLevel level, ItemStack stack) {
         boolean changed = false;
         if (!stack.has(ModComponents.PRODUCT_ID.get())) {
@@ -87,6 +99,18 @@ public final class BarrelLogic {
         if (!stack.has(ModComponents.BARREL_LEVEL.get())) { stack.set(ModComponents.BARREL_LEVEL.get(), 0); changed = true; }
         if (!stack.has(ModComponents.BLEND_AROMAS.get())) { stack.set(ModComponents.BLEND_AROMAS.get(), Map.of()); changed = true; }
         if (!stack.has(ModComponents.SEASONING_COUNTED.get())) { stack.set(ModComponents.SEASONING_COUNTED.get(), false); changed = true; }
+
+        // Migrate bottles created by the previous single-barrel aging implementation.
+        if (!stack.has(ModComponents.AGING_AROMAS.get())) {
+            String legacyAroma = stack.getOrDefault(ModComponents.BARREL_AROMA.get(), "");
+            int legacyLevel = stack.getOrDefault(ModComponents.BARREL_LEVEL.get(), 0);
+            if (!legacyAroma.isEmpty() && legacyLevel > 0) {
+                stack.set(ModComponents.AGING_AROMAS.get(), Map.of(legacyAroma, legacyLevel));
+            } else {
+                stack.set(ModComponents.AGING_AROMAS.get(), Map.of());
+            }
+            changed = true;
+        }
 
         // Preserve the exact behavior of legacy MVP items.
         if (stack.is(ModItems.TEST_SPIRIT.get())) {
@@ -108,7 +132,6 @@ public final class BarrelLogic {
                 changed = true;
             }
         } else {
-            // Generic content receives identity/aroma from recipe components; never replace it with test data.
             if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), ""); changed = true; }
             if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) { stack.set(ModComponents.PRIMARY_LEVEL.get(), 0); changed = true; }
         }
