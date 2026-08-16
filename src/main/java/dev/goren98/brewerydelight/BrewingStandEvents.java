@@ -28,28 +28,22 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-/** MVP distillation path using the vanilla Brewing Stand as the vessel. */
 @EventBusSubscriber(modid = BreweryDelight.MOD_ID)
 public final class BrewingStandEvents {
-    private static final int DISTILL_TICKS = 400; // vanilla brewing duration: 20 seconds
+    private static final int DISTILL_TICKS = 400;
     private static final Set<StandKey> TRACKED = new HashSet<>();
     private static final Map<StandKey, Integer> PROGRESS = new HashMap<>();
 
     @SubscribeEvent
     public static void registerBrewingContainers(RegisterBrewingRecipesEvent event) {
-        /*
-         * Do NOT use Builder#addContainer here. Vanilla validates addContainer items as
-         * actual potion container items and throws for our custom bottle.
-         *
-         * Registering Test Brew as the input of an otherwise-unused brewing recipe makes
-         * BrewingStandMenu recognise it as a valid lower-slot input. The real distillation
-         * remains our custom no-top-ingredient process below. Barrier is deliberately used
-         * as the dummy top ingredient so normal survival brewing cannot trigger this recipe.
-         */
         event.getBuilder().addRecipe(
                 Ingredient.of(ModItems.TEST_BREW.get()),
                 Ingredient.of(Items.BARRIER),
                 new ItemStack(ModItems.TEST_SPIRIT.get()));
+        event.getBuilder().addRecipe(
+                Ingredient.of(ModItems.NEUTRAL_BASE.get()),
+                Ingredient.of(Items.BARRIER),
+                new ItemStack(ModItems.NEUTRAL_SPIRIT.get()));
     }
 
     @SubscribeEvent
@@ -64,12 +58,6 @@ public final class BrewingStandEvents {
         StandKey key = new StandKey(level.dimension(), event.getPos().immutable());
         TRACKED.add(key);
 
-        /*
-         * Use the normal BrewingStandMenu, but feed its two synced data values from our
-         * custom process. Index 0 is the vanilla brewing countdown, so the stock brewing
-         * screen now renders its normal bubbles/progress animation while Test Brew is
-         * being distilled even though there is deliberately no top-slot ingredient.
-         */
         ContainerData displayData = new ContainerData() {
             @Override
             public int get(int index) {
@@ -83,15 +71,8 @@ public final class BrewingStandEvents {
                 return 0;
             }
 
-            @Override
-            public void set(int index, int value) {
-                // Client-to-server writes are not used by the brewing screen.
-            }
-
-            @Override
-            public int getCount() {
-                return 2;
-            }
+            @Override public void set(int index, int value) {}
+            @Override public int getCount() { return 2; }
         };
 
         player.openMenu(new SimpleMenuProvider(
@@ -133,7 +114,6 @@ public final class BrewingStandEvents {
                 continue;
             }
 
-            // One blaze powder powers one MVP distillation batch (up to three bottles).
             fuel.shrink(1);
             for (int slot = 0; slot < 3; slot++) {
                 ItemStack base = stand.getItem(slot);
@@ -146,15 +126,27 @@ public final class BrewingStandEvents {
     }
 
     private static boolean isDistillableBase(ItemStack stack) {
+        if (stack.is(ModItems.NEUTRAL_BASE.get())) return true;
         return stack.is(ModItems.TEST_BREW.get())
                 && stack.getOrDefault(ModComponents.STAGE.get(), 0) == 0;
     }
 
     private static ItemStack makeSpirit(ItemStack base) {
+        if (base.is(ModItems.NEUTRAL_BASE.get())) {
+            ItemStack spirit = new ItemStack(ModItems.NEUTRAL_SPIRIT.get(), base.getCount());
+            spirit.set(ModComponents.PRODUCT_ID.get(), "neutral_spirit");
+            spirit.set(ModComponents.STAGE.get(), 2);
+            spirit.set(ModComponents.AGE.get(), 0);
+            spirit.set(ModComponents.PRIMARY_AROMA.get(), "");
+            spirit.set(ModComponents.PRIMARY_LEVEL.get(), 0);
+            spirit.set(ModComponents.BARREL_LEVEL.get(), 0);
+            spirit.set(ModComponents.SEASONING_COUNTED.get(), false);
+            return spirit;
+        }
+
         ItemStack spirit = new ItemStack(ModItems.TEST_SPIRIT.get(), base.getCount());
         String aroma = base.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "test");
         int level = base.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
-
         spirit.set(ModComponents.PRODUCT_ID.get(), "test_spirit");
         spirit.set(ModComponents.STAGE.get(), 2);
         spirit.set(ModComponents.AGE.get(), 0);
@@ -166,6 +158,5 @@ public final class BrewingStandEvents {
     }
 
     private record StandKey(ResourceKey<Level> dimension, BlockPos pos) {}
-
     private BrewingStandEvents() {}
 }
