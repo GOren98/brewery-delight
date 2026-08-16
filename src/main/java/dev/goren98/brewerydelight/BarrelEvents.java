@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 
 @EventBusSubscriber(modid = BreweryDelight.MOD_ID)
 public final class BarrelEvents {
@@ -39,8 +40,6 @@ public final class BarrelEvents {
         inv.configureWood(match.woodId());
         BarrelLogic.update(level, inv);
 
-        // Keep the vanilla chest title compact enough to stay inside the 9x1 GUI.
-        // Aroma/seasoning still remain visible, but in a shorter status format.
         StringBuilder title = new StringBuilder(match.displayName())
                 .append(" [").append(pretty(inv.getAroma()));
 
@@ -57,6 +56,13 @@ public final class BarrelEvents {
                 Component.literal(title.toString())));
         player.displayClientMessage(Component.literal(match.displayName() + " ready"), true);
         event.setCanceled(true);
+    }
+
+    @SubscribeEvent
+    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        if (event.getLevel() instanceof ServerLevel level) {
+            BarrelSavedData.get(level).resetEmptyBarrelAt(event.getPos());
+        }
     }
 
     private static String seasoningAroma(String target) {
