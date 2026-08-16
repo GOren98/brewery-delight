@@ -18,9 +18,15 @@ public final class AromaUtil {
         int primaryLevel = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         mergeCapped(out, primary, primaryLevel);
 
-        String barrel = stack.getOrDefault(ModComponents.BARREL_AROMA.get(), "");
-        int barrelLevel = stack.getOrDefault(ModComponents.BARREL_LEVEL.get(), 0);
-        mergeCapped(out, barrel, barrelLevel);
+        if (stack.has(ModComponents.AGING_AROMAS.get())) {
+            Map<String, Integer> aging = stack.getOrDefault(ModComponents.AGING_AROMAS.get(), Map.of());
+            aging.forEach((aroma, level) -> mergeCapped(out, aroma, level));
+        } else {
+            // Compatibility with bottles saved before per-barrel aging aromas existed.
+            String barrel = stack.getOrDefault(ModComponents.BARREL_AROMA.get(), "");
+            int barrelLevel = stack.getOrDefault(ModComponents.BARREL_LEVEL.get(), 0);
+            mergeCapped(out, barrel, barrelLevel);
+        }
 
         Map<String, Integer> blends = stack.getOrDefault(ModComponents.BLEND_AROMAS.get(), Map.of());
         blends.forEach((aroma, level) -> mergeCapped(out, aroma, level));
