@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public final class BarrelSavedData extends SavedData {
@@ -29,6 +30,30 @@ public final class BarrelSavedData extends SavedData {
 
     public void remove(BlockPos controller) {
         if (barrels.remove(controller.asLong()) != null) setDirty();
+    }
+
+    /**
+     * A rebuilt multiblock is a fresh barrel. To avoid deleting bottles by accident,
+     * only empty barrel inventories are forgotten when one of their 2x2x2 body stairs
+     * is broken. A player can empty a seasoned barrel, break it, and rebuild it to get
+     * the original wood aroma again.
+     */
+    public void resetEmptyBarrelAt(BlockPos brokenPos) {
+        Iterator<Map.Entry<Long, BarrelInventory>> it = barrels.entrySet().iterator();
+        boolean changed = false;
+        while (it.hasNext()) {
+            Map.Entry<Long, BarrelInventory> entry = it.next();
+            BarrelInventory inv = entry.getValue();
+            if (!inv.isEmpty()) continue;
+            BlockPos origin = BlockPos.of(entry.getKey());
+            if (brokenPos.getX() >= origin.getX() && brokenPos.getX() <= origin.getX() + 1
+                    && brokenPos.getY() >= origin.getY() && brokenPos.getY() <= origin.getY() + 1
+                    && brokenPos.getZ() >= origin.getZ() && brokenPos.getZ() <= origin.getZ() + 1) {
+                it.remove();
+                changed = true;
+            }
+        }
+        if (changed) setDirty();
     }
 
     @Override
