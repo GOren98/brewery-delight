@@ -42,32 +42,32 @@ public final class BrewingStandEvents {
     private static final Map<StandKey, Integer> PROGRESS = new HashMap<>();
 
     private static final List<LiqueurRecipe> LIQUEUR_RECIPES = List.of(
-            tagLiqueur("c:crops/orange", "orange_liqueur", "Orange Liqueur", "orange", 15170338),
-            tagLiqueur("c:crops/lemon", "lemon_liqueur", "Lemon Liqueur", "lemon", 14273849),
-            tagLiqueur("c:crops/lime", "lime_liqueur", "Lime Liqueur", "lime", 8366661),
-            tagLiqueur("c:crops/banana", "banana_liqueur", "Banana Liqueur", "banana", 14468685),
-            tagLiqueur("c:crops/mango", "mango_liqueur", "Mango Liqueur", "mango", 14519082),
-            tagLiqueur("c:crops/lychee", "lychee_liqueur", "Lychee Liqueur", "lychee", 14264745),
-            tagLiqueur("c:crops/passionfruit", "passion_fruit_liqueur", "Passion Fruit Liqueur", "passion_fruit", 13668652),
-            itemLiqueur(Items.MELON_SLICE, "watermelon_liqueur", "Watermelon Liqueur", "watermelon", 14243176),
+            tagLiqueur("c:crops/orange", "orange_liqueur", "Orange Liqueur", "orange", 15764004),
+            tagLiqueur("c:crops/lemon", "lemon_liqueur", "Lemon Liqueur", "lemon", 15919179),
+            tagLiqueur("c:crops/lime", "lime_liqueur", "Lime Liqueur", "lime", 7977034),
+            tagLiqueur("c:crops/banana", "banana_liqueur", "Banana Liqueur", "banana", 15124858),
+            tagLiqueur("c:crops/mango", "mango_liqueur", "Mango Liqueur", "mango", 15042856),
+            tagLiqueur("c:crops/lychee", "lychee_liqueur", "Lychee Liqueur", "lychee", 15049904),
+            tagLiqueur("c:crops/passionfruit", "passion_fruit_liqueur", "Passion Fruit Liqueur", "passion_fruit", 14657325),
+            itemLiqueur(Items.MELON_SLICE, "watermelon_liqueur", "Watermelon Liqueur", "watermelon", 14310514),
 
-            tagLiqueur("c:crops/almond", "almond_liqueur", "Almond Liqueur", "almond", 12886650),
-            tagLiqueur("c:crops/chestnut", "chestnut_liqueur", "Chestnut Liqueur", "chestnut", 9330751),
-            tagLiqueur("c:crops/hazelnut", "hazelnut_liqueur", "Hazelnut Liqueur", "hazelnut", 10118975),
-            tagLiqueur("c:crops/pecan", "pecan_liqueur", "Pecan Liqueur", "pecan", 8737843),
-            tagLiqueur("c:crops/pistachio", "pistachio_liqueur", "Pistachio Liqueur", "pistachio", 10201693),
-            tagLiqueur("c:crops/walnut", "walnut_liqueur", "Walnut Liqueur", "walnut", 7358767),
+            tagLiqueur("c:crops/almond", "almond_liqueur", "Almond Liqueur", "almond", 13809546),
+            tagLiqueur("c:crops/chestnut", "chestnut_liqueur", "Chestnut Liqueur", "chestnut", 9328952),
+            tagLiqueur("c:crops/hazelnut", "hazelnut_liqueur", "Hazelnut Liqueur", "hazelnut", 11367756),
+            tagLiqueur("c:crops/pecan", "pecan_liqueur", "Pecan Liqueur", "pecan", 7357230),
+            tagLiqueur("c:crops/pistachio", "pistachio_liqueur", "Pistachio Liqueur", "pistachio", 10399576),
+            tagLiqueur("c:crops/walnut", "walnut_liqueur", "Walnut Liqueur", "walnut", 5650479),
 
-            tagLiqueur("c:crops/coffeebean", "coffee_liqueur", "Coffee Liqueur", "coffee", 6635566),
-            tagLiqueur("c:crops/vanillabean", "vanilla_liqueur", "Vanilla Liqueur", "vanilla", 14139018),
-            tagLiqueur("c:crops/cinnamon", "cinnamon_liqueur", "Cinnamon Liqueur", "cinnamon", 10769970),
-            tagLiqueur("c:crops/ginger", "ginger_liqueur", "Ginger Liqueur", "ginger", 13014338),
-            tagLiqueur("c:crops/nutmeg", "nutmeg_liqueur", "Nutmeg Liqueur", "nutmeg", 8870978),
+            tagLiqueur("c:crops/coffeebean", "coffee_liqueur", "Coffee Liqueur", "coffee", 4400415),
+            tagLiqueur("c:crops/vanillabean", "vanilla_liqueur", "Vanilla Liqueur", "vanilla", 15325615),
+            tagLiqueur("c:crops/cinnamon", "cinnamon_liqueur", "Cinnamon Liqueur", "cinnamon", 10832429),
+            tagLiqueur("c:crops/ginger", "ginger_liqueur", "Ginger Liqueur", "ginger", 12092470),
+            tagLiqueur("c:crops/nutmeg", "nutmeg_liqueur", "Nutmeg Liqueur", "nutmeg", 8280643),
 
-            tagLiqueur("c:crops/juniperberry", "gin", "Gin", "juniper", 12374461),
-            itemLiqueur(Items.EGG, "advocaat", "Advocaat", "egg", 14531402),
-            tagLiqueur("c:crops/tealeaf", "absinthe", "Absinthe", "herbal", 7906896),
-            tagLiqueur("c:crops/spiceleaf", "aquavit", "Aquavit", "spiced", 13746040)
+            tagLiqueur("c:crops/juniperberry", "gin", "Gin", "juniper", 12770764),
+            itemLiqueur(Items.EGG, "advocaat", "Advocaat", "egg", 14857518),
+            tagLiqueur("c:crops/tealeaf", "absinthe", "Absinthe", "herbal", 7316286),
+            tagLiqueur("c:crops/spiceleaf", "aquavit", "Aquavit", "spiced", 14600587)
     );
 
     private enum Mode { NONE, DISTILL, RECYCLE, BLEND, LIQUEUR }
