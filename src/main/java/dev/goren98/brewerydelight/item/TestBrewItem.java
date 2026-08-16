@@ -10,7 +10,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +55,7 @@ public class TestBrewItem extends Item {
             stack.set(ModComponents.PRIMARY_LEVEL.get(), levelValue);
         }
         if (!stack.has(ModComponents.BARREL_LEVEL.get())) stack.set(ModComponents.BARREL_LEVEL.get(), 0);
+        if (!stack.has(ModComponents.BLEND_AROMAS.get())) stack.set(ModComponents.BLEND_AROMAS.get(), Map.of());
         if (!stack.has(ModComponents.SEASONING_COUNTED.get())) stack.set(ModComponents.SEASONING_COUNTED.get(), false);
     }
 
@@ -74,14 +74,7 @@ public class TestBrewItem extends Item {
         int age = stack.getOrDefault(ModComponents.AGE.get(), 0);
         long started = stack.getOrDefault(ModComponents.STARTED_AT.get(), 0L);
 
-        Map<String, Integer> shown = new LinkedHashMap<>();
-        String primary = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), primaryAroma);
-        int primaryLevel = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
-        String barrel = stack.getOrDefault(ModComponents.BARREL_AROMA.get(), "");
-        int barrelLevel = stack.getOrDefault(ModComponents.BARREL_LEVEL.get(), 0);
-        if (!primary.isEmpty() && primaryLevel > 0) shown.merge(primary, primaryLevel, Integer::sum);
-        if (!barrel.isEmpty() && barrelLevel > 0) shown.merge(barrel, barrelLevel, Integer::sum);
-
+        Map<String, Integer> shown = AromaUtil.merged(stack);
         if (shown.isEmpty()) {
             tooltip.add(Component.literal("No Aroma").withStyle(ChatFormatting.DARK_GRAY));
         } else {
@@ -89,10 +82,16 @@ public class TestBrewItem extends Item {
                     Component.literal(pretty(aroma) + " " + roman(aromaLevel)).withStyle(ChatFormatting.LIGHT_PURPLE)));
         }
 
-        if (stage == 0) tooltip.add(Component.literal("Base").withStyle(ChatFormatting.GRAY));
-        else if (stage == 1) tooltip.add(Component.literal("Finished Brew").withStyle(ChatFormatting.GRAY));
-        else if (stage == 2) tooltip.add(Component.literal("Spirit").withStyle(ChatFormatting.GRAY));
-        else if (stage == 3) tooltip.add(Component.literal("Liqueur").withStyle(ChatFormatting.GRAY));
+        if (stage == 0) {
+            tooltip.add(Component.literal("Base").withStyle(ChatFormatting.GRAY));
+        } else {
+            if (stage == 1) tooltip.add(Component.literal("Brew").withStyle(ChatFormatting.GRAY));
+            else if (stage == 2) tooltip.add(Component.literal("Spirit").withStyle(ChatFormatting.GRAY));
+            else if (stage == 3) tooltip.add(Component.literal("Liqueur").withStyle(ChatFormatting.GRAY));
+
+            // Preserve the underlying alcohol identity even after an anvil custom-name is applied.
+            tooltip.add(Component.literal(baseName).withStyle(ChatFormatting.DARK_GRAY));
+        }
 
         if (age >= 5) {
             tooltip.add(Component.literal("Fully aged").withStyle(ChatFormatting.GOLD));
@@ -104,7 +103,7 @@ public class TestBrewItem extends Item {
             tooltip.add(Component.literal(label + ": " + seconds + "s").withStyle(ChatFormatting.YELLOW));
         } else if (stage == 0) {
             tooltip.add(Component.literal("Put in a Barrel to ferment").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stage >= 1) {
+        } else if (stage >= 1 && age < 5) {
             tooltip.add(Component.literal("Put in a Barrel to age").withStyle(ChatFormatting.DARK_GRAY));
         }
     }
@@ -122,12 +121,10 @@ public class TestBrewItem extends Item {
 
     private static String roman(int value) {
         if (value <= 0) return "0";
-        if (value > 10) return Integer.toString(value);
-        return switch (value) {
-            case 1 -> "I"; case 2 -> "II"; case 3 -> "III"; case 4 -> "IV"; case 5 -> "V";
-            case 6 -> "VI"; case 7 -> "VII"; case 8 -> "VIII"; case 9 -> "IX"; case 10 -> "X";
-            default -> Integer.toString(value);
-        };
+        if (value > 20) return Integer.toString(value);
+        String[] numerals = {"0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
+                "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"};
+        return numerals[value];
     }
 
     @Override
