@@ -1,0 +1,1 @@
+Liqueur production is handled by BrewingStandEvents. Cooking Pot liqueur recipes were removed.
