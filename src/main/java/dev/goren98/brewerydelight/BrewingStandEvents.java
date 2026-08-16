@@ -4,13 +4,17 @@ import dev.goren98.brewerydelight.item.AromaUtil;
 import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.inventory.BrewingStandMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -26,6 +30,7 @@ import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,7 +41,36 @@ public final class BrewingStandEvents {
     private static final Set<StandKey> TRACKED = new HashSet<>();
     private static final Map<StandKey, Integer> PROGRESS = new HashMap<>();
 
-    private enum Mode { NONE, DISTILL, RECYCLE, BLEND }
+    private static final List<LiqueurRecipe> LIQUEUR_RECIPES = List.of(
+            tagLiqueur("c:crops/orange", "orange_liqueur", "Orange Liqueur", "orange", 15170338),
+            tagLiqueur("c:crops/lemon", "lemon_liqueur", "Lemon Liqueur", "lemon", 14273849),
+            tagLiqueur("c:crops/lime", "lime_liqueur", "Lime Liqueur", "lime", 8366661),
+            tagLiqueur("c:crops/banana", "banana_liqueur", "Banana Liqueur", "banana", 14468685),
+            tagLiqueur("c:crops/mango", "mango_liqueur", "Mango Liqueur", "mango", 14519082),
+            tagLiqueur("c:crops/lychee", "lychee_liqueur", "Lychee Liqueur", "lychee", 14264745),
+            tagLiqueur("c:crops/passionfruit", "passion_fruit_liqueur", "Passion Fruit Liqueur", "passion_fruit", 13668652),
+            itemLiqueur(Items.MELON_SLICE, "watermelon_liqueur", "Watermelon Liqueur", "watermelon", 14243176),
+
+            tagLiqueur("c:crops/almond", "almond_liqueur", "Almond Liqueur", "almond", 12886650),
+            tagLiqueur("c:crops/chestnut", "chestnut_liqueur", "Chestnut Liqueur", "chestnut", 9330751),
+            tagLiqueur("c:crops/hazelnut", "hazelnut_liqueur", "Hazelnut Liqueur", "hazelnut", 10118975),
+            tagLiqueur("c:crops/pecan", "pecan_liqueur", "Pecan Liqueur", "pecan", 8737843),
+            tagLiqueur("c:crops/pistachio", "pistachio_liqueur", "Pistachio Liqueur", "pistachio", 10201693),
+            tagLiqueur("c:crops/walnut", "walnut_liqueur", "Walnut Liqueur", "walnut", 7358767),
+
+            tagLiqueur("c:crops/coffeebean", "coffee_liqueur", "Coffee Liqueur", "coffee", 6635566),
+            tagLiqueur("c:crops/vanillabean", "vanilla_liqueur", "Vanilla Liqueur", "vanilla", 14139018),
+            tagLiqueur("c:crops/cinnamon", "cinnamon_liqueur", "Cinnamon Liqueur", "cinnamon", 10769970),
+            tagLiqueur("c:crops/ginger", "ginger_liqueur", "Ginger Liqueur", "ginger", 13014338),
+            tagLiqueur("c:crops/nutmeg", "nutmeg_liqueur", "Nutmeg Liqueur", "nutmeg", 8870978),
+
+            tagLiqueur("c:crops/juniperberry", "gin", "Gin", "juniper", 12374461),
+            itemLiqueur(Items.EGG, "advocaat", "Advocaat", "egg", 14531402),
+            tagLiqueur("c:crops/tealeaf", "absinthe", "Absinthe", "herbal", 7906896),
+            tagLiqueur("c:crops/spiceleaf", "aquavit", "Aquavit", "spiced", 13746040)
+    );
+
+    private enum Mode { NONE, DISTILL, RECYCLE, BLEND, LIQUEUR }
 
     @SubscribeEvent
     public static void registerBrewingContainers(RegisterBrewingRecipesEvent event) {
@@ -49,23 +83,29 @@ public final class BrewingStandEvents {
         registerTop(event, ModItems.TEST_SPIRIT.get());
         registerTop(event, ModItems.TEST_LIQUEUR.get());
 
-        // Generic category bottles. Product-specific behavior comes from stack components,
-        // so future products do not require another BrewingStandEvents code change.
+        // Generic category bottles. Product-specific behavior comes from stack components.
         registerBottom(event, ModItems.BREW_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
         registerBottom(event, ModItems.SPIRIT_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
         registerBottom(event, ModItems.LIQUEUR_BOTTLE.get(), ModItems.LIQUEUR_BOTTLE.get());
+        registerBottom(event, ModItems.NEUTRAL_SPIRIT.get(), ModItems.LIQUEUR_BOTTLE.get());
         registerTop(event, ModItems.BREW_BOTTLE.get());
         registerTop(event, ModItems.SPIRIT_BOTTLE.get());
         registerTop(event, ModItems.LIQUEUR_BOTTLE.get());
+
+        // Allow all configured liqueur ingredients in the brewing stand ingredient slot.
+        for (LiqueurRecipe recipe : LIQUEUR_RECIPES) registerTop(event, recipe.ingredient());
     }
 
-    private static void registerBottom(RegisterBrewingRecipesEvent event, net.minecraft.world.item.Item input,
-                                       net.minecraft.world.item.Item output) {
+    private static void registerBottom(RegisterBrewingRecipesEvent event, Item input, Item output) {
         event.getBuilder().addRecipe(Ingredient.of(input), Ingredient.of(Items.BARRIER), new ItemStack(output));
     }
 
-    private static void registerTop(RegisterBrewingRecipesEvent event, net.minecraft.world.item.Item ingredient) {
-        event.getBuilder().addRecipe(Ingredient.of(Items.BARRIER), Ingredient.of(ingredient), new ItemStack(Items.BARRIER));
+    private static void registerTop(RegisterBrewingRecipesEvent event, Item ingredient) {
+        registerTop(event, Ingredient.of(ingredient));
+    }
+
+    private static void registerTop(RegisterBrewingRecipesEvent event, Ingredient ingredient) {
+        event.getBuilder().addRecipe(Ingredient.of(Items.BARRIER), ingredient, new ItemStack(Items.BARRIER));
     }
 
     @SubscribeEvent
@@ -131,6 +171,7 @@ public final class BrewingStandEvents {
                 case DISTILL -> finishDistillation(stand);
                 case RECYCLE -> finishRecycling(stand);
                 case BLEND -> finishBlending(stand);
+                case LIQUEUR -> finishLiqueur(stand, level);
                 default -> { }
             }
             stand.setChanged();
@@ -144,6 +185,10 @@ public final class BrewingStandEvents {
             return allBottomMatch(stand, BrewingStandEvents::isRecyclableFailedBase) ? Mode.RECYCLE : Mode.NONE;
         }
         if (!ingredient.isEmpty()) {
+            LiqueurRecipe liqueur = findLiqueurRecipe(ingredient);
+            if (liqueur != null) {
+                return allBottomMatch(stand, BrewingStandEvents::isNeutralSpirit) ? Mode.LIQUEUR : Mode.NONE;
+            }
             return isBlendSource(ingredient) && validBlendTargets(stand, ingredient) ? Mode.BLEND : Mode.NONE;
         }
         return allBottomMatch(stand, BrewingStandEvents::isDistillableBase) ? Mode.DISTILL : Mode.NONE;
@@ -158,6 +203,10 @@ public final class BrewingStandEvents {
             if (!predicate.test(stack)) return false;
         }
         return found;
+    }
+
+    private static boolean isNeutralSpirit(ItemStack stack) {
+        return stack.is(ModItems.NEUTRAL_SPIRIT.get());
     }
 
     private static boolean isDistillableBase(ItemStack stack) {
@@ -243,6 +292,32 @@ public final class BrewingStandEvents {
         source.shrink(1);
     }
 
+    private static void finishLiqueur(BrewingStandBlockEntity stand, Level level) {
+        ItemStack ingredient = stand.getItem(3);
+        LiqueurRecipe recipe = findLiqueurRecipe(ingredient);
+        if (recipe == null) return;
+
+        for (int slot = 0; slot < 3; slot++) {
+            ItemStack neutral = stand.getItem(slot);
+            if (!isNeutralSpirit(neutral)) continue;
+
+            ItemStack result = new ItemStack(ModItems.LIQUEUR_BOTTLE.get(), neutral.getCount());
+            result.set(ModComponents.PRODUCT_ID.get(), recipe.productId());
+            result.set(ModComponents.DISPLAY_NAME.get(), recipe.displayName());
+            result.set(ModComponents.STAGE.get(), 3);
+            result.set(ModComponents.AGE.get(), 0);
+            result.set(ModComponents.PRIMARY_AROMA.get(), recipe.aroma());
+            result.set(ModComponents.PRIMARY_LEVEL.get(), 1 + level.random.nextInt(5));
+            result.set(ModComponents.COLOR.get(), recipe.color());
+            result.set(ModComponents.BARREL_LEVEL.get(), 0);
+            result.set(ModComponents.AGING_AROMAS.get(), Map.of());
+            result.set(ModComponents.BLEND_AROMAS.get(), Map.of());
+            result.set(ModComponents.SEASONING_COUNTED.get(), false);
+            stand.setItem(slot, result);
+        }
+        ingredient.shrink(1);
+    }
+
     private static ItemStack makeSpirit(ItemStack base) {
         if (base.is(ModItems.NEUTRAL_BASE.get())) return makeNeutralSpirit(base.getCount());
 
@@ -296,6 +371,22 @@ public final class BrewingStandEvents {
         return spirit;
     }
 
+    private static LiqueurRecipe findLiqueurRecipe(ItemStack ingredient) {
+        for (LiqueurRecipe recipe : LIQUEUR_RECIPES) {
+            if (recipe.ingredient().test(ingredient)) return recipe;
+        }
+        return null;
+    }
+
+    private static LiqueurRecipe tagLiqueur(String tagId, String productId, String displayName, String aroma, int color) {
+        TagKey<Item> tag = TagKey.create(Registries.ITEM, ResourceLocation.parse(tagId));
+        return new LiqueurRecipe(Ingredient.of(tag), productId, displayName, aroma, color);
+    }
+
+    private static LiqueurRecipe itemLiqueur(Item item, String productId, String displayName, String aroma, int color) {
+        return new LiqueurRecipe(Ingredient.of(item), productId, displayName, aroma, color);
+    }
+
     private static String prettyId(String value) {
         if (value == null || value.isEmpty()) return "Spirit";
         String path = value.contains(":") ? value.substring(value.indexOf(':') + 1) : value;
@@ -309,6 +400,7 @@ public final class BrewingStandEvents {
         return out.toString();
     }
 
+    private record LiqueurRecipe(Ingredient ingredient, String productId, String displayName, String aroma, int color) {}
     private record StandKey(ResourceKey<Level> dimension, BlockPos pos) {}
     private BrewingStandEvents() {}
 }
