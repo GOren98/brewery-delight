@@ -39,38 +39,32 @@ public final class BrewingStandEvents {
 
     @SubscribeEvent
     public static void registerBrewingContainers(RegisterBrewingRecipesEvent event) {
-        // Bottom-slot registrations. Barrier keeps vanilla brewing from triggering these MVP recipes.
-        event.getBuilder().addRecipe(
-                Ingredient.of(ModItems.TEST_BREW.get()),
-                Ingredient.of(Items.BARRIER),
-                new ItemStack(ModItems.TEST_SPIRIT.get()));
-        event.getBuilder().addRecipe(
-                Ingredient.of(ModItems.NEUTRAL_BASE.get()),
-                Ingredient.of(Items.BARRIER),
-                new ItemStack(ModItems.NEUTRAL_SPIRIT.get()));
-        event.getBuilder().addRecipe(
-                Ingredient.of(ModItems.TEST_SPIRIT.get()),
-                Ingredient.of(Items.BARRIER),
-                new ItemStack(ModItems.TEST_SPIRIT.get()));
-        event.getBuilder().addRecipe(
-                Ingredient.of(ModItems.TEST_LIQUEUR.get()),
-                Ingredient.of(Items.BARRIER),
-                new ItemStack(ModItems.TEST_LIQUEUR.get()));
+        // Legacy MVP registrations retained for regression compatibility.
+        registerBottom(event, ModItems.TEST_BREW.get(), ModItems.TEST_SPIRIT.get());
+        registerBottom(event, ModItems.NEUTRAL_BASE.get(), ModItems.NEUTRAL_SPIRIT.get());
+        registerBottom(event, ModItems.TEST_SPIRIT.get(), ModItems.TEST_SPIRIT.get());
+        registerBottom(event, ModItems.TEST_LIQUEUR.get(), ModItems.TEST_LIQUEUR.get());
+        registerTop(event, ModItems.TEST_BREW.get());
+        registerTop(event, ModItems.TEST_SPIRIT.get());
+        registerTop(event, ModItems.TEST_LIQUEUR.get());
 
-        // Top-slot registrations for blending ingredients. The impossible Barrier input means
-        // these recipes exist only to make vanilla's ingredient slot accept our alcohol items.
-        event.getBuilder().addRecipe(
-                Ingredient.of(Items.BARRIER),
-                Ingredient.of(ModItems.TEST_BREW.get()),
-                new ItemStack(Items.BARRIER));
-        event.getBuilder().addRecipe(
-                Ingredient.of(Items.BARRIER),
-                Ingredient.of(ModItems.TEST_SPIRIT.get()),
-                new ItemStack(Items.BARRIER));
-        event.getBuilder().addRecipe(
-                Ingredient.of(Items.BARRIER),
-                Ingredient.of(ModItems.TEST_LIQUEUR.get()),
-                new ItemStack(Items.BARRIER));
+        // Generic category bottles. Product-specific behavior comes from stack components,
+        // so future products do not require another BrewingStandEvents code change.
+        registerBottom(event, ModItems.BREW_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
+        registerBottom(event, ModItems.SPIRIT_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
+        registerBottom(event, ModItems.LIQUEUR_BOTTLE.get(), ModItems.LIQUEUR_BOTTLE.get());
+        registerTop(event, ModItems.BREW_BOTTLE.get());
+        registerTop(event, ModItems.SPIRIT_BOTTLE.get());
+        registerTop(event, ModItems.LIQUEUR_BOTTLE.get());
+    }
+
+    private static void registerBottom(RegisterBrewingRecipesEvent event, net.minecraft.world.item.Item input,
+                                       net.minecraft.world.item.Item output) {
+        event.getBuilder().addRecipe(Ingredient.of(input), Ingredient.of(Items.BARRIER), new ItemStack(output));
+    }
+
+    private static void registerTop(RegisterBrewingRecipesEvent event, net.minecraft.world.item.Item ingredient) {
+        event.getBuilder().addRecipe(Ingredient.of(Items.BARRIER), Ingredient.of(ingredient), new ItemStack(Items.BARRIER));
     }
 
     @SubscribeEvent
@@ -92,12 +86,9 @@ public final class BrewingStandEvents {
                     int progress = PROGRESS.getOrDefault(key, 0);
                     return progress > 0 ? Math.max(1, PROCESS_TICKS - progress) : 0;
                 }
-                if (index == 1) {
-                    return stand.getItem(4).is(Items.BLAZE_POWDER) ? 20 : 0;
-                }
+                if (index == 1) return stand.getItem(4).is(Items.BLAZE_POWDER) ? 20 : 0;
                 return 0;
             }
-
             @Override public void set(int index, int value) {}
             @Override public int getCount() { return 2; }
         };
@@ -148,15 +139,12 @@ public final class BrewingStandEvents {
 
     private static Mode determineMode(BrewingStandBlockEntity stand) {
         ItemStack ingredient = stand.getItem(3);
-
         if (ingredient.is(Items.SUGAR)) {
             return allBottomMatch(stand, BrewingStandEvents::isRecyclableFailedBase) ? Mode.RECYCLE : Mode.NONE;
         }
-
         if (!ingredient.isEmpty()) {
             return isBlendSource(ingredient) && validBlendTargets(stand, ingredient) ? Mode.BLEND : Mode.NONE;
         }
-
         return allBottomMatch(stand, BrewingStandEvents::isDistillableBase) ? Mode.DISTILL : Mode.NONE;
     }
 
@@ -173,8 +161,12 @@ public final class BrewingStandEvents {
 
     private static boolean isDistillableBase(ItemStack stack) {
         if (stack.is(ModItems.NEUTRAL_BASE.get())) return true;
-        return stack.is(ModItems.TEST_BREW.get())
-                && stack.getOrDefault(ModComponents.STAGE.get(), 0) == 0;
+        if (stack.is(ModItems.TEST_BREW.get())) {
+            return stack.getOrDefault(ModComponents.STAGE.get(), 0) == 0;
+        }
+        return stack.is(ModItems.BREW_BOTTLE.get())
+                && stack.getOrDefault(ModComponents.STAGE.get(), 0) == 0
+                && !stack.getOrDefault(ModComponents.DISTILL_PRODUCT_ID.get(), "").isEmpty();
     }
 
     private static boolean isRecyclableFailedBase(ItemStack stack) {
@@ -191,7 +183,6 @@ public final class BrewingStandEvents {
         if (stack.getOrDefault(ModComponents.AGE.get(), 0) != 0) return false;
         if (stack.getOrDefault(ModComponents.BARREL_LEVEL.get(), 0) != 0) return false;
         if (!stack.getOrDefault(ModComponents.BLEND_AROMAS.get(), Map.of()).isEmpty()) return false;
-
         String primary = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int level = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         return !primary.isEmpty() && level > 0 && AromaUtil.hasExactlyOneAroma(stack);
@@ -200,7 +191,7 @@ public final class BrewingStandEvents {
     private static boolean validBlendTargets(BrewingStandBlockEntity stand, ItemStack source) {
         int sourceStage = source.getOrDefault(ModComponents.STAGE.get(), -1);
         String sourceAroma = source.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
-        int sourceLevel = stackPrimaryLevel(source);
+        int sourceLevel = source.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
 
         String product = "";
         boolean found = false;
@@ -210,7 +201,7 @@ public final class BrewingStandEvents {
             found = true;
 
             int stage = target.getOrDefault(ModComponents.STAGE.get(), -1);
-            if (stage != sourceStage || stage < 1 || stage > 3) return false; // Brew↔Brew, Spirit↔Spirit, Liqueur↔Liqueur only.
+            if (stage != sourceStage || stage < 1 || stage > 3) return false;
 
             String targetProduct = target.getOrDefault(ModComponents.PRODUCT_ID.get(), "");
             if (targetProduct.isEmpty()) return false;
@@ -222,10 +213,6 @@ public final class BrewingStandEvents {
             if (AromaUtil.blendGain(target, sourceAroma, sourceLevel) <= 0) return false;
         }
         return found;
-    }
-
-    private static int stackPrimaryLevel(ItemStack stack) {
-        return stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
     }
 
     private static void finishDistillation(BrewingStandBlockEntity stand) {
@@ -240,13 +227,12 @@ public final class BrewingStandEvents {
             ItemStack base = stand.getItem(slot);
             if (isRecyclableFailedBase(base)) stand.setItem(slot, makeNeutralSpirit(base.getCount()));
         }
-        stand.getItem(3).shrink(1); // one Sugar recycles one batch, matching vanilla-style ingredient use
+        stand.getItem(3).shrink(1);
     }
 
     private static void finishBlending(BrewingStandBlockEntity stand) {
         ItemStack source = stand.getItem(3);
         if (!isBlendSource(source)) return;
-
         String aroma = source.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int level = source.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         for (int slot = 0; slot < 3; slot++) {
@@ -259,10 +245,25 @@ public final class BrewingStandEvents {
     private static ItemStack makeSpirit(ItemStack base) {
         if (base.is(ModItems.NEUTRAL_BASE.get())) return makeNeutralSpirit(base.getCount());
 
-        ItemStack spirit = new ItemStack(ModItems.TEST_SPIRIT.get(), base.getCount());
-        String aroma = base.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "test");
+        // Legacy Test Brew path remains byte-for-byte equivalent in behavior.
+        if (base.is(ModItems.TEST_BREW.get())) {
+            ItemStack spirit = new ItemStack(ModItems.TEST_SPIRIT.get(), base.getCount());
+            copySpiritData(base, spirit, "test_spirit", "Test Spirit");
+            return spirit;
+        }
+
+        ItemStack spirit = new ItemStack(ModItems.SPIRIT_BOTTLE.get(), base.getCount());
+        String resultId = base.getOrDefault(ModComponents.DISTILL_PRODUCT_ID.get(), "");
+        String resultName = base.getOrDefault(ModComponents.DISTILL_DISPLAY_NAME.get(), prettyId(resultId));
+        copySpiritData(base, spirit, resultId, resultName);
+        return spirit;
+    }
+
+    private static void copySpiritData(ItemStack base, ItemStack spirit, String resultId, String resultName) {
+        String aroma = base.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int level = base.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
-        spirit.set(ModComponents.PRODUCT_ID.get(), "test_spirit");
+        spirit.set(ModComponents.PRODUCT_ID.get(), resultId);
+        spirit.set(ModComponents.DISPLAY_NAME.get(), resultName);
         spirit.set(ModComponents.STAGE.get(), 2);
         spirit.set(ModComponents.AGE.get(), 0);
         spirit.set(ModComponents.PRIMARY_AROMA.get(), aroma);
@@ -270,12 +271,12 @@ public final class BrewingStandEvents {
         spirit.set(ModComponents.BARREL_LEVEL.get(), 0);
         spirit.set(ModComponents.BLEND_AROMAS.get(), Map.of());
         spirit.set(ModComponents.SEASONING_COUNTED.get(), false);
-        return spirit;
     }
 
     private static ItemStack makeNeutralSpirit(int count) {
         ItemStack spirit = new ItemStack(ModItems.NEUTRAL_SPIRIT.get(), count);
         spirit.set(ModComponents.PRODUCT_ID.get(), "neutral_spirit");
+        spirit.set(ModComponents.DISPLAY_NAME.get(), "Neutral Spirit");
         spirit.set(ModComponents.STAGE.get(), 2);
         spirit.set(ModComponents.AGE.get(), 0);
         spirit.set(ModComponents.PRIMARY_AROMA.get(), "");
@@ -285,6 +286,19 @@ public final class BrewingStandEvents {
         spirit.set(ModComponents.BLEND_AROMAS.get(), Map.of());
         spirit.set(ModComponents.SEASONING_COUNTED.get(), false);
         return spirit;
+    }
+
+    private static String prettyId(String value) {
+        if (value == null || value.isEmpty()) return "Spirit";
+        String path = value.contains(":") ? value.substring(value.indexOf(':') + 1) : value;
+        String[] parts = path.split("_");
+        StringBuilder out = new StringBuilder();
+        for (String part : parts) {
+            if (part.isEmpty()) continue;
+            if (!out.isEmpty()) out.append(' ');
+            out.append(Character.toUpperCase(part.charAt(0))).append(part.substring(1));
+        }
+        return out.toString();
     }
 
     private record StandKey(ResourceKey<Level> dimension, BlockPos pos) {}
