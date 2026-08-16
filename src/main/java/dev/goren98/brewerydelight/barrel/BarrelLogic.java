@@ -5,6 +5,8 @@ import dev.goren98.brewerydelight.registry.ModItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Map;
+
 public final class BarrelLogic {
     public static final long FERMENT_MS = 30_000L;
     public static final long BREW_AGE_MS = 10_000L;
@@ -83,6 +85,7 @@ public final class BarrelLogic {
         }
         if (!stack.has(ModComponents.AGE.get())) { stack.set(ModComponents.AGE.get(), 0); changed = true; }
         if (!stack.has(ModComponents.BARREL_LEVEL.get())) { stack.set(ModComponents.BARREL_LEVEL.get(), 0); changed = true; }
+        if (!stack.has(ModComponents.BLEND_AROMAS.get())) { stack.set(ModComponents.BLEND_AROMAS.get(), Map.of()); changed = true; }
         if (!stack.has(ModComponents.SEASONING_COUNTED.get())) { stack.set(ModComponents.SEASONING_COUNTED.get(), false); changed = true; }
 
         if (stack.is(ModItems.TEST_SPIRIT.get())) {
