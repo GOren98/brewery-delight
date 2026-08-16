@@ -37,33 +37,44 @@ public class TestBrewItem extends Item {
         super.inventoryTick(stack, level, entity, slotId, isSelected);
         if (level.isClientSide) return;
         ensureInitialized(stack, level);
-
-        if (stack.has(ModComponents.STARTED_AT.get())) {
-            stack.remove(ModComponents.STARTED_AT.get());
-        }
+        if (stack.has(ModComponents.STARTED_AT.get())) stack.remove(ModComponents.STARTED_AT.get());
     }
 
     private void ensureInitialized(ItemStack stack, Level level) {
         if (!stack.has(ModComponents.PRODUCT_ID.get())) stack.set(ModComponents.PRODUCT_ID.get(), productId);
+        if (!stack.has(ModComponents.DISPLAY_NAME.get())) stack.set(ModComponents.DISPLAY_NAME.get(), baseName);
         if (!stack.has(ModComponents.STAGE.get())) stack.set(ModComponents.STAGE.get(), initialStage);
         if (!stack.has(ModComponents.AGE.get())) stack.set(ModComponents.AGE.get(), 0);
         if (!stack.has(ModComponents.PRIMARY_AROMA.get())) stack.set(ModComponents.PRIMARY_AROMA.get(), primaryAroma);
+
         if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) {
-            int levelValue = qualityMin == qualityMax
-                    ? qualityMin
-                    : qualityMin + level.random.nextInt(qualityMax - qualityMin + 1);
+            String aroma = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), primaryAroma);
+            int levelValue;
+            if (aroma.isEmpty()) {
+                levelValue = 0;
+            } else {
+                levelValue = qualityMin == qualityMax
+                        ? qualityMin
+                        : qualityMin + level.random.nextInt(qualityMax - qualityMin + 1);
+            }
             stack.set(ModComponents.PRIMARY_LEVEL.get(), levelValue);
         }
+
         if (!stack.has(ModComponents.BARREL_LEVEL.get())) stack.set(ModComponents.BARREL_LEVEL.get(), 0);
         if (!stack.has(ModComponents.BLEND_AROMAS.get())) stack.set(ModComponents.BLEND_AROMAS.get(), Map.of());
         if (!stack.has(ModComponents.SEASONING_COUNTED.get())) stack.set(ModComponents.SEASONING_COUNTED.get(), false);
+    }
+
+    private String displayName(ItemStack stack) {
+        return stack.getOrDefault(ModComponents.DISPLAY_NAME.get(), baseName);
     }
 
     @Override
     public Component getName(ItemStack stack) {
         int stage = stack.getOrDefault(ModComponents.STAGE.get(), initialStage);
         int age = stack.getOrDefault(ModComponents.AGE.get(), 0);
-        String name = stage == 0 ? baseName + " Base" : baseName;
+        String root = displayName(stack);
+        String name = stage == 0 ? root + " Base" : root;
         String stars = "★".repeat(Math.max(0, Math.min(5, age)));
         return Component.literal(stars.isEmpty() ? name : name + " " + stars);
     }
@@ -88,9 +99,7 @@ public class TestBrewItem extends Item {
             if (stage == 1) tooltip.add(Component.literal("Brew").withStyle(ChatFormatting.GRAY));
             else if (stage == 2) tooltip.add(Component.literal("Spirit").withStyle(ChatFormatting.GRAY));
             else if (stage == 3) tooltip.add(Component.literal("Liqueur").withStyle(ChatFormatting.GRAY));
-
-            // Preserve the underlying alcohol identity even after an anvil custom-name is applied.
-            tooltip.add(Component.literal(baseName).withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Component.literal(displayName(stack)).withStyle(ChatFormatting.DARK_GRAY));
         }
 
         if (age >= 5) {
@@ -102,7 +111,9 @@ public class TestBrewItem extends Item {
             String label = stage == 0 ? "Fermentation" : "Next aging";
             tooltip.add(Component.literal(label + ": " + seconds + "s").withStyle(ChatFormatting.YELLOW));
         } else if (stage == 0) {
-            tooltip.add(Component.literal("Put in a Barrel to ferment").withStyle(ChatFormatting.DARK_GRAY));
+            if (stack.getOrDefault(ModComponents.FERMENTABLE.get(), true)) {
+                tooltip.add(Component.literal("Put in a Barrel to ferment").withStyle(ChatFormatting.DARK_GRAY));
+            }
         } else if (stage >= 1 && age < 5) {
             tooltip.add(Component.literal("Put in a Barrel to age").withStyle(ChatFormatting.DARK_GRAY));
         }
