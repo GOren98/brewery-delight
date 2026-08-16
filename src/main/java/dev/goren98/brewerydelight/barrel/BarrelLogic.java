@@ -36,7 +36,6 @@ public final class BarrelLogic {
 
             long elapsed = now - started;
 
-            // Fermentation uses the barrel only as a vessel. It never transfers barrel aroma.
             if (stage == 0 && elapsed >= FERMENT_MS) {
                 stack.set(ModComponents.STAGE.get(), 1);
                 stack.set(ModComponents.AGE.get(), 0);
@@ -49,8 +48,7 @@ public final class BarrelLogic {
                 continue;
             }
 
-            // Finished brews and spirits age. Spirit aging is intentionally slower for MVP testing.
-            if ((stage == 1 || stage == 2) && age < 5) {
+            if ((stage == 1 || stage == 2 || stage == 3) && age < 5) {
                 long duration = ageDuration(stage);
                 if (elapsed >= duration) {
                     int gained = (int)(elapsed / duration);
@@ -62,9 +60,6 @@ public final class BarrelLogic {
                     changed = true;
 
                     if (nextAge >= 5) {
-                        // Fully-aged bottles no longer need a timer component. Removing it here
-                        // makes bottles from differently-timed groups identical again so they
-                        // can stack normally once taken out of the barrel.
                         stack.remove(ModComponents.STARTED_AT.get());
                         if (!stack.getOrDefault(ModComponents.SEASONING_COUNTED.get(), false)) {
                             inv.recordFullyAged(stack);
@@ -87,15 +82,23 @@ public final class BarrelLogic {
             changed = true;
         }
         if (!stack.has(ModComponents.AGE.get())) { stack.set(ModComponents.AGE.get(), 0); changed = true; }
-        if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), "test"); changed = true; }
         if (!stack.has(ModComponents.BARREL_LEVEL.get())) { stack.set(ModComponents.BARREL_LEVEL.get(), 0); changed = true; }
         if (!stack.has(ModComponents.SEASONING_COUNTED.get())) { stack.set(ModComponents.SEASONING_COUNTED.get(), false); changed = true; }
 
         if (stack.is(ModItems.TEST_SPIRIT.get())) {
             if (!stack.has(ModComponents.STAGE.get())) { stack.set(ModComponents.STAGE.get(), 2); changed = true; }
+            if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), "test"); changed = true; }
             if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) { stack.set(ModComponents.PRIMARY_LEVEL.get(), 5); changed = true; }
+        } else if (stack.is(ModItems.TEST_LIQUEUR.get())) {
+            if (!stack.has(ModComponents.STAGE.get())) { stack.set(ModComponents.STAGE.get(), 3); changed = true; }
+            if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), "test"); changed = true; }
+            if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) {
+                stack.set(ModComponents.PRIMARY_LEVEL.get(), 1 + level.random.nextInt(5));
+                changed = true;
+            }
         } else {
             if (!stack.has(ModComponents.STAGE.get())) { stack.set(ModComponents.STAGE.get(), 0); changed = true; }
+            if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), "test"); changed = true; }
             if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) {
                 stack.set(ModComponents.PRIMARY_LEVEL.get(), level.random.nextInt(5));
                 changed = true;
