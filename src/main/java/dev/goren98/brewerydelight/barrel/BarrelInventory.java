@@ -40,6 +40,12 @@ public final class BarrelInventory implements Container {
     public String getSeasoningTarget() { return seasoningTarget; }
     public int getSeasoningCount() { return seasoningCount; }
 
+    public boolean isSeasoned() {
+        if (woodId.isEmpty() || aroma.isEmpty()) return false;
+        ResourceLocation id = ResourceLocation.tryParse(woodId);
+        return id != null && !aroma.equals(id.getPath());
+    }
+
     void loadMeta(String woodId, String aroma, String lockedProduct, String seasoningTarget, int seasoningCount) {
         this.woodId = woodId;
         this.aroma = aroma;
@@ -49,6 +55,8 @@ public final class BarrelInventory implements Container {
     }
 
     public void recordFullyAged(ItemStack stack) {
+        if (isSeasoned()) return;
+
         int primaryLevel = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         if (primaryLevel < 5) return;
         String primary = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
@@ -63,7 +71,11 @@ public final class BarrelInventory implements Container {
             seasoningCount++;
         }
 
-        if (seasoningCount >= SEASONING_REQUIRED) aroma = primary;
+        if (seasoningCount >= SEASONING_REQUIRED) {
+            aroma = primary;
+            seasoningTarget = "";
+            seasoningCount = 0;
+        }
         owner.setDirty();
     }
 
@@ -125,7 +137,9 @@ public final class BarrelInventory implements Container {
     }
 
     public static boolean isSupportedBottle(ItemStack stack) {
-        return stack.is(ModItems.TEST_BREW.get()) || stack.is(ModItems.TEST_SPIRIT.get());
+        return stack.is(ModItems.TEST_BREW.get())
+                || stack.is(ModItems.TEST_SPIRIT.get())
+                || stack.is(ModItems.TEST_LIQUEUR.get());
     }
 
     public static String productOf(ItemStack stack) {
@@ -133,6 +147,7 @@ public final class BarrelInventory implements Container {
         if (!existing.isEmpty()) return existing;
         if (stack.is(ModItems.TEST_SPIRIT.get())) return "test_spirit";
         if (stack.is(ModItems.TEST_BREW.get())) return "test_brew";
+        if (stack.is(ModItems.TEST_LIQUEUR.get())) return "test_liqueur";
         return "";
     }
 }
