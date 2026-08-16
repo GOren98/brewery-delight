@@ -1,6 +1,1 @@
-{
-  "type":"farmersdelight:cooking","cookingtime":100,"experience":0.0,
-  "ingredients":[{"item":"minecraft:water_bucket"},{"tag":"c:crops/pear"},{"tag":"c:crops/pear"},{"tag":"c:crops/pear"},{"tag":"c:crops/pear"}],"recipe_book_tab":"misc",
-  "result":{"id":"brewerydelight:brew_bottle","count":4,"components":{"brewerydelight:product_id":"perry","brewerydelight:display_name":"Perry","brewerydelight:stage":0,"brewerydelight:primary_aroma":"pear","brewerydelight:fermentable":true,"brewerydelight:color":13747325,"brewerydelight:distill_product_id":"pear_brandy","brewerydelight:distill_display_name":"Pear Brandy","brewerydelight:distill_color":13214558}},
-  "container":{"id":"minecraft:glass_bottle"}
-}
+{"type":"farmersdelight:cooking","cookingtime":100,"experience":0.0,"ingredients":[{"item":"minecraft:water_bucket"},{"tag":"c:crops/pear"},{"tag":"c:crops/pear"},{"tag":"c:crops/pear"},{"tag":"c:crops/pear"}],"recipe_book_tab":"misc","result":{"id":"brewerydelight:brew_bottle","count":4,"components":{"brewerydelight:product_id":"perry","brewerydelight:display_name":"Perry","brewerydelight:stage":0,"brewerydelight:primary_aroma":"pear","brewerydelight:fermentable":true,"brewerydelight:color":13097322,"brewerydelight:distill_product_id":"pear_brandy","brewerydelight:distill_display_name":"Pear Brandy","brewerydelight:distill_color":12946245}},"container":{"id":"minecraft:glass_bottle"}}

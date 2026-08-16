@@ -1,7 +1,1 @@
-{
-  "type":"farmersdelight:cooking","cookingtime":100,"experience":0.0,
-  "ingredients":[{"item":"minecraft:water_bucket"},{"tag":"c:crops/peach"},{"tag":"c:crops/peach"},{"tag":"c:crops/peach"},{"tag":"c:crops/peach"}],
-  "recipe_book_tab":"misc",
-  "result":{"id":"brewerydelight:brew_bottle","count":4,"components":{"brewerydelight:product_id":"peach_wine","brewerydelight:display_name":"Peach Wine","brewerydelight:stage":0,"brewerydelight:primary_aroma":"peach","brewerydelight:fermentable":true,"brewerydelight:color":14981749,"brewerydelight:distill_product_id":"peach_brandy","brewerydelight:distill_display_name":"Peach Brandy","brewerydelight:distill_color":13140559}},
-  "container":{"id":"minecraft:glass_bottle"}
-}
+{"type":"farmersdelight:cooking","cookingtime":100,"experience":0.0,"ingredients":[{"item":"minecraft:water_bucket"},{"tag":"c:crops/peach"},{"tag":"c:crops/peach"},{"tag":"c:crops/peach"},{"tag":"c:crops/peach"}],"recipe_book_tab":"misc","result":{"id":"brewerydelight:brew_bottle","count":4,"components":{"brewerydelight:product_id":"peach_wine","brewerydelight:display_name":"Peach Wine","brewerydelight:stage":0,"brewerydelight:primary_aroma":"peach","brewerydelight:fermentable":true,"brewerydelight:color":15770235,"brewerydelight:distill_product_id":"peach_brandy","brewerydelight:distill_display_name":"Peach Brandy","brewerydelight:distill_color":13204310}},"container":{"id":"minecraft:glass_bottle"}}
