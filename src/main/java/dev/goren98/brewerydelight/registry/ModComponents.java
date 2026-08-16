@@ -26,7 +26,6 @@ public final class ModComponents {
     public static final Supplier<DataComponentType<String>> DISPLAY_NAME = COMPONENTS.register("display_name",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
 
-    // Optional data-driven distillation target carried by a base bottle.
     public static final Supplier<DataComponentType<String>> DISTILL_PRODUCT_ID = COMPONENTS.register("distill_product_id",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
     public static final Supplier<DataComponentType<String>> DISTILL_DISPLAY_NAME = COMPONENTS.register("distill_display_name",
@@ -38,10 +37,18 @@ public final class ModComponents {
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
     public static final Supplier<DataComponentType<Integer>> PRIMARY_LEVEL = COMPONENTS.register("primary_level",
             () -> DataComponentType.<Integer>builder().persistent(Codec.INT).build());
+
+    // Legacy single-barrel fields are retained for save compatibility and aging-state checks.
     public static final Supplier<DataComponentType<String>> BARREL_AROMA = COMPONENTS.register("barrel_aroma",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
     public static final Supplier<DataComponentType<Integer>> BARREL_LEVEL = COMPONENTS.register("barrel_level",
             () -> DataComponentType.<Integer>builder().persistent(Codec.INT).build());
+
+    // Aroma points earned from aging, keyed by the aroma of the barrel used for each aging step.
+    public static final Supplier<DataComponentType<Map<String, Integer>>> AGING_AROMAS = COMPONENTS.register("aging_aromas",
+            () -> DataComponentType.<Map<String, Integer>>builder()
+                    .persistent(Codec.unboundedMap(Codec.STRING, Codec.INT))
+                    .build());
 
     public static final Supplier<DataComponentType<Map<String, Integer>>> BLEND_AROMAS = COMPONENTS.register("blend_aromas",
             () -> DataComponentType.<Map<String, Integer>>builder()
