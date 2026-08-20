@@ -1,4 +1,1 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {"layer0": "brewerydelight:item/apple"}
-}
+{"parent":"minecraft:item/generated","textures":{"layer0":"minecraft:item/apple"}}
