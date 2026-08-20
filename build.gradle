@@ -1,5 +1,7 @@
 import groovy.json.JsonOutput
 import javax.imageio.ImageIO
+import java.util.Base64
+import java.io.ByteArrayInputStream
 
 plugins {
     id 'java-library'
@@ -56,7 +58,9 @@ tasks.register('generateMvp61Resources') {
     notCompatibleWithConfigurationCache('Generates PNG/JSON resources from source atlases at execution time')
 
     inputs.files(
-        file('src/main/resources/assets/brewerydelight/textures/block/crop_atlas.png'),
+        file('src/mvp61Assets/crop_atlas.b64.part1'),
+        file('src/mvp61Assets/crop_atlas.b64.part2'),
+        file('src/mvp61Assets/crop_atlas.b64.part3'),
         file('src/main/resources/assets/brewerydelight/textures/item/item_atlas.png'),
         file('src/main/resources/assets/brewerydelight/textures/block/crop_patch_atlas.png'),
         file('src/main/resources/assets/brewerydelight/textures/item/item_patch_atlas.png')
@@ -74,10 +78,20 @@ tasks.register('generateMvp61Resources') {
         def itemTextures = new File(ns, 'textures/item')
         [blockstates, blockModels, itemModels, blockTextures, itemTextures].each { it.mkdirs() }
 
-        def cropAtlas = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/block/crop_atlas.png'))
+        // The main crop atlas is stored as ASCII Base64 chunks because GitHub's text connector
+        // can otherwise truncate/corrupt larger binary PNG writes. Decode it only for generation.
+        def cropAtlasBase64 = (1..3).collect { part ->
+            file("src/mvp61Assets/crop_atlas.b64.part${part}").text.trim()
+        }.join('')
+        def cropAtlas = ImageIO.read(new ByteArrayInputStream(Base64.decoder.decode(cropAtlasBase64)))
+        if (cropAtlas == null) throw new GradleException('Unable to decode MVP 6.1 crop atlas')
+
         def itemAtlas = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/item/item_atlas.png'))
         def cropPatch = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/block/crop_patch_atlas.png'))
         def itemPatch = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/item/item_patch_atlas.png'))
+        if (itemAtlas == null || cropPatch == null || itemPatch == null) {
+            throw new GradleException('Unable to decode one or more MVP 6.1 supporting atlases')
+        }
 
         mvp61CropIds.eachWithIndex { String id, int index ->
             boolean patched = mvp61PatchIds.contains(id)
