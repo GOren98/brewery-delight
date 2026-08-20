@@ -50,6 +50,11 @@ def mvp61Generated = layout.buildDirectory.dir('generated/mvp61Resources')
 sourceSets.main.resources.srcDir(mvp61Generated)
 
 tasks.register('generateMvp61Resources') {
+    // This task intentionally performs image slicing and JSON generation using a Groovy action.
+    // Gradle cannot safely serialize that action into the configuration cache, so opt this task
+    // out rather than failing the whole build when configuration caching is enabled by CI.
+    notCompatibleWithConfigurationCache('Generates PNG/JSON resources from source atlases at execution time')
+
     inputs.files(
         file('src/main/resources/assets/brewerydelight/textures/block/crop_atlas.png'),
         file('src/main/resources/assets/brewerydelight/textures/item/item_atlas.png'),
