@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/crop","textures":{"crop":"brewerydelight:block/orange_crop_stage2"}}
+{"parent":"minecraft:block/cube_all","textures":{"all":"brewerydelight:block/orange_crop_stage2"}}
