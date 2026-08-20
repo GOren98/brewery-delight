@@ -17,13 +17,6 @@ public class AromaProduceItem extends Item {
     }
 
     @Override
-    public ItemStack getDefaultInstance() {
-        ItemStack stack = super.getDefaultInstance();
-        if (!stack.has(ModComponents.CROP_AROMA.get())) stack.set(ModComponents.CROP_AROMA.get(), defaultAroma);
-        return stack;
-    }
-
-    @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         String aroma = stack.getOrDefault(ModComponents.CROP_AROMA.get(), defaultAroma);
         tooltip.add(Component.literal("Aroma: " + pretty(aroma)));
