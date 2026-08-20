@@ -1,15 +1,39 @@
 package dev.goren98.brewerydelight.registry;
 
 import dev.goren98.brewerydelight.BreweryDelight;
+import dev.goren98.brewerydelight.crop.AromaProduceItem;
+import dev.goren98.brewerydelight.crop.AromaSeedItem;
 import dev.goren98.brewerydelight.item.TestBrewItem;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public final class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, BreweryDelight.MOD_ID);
+
+    public static final Map<String, Supplier<Item>> CROP_ITEMS = new LinkedHashMap<>();
+    public static final Map<String, Supplier<Item>> SEEDS = new LinkedHashMap<>();
+
+    private static void registerCrop(String id) {
+        Supplier<Item> produce = ITEMS.register(id,
+                () -> new AromaProduceItem(new Item.Properties(), id));
+        Supplier<Item> seed = ITEMS.register(id + "_seeds",
+                () -> new AromaSeedItem(ModBlocks.CROPS.get(id).get(), new Item.Properties(), id));
+        CROP_ITEMS.put(id, produce);
+        SEEDS.put(id, seed);
+    }
+
+    static {
+        ModBlocks.CROPS.keySet().forEach(ModItems::registerCrop);
+    }
+
+    public static final Supplier<Item> COOKING_POT_ITEM = ITEMS.register("cooking_pot",
+            () -> new BlockItem(ModBlocks.COOKING_POT.get(), new Item.Properties()));
 
     // Stable MVP/test items kept untouched for regression testing.
     public static final Supplier<Item> TEST_BREW = ITEMS.register("test_brew",
@@ -23,8 +47,6 @@ public final class ModItems {
     public static final Supplier<Item> TEST_LIQUEUR = ITEMS.register("test_liqueur",
             () -> new TestBrewItem(new Item.Properties(), "test_liqueur", 3, "Test Liqueur", "test", 1, 5));
 
-    // Generic bottles used by future content. Product identity, display name, aroma and
-    // distillation target are supplied by item-stack data components instead of Java constants.
     public static final Supplier<Item> BREW_BOTTLE = ITEMS.register("brew_bottle",
             () -> new TestBrewItem(new Item.Properties(), "brew", 0, "Brew", "", 0, 4));
     public static final Supplier<Item> SPIRIT_BOTTLE = ITEMS.register("spirit_bottle",

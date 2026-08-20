@@ -27,11 +27,7 @@ neoForge {
 }
 
 dependencies {
-    // Farmer's Delight is a required runtime dependency. The MVP integrates through its public recipe JSON format,
-    // so compiling against FD classes is intentionally avoided.
-
-    // JEI is optional at runtime. Compile only against its API so Brewery Delight can expose
-    // component-based Base bottle variants to JEI without changing any brewing/aging logic.
+    // MVP 6.1: Farmer's Delight and Pam's HarvestCraft are no longer runtime dependencies.
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:19.21.0.247"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:19.21.0.247"
 }
