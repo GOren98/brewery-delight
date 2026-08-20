@@ -4,56 +4,11 @@ on:
   pull_request:
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref || github.ref_name }}
-          fetch-depth: 0
-      - name: Migrate MVP 6.1 crop resources to static assets
-        if: hashFiles('src/main/resources/assets/brewerydelight/textures/block/crop_atlas.png') != ''
-        shell: bash
-        run: |
-          set -euo pipefail
-          if command -v magick >/dev/null 2>&1; then IMG=magick; elif command -v convert >/dev/null 2>&1; then IMG=convert; else sudo apt-get update -qq && sudo apt-get install -y imagemagick && IMG=convert; fi
-          export IMG_CMD="$IMG"
-          python3 - <<'PY'
-          from pathlib import Path
-          import json, subprocess, os
-          root=Path('src/main/resources/assets/brewerydelight')
-          blockstates=root/'blockstates'; block_models=root/'models/block'; item_models=root/'models/item'; block_tex=root/'textures/block'; item_tex=root/'textures/item'
-          for p in (blockstates,block_models,item_models,block_tex,item_tex): p.mkdir(parents=True,exist_ok=True)
-          ids=['red_grape','white_grape','berry','apple','pear','peach','orange','lemon','mango','kiwi','pineapple','cherry','plum','apricot','lime','banana','rice','barley','corn','sweet_potato','hops','tea','rye','agave','juniper','millet','anise','almond','walnut','coffee','vanilla','cinnamon','ginger','nutmeg']
-          patches=['rye','agave','juniper','millet','anise']; img=os.environ['IMG_CMD']
-          crop_main=str(block_tex/'crop_atlas.png'); crop_patch=str(block_tex/'crop_patch_atlas.png'); item_main=str(item_tex/'item_atlas.png'); item_patch=str(item_tex/'item_patch_atlas.png')
-          def cut(src,x,y,dst): subprocess.run([img,src,'-crop',f'16x16+{x}+{y}','+repage',str(dst)],check=True)
-          for index,crop_id in enumerate(ids):
-              patched=crop_id in patches; local=patches.index(crop_id) if patched else index; crop_cols=8 if patched else 16; item_cols=10 if patched else 16
-              crop_source=crop_patch if patched else crop_main; item_source=item_patch if patched else item_main; variants={}
-              for age in range(4):
-                  cell=local*4+age; x=(cell%crop_cols)*16; y=(cell//crop_cols)*16; model=f'{crop_id}_crop_stage{age}'
-                  cut(crop_source,x,y,block_tex/f'{model}.png')
-                  (block_models/f'{model}.json').write_text(json.dumps({'parent':'minecraft:block/crop','render_type':'minecraft:cutout','textures':{'crop':f'brewerydelight:block/{model}'}},indent=2)+'\n')
-                  variants[f'age={age}']={'model':f'brewerydelight:block/{model}'}
-              (blockstates/f'{crop_id}_crop.json').write_text(json.dumps({'variants':variants},indent=2)+'\n')
-              for offset,suffix in enumerate(('', '_seeds')):
-                  cell=local*2+offset; x=(cell%item_cols)*16; y=(cell//item_cols)*16; item_name=crop_id+suffix
-                  cut(item_source,x,y,item_tex/f'{item_name}.png')
-                  (item_models/f'{item_name}.json').write_text(json.dumps({'parent':'minecraft:item/generated','textures':{'layer0':f'brewerydelight:item/{item_name}'}},indent=2)+'\n')
-          PY
-          rm -rf src/mvp61Assets .tmp_mvp61
-          rm -f src/main/resources/assets/brewerydelight/textures/block/crop_atlas.png src/main/resources/assets/brewerydelight/textures/block/crop_patch_atlas.png
-          rm -f src/main/resources/assets/brewerydelight/textures/item/item_atlas.png src/main/resources/assets/brewerydelight/textures/item/item_patch_atlas.png
-          rm -f .github/workflows/migrate-mvp61-assets.yml
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
-          if ! git diff --cached --quiet; then git commit -m 'MVP 6.1: store crop resources as static Minecraft assets'; git push origin HEAD:mvp6-1-crops-cooking-pot; fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
