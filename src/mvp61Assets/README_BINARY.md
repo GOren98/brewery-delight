@@ -1,0 +1,1 @@
+Temporary binary atlas holder paths are replaced by Git blob SHAs in the next commit.
