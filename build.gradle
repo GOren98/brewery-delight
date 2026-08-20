@@ -33,14 +33,13 @@ neoForge {
 
 dependencies {
     // MVP 6.1 removes Farmer's Delight and Pam's HarvestCraft as runtime dependencies.
-    // Selected resources/behaviours are internalized in Brewery Delight.
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:19.21.0.247"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:19.21.0.247"
 }
 
-// The source atlases keep the repository small while preserving a distinct texture for every
-// Brewery Delight crop, produce item and seed. Individual Minecraft resources are generated
-// before processResources. Rye/Agave/Juniper/Millet/Anise use the Pam-derived patch atlas.
+// MVP 6.1 resource transport workaround: GitHub's connector can corrupt direct PNG writes.
+// The source sheets are therefore stored as text-safe Base64 chunks and decoded once during
+// resource processing. Runtime Minecraft resources are still normal per-crop PNG/JSON files.
 def mvp61CropIds = [
     'red_grape','white_grape','berry','apple','pear','peach','orange','lemon','mango','kiwi','pineapple',
     'cherry','plum','apricot','lime','banana','rice','barley','corn','sweet_potato','hops','tea','rye',
@@ -52,24 +51,28 @@ def mvp61Generated = layout.buildDirectory.dir('generated/mvp61Resources')
 sourceSets.main.resources.srcDir(mvp61Generated)
 
 tasks.register('generateMvp61Resources') {
-    // This task intentionally performs image slicing and JSON generation using a Groovy action.
-    // Gradle cannot safely serialize that action into the configuration cache, so opt this task
-    // out rather than failing the whole build when configuration caching is enabled by CI.
-    notCompatibleWithConfigurationCache('Generates PNG/JSON resources from source atlases at execution time')
+    notCompatibleWithConfigurationCache('Decodes connector-safe resource sheets for MVP 6.1')
 
     inputs.files(
-        file('src/mvp61Assets/crop_atlas.b64.part1'),
-        file('src/mvp61Assets/crop_atlas.b64.part2'),
-        file('src/mvp61Assets/crop_atlas.b64.part3'),
-        file('src/main/resources/assets/brewerydelight/textures/item/item_atlas.png'),
-        file('src/main/resources/assets/brewerydelight/textures/block/crop_patch_atlas.png'),
-        file('src/main/resources/assets/brewerydelight/textures/item/item_patch_atlas.png')
+        (1..3).collect { file("src/mvp61Assets/crop_atlas.b64.part${it}") } +
+        (1..3).collect { file("src/mvp61Assets/item_atlas.b64.part${it}") } +
+        (1..2).collect { file("src/mvp61Assets/crop_patch.b64.part${it}") } +
+        [file('src/mvp61Assets/item_patch.b64.part1')]
     )
     outputs.dir(mvp61Generated)
 
     doLast {
+        def decodeSheet = { String prefix, int parts ->
+            def encoded = (1..parts).collect { part ->
+                new File(project.projectDir, "src/mvp61Assets/${prefix}.b64.part${part}").text.trim()
+            }.join('')
+            def image = ImageIO.read(new ByteArrayInputStream(Base64.decoder.decode(encoded)))
+            if (image == null) throw new GradleException("Unable to decode MVP 6.1 ${prefix}")
+            image
+        }
+
         def root = mvp61Generated.get().asFile
-        delete(root)
+        project.delete(root)
         def ns = new File(root, 'assets/brewerydelight')
         def blockstates = new File(ns, 'blockstates')
         def blockModels = new File(ns, 'models/block')
@@ -78,20 +81,10 @@ tasks.register('generateMvp61Resources') {
         def itemTextures = new File(ns, 'textures/item')
         [blockstates, blockModels, itemModels, blockTextures, itemTextures].each { it.mkdirs() }
 
-        // The main crop atlas is stored as ASCII Base64 chunks because GitHub's text connector
-        // can otherwise truncate/corrupt larger binary PNG writes. Decode it only for generation.
-        def cropAtlasBase64 = (1..3).collect { part ->
-            file("src/mvp61Assets/crop_atlas.b64.part${part}").text.trim()
-        }.join('')
-        def cropAtlas = ImageIO.read(new ByteArrayInputStream(Base64.decoder.decode(cropAtlasBase64)))
-        if (cropAtlas == null) throw new GradleException('Unable to decode MVP 6.1 crop atlas')
-
-        def itemAtlas = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/item/item_atlas.png'))
-        def cropPatch = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/block/crop_patch_atlas.png'))
-        def itemPatch = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/item/item_patch_atlas.png'))
-        if (itemAtlas == null || cropPatch == null || itemPatch == null) {
-            throw new GradleException('Unable to decode one or more MVP 6.1 supporting atlases')
-        }
+        def cropAtlas = decodeSheet('crop_atlas', 3)
+        def itemAtlas = decodeSheet('item_atlas', 3)
+        def cropPatch = decodeSheet('crop_patch', 2)
+        def itemPatch = decodeSheet('item_patch', 1)
 
         mvp61CropIds.eachWithIndex { String id, int index ->
             boolean patched = mvp61PatchIds.contains(id)
@@ -106,15 +99,9 @@ tasks.register('generateMvp61Resources') {
                 int cell = localIndex * 4 + age
                 int x = (cell % cropColumns) * 16
                 int y = ((int)(cell / cropColumns)) * 16
-                def outTexture = new File(blockTextures, "${id}_crop_stage${age}.png")
-                ImageIO.write(sourceCrop.getSubimage(x, y, 16, 16), 'png', outTexture)
-
                 def modelName = "${id}_crop_stage${age}"
-                def model = [
-                    parent: 'minecraft:block/crop',
-                    render_type: 'minecraft:cutout',
-                    textures: [crop: "brewerydelight:block/${modelName}"]
-                ]
+                ImageIO.write(sourceCrop.getSubimage(x, y, 16, 16), 'png', new File(blockTextures, "${modelName}.png"))
+                def model = [parent: 'minecraft:block/crop', render_type: 'minecraft:cutout', textures: [crop: "brewerydelight:block/${modelName}"]]
                 new File(blockModels, "${modelName}.json").text = JsonOutput.prettyPrint(JsonOutput.toJson(model))
                 variants["age=${age}"] = [model: "brewerydelight:block/${modelName}"]
             }
