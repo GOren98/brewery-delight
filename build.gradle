@@ -1,3 +1,6 @@
+import groovy.json.JsonOutput
+import javax.imageio.ImageIO
+
 plugins {
     id 'java-library'
     id 'net.neoforged.moddev' version '2.0.91'
@@ -28,14 +31,91 @@ neoForge {
 
 dependencies {
     // MVP 6.1 removes Farmer's Delight and Pam's HarvestCraft as runtime dependencies.
-    // Their selected assets/behaviours are internalized in Brewery Delight.
-
-    // JEI remains optional at runtime.
+    // Selected resources/behaviours are internalized in Brewery Delight.
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:19.21.0.247"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:19.21.0.247"
 }
 
+// The source atlases keep the repository small while preserving a distinct texture for every
+// Brewery Delight crop, produce item and seed. Individual Minecraft resources are generated
+// before processResources. Rye/Agave/Juniper/Millet/Anise use the Pam-derived patch atlas.
+def mvp61CropIds = [
+    'red_grape','white_grape','berry','apple','pear','peach','orange','lemon','mango','kiwi','pineapple',
+    'cherry','plum','apricot','lime','banana','rice','barley','corn','sweet_potato','hops','tea','rye',
+    'agave','juniper','millet','anise','almond','walnut','coffee','vanilla','cinnamon','ginger','nutmeg'
+]
+def mvp61PatchIds = ['rye','agave','juniper','millet','anise']
+def mvp61Generated = layout.buildDirectory.dir('generated/mvp61Resources')
+
+sourceSets.main.resources.srcDir(mvp61Generated)
+
+tasks.register('generateMvp61Resources') {
+    inputs.files(
+        file('src/main/resources/assets/brewerydelight/textures/block/crop_atlas.png'),
+        file('src/main/resources/assets/brewerydelight/textures/item/item_atlas.png'),
+        file('src/main/resources/assets/brewerydelight/textures/block/crop_patch_atlas.png'),
+        file('src/main/resources/assets/brewerydelight/textures/item/item_patch_atlas.png')
+    )
+    outputs.dir(mvp61Generated)
+
+    doLast {
+        def root = mvp61Generated.get().asFile
+        delete(root)
+        def ns = new File(root, 'assets/brewerydelight')
+        def blockstates = new File(ns, 'blockstates')
+        def blockModels = new File(ns, 'models/block')
+        def itemModels = new File(ns, 'models/item')
+        def blockTextures = new File(ns, 'textures/block')
+        def itemTextures = new File(ns, 'textures/item')
+        [blockstates, blockModels, itemModels, blockTextures, itemTextures].each { it.mkdirs() }
+
+        def cropAtlas = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/block/crop_atlas.png'))
+        def itemAtlas = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/item/item_atlas.png'))
+        def cropPatch = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/block/crop_patch_atlas.png'))
+        def itemPatch = ImageIO.read(file('src/main/resources/assets/brewerydelight/textures/item/item_patch_atlas.png'))
+
+        mvp61CropIds.eachWithIndex { String id, int index ->
+            boolean patched = mvp61PatchIds.contains(id)
+            int localIndex = patched ? mvp61PatchIds.indexOf(id) : index
+            def sourceCrop = patched ? cropPatch : cropAtlas
+            def sourceItem = patched ? itemPatch : itemAtlas
+            int cropColumns = patched ? 8 : 16
+            int itemColumns = patched ? 10 : 16
+
+            def variants = [:]
+            (0..3).each { int age ->
+                int cell = localIndex * 4 + age
+                int x = (cell % cropColumns) * 16
+                int y = ((int)(cell / cropColumns)) * 16
+                def outTexture = new File(blockTextures, "${id}_crop_stage${age}.png")
+                ImageIO.write(sourceCrop.getSubimage(x, y, 16, 16), 'png', outTexture)
+
+                def modelName = "${id}_crop_stage${age}"
+                def model = [
+                    parent: 'minecraft:block/crop',
+                    render_type: 'minecraft:cutout',
+                    textures: [crop: "brewerydelight:block/${modelName}"]
+                ]
+                new File(blockModels, "${modelName}.json").text = JsonOutput.prettyPrint(JsonOutput.toJson(model))
+                variants["age=${age}"] = [model: "brewerydelight:block/${modelName}"]
+            }
+            new File(blockstates, "${id}_crop.json").text = JsonOutput.prettyPrint(JsonOutput.toJson([variants: variants]))
+
+            ['', '_seeds'].eachWithIndex { String suffix, int itemOffset ->
+                int itemCell = localIndex * 2 + itemOffset
+                int ix = (itemCell % itemColumns) * 16
+                int iy = ((int)(itemCell / itemColumns)) * 16
+                String itemName = id + suffix
+                ImageIO.write(sourceItem.getSubimage(ix, iy, 16, 16), 'png', new File(itemTextures, "${itemName}.png"))
+                def itemModel = [parent: 'minecraft:item/generated', textures: [layer0: "brewerydelight:item/${itemName}"]]
+                new File(itemModels, "${itemName}.json").text = JsonOutput.prettyPrint(JsonOutput.toJson(itemModel))
+            }
+        }
+    }
+}
+
 tasks.withType(ProcessResources).configureEach {
+    dependsOn tasks.named('generateMvp61Resources')
     def props = [minecraft_version: minecraft_version, neo_version: neo_version,
                  mod_id: mod_id, mod_name: mod_name, mod_version: mod_version]
     inputs.properties props
