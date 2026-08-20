@@ -1,0 +1,1 @@
+MVP 6.1 generated resource bundle lives alongside this file as `mvp61_assets.zip`. Gradle unpacks the bundle into the generated resources directory before `processResources`. This keeps the imported/adapted third-party crop and Cooking Pot resources isolated from handwritten Brewery Delight resources.
