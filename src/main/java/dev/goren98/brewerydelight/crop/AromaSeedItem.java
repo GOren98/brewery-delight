@@ -22,10 +22,11 @@ public class AromaSeedItem extends BlockItem {
     }
 
     @Override
-    public ItemStack getDefaultInstance() {
-        ItemStack stack = super.getDefaultInstance();
-        if (!stack.has(ModComponents.CROP_AROMA.get())) stack.set(ModComponents.CROP_AROMA.get(), defaultAroma);
-        return stack;
+    public Component getName(ItemStack stack) {
+        if (getBlock() instanceof AromaCropBlock crop && crop.growthStyle() == AromaCropBlock.GrowthStyle.TREE) {
+            return Component.literal(pretty(defaultAroma) + " Sapling");
+        }
+        return super.getName(stack);
     }
 
     @Override
