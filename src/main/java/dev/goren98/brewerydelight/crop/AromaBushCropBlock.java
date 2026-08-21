@@ -1,5 +1,6 @@
 package dev.goren98.brewerydelight.crop;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -31,6 +32,7 @@ public class AromaBushCropBlock extends BushBlock implements BonemealableBlock, 
         registerDefaultState(defaultBlockState().setValue(AGE, 0));
     }
 
+    @Override protected MapCodec<? extends BushBlock> codec() { return null; }
     @Override public boolean isRandomlyTicking(BlockState state) { return state.getValue(AGE) < 4; }
 
     @Override
