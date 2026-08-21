@@ -33,7 +33,7 @@ public final class AromaLemonBlock extends DoublePlantBlock implements Bonemeala
     }
 
     @Override
-    protected MapCodec<? extends DoublePlantBlock> codec() {
+    public MapCodec<? extends DoublePlantBlock> codec() {
         return null;
     }
 
