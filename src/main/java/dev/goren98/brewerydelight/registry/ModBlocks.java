@@ -84,6 +84,12 @@ public final class ModBlocks {
         return plant(id, sapling);
     }
 
+    private static Supplier<AromaFruitSaplingBlock> peachTree() {
+        track(BLOCKS.register("peach_leaves", () -> new AromaPeachLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).randomTicks())));
+        Supplier<AromaFruitSaplingBlock> sapling = track(BLOCKS.register("peach_crop", () -> new AromaFruitSaplingBlock(grower("peach"), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks(), "peach")));
+        return plant("peach", sapling);
+    }
+
     private static Supplier<AromaFruitSaplingBlock> croptopiaTree(String id) {
         Supplier<AromaTreeCropBlock> leafCrop = track(BLOCKS.register(id + "_tree_crop", () -> new AromaTreeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).randomTicks(), id)));
         CROPTOPIA_LEAF_BLOCKS.add(leafCrop);
@@ -97,7 +103,7 @@ public final class ModBlocks {
 
     public static final Supplier<AromaFruitSaplingBlock> APPLE = fdTree("apple");
     public static final Supplier<AromaFruitSaplingBlock> PEAR = fdTree("pear");
-    public static final Supplier<AromaFruitSaplingBlock> PEACH = fdTree("peach");
+    public static final Supplier<AromaFruitSaplingBlock> PEACH = peachTree();
     public static final Supplier<AromaFruitSaplingBlock> ORANGE = fdTree("orange");
     public static final Supplier<AromaFruitSaplingBlock> MANGO = fdTree("mango");
     public static final Supplier<AromaFruitSaplingBlock> KIWI = fdTree("kiwi");
