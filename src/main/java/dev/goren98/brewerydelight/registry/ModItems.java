@@ -5,8 +5,10 @@ import dev.goren98.brewerydelight.crop.AromaProduceItem;
 import dev.goren98.brewerydelight.crop.AromaSeedItem;
 import dev.goren98.brewerydelight.item.TestBrewItem;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.LinkedHashMap;
@@ -25,7 +27,13 @@ public final class ModItems {
     }
     static { ModBlocks.PLANTS.keySet().forEach(ModItems::registerCrop); }
 
-    public static final Supplier<Item> COOKING_POT_ITEM = ITEMS.register("cooking_pot", () -> new BlockItem(ModBlocks.COOKING_POT.get(), new Item.Properties()));
+    // Keep the registry ID for save/recipe compatibility; only the visible name changes.
+    public static final Supplier<Item> COOKING_POT_ITEM = ITEMS.register("cooking_pot", () -> new BlockItem(ModBlocks.COOKING_POT.get(), new Item.Properties()) {
+        @Override
+        public Component getName(ItemStack stack) {
+            return Component.literal("Brewing Pot");
+        }
+    });
     public static final Supplier<Item> TEST_BREW = ITEMS.register("test_brew", () -> new TestBrewItem(new Item.Properties(), "test_brew", 0, "Test Brew", "test", 0, 4));
     public static final Supplier<Item> TEST_SPIRIT = ITEMS.register("test_spirit", () -> new TestBrewItem(new Item.Properties(), "test_spirit", 2, "Test Spirit", "test", 5, 5));
     public static final Supplier<Item> NEUTRAL_BASE = ITEMS.register("neutral_base", () -> new TestBrewItem(new Item.Properties(), "neutral_base", 0, "Neutral", "", 0, 0));
