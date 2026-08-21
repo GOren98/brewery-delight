@@ -20,10 +20,14 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CookingPotBlockEntity extends BaseContainerBlockEntity {
-    public static final int SLOT_WATER = 0;
-    public static final int SLOT_INGREDIENT_START = 1;
-    public static final int SLOT_OUTPUT = 5;
-    public static final int SIZE = 6;
+    // Farmer's Delight Cooking Pot inventory contract: 0-5 ingredients, 6 meal,
+    // 7 serving container, 8 served output.
+    public static final int SLOT_INGREDIENT_START = 0;
+    public static final int SLOT_INGREDIENT_END = 5;
+    public static final int SLOT_MEAL = 6;
+    public static final int SLOT_CONTAINER = 7;
+    public static final int SLOT_OUTPUT = 8;
+    public static final int SIZE = 9;
     public static final int COOK_TIME = 100;
 
     private NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
@@ -80,10 +84,15 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
         }
     }
 
+    /**
+     * Keeps the existing Brewery Delight cider test recipe while the UI/inventory
+     * layout follows Farmer's Delight: water + four apples in the first five
+     * ingredient slots, with the sixth ingredient slot left empty.
+     */
     private boolean matchesLegacyCider() {
-        if (!items.get(SLOT_WATER).is(Items.WATER_BUCKET)) return false;
-        for (int i = SLOT_INGREDIENT_START; i < SLOT_OUTPUT; i++) if (!items.get(i).is(Items.APPLE)) return false;
-        return true;
+        if (!items.get(0).is(Items.WATER_BUCKET)) return false;
+        for (int i = 1; i <= 4; i++) if (!items.get(i).is(Items.APPLE)) return false;
+        return items.get(5).isEmpty();
     }
 
     private boolean canAcceptCiderOutput() {
@@ -92,8 +101,8 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
     }
 
     private void craftLegacyCider() {
-        items.set(SLOT_WATER, new ItemStack(Items.BUCKET));
-        for (int i = SLOT_INGREDIENT_START; i < SLOT_OUTPUT; i++) items.get(i).shrink(1);
+        items.set(0, new ItemStack(Items.BUCKET));
+        for (int i = 1; i <= 4; i++) items.get(i).shrink(1);
 
         ItemStack result = new ItemStack(ModItems.BREW_BOTTLE.get(), 4);
         result.set(ModComponents.PRODUCT_ID.get(), "cider");
