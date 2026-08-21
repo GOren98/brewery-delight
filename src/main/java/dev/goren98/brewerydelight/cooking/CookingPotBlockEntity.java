@@ -43,7 +43,7 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("container.brewerydelight.cooking_pot");
+        return Component.literal("Brewing Pot");
     }
 
     @Override
