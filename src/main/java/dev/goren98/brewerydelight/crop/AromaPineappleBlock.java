@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -24,7 +25,9 @@ public final class AromaPineappleBlock extends AromaBushCropBlock {
         if (state.getValue(AGE) < 4) return InteractionResult.PASS;
         if (!level.isClientSide) {
             String aroma = AromaPlantUtil.aromaAt(level, pos, "pineapple");
-            popResource(level, pos, AromaPlantUtil.produce("pineapple", aroma));
+            ItemStack produce = AromaPlantUtil.produce("pineapple", aroma);
+            produce.setCount(2);
+            popResource(level, pos, produce);
             level.removeBlock(pos, false);
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
