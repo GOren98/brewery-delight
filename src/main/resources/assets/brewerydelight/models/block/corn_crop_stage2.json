@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/crop","textures":{"crop":"brewerydelight:block/corn_crop_stage2"}}
+{"parent":"brewerydelight:custom/crop_cross_double","render_type":"minecraft:cutout","textures":{"cross":"brewerydelight:block/corn_crop_stage2"}}
