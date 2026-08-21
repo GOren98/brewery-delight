@@ -1,5 +1,6 @@
 package dev.goren98.brewerydelight.crop;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -27,6 +28,7 @@ public final class AromaBerryBlock extends BushBlock implements BonemealableBloc
         registerDefaultState(defaultBlockState().setValue(AGE, 0));
     }
 
+    @Override protected MapCodec<? extends BushBlock> codec() { return null; }
     @Override public boolean isRandomlyTicking(BlockState state) { return state.getValue(AGE) < 2; }
     @Override protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (state.getValue(AGE) < 2 && random.nextInt(5) == 0) level.setBlock(pos, state.setValue(AGE, state.getValue(AGE) + 1), UPDATE_CLIENTS);
