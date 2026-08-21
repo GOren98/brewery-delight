@@ -2,10 +2,8 @@ package dev.goren98.brewerydelight.crop;
 
 import dev.goren98.brewerydelight.registry.ModItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CropBlock;
@@ -16,18 +14,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-/** CroptopiaCropBlock semantics: vanilla 0..7 crop, dirt/sand/farmland placement, mature right-click reset. */
+/** Vanilla/Croptopia-style 0..7 field crop, restricted to farmland for Brewery Delight cultivation. */
 public class AromaFieldCropBlock extends CropBlock implements EntityBlock {
     private final String cropId;
 
     public AromaFieldCropBlock(BlockBehaviour.Properties properties, String cropId) {
         super(properties);
         this.cropId = cropId;
-    }
-
-    @Override
-    protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return super.mayPlaceOn(state, level, pos) || state.is(BlockTags.DIRT) || state.is(BlockTags.SAND);
     }
 
     @Override
