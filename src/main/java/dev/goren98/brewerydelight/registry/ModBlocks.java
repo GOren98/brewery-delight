@@ -18,9 +18,7 @@ import java.util.function.Supplier;
 
 public final class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, BreweryDelight.MOD_ID);
-    /** Stable planting block for each produce id. */
     public static final Map<String, Supplier<? extends Block>> PLANTS = new LinkedHashMap<>();
-    /** Every block that stores Aroma in an AromaCropBlockEntity. */
     public static final List<Supplier<? extends Block>> AROMA_BLOCKS = new ArrayList<>();
     public static final Set<String> TREE_IDS = Set.of("apple","pear","peach","orange","mango","kiwi","cherry","plum","apricot","lime","banana","almond","walnut","cinnamon","nutmeg");
 
@@ -40,8 +38,12 @@ public final class ModBlocks {
         return plant("pineapple", b);
     }
     private static Supplier<AromaBerryBlock> berry() {
-        Supplier<AromaBerryBlock> b = track(BLOCKS.register("berry_crop", () -> new AromaBerryBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH).noCollission().randomTicks())));
-        return plant("berry", b);
+        Supplier<AromaBerryBlock> sapling = track(BLOCKS.register("berry_crop", () -> new AromaBerryBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks())));
+        track(BLOCKS.register("berry_fruiting_bottom", () -> new AromaBerryPartBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH).noCollission().randomTicks(), false, true)));
+        track(BLOCKS.register("berry_fruiting_top", () -> new AromaBerryPartBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH).noCollission().randomTicks(), true, true)));
+        track(BLOCKS.register("berry_empty_bottom", () -> new AromaBerryPartBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH).noCollission().randomTicks(), false, false)));
+        track(BLOCKS.register("berry_empty_top", () -> new AromaBerryPartBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH).noCollission().randomTicks(), true, false)));
+        return plant("berry", sapling);
     }
     private static Supplier<AromaGrapeSaplingBlock> grape(String id) {
         Supplier<AromaGrapeSaplingBlock> sapling = track(BLOCKS.register(id + "_crop", () -> new AromaGrapeSaplingBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks(), id)));
@@ -52,7 +54,7 @@ public final class ModBlocks {
         return plant(id, sapling);
     }
     private static Supplier<AromaFruitSaplingBlock> tree(String id) {
-        Supplier<AromaFruitLeavesBlock> leaves = track(BLOCKS.register(id + "_leaves", () -> new AromaFruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).randomTicks(), id)));
+        track(BLOCKS.register(id + "_leaves", () -> new AromaFruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).randomTicks(), id)));
         ResourceKey<ConfiguredFeature<?, ?>> key = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(BreweryDelight.MOD_ID, "tree/" + id + "_tree"));
         TreeGrower grower = new TreeGrower(BreweryDelight.MOD_ID + ":" + id, Optional.empty(), Optional.of(key), Optional.empty());
         Supplier<AromaFruitSaplingBlock> sapling = track(BLOCKS.register(id + "_crop", () -> new AromaFruitSaplingBlock(grower, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks(), id)));
