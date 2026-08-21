@@ -2,13 +2,18 @@ package dev.goren98.brewerydelight.crop;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -22,14 +27,15 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.CommonHooks;
 import org.jetbrains.annotations.Nullable;
 
-/** Fruits Delight DoubleFruitBushBlock semantics for lemon, with Aroma carried by both halves. */
+/** Fruits Delight DoubleFruitBushBlock lemon lifecycle, with Aroma carried by both halves. */
 public final class AromaLemonBlock extends DoublePlantBlock implements BonemealableBlock, EntityBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
     private static final int DOUBLE_BLOCK_START = 2;
 
     public AromaLemonBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(AGE, 0).setValue(HALF, DoubleBlockHalf.LOWER));
+        // Fruits Delight DoubleFruitBushBlock starts at age 2 when planted.
+        registerDefaultState(defaultBlockState().setValue(AGE, 2).setValue(HALF, DoubleBlockHalf.LOWER));
     }
 
     @Override
@@ -87,8 +93,11 @@ public final class AromaLemonBlock extends DoublePlantBlock implements Bonemeala
 
         int age = requestedAge;
         if (age >= DOUBLE_BLOCK_START) {
+            if (level.isOutsideBuildHeight(lowerPos.above())) return;
             BlockState above = level.getBlockState(lowerPos.above());
-            if (!above.is(this) && !above.canBeReplaced()) age = DOUBLE_BLOCK_START - 1;
+            if (!above.is(this) && !above.canBeReplaced()) {
+                age = DOUBLE_BLOCK_START - 1;
+            }
         }
 
         BlockState nextLower = defaultBlockState().setValue(AGE, age).setValue(HALF, DoubleBlockHalf.LOWER);
@@ -96,7 +105,7 @@ public final class AromaLemonBlock extends DoublePlantBlock implements Bonemeala
         AromaPlantUtil.setAroma(level, lowerPos, aroma);
 
         if (age >= DOUBLE_BLOCK_START) {
-            BlockState nextUpper = defaultBlockState().setValue(AGE, age).setValue(HALF, DoubleBlockHalf.UPPER);
+            BlockState nextUpper = nextLower.setValue(HALF, DoubleBlockHalf.UPPER);
             level.setBlock(lowerPos.above(), nextUpper, UPDATE_CLIENTS);
             AromaPlantUtil.setAroma(level, lowerPos.above(), aroma);
         } else {
@@ -104,6 +113,38 @@ public final class AromaLemonBlock extends DoublePlantBlock implements Bonemeala
             if (above.is(this) && above.getValue(HALF) == DoubleBlockHalf.UPPER) {
                 level.removeBlock(lowerPos.above(), false);
             }
+        }
+    }
+
+    /** Source DoubleBushBlock only lets vanilla DoublePlantBlock require an upper half after age 2. */
+    @Override
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
+                                  LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        DoubleBlockHalf half = state.getValue(HALF);
+
+        if (half == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canSurvive(level, pos)) {
+            return Blocks.AIR.defaultBlockState();
+        }
+
+        if (direction.getAxis() == Direction.Axis.Y) {
+            boolean invalidPair = !neighborState.is(this) || neighborState.getValue(HALF) == half;
+            if (half == DoubleBlockHalf.UPPER && direction == Direction.DOWN && invalidPair) {
+                return Blocks.AIR.defaultBlockState();
+            }
+            if (half == DoubleBlockHalf.LOWER && direction == Direction.UP && invalidPair
+                    && state.getValue(AGE) >= DOUBLE_BLOCK_START) {
+                return Blocks.AIR.defaultBlockState();
+            }
+        }
+
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+    }
+
+    /** Do not let DoublePlantBlock create an upper block for pre-double growth stages. */
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        if (state.getValue(AGE) >= DOUBLE_BLOCK_START) {
+            super.setPlacedBy(level, pos, state, placer, stack);
         }
     }
 
