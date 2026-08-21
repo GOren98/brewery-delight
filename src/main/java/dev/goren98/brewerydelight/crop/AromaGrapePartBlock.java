@@ -1,5 +1,6 @@
 package dev.goren98.brewerydelight.crop;
 
+import com.mojang.serialization.MapCodec;
 import dev.goren98.brewerydelight.BreweryDelight;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -28,6 +29,7 @@ public final class AromaGrapePartBlock extends BushBlock implements Bonemealable
     public AromaGrapePartBlock(BlockBehaviour.Properties properties, String cropId, boolean top, boolean fruiting) {
         super(properties); this.cropId = cropId; this.top = top; this.fruiting = fruiting;
     }
+    @Override protected MapCodec<? extends BushBlock> codec() { return null; }
     private Block block(String suffix) { return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(BreweryDelight.MOD_ID, cropId + suffix)); }
     private BlockPos base(BlockPos pos) { return top ? pos.below() : pos; }
     private Block expectedBottom() { return block(fruiting ? "_fruiting_bottom" : "_empty_bottom"); }
