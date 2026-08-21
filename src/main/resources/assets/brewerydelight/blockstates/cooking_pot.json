@@ -1,7 +1,12 @@
 {
   "variants": {
-    "": {
-      "model": "brewerydelight:block/cooking_pot"
-    }
+    "facing=north,tray=false": { "model": "brewerydelight:block/cooking_pot" },
+    "facing=east,tray=false": { "model": "brewerydelight:block/cooking_pot", "y": 90 },
+    "facing=south,tray=false": { "model": "brewerydelight:block/cooking_pot", "y": 180 },
+    "facing=west,tray=false": { "model": "brewerydelight:block/cooking_pot", "y": 270 },
+    "facing=north,tray=true": { "model": "brewerydelight:block/cooking_pot_tray" },
+    "facing=east,tray=true": { "model": "brewerydelight:block/cooking_pot_tray", "y": 90 },
+    "facing=south,tray=true": { "model": "brewerydelight:block/cooking_pot_tray", "y": 180 },
+    "facing=west,tray=true": { "model": "brewerydelight:block/cooking_pot_tray", "y": 270 }
   }
 }

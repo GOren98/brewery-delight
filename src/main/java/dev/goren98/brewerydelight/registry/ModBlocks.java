@@ -136,7 +136,7 @@ public final class ModBlocks {
     public static final Supplier<AromaFieldCropBlock> VANILLA = field("vanilla");
     public static final Supplier<AromaFieldCropBlock> GINGER = field("ginger");
 
-    public static final Supplier<Block> COOKING_POT = BLOCKS.register("cooking_pot", () -> new CookingPotBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).strength(2.0F)));
+    public static final Supplier<Block> COOKING_POT = BLOCKS.register("cooking_pot", () -> new CookingPotBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).strength(2.0F).noOcclusion()));
 
     private ModBlocks() {}
 }

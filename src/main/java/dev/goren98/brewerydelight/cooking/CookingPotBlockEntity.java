@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CookingPotBlockEntity extends BaseContainerBlockEntity {
-    // Farmer's Delight Cooking Pot inventory contract: 0-5 ingredients, 6 meal,
+    // Farmer's Delight Cooking Pot inventory contract: 0-5 ingredients, 6 meal/base,
     // 7 serving container, 8 served output.
     public static final int SLOT_INGREDIENT_START = 0;
     public static final int SLOT_INGREDIENT_END = 5;
@@ -71,10 +71,16 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, CookingPotBlockEntity pot) {
-        if (pot.matchesLegacyCider() && pot.canAcceptCiderOutput()) {
+        // Farmer's Delight serving flow: cooked base remains in the meal slot and is
+        // only converted into a removable serving when the required container exists.
+        if (pot.tryServeOne()) {
+            setChanged(level, pos, state);
+        }
+
+        if (pot.matchesLegacyCider() && pot.canAcceptCiderMeal()) {
             pot.progress++;
             if (pot.progress >= COOK_TIME) {
-                pot.craftLegacyCider();
+                pot.craftLegacyCiderBase();
                 pot.progress = 0;
                 setChanged(level, pos, state);
             }
@@ -84,27 +90,52 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
         }
     }
 
-    /**
-     * Keeps the existing Brewery Delight cider test recipe while the UI/inventory
-     * layout follows Farmer's Delight: water + four apples in the first five
-     * ingredient slots, with the sixth ingredient slot left empty.
-     */
     private boolean matchesLegacyCider() {
         if (!items.get(0).is(Items.WATER_BUCKET)) return false;
         for (int i = 1; i <= 4; i++) if (!items.get(i).is(Items.APPLE)) return false;
         return items.get(5).isEmpty();
     }
 
-    private boolean canAcceptCiderOutput() {
-        ItemStack output = items.get(SLOT_OUTPUT);
-        return output.isEmpty() || (output.is(ModItems.BREW_BOTTLE.get()) && output.getCount() <= output.getMaxStackSize() - 4);
+    private boolean canAcceptCiderMeal() {
+        return items.get(SLOT_MEAL).isEmpty();
     }
 
-    private void craftLegacyCider() {
+    private void craftLegacyCiderBase() {
         items.set(0, new ItemStack(Items.BUCKET));
         for (int i = 1; i <= 4; i++) items.get(i).shrink(1);
 
-        ItemStack result = new ItemStack(ModItems.BREW_BOTTLE.get(), 4);
+        ItemStack base = createCiderServing(4);
+        items.set(SLOT_MEAL, base);
+        setChanged();
+    }
+
+    private boolean tryServeOne() {
+        ItemStack meal = items.get(SLOT_MEAL);
+        ItemStack container = items.get(SLOT_CONTAINER);
+        ItemStack output = items.get(SLOT_OUTPUT);
+
+        if (meal.isEmpty() || !container.is(Items.GLASS_BOTTLE)) return false;
+        if (!output.isEmpty() && (!output.is(ModItems.BREW_BOTTLE.get()) || output.getCount() >= output.getMaxStackSize())) {
+            return false;
+        }
+
+        ItemStack serving = meal.copy();
+        serving.setCount(1);
+
+        container.shrink(1);
+        meal.shrink(1);
+
+        if (output.isEmpty()) {
+            items.set(SLOT_OUTPUT, serving);
+        } else {
+            output.grow(1);
+        }
+        setChanged();
+        return true;
+    }
+
+    private ItemStack createCiderServing(int count) {
+        ItemStack result = new ItemStack(ModItems.BREW_BOTTLE.get(), count);
         result.set(ModComponents.PRODUCT_ID.get(), "cider");
         result.set(ModComponents.DISPLAY_NAME.get(), "Cider");
         result.set(ModComponents.STAGE.get(), 0);
@@ -115,9 +146,6 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
         result.set(ModComponents.DISTILL_PRODUCT_ID.get(), "apple_brandy");
         result.set(ModComponents.DISTILL_DISPLAY_NAME.get(), "Apple Brandy");
         result.set(ModComponents.DISTILL_COLOR.get(), 12879668);
-
-        ItemStack output = items.get(SLOT_OUTPUT);
-        if (output.isEmpty()) items.set(SLOT_OUTPUT, result); else output.grow(4);
-        setChanged();
+        return result;
     }
 }
