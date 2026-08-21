@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/crop","textures":{"crop":"brewerydelight:block/juniper_crop_stage2"}}
+{"parent":"minecraft:block/cross","render_type":"minecraft:cutout","textures":{"cross":"brewerydelight:block/juniper_crop_stage2"}}

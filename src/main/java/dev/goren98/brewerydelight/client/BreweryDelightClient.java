@@ -13,8 +13,8 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 public final class BreweryDelightClient {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> ModBlocks.CROPS.values().forEach(crop ->
-                ItemBlockRenderTypes.setRenderLayer(crop.get(), RenderType.cutout())));
+        event.enqueueWork(() -> ModBlocks.AROMA_BLOCKS.forEach(block ->
+                ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout())));
     }
 
     private BreweryDelightClient() {}
