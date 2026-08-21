@@ -49,6 +49,11 @@ public final class ModBlocks {
         return plant("pineapple", b);
     }
 
+    private static Supplier<AromaLemonBlock> lemon() {
+        Supplier<AromaLemonBlock> b = track(BLOCKS.register("lemon_crop", () -> new AromaLemonBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH).noCollission().randomTicks())));
+        return plant("lemon", b);
+    }
+
     private static Supplier<AromaBerryBlock> berry() {
         Supplier<AromaBerryBlock> sapling = track(BLOCKS.register("berry_crop", () -> new AromaBerryBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks())));
         track(BLOCKS.register("berry_fruiting_bottom", () -> new AromaBerryPartBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH).noCollission().randomTicks(), false, true)));
@@ -105,8 +110,7 @@ public final class ModBlocks {
     public static final Supplier<AromaFruitSaplingBlock> CINNAMON = croptopiaTree("cinnamon");
     public static final Supplier<AromaFruitSaplingBlock> NUTMEG = croptopiaTree("nutmeg");
 
-    // Fruits Delight lemon is a special compact tree. It stays on the bush-style lifecycle rather than being forced into the standard fruit-tree class.
-    public static final Supplier<AromaBushCropBlock> LEMON = bush("lemon");
+    public static final Supplier<AromaLemonBlock> LEMON = lemon();
     public static final Supplier<AromaPineappleBlock> PINEAPPLE = pineapple();
     public static final Supplier<AromaBushCropBlock> AGAVE = bush("agave");
     public static final Supplier<AromaBushCropBlock> JUNIPER = bush("juniper");
