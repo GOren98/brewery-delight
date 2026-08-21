@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-/** Fruits Delight/Croptopia SaplingBlock pattern. TreeGrower uses data-driven configured tree features. */
+/** Source-style SaplingBlock + TreeGrower. Brewery Delight only adds Aroma transfer after tree placement. */
 public final class AromaFruitSaplingBlock extends SaplingBlock implements EntityBlock {
     private final String cropId;
 
@@ -25,7 +25,10 @@ public final class AromaFruitSaplingBlock extends SaplingBlock implements Entity
         super.advanceTree(level, pos, state, random);
         if (!level.getBlockState(pos).is(this)) {
             BlockPos.betweenClosedStream(pos.offset(-5, 0, -5), pos.offset(5, 10, 5)).forEach(p -> {
-                if (level.getBlockState(p).getBlock() instanceof AromaFruitLeavesBlock leaves && leaves.cropId().equals(cropId)) {
+                var block = level.getBlockState(p).getBlock();
+                if (block instanceof AromaFruitLeavesBlock leaves && leaves.cropId().equals(cropId)) {
+                    AromaPlantUtil.setAroma(level, p, aroma);
+                } else if (block instanceof AromaTreeCropBlock crop && crop.cropId().equals(cropId)) {
                     AromaPlantUtil.setAroma(level, p, aroma);
                 }
             });
