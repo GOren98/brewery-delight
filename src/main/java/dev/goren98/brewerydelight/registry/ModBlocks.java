@@ -20,6 +20,7 @@ public final class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, BreweryDelight.MOD_ID);
     public static final Map<String, Supplier<? extends Block>> PLANTS = new LinkedHashMap<>();
     public static final List<Supplier<? extends Block>> AROMA_BLOCKS = new ArrayList<>();
+    public static final List<Supplier<? extends Block>> CROPTOPIA_LEAF_BLOCKS = new ArrayList<>();
 
     public static final Set<String> FD_TREE_IDS = Set.of("apple", "pear", "peach", "orange", "mango", "kiwi");
     public static final Set<String> CROPTOPIA_TREE_IDS = Set.of("cherry", "plum", "apricot", "lime", "banana", "almond", "walnut", "cinnamon", "nutmeg");
@@ -84,7 +85,8 @@ public final class ModBlocks {
     }
 
     private static Supplier<AromaFruitSaplingBlock> croptopiaTree(String id) {
-        track(BLOCKS.register(id + "_tree_crop", () -> new AromaTreeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).randomTicks(), id)));
+        Supplier<AromaTreeCropBlock> leafCrop = track(BLOCKS.register(id + "_tree_crop", () -> new AromaTreeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).randomTicks(), id)));
+        CROPTOPIA_LEAF_BLOCKS.add(leafCrop);
         Supplier<AromaFruitSaplingBlock> sapling = track(BLOCKS.register(id + "_crop", () -> new AromaFruitSaplingBlock(grower(id), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks(), id)));
         return plant(id, sapling);
     }
