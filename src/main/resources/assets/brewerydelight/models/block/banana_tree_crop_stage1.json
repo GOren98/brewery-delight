@@ -1,1 +1,1 @@
-{"parent":"brewerydelight:custom/croptopia_leaves","render_type":"minecraft:cutout_mipped","textures":{"all":"minecraft:block/jungle_leaves","crop":"brewerydelight:block/banana_crop_stage1"}}
+{"parent":"brewerydelight:custom/croptopia_leaves","render_type":"minecraft:cutout_mipped","textures":{"all":"minecraft:block/jungle_leaves","crop":"brewerydelight:block/pink_tree_flower"}}
