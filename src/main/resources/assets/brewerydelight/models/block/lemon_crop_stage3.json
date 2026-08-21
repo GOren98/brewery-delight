@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/cube_all","textures":{"all":"brewerydelight:block/lemon_crop_stage3"}}
+{"parent":"minecraft:block/cross","render_type":"minecraft:cutout","textures":{"cross":"brewerydelight:block/lemon_crop_stage3"}}
