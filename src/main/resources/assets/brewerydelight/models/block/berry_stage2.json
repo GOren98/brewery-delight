@@ -1,1 +1,1 @@
-{"parent":"brewerydelight:custom/berry_stage_2","render_type":"minecraft:cutout_mipped","textures":{"0":"brewerydelight:block/berry_crop_stage2","all":"brewerydelight:block/berry_crop_stage2","particle":"brewerydelight:block/berry_crop_stage2"}}
+{"parent":"brewerydelight:custom/berry_top","render_type":"minecraft:cutout_mipped","textures":{"0":"brewerydelight:block/berry_crop_stage2","particle":"brewerydelight:block/berry_crop_stage2"}}
