@@ -1,5 +1,6 @@
 package dev.goren98.brewerydelight.crop;
 
+import com.mojang.serialization.MapCodec;
 import dev.goren98.brewerydelight.BreweryDelight;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -22,6 +23,7 @@ public final class AromaGrapeSaplingBlock extends BushBlock implements Bonemeala
     private final String cropId;
     public AromaGrapeSaplingBlock(BlockBehaviour.Properties properties, String cropId) { super(properties); this.cropId = cropId; }
 
+    @Override protected MapCodec<? extends BushBlock> codec() { return null; }
     private Block block(String suffix) {
         return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(BreweryDelight.MOD_ID, cropId + suffix));
     }
