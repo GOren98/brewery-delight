@@ -42,22 +42,49 @@ public final class BarrelInventory implements Container {
     }
 
     void loadMeta(String woodId, String aroma, String lockedProduct, String seasoningTarget, int seasoningCount) {
-        this.woodId = woodId; this.aroma = aroma; this.lockedProduct = lockedProduct;
-        this.seasoningTarget = seasoningTarget; this.seasoningCount = seasoningCount;
+        this.woodId = woodId;
+        this.aroma = aroma;
+        this.lockedProduct = lockedProduct;
+        // Previous saves used "product|aroma". Seasoning is now aroma-scoped, so migrate
+        // the persisted target without losing the accumulated count.
+        this.seasoningTarget = normalizeSeasoningTarget(seasoningTarget);
+        this.seasoningCount = seasoningCount;
     }
 
     public void recordFullyAged(ItemStack stack) {
         if (isSeasoned()) return;
+
+        // Only BREW(stage 1) and SPIRIT(stage 2) may season a barrel. Liqueurs can still
+        // be aged, but their multi-aroma structure must never participate in seasoning.
+        int stage = stack.getOrDefault(ModComponents.STAGE.get(), -1);
+        if (stage != 1 && stage != 2) return;
+
+        // The seasoning source is the single primary aroma the alcohol had when aging
+        // started. Aging aromas added by the barrel itself are deliberately ignored.
         int primaryLevel = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         if (primaryLevel < 5) return;
         String primary = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
-        String product = productOf(stack);
-        if (primary.isEmpty() || product.isEmpty()) return;
-        String target = product + "|" + primary;
-        if (!target.equals(seasoningTarget)) { seasoningTarget = target; seasoningCount = 1; }
-        else if (seasoningCount < SEASONING_REQUIRED) seasoningCount++;
-        if (seasoningCount >= SEASONING_REQUIRED) { aroma = primary; seasoningTarget = ""; seasoningCount = 0; }
+        if (primary.isEmpty()) return;
+
+        if (!primary.equals(seasoningTarget)) {
+            seasoningTarget = primary;
+            seasoningCount = 1;
+        } else if (seasoningCount < SEASONING_REQUIRED) {
+            seasoningCount++;
+        }
+
+        if (seasoningCount >= SEASONING_REQUIRED) {
+            aroma = primary;
+            seasoningTarget = "";
+            seasoningCount = 0;
+        }
         owner.setDirty();
+    }
+
+    private static String normalizeSeasoningTarget(String target) {
+        if (target == null || target.isEmpty()) return "";
+        int split = target.indexOf('|');
+        return split >= 0 && split + 1 < target.length() ? target.substring(split + 1) : target;
     }
 
     @Override public int getContainerSize() { return 9; }
