@@ -23,6 +23,8 @@ public final class ModComponents {
             () -> DataComponentType.<Long>builder().persistent(Codec.LONG).build());
     public static final Supplier<DataComponentType<String>> PRODUCT_ID = COMPONENTS.register("product_id",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
+    public static final Supplier<DataComponentType<String>> CORE_ALCOHOL_ID = COMPONENTS.register("core_alcohol_id",
+            () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
     public static final Supplier<DataComponentType<String>> DISPLAY_NAME = COMPONENTS.register("display_name",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
     public static final Supplier<DataComponentType<String>> DISTILL_PRODUCT_ID = COMPONENTS.register("distill_product_id",
