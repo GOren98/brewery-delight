@@ -9,6 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class BarrelLogic {
+    // Compatibility only: barrels no longer execute Base -> Brew fermentation in 6-2-4.
+    public static final long FERMENT_MS = 30_000L;
     public static final long BREW_AGE_MS = 10_000L;
     public static final long SPIRIT_AGE_MS = 30_000L;
 
