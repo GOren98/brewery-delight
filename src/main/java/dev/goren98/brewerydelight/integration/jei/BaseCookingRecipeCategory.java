@@ -33,7 +33,7 @@ public final class BaseCookingRecipeCategory implements IRecipeCategory<RecipeHo
 
     @Override
     public Component getTitle() {
-        return Component.translatable("jei.brewerydelight.base_cooking");
+        return Component.literal("Brewing Pot - Alcohol Base");
     }
 
     @Override
@@ -62,7 +62,7 @@ public final class BaseCookingRecipeCategory implements IRecipeCategory<RecipeHo
             index++;
         }
 
-        // Serving follows the Brewing Pot contract: the cooked batch is bottled before it can be removed.
+        // Brewing Pot batches must be served into bottles before they can be removed.
         builder.addSlot(RecipeIngredientRole.INPUT, 64, 19).addItemStack(new ItemStack(Items.GLASS_BOTTLE));
 
         Minecraft minecraft = Minecraft.getInstance();
