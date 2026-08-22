@@ -16,6 +16,8 @@ public final class ModCreativeTabEvents {
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModItems.COOKING_POT_ITEM.get());
+            event.accept(ModItems.BREWING_STATION_ITEM.get());
+            event.accept(ModItems.AROMA_TABLE_ITEM.get());
         }
     }
 
