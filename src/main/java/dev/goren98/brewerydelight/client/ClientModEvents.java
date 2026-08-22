@@ -17,18 +17,14 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void registerScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenus.COOKING_POT.get(), CookingPotScreen::new);
+        event.register(ModMenus.BREWING_STATION.get(), BrewingStationScreen::new);
+        event.register(ModMenus.AROMA_TABLE.get(), AromaTableScreen::new);
     }
 
     @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
-        Block[] leaves = ModBlocks.CROPTOPIA_LEAF_BLOCKS.stream()
-                .map(java.util.function.Supplier::get)
-                .toArray(Block[]::new);
-        event.register((state, level, pos, tintIndex) ->
-                level != null && pos != null
-                        ? BiomeColors.getAverageFoliageColor(level, pos)
-                        : FoliageColor.getDefaultColor(), leaves);
+        Block[] leaves = ModBlocks.CROPTOPIA_LEAF_BLOCKS.stream().map(java.util.function.Supplier::get).toArray(Block[]::new);
+        event.register((state, level, pos, tintIndex) -> level != null && pos != null ? BiomeColors.getAverageFoliageColor(level, pos) : FoliageColor.getDefaultColor(), leaves);
     }
-
     private ClientModEvents() {}
 }

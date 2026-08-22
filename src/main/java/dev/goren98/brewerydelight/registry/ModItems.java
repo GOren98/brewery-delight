@@ -27,13 +27,12 @@ public final class ModItems {
     }
     static { ModBlocks.PLANTS.keySet().forEach(ModItems::registerCrop); }
 
-    // Keep the registry ID for save/recipe compatibility; only the visible name changes.
     public static final Supplier<Item> COOKING_POT_ITEM = ITEMS.register("cooking_pot", () -> new BlockItem(ModBlocks.COOKING_POT.get(), new Item.Properties()) {
-        @Override
-        public Component getName(ItemStack stack) {
-            return Component.literal("Brewing Pot");
-        }
+        @Override public Component getName(ItemStack stack) { return Component.literal("Brewing Pot"); }
     });
+    public static final Supplier<Item> BREWING_STATION_ITEM = ITEMS.register("brewing_station", () -> new BlockItem(ModBlocks.BREWING_STATION.get(), new Item.Properties()));
+    public static final Supplier<Item> AROMA_TABLE_ITEM = ITEMS.register("aroma_table", () -> new BlockItem(ModBlocks.AROMA_TABLE.get(), new Item.Properties()));
+
     public static final Supplier<Item> TEST_BREW = ITEMS.register("test_brew", () -> new TestBrewItem(new Item.Properties(), "test_brew", 0, "Test Brew", "test", 0, 4));
     public static final Supplier<Item> TEST_SPIRIT = ITEMS.register("test_spirit", () -> new TestBrewItem(new Item.Properties(), "test_spirit", 2, "Test Spirit", "test", 5, 5));
     public static final Supplier<Item> NEUTRAL_BASE = ITEMS.register("neutral_base", () -> new TestBrewItem(new Item.Properties(), "neutral_base", 0, "Neutral", "", 0, 0));

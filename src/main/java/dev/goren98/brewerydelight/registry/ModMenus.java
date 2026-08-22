@@ -1,6 +1,8 @@
 package dev.goren98.brewerydelight.registry;
 
 import dev.goren98.brewerydelight.BreweryDelight;
+import dev.goren98.brewerydelight.aroma.table.AromaTableMenu;
+import dev.goren98.brewerydelight.brewing.BrewingStationMenu;
 import dev.goren98.brewerydelight.cooking.CookingPotMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.flag.FeatureFlags;
@@ -11,9 +13,8 @@ import java.util.function.Supplier;
 
 public final class ModMenus {
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, BreweryDelight.MOD_ID);
-
-    public static final Supplier<MenuType<CookingPotMenu>> COOKING_POT = MENUS.register("cooking_pot",
-            () -> new MenuType<>(CookingPotMenu::new, FeatureFlags.DEFAULT_FLAGS));
-
+    public static final Supplier<MenuType<CookingPotMenu>> COOKING_POT = MENUS.register("cooking_pot", () -> new MenuType<>(CookingPotMenu::new, FeatureFlags.DEFAULT_FLAGS));
+    public static final Supplier<MenuType<BrewingStationMenu>> BREWING_STATION = MENUS.register("brewing_station", () -> new MenuType<>(BrewingStationMenu::new, FeatureFlags.DEFAULT_FLAGS));
+    public static final Supplier<MenuType<AromaTableMenu>> AROMA_TABLE = MENUS.register("aroma_table", () -> new MenuType<>(AromaTableMenu::new, FeatureFlags.DEFAULT_FLAGS));
     private ModMenus() {}
 }
