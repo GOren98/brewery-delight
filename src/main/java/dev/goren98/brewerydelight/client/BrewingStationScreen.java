@@ -19,6 +19,7 @@ public class BrewingStationScreen extends AbstractContainerScreen<BrewingStation
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xFFC6C6C6);
         graphics.fill(leftPos + 7, topPos + 83, leftPos + 169, topPos + 84, 0xFF555555);
 
+        // Machine slots. The visual border starts one pixel outside the logical Slot position.
         slot(graphics, leftPos + 55, topPos + 34);
         slot(graphics, leftPos + 115, topPos + 34);
 
@@ -28,6 +29,18 @@ public class BrewingStationScreen extends AbstractContainerScreen<BrewingStation
         graphics.fill(arrowX + 22, arrowY, arrowX + 28, arrowY + 14, 0xFF777777);
         int filled = menu.progressScaled(28);
         if (filled > 0) graphics.fill(arrowX, arrowY + 4, arrowX + filled, arrowY + 10, 0xFFFFFFFF);
+
+        // Player inventory: mirror the actual Menu slot coordinates so items no longer float
+        // over a flat background. Slot coordinates are (8 + col*18, 84 + row*18),
+        // therefore their 18x18 visual frame begins one pixel earlier.
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 9; col++) {
+                slot(graphics, leftPos + 7 + col * 18, topPos + 83 + row * 18);
+            }
+        }
+        for (int col = 0; col < 9; col++) {
+            slot(graphics, leftPos + 7 + col * 18, topPos + 141);
+        }
     }
 
     private static void slot(GuiGraphics g, int x, int y) {
