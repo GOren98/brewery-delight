@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:core_alcohol",
+  "process": "spirit",
+  "base_id": "red_wine_base",
+  "core_alcohol_id": "brandy",
+  "display_name": "Brandy",
+  "color": 12733440,
+  "aroma_level_bonus": 1,
+  "processing_time": 400
+}

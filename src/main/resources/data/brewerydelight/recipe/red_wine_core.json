@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:core_alcohol",
+  "process": "brew",
+  "base_id": "red_wine_base",
+  "core_alcohol_id": "red_wine",
+  "display_name": "Red Wine",
+  "color": 10027059,
+  "aroma_level_bonus": 1,
+  "processing_time": 200
+}

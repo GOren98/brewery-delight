@@ -1,8 +1,11 @@
 package dev.goren98.brewerydelight;
 
+import dev.goren98.brewerydelight.alcohol.CoreAlcoholInput;
+import dev.goren98.brewerydelight.alcohol.CoreAlcoholRecipe;
 import dev.goren98.brewerydelight.item.AromaUtil;
 import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModItems;
+import dev.goren98.brewerydelight.registry.ModRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -18,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BrewingStandBlock;
 import net.minecraft.world.level.block.entity.BrewingStandBlockEntity;
@@ -32,6 +36,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 @EventBusSubscriber(modid = BreweryDelight.MOD_ID)
@@ -50,20 +55,17 @@ public final class BrewingStandEvents {
             tagLiqueur("c:crops/lychee", "lychee_liqueur", "Lychee Liqueur", "lychee", 15049904),
             tagLiqueur("c:crops/passionfruit", "passion_fruit_liqueur", "Passion Fruit Liqueur", "passion_fruit", 14657325),
             itemLiqueur(Items.MELON_SLICE, "watermelon_liqueur", "Watermelon Liqueur", "watermelon", 14310514),
-
             tagLiqueur("c:crops/almond", "almond_liqueur", "Almond Liqueur", "almond", 13809546),
             tagLiqueur("c:crops/chestnut", "chestnut_liqueur", "Chestnut Liqueur", "chestnut", 9328952),
             tagLiqueur("c:crops/hazelnut", "hazelnut_liqueur", "Hazelnut Liqueur", "hazelnut", 11367756),
             tagLiqueur("c:crops/pecan", "pecan_liqueur", "Pecan Liqueur", "pecan", 7357230),
             tagLiqueur("c:crops/pistachio", "pistachio_liqueur", "Pistachio Liqueur", "pistachio", 10399576),
             tagLiqueur("c:crops/walnut", "walnut_liqueur", "Walnut Liqueur", "walnut", 5650479),
-
             tagLiqueur("c:crops/coffeebean", "coffee_liqueur", "Coffee Liqueur", "coffee", 4400415),
             tagLiqueur("c:crops/vanillabean", "vanilla_liqueur", "Vanilla Liqueur", "vanilla", 15325615),
             tagLiqueur("c:crops/cinnamon", "cinnamon_liqueur", "Cinnamon Liqueur", "cinnamon", 10832429),
             tagLiqueur("c:crops/ginger", "ginger_liqueur", "Ginger Liqueur", "ginger", 12092470),
             tagLiqueur("c:crops/nutmeg", "nutmeg_liqueur", "Nutmeg Liqueur", "nutmeg", 8280643),
-
             tagLiqueur("c:crops/juniperberry", "gin", "Gin", "juniper", 12770764),
             itemLiqueur(Items.EGG, "advocaat", "Advocaat", "egg", 14857518),
             tagLiqueur("c:crops/tealeaf", "absinthe", "Absinthe", "herbal", 7316286),
@@ -74,36 +76,19 @@ public final class BrewingStandEvents {
 
     @SubscribeEvent
     public static void registerBrewingContainers(RegisterBrewingRecipesEvent event) {
-        // Legacy MVP registrations retained for regression compatibility.
-        registerBottom(event, ModItems.TEST_BREW.get(), ModItems.TEST_SPIRIT.get());
-        registerBottom(event, ModItems.NEUTRAL_BASE.get(), ModItems.NEUTRAL_SPIRIT.get());
-        registerBottom(event, ModItems.TEST_SPIRIT.get(), ModItems.TEST_SPIRIT.get());
-        registerBottom(event, ModItems.TEST_LIQUEUR.get(), ModItems.TEST_LIQUEUR.get());
-        registerTop(event, ModItems.TEST_BREW.get());
-        registerTop(event, ModItems.TEST_SPIRIT.get());
-        registerTop(event, ModItems.TEST_LIQUEUR.get());
-
-        // Generic category bottles. Product-specific behavior comes from stack components.
-        registerBottom(event, ModItems.BREW_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
+        registerBottom(event, ModItems.BASE_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
         registerBottom(event, ModItems.SPIRIT_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
         registerBottom(event, ModItems.LIQUEUR_BOTTLE.get(), ModItems.LIQUEUR_BOTTLE.get());
         registerBottom(event, ModItems.NEUTRAL_SPIRIT.get(), ModItems.LIQUEUR_BOTTLE.get());
-        registerTop(event, ModItems.BREW_BOTTLE.get());
         registerTop(event, ModItems.SPIRIT_BOTTLE.get());
         registerTop(event, ModItems.LIQUEUR_BOTTLE.get());
-
-        // Allow all configured liqueur ingredients in the brewing stand ingredient slot.
         for (LiqueurRecipe recipe : LIQUEUR_RECIPES) registerTop(event, recipe.ingredient());
     }
 
     private static void registerBottom(RegisterBrewingRecipesEvent event, Item input, Item output) {
         event.getBuilder().addRecipe(Ingredient.of(input), Ingredient.of(Items.BARRIER), new ItemStack(output));
     }
-
-    private static void registerTop(RegisterBrewingRecipesEvent event, Item ingredient) {
-        registerTop(event, Ingredient.of(ingredient));
-    }
-
+    private static void registerTop(RegisterBrewingRecipesEvent event, Item ingredient) { registerTop(event, Ingredient.of(ingredient)); }
     private static void registerTop(RegisterBrewingRecipesEvent event, Ingredient ingredient) {
         event.getBuilder().addRecipe(Ingredient.of(Items.BARRIER), ingredient, new ItemStack(Items.BARRIER));
     }
@@ -113,16 +98,12 @@ public final class BrewingStandEvents {
         if (!(event.getLevel() instanceof ServerLevel level)
                 || !(event.getEntity() instanceof ServerPlayer player)
                 || !(level.getBlockState(event.getPos()).getBlock() instanceof BrewingStandBlock)
-                || !(level.getBlockEntity(event.getPos()) instanceof BrewingStandBlockEntity stand)) {
-            return;
-        }
+                || !(level.getBlockEntity(event.getPos()) instanceof BrewingStandBlockEntity stand)) return;
 
         StandKey key = new StandKey(level.dimension(), event.getPos().immutable());
         TRACKED.add(key);
-
         ContainerData displayData = new ContainerData() {
-            @Override
-            public int get(int index) {
+            @Override public int get(int index) {
                 if (index == 0) {
                     int progress = PROGRESS.getOrDefault(key, 0);
                     return progress > 0 ? Math.max(1, PROCESS_TICKS - progress) : 0;
@@ -133,7 +114,6 @@ public final class BrewingStandEvents {
             @Override public void set(int index, int value) {}
             @Override public int getCount() { return 2; }
         };
-
         player.openMenu(new SimpleMenuProvider(
                 (id, playerInventory, p) -> new BrewingStandMenu(id, playerInventory, stand, displayData),
                 Component.translatable("container.brewing")));
@@ -148,50 +128,36 @@ public final class BrewingStandEvents {
             Level level = event.getServer().getLevel(key.dimension());
             if (level == null || !level.isLoaded(key.pos())) continue;
             if (!(level.getBlockEntity(key.pos()) instanceof BrewingStandBlockEntity stand)) {
-                iterator.remove();
-                PROGRESS.remove(key);
-                continue;
+                iterator.remove(); PROGRESS.remove(key); continue;
             }
 
-            Mode mode = determineMode(stand);
+            Mode mode = determineMode(stand, level);
             ItemStack fuel = stand.getItem(4);
-            if (mode == Mode.NONE || !fuel.is(Items.BLAZE_POWDER)) {
-                PROGRESS.remove(key);
-                continue;
-            }
-
+            if (mode == Mode.NONE || !fuel.is(Items.BLAZE_POWDER)) { PROGRESS.remove(key); continue; }
             int next = PROGRESS.getOrDefault(key, 0) + 1;
-            if (next < PROCESS_TICKS) {
-                PROGRESS.put(key, next);
-                continue;
-            }
+            if (next < PROCESS_TICKS) { PROGRESS.put(key, next); continue; }
 
             fuel.shrink(1);
             switch (mode) {
-                case DISTILL -> finishDistillation(stand);
+                case DISTILL -> finishDistillation(stand, level);
                 case RECYCLE -> finishRecycling(stand);
                 case BLEND -> finishBlending(stand);
                 case LIQUEUR -> finishLiqueur(stand, level);
                 default -> { }
             }
-            stand.setChanged();
-            PROGRESS.remove(key);
+            stand.setChanged(); PROGRESS.remove(key);
         }
     }
 
-    private static Mode determineMode(BrewingStandBlockEntity stand) {
+    private static Mode determineMode(BrewingStandBlockEntity stand, Level level) {
         ItemStack ingredient = stand.getItem(3);
-        if (ingredient.is(Items.SUGAR)) {
-            return allBottomMatch(stand, BrewingStandEvents::isRecyclableFailedBase) ? Mode.RECYCLE : Mode.NONE;
-        }
+        if (ingredient.is(Items.SUGAR)) return allBottomMatch(stand, BrewingStandEvents::isRecyclableFailedBase) ? Mode.RECYCLE : Mode.NONE;
         if (!ingredient.isEmpty()) {
             LiqueurRecipe liqueur = findLiqueurRecipe(ingredient);
-            if (liqueur != null) {
-                return allBottomMatch(stand, BrewingStandEvents::isNeutralSpirit) ? Mode.LIQUEUR : Mode.NONE;
-            }
+            if (liqueur != null) return allBottomMatch(stand, BrewingStandEvents::isNeutralSpirit) ? Mode.LIQUEUR : Mode.NONE;
             return isBlendSource(ingredient) && validBlendTargets(stand, ingredient) ? Mode.BLEND : Mode.NONE;
         }
-        return allBottomMatch(stand, BrewingStandEvents::isDistillableBase) ? Mode.DISTILL : Mode.NONE;
+        return allBottomMatch(stand, stack -> findCoreRecipe(stack, "spirit", level).isPresent()) ? Mode.DISTILL : Mode.NONE;
     }
 
     private static boolean allBottomMatch(BrewingStandBlockEntity stand, java.util.function.Predicate<ItemStack> predicate) {
@@ -205,26 +171,19 @@ public final class BrewingStandEvents {
         return found;
     }
 
-    private static boolean isNeutralSpirit(ItemStack stack) {
-        return stack.is(ModItems.NEUTRAL_SPIRIT.get());
+    private static Optional<RecipeHolder<CoreAlcoholRecipe>> findCoreRecipe(ItemStack stack, String process, Level level) {
+        if (!stack.is(ModItems.BASE_BOTTLE.get())) return Optional.empty();
+        return level.getRecipeManager().getRecipeFor(
+                ModRecipes.CORE_ALCOHOL_TYPE.get(), new CoreAlcoholInput(stack, process), level);
     }
 
-    private static boolean isDistillableBase(ItemStack stack) {
-        if (stack.is(ModItems.NEUTRAL_BASE.get())) return true;
-        if (stack.is(ModItems.TEST_BREW.get())) {
-            return stack.getOrDefault(ModComponents.STAGE.get(), 0) == 0;
-        }
-        return stack.is(ModItems.BREW_BOTTLE.get())
-                && stack.getOrDefault(ModComponents.STAGE.get(), 0) == 0
-                && !stack.getOrDefault(ModComponents.DISTILL_PRODUCT_ID.get(), "").isEmpty();
-    }
+    private static boolean isNeutralSpirit(ItemStack stack) { return stack.is(ModItems.NEUTRAL_SPIRIT.get()); }
 
     private static boolean isRecyclableFailedBase(ItemStack stack) {
         if (stack.is(ModItems.NEUTRAL_BASE.get())) return false;
         if (stack.getOrDefault(ModComponents.STAGE.get(), -1) != 0) return false;
         if (stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), -1) != 0) return false;
-        String aroma = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
-        return !aroma.isEmpty();
+        return !stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "").isEmpty();
     }
 
     private static boolean isBlendSource(ItemStack stack) {
@@ -242,22 +201,18 @@ public final class BrewingStandEvents {
         int sourceStage = source.getOrDefault(ModComponents.STAGE.get(), -1);
         String sourceAroma = source.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int sourceLevel = source.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
-
         String product = "";
         boolean found = false;
         for (int slot = 0; slot < 3; slot++) {
             ItemStack target = stand.getItem(slot);
             if (target.isEmpty()) continue;
             found = true;
-
             int stage = target.getOrDefault(ModComponents.STAGE.get(), -1);
             if (stage != sourceStage || stage < 1 || stage > 3) return false;
-
             String targetProduct = target.getOrDefault(ModComponents.PRODUCT_ID.get(), "");
             if (targetProduct.isEmpty()) return false;
             if (product.isEmpty()) product = targetProduct;
             else if (!product.equals(targetProduct)) return false;
-
             int total = AromaUtil.total(target);
             if (total < 10 || total >= AromaUtil.MAX_TOTAL_AROMA) return false;
             if (AromaUtil.blendGain(target, sourceAroma, sourceLevel) <= 0) return false;
@@ -265,10 +220,14 @@ public final class BrewingStandEvents {
         return found;
     }
 
-    private static void finishDistillation(BrewingStandBlockEntity stand) {
+    private static void finishDistillation(BrewingStandBlockEntity stand, Level level) {
         for (int slot = 0; slot < 3; slot++) {
             ItemStack base = stand.getItem(slot);
-            if (isDistillableBase(base)) stand.setItem(slot, makeSpirit(base));
+            Optional<RecipeHolder<CoreAlcoholRecipe>> recipe = findCoreRecipe(base, "spirit", level);
+            if (recipe.isPresent()) {
+                ItemStack result = recipe.get().value().assemble(new CoreAlcoholInput(base, "spirit"), level.registryAccess());
+                stand.setItem(slot, result);
+            }
         }
     }
 
@@ -300,7 +259,6 @@ public final class BrewingStandEvents {
         for (int slot = 0; slot < 3; slot++) {
             ItemStack neutral = stand.getItem(slot);
             if (!isNeutralSpirit(neutral)) continue;
-
             ItemStack result = new ItemStack(ModItems.LIQUEUR_BOTTLE.get(), neutral.getCount());
             result.set(ModComponents.PRODUCT_ID.get(), recipe.productId());
             result.set(ModComponents.DISPLAY_NAME.get(), recipe.displayName());
@@ -316,42 +274,6 @@ public final class BrewingStandEvents {
             stand.setItem(slot, result);
         }
         ingredient.shrink(1);
-    }
-
-    private static ItemStack makeSpirit(ItemStack base) {
-        if (base.is(ModItems.NEUTRAL_BASE.get())) return makeNeutralSpirit(base.getCount());
-
-        // Legacy Test Brew path remains equivalent in behavior.
-        if (base.is(ModItems.TEST_BREW.get())) {
-            ItemStack spirit = new ItemStack(ModItems.TEST_SPIRIT.get(), base.getCount());
-            copySpiritData(base, spirit, "test_spirit", "Test Spirit");
-            return spirit;
-        }
-
-        ItemStack spirit = new ItemStack(ModItems.SPIRIT_BOTTLE.get(), base.getCount());
-        String resultId = base.getOrDefault(ModComponents.DISTILL_PRODUCT_ID.get(), "");
-        String resultName = base.getOrDefault(ModComponents.DISTILL_DISPLAY_NAME.get(), prettyId(resultId));
-        copySpiritData(base, spirit, resultId, resultName);
-        return spirit;
-    }
-
-    private static void copySpiritData(ItemStack base, ItemStack spirit, String resultId, String resultName) {
-        String aroma = base.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
-        int level = base.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
-        int color = base.getOrDefault(ModComponents.DISTILL_COLOR.get(),
-                base.getOrDefault(ModComponents.COLOR.get(), 0xFFFFFF));
-
-        spirit.set(ModComponents.PRODUCT_ID.get(), resultId);
-        spirit.set(ModComponents.DISPLAY_NAME.get(), resultName);
-        spirit.set(ModComponents.STAGE.get(), 2);
-        spirit.set(ModComponents.AGE.get(), 0);
-        spirit.set(ModComponents.PRIMARY_AROMA.get(), aroma);
-        spirit.set(ModComponents.PRIMARY_LEVEL.get(), level <= 0 ? 0 : Math.min(5, level + 1));
-        spirit.set(ModComponents.COLOR.get(), color);
-        spirit.set(ModComponents.BARREL_LEVEL.get(), 0);
-        spirit.set(ModComponents.AGING_AROMAS.get(), Map.of());
-        spirit.set(ModComponents.BLEND_AROMAS.get(), Map.of());
-        spirit.set(ModComponents.SEASONING_COUNTED.get(), false);
     }
 
     private static ItemStack makeNeutralSpirit(int count) {
@@ -385,19 +307,6 @@ public final class BrewingStandEvents {
 
     private static LiqueurRecipe itemLiqueur(Item item, String productId, String displayName, String aroma, int color) {
         return new LiqueurRecipe(Ingredient.of(item), productId, displayName, aroma, color);
-    }
-
-    private static String prettyId(String value) {
-        if (value == null || value.isEmpty()) return "Spirit";
-        String path = value.contains(":") ? value.substring(value.indexOf(':') + 1) : value;
-        String[] parts = path.split("_");
-        StringBuilder out = new StringBuilder();
-        for (String part : parts) {
-            if (part.isEmpty()) continue;
-            if (!out.isEmpty()) out.append(' ');
-            out.append(Character.toUpperCase(part.charAt(0))).append(part.substring(1));
-        }
-        return out.toString();
     }
 
     private record LiqueurRecipe(Ingredient ingredient, String productId, String displayName, String aroma, int color) {}
