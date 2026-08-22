@@ -21,17 +21,12 @@ public final class BarrelInventory implements Container {
     private int seasoningCount = 0;
 
     BarrelInventory(BarrelSavedData owner) { this.owner = owner; }
-
     void setItemSilently(int slot, ItemStack stack) { if (slot >= 0 && slot < 9) items.set(slot, stack); }
 
     public void configureWood(ResourceLocation id) {
         String nextWood = id.toString();
         if (woodId.equals(nextWood)) return;
-        woodId = nextWood;
-        aroma = id.getPath();
-        seasoningTarget = "";
-        seasoningCount = 0;
-        owner.setDirty();
+        woodId = nextWood; aroma = id.getPath(); seasoningTarget = ""; seasoningCount = 0; owner.setDirty();
     }
 
     public String getWoodId() { return woodId; }
@@ -47,11 +42,8 @@ public final class BarrelInventory implements Container {
     }
 
     void loadMeta(String woodId, String aroma, String lockedProduct, String seasoningTarget, int seasoningCount) {
-        this.woodId = woodId;
-        this.aroma = aroma;
-        this.lockedProduct = lockedProduct;
-        this.seasoningTarget = seasoningTarget;
-        this.seasoningCount = seasoningCount;
+        this.woodId = woodId; this.aroma = aroma; this.lockedProduct = lockedProduct;
+        this.seasoningTarget = seasoningTarget; this.seasoningCount = seasoningCount;
     }
 
     public void recordFullyAged(ItemStack stack) {
@@ -61,93 +53,53 @@ public final class BarrelInventory implements Container {
         String primary = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         String product = productOf(stack);
         if (primary.isEmpty() || product.isEmpty()) return;
-
         String target = product + "|" + primary;
-        if (!target.equals(seasoningTarget)) {
-            seasoningTarget = target;
-            seasoningCount = 1;
-        } else if (seasoningCount < SEASONING_REQUIRED) {
-            seasoningCount++;
-        }
-
-        if (seasoningCount >= SEASONING_REQUIRED) {
-            aroma = primary;
-            seasoningTarget = "";
-            seasoningCount = 0;
-        }
+        if (!target.equals(seasoningTarget)) { seasoningTarget = target; seasoningCount = 1; }
+        else if (seasoningCount < SEASONING_REQUIRED) seasoningCount++;
+        if (seasoningCount >= SEASONING_REQUIRED) { aroma = primary; seasoningTarget = ""; seasoningCount = 0; }
         owner.setDirty();
     }
 
     @Override public int getContainerSize() { return 9; }
     @Override public boolean isEmpty() { return items.stream().allMatch(ItemStack::isEmpty); }
     @Override public ItemStack getItem(int slot) { return items.get(slot); }
-
-    @Override
-    public ItemStack removeItem(int slot, int amount) {
+    @Override public ItemStack removeItem(int slot, int amount) {
         ItemStack out = items.get(slot).split(amount);
-        if (!out.isEmpty()) {
-            out.remove(ModComponents.STARTED_AT.get());
-            refreshLockIfEmpty();
-            setChanged();
-        }
+        if (!out.isEmpty()) { out.remove(ModComponents.STARTED_AT.get()); refreshLockIfEmpty(); setChanged(); }
         return out;
     }
-
-    @Override
-    public ItemStack removeItemNoUpdate(int slot) {
-        ItemStack out = items.get(slot);
-        items.set(slot, ItemStack.EMPTY);
+    @Override public ItemStack removeItemNoUpdate(int slot) {
+        ItemStack out = items.get(slot); items.set(slot, ItemStack.EMPTY);
         if (!out.isEmpty()) out.remove(ModComponents.STARTED_AT.get());
-        refreshLockIfEmpty();
-        owner.setDirty();
-        return out;
+        refreshLockIfEmpty(); owner.setDirty(); return out;
     }
-
-    @Override
-    public void setItem(int slot, ItemStack stack) {
+    @Override public void setItem(int slot, ItemStack stack) {
         if (!stack.isEmpty() && !canPlaceItem(slot, stack)) return;
-        items.set(slot, stack);
-        if (stack.getCount() > 1) stack.setCount(1);
+        items.set(slot, stack); if (stack.getCount() > 1) stack.setCount(1);
         if (!stack.isEmpty()) {
-            String product = productOf(stack);
-            if (lockedProduct.isEmpty()) lockedProduct = product;
-            if (stack.getOrDefault(ModComponents.STARTED_AT.get(), 0L) == 0L) {
-                stack.set(ModComponents.STARTED_AT.get(), System.currentTimeMillis());
-            }
+            String product = productOf(stack); if (lockedProduct.isEmpty()) lockedProduct = product;
+            if (stack.getOrDefault(ModComponents.STARTED_AT.get(), 0L) == 0L) stack.set(ModComponents.STARTED_AT.get(), System.currentTimeMillis());
         }
-        refreshLockIfEmpty();
-        setChanged();
+        refreshLockIfEmpty(); setChanged();
     }
-
-    private void refreshLockIfEmpty() {
-        if (isEmpty()) lockedProduct = "";
-    }
-
+    private void refreshLockIfEmpty() { if (isEmpty()) lockedProduct = ""; }
     @Override public void setChanged() { owner.setDirty(); }
     @Override public boolean stillValid(Player player) { return true; }
     @Override public void clearContent() { items.clear(); lockedProduct = ""; setChanged(); }
     @Override public int getMaxStackSize() { return 1; }
 
-    @Override
-    public boolean canPlaceItem(int slot, ItemStack stack) {
+    @Override public boolean canPlaceItem(int slot, ItemStack stack) {
         if (!isSupportedBottle(stack)) return false;
         String product = productOf(stack);
         return !product.isEmpty() && (lockedProduct.isEmpty() || lockedProduct.equals(product));
     }
 
     public static boolean isSupportedBottle(ItemStack stack) {
-        // Existing MVP items remain explicitly supported.
-        if (stack.is(ModItems.TEST_BREW.get()) || stack.is(ModItems.TEST_SPIRIT.get()) || stack.is(ModItems.TEST_LIQUEUR.get())) {
-            return true;
-        }
-
-        // Future content uses one generic bottle per category and stack components for product data.
+        if (stack.is(ModItems.TEST_SPIRIT.get()) || stack.is(ModItems.TEST_LIQUEUR.get())) return true;
+        if (stack.is(ModItems.TEST_BREW.get())) return stack.getOrDefault(ModComponents.STAGE.get(), 0) >= 1;
         if (stack.is(ModItems.SPIRIT_BOTTLE.get()) || stack.is(ModItems.LIQUEUR_BOTTLE.get())) return true;
-        if (stack.is(ModItems.BREW_BOTTLE.get())) {
-            int stage = stack.getOrDefault(ModComponents.STAGE.get(), 0);
-            return stage == 1 || (stage == 0 && stack.getOrDefault(ModComponents.FERMENTABLE.get(), true));
-        }
-        return false;
+        // Brewing Pot Base bottles and stage-0 legacy Brew bottles are deliberately rejected.
+        return stack.is(ModItems.BREW_BOTTLE.get()) && stack.getOrDefault(ModComponents.STAGE.get(), 0) >= 1;
     }
 
     public static String productOf(ItemStack stack) {
