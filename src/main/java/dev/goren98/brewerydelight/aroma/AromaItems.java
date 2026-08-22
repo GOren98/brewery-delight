@@ -13,7 +13,7 @@ public final class AromaItems {
     public static ItemAromaClass classify(ItemStack stack) {
         if (stack.isEmpty()) return ItemAromaClass.NORMAL_ITEM;
         if (stack.getItem() instanceof AromaProduceItem) return ItemAromaClass.BREEDABLE_BASE;
-        if (stack.is(Items.APPLE) || stack.is(Items.SUGAR_CANE) || stack.is(Items.EGG)) return ItemAromaClass.FIXED_BASE;
+        if (stack.is(Items.APPLE) || stack.is(Items.SUGAR_CANE) || stack.is(Items.EGG) || stack.is(Items.MILK_BUCKET)) return ItemAromaClass.FIXED_BASE;
         if (stack.has(ModComponents.CROP_AROMA.get())) return ItemAromaClass.AROMA_ONLY;
         return ItemAromaClass.NORMAL_ITEM;
     }
@@ -32,6 +32,7 @@ public final class AromaItems {
         if (stack.is(Items.APPLE)) return Optional.of("apple");
         if (stack.is(Items.SUGAR_CANE)) return Optional.of("sugar_cane");
         if (stack.is(Items.EGG)) return Optional.of("egg");
+        if (stack.is(Items.MILK_BUCKET)) return Optional.of("milk");
         return Optional.empty();
     }
 

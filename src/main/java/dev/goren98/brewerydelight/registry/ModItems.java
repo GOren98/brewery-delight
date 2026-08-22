@@ -3,6 +3,7 @@ package dev.goren98.brewerydelight.registry;
 import dev.goren98.brewerydelight.BreweryDelight;
 import dev.goren98.brewerydelight.crop.AromaProduceItem;
 import dev.goren98.brewerydelight.crop.AromaSeedItem;
+import dev.goren98.brewerydelight.item.BaseBottleItem;
 import dev.goren98.brewerydelight.item.TestBrewItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -32,6 +33,8 @@ public final class ModItems {
     });
     public static final Supplier<Item> BREWING_STATION_ITEM = ITEMS.register("brewing_station", () -> new BlockItem(ModBlocks.BREWING_STATION.get(), new Item.Properties()));
     public static final Supplier<Item> AROMA_TABLE_ITEM = ITEMS.register("aroma_table", () -> new BlockItem(ModBlocks.AROMA_TABLE.get(), new Item.Properties()));
+
+    public static final Supplier<Item> BASE_BOTTLE = ITEMS.register("base_bottle", () -> new BaseBottleItem(new Item.Properties()));
 
     public static final Supplier<Item> TEST_BREW = ITEMS.register("test_brew", () -> new TestBrewItem(new Item.Properties(), "test_brew", 0, "Test Brew", "test", 0, 4));
     public static final Supplier<Item> TEST_SPIRIT = ITEMS.register("test_spirit", () -> new TestBrewItem(new Item.Properties(), "test_spirit", 2, "Test Spirit", "test", 5, 5));

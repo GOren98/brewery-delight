@@ -6,6 +6,7 @@ import dev.goren98.brewerydelight.registry.ModBlocks;
 import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModItems;
 import dev.goren98.brewerydelight.registry.ModMenus;
+import dev.goren98.brewerydelight.registry.ModRecipes;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
@@ -20,6 +21,8 @@ public final class BreweryDelight {
         ModItems.ITEMS.register(modBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modBus);
         ModMenus.MENUS.register(modBus);
+        ModRecipes.RECIPE_TYPES.register(modBus);
+        ModRecipes.RECIPE_SERIALIZERS.register(modBus);
         NeoForge.EVENT_BUS.addListener(AromaCraftingEvents::onItemCrafted);
     }
 }

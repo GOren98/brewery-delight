@@ -1,8 +1,10 @@
 package dev.goren98.brewerydelight.cooking;
 
+import dev.goren98.brewerydelight.cooking.recipe.BaseCookingInput;
+import dev.goren98.brewerydelight.cooking.recipe.BaseCookingRecipe;
 import dev.goren98.brewerydelight.registry.ModBlockEntities;
-import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModItems;
+import dev.goren98.brewerydelight.registry.ModRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -15,9 +17,14 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class CookingPotBlockEntity extends BaseContainerBlockEntity {
     // Farmer's Delight Cooking Pot inventory contract: 0-5 ingredients, 6 meal/base,
@@ -28,13 +35,14 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
     public static final int SLOT_CONTAINER = 7;
     public static final int SLOT_OUTPUT = 8;
     public static final int SIZE = 9;
-    public static final int COOK_TIME = 100;
+    public static final int DEFAULT_COOK_TIME = 100;
 
     private NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
     private int progress;
+    private int cookTime = DEFAULT_COOK_TIME;
     private final ContainerData data = new SimpleContainerData(2) {
-        @Override public int get(int index) { return index == 0 ? progress : COOK_TIME; }
-        @Override public void set(int index, int value) { if (index == 0) progress = value; }
+        @Override public int get(int index) { return index == 0 ? progress : cookTime; }
+        @Override public void set(int index, int value) { if (index == 0) progress = value; else if (index == 1) cookTime = Math.max(1, value); }
     };
 
     public CookingPotBlockEntity(BlockPos pos, BlockState state) {
@@ -59,6 +67,7 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
         tag.putInt("Progress", progress);
+        tag.putInt("CookTime", cookTime);
         ContainerHelper.saveAllItems(tag, items, registries);
     }
 
@@ -66,45 +75,61 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         progress = tag.getInt("Progress");
+        cookTime = tag.contains("CookTime") ? Math.max(1, tag.getInt("CookTime")) : DEFAULT_COOK_TIME;
         items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, items, registries);
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, CookingPotBlockEntity pot) {
-        // Farmer's Delight serving flow: cooked base remains in the meal slot and is
-        // only converted into a removable serving when the required container exists.
         if (pot.tryServeOne()) {
             setChanged(level, pos, state);
         }
 
-        if (pot.matchesLegacyCider() && pot.canAcceptCiderMeal()) {
+        Optional<RecipeHolder<BaseCookingRecipe>> match = pot.findBaseRecipe(level);
+        if (match.isPresent() && pot.items.get(SLOT_MEAL).isEmpty()) {
+            BaseCookingRecipe recipe = match.get().value();
+            pot.cookTime = recipe.cookingTime();
             pot.progress++;
-            if (pot.progress >= COOK_TIME) {
-                pot.craftLegacyCiderBase();
+            if (pot.progress >= pot.cookTime) {
+                pot.craftBase(recipe, level);
                 pot.progress = 0;
                 setChanged(level, pos, state);
             }
         } else if (pot.progress != 0) {
             pot.progress = 0;
+            pot.cookTime = DEFAULT_COOK_TIME;
             setChanged(level, pos, state);
         }
     }
 
-    private boolean matchesLegacyCider() {
-        if (!items.get(0).is(Items.WATER_BUCKET)) return false;
-        for (int i = 1; i <= 4; i++) if (!items.get(i).is(Items.APPLE)) return false;
-        return items.get(5).isEmpty();
+    private BaseCookingInput currentInput() {
+        List<ItemStack> stacks = new ArrayList<>();
+        for (int i = SLOT_INGREDIENT_START; i <= SLOT_INGREDIENT_END; i++) {
+            ItemStack stack = items.get(i);
+            if (!stack.isEmpty()) stacks.add(stack);
+        }
+        return new BaseCookingInput(stacks);
     }
 
-    private boolean canAcceptCiderMeal() {
-        return items.get(SLOT_MEAL).isEmpty();
+    private Optional<RecipeHolder<BaseCookingRecipe>> findBaseRecipe(Level level) {
+        BaseCookingInput input = currentInput();
+        if (input.size() == 0) return Optional.empty();
+        return level.getRecipeManager().getRecipeFor(ModRecipes.BASE_COOKING_TYPE.get(), input, level);
     }
 
-    private void craftLegacyCiderBase() {
-        items.set(0, new ItemStack(Items.BUCKET));
-        for (int i = 1; i <= 4; i++) items.get(i).shrink(1);
+    private void craftBase(BaseCookingRecipe recipe, Level level) {
+        BaseCookingInput input = currentInput();
+        ItemStack base = recipe.assemble(input, level.registryAccess());
+        if (base.isEmpty()) return;
 
-        ItemStack base = createCiderServing(4);
+        for (int i = SLOT_INGREDIENT_START; i <= SLOT_INGREDIENT_END; i++) {
+            ItemStack stack = items.get(i);
+            if (stack.isEmpty()) continue;
+            ItemStack remainder = stack.hasCraftingRemainingItem() ? stack.getCraftingRemainingItem() : ItemStack.EMPTY;
+            stack.shrink(1);
+            if (stack.isEmpty() && !remainder.isEmpty()) items.set(i, remainder);
+        }
+
         items.set(SLOT_MEAL, base);
         setChanged();
     }
@@ -114,38 +139,20 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
         ItemStack container = items.get(SLOT_CONTAINER);
         ItemStack output = items.get(SLOT_OUTPUT);
 
-        if (meal.isEmpty() || !container.is(Items.GLASS_BOTTLE)) return false;
-        if (!output.isEmpty() && (!output.is(ModItems.BREW_BOTTLE.get()) || output.getCount() >= output.getMaxStackSize())) {
-            return false;
-        }
+        if (meal.isEmpty() || !meal.is(ModItems.BASE_BOTTLE.get()) || !container.is(Items.GLASS_BOTTLE)) return false;
 
         ItemStack serving = meal.copy();
         serving.setCount(1);
+        if (!output.isEmpty() && (!ItemStack.isSameItemSameComponents(output, serving) || output.getCount() >= output.getMaxStackSize())) {
+            return false;
+        }
 
         container.shrink(1);
         meal.shrink(1);
 
-        if (output.isEmpty()) {
-            items.set(SLOT_OUTPUT, serving);
-        } else {
-            output.grow(1);
-        }
+        if (output.isEmpty()) items.set(SLOT_OUTPUT, serving);
+        else output.grow(1);
         setChanged();
         return true;
-    }
-
-    private ItemStack createCiderServing(int count) {
-        ItemStack result = new ItemStack(ModItems.BREW_BOTTLE.get(), count);
-        result.set(ModComponents.PRODUCT_ID.get(), "cider");
-        result.set(ModComponents.DISPLAY_NAME.get(), "Cider");
-        result.set(ModComponents.STAGE.get(), 0);
-        result.set(ModComponents.PRIMARY_AROMA.get(), "apple");
-        result.set(ModComponents.PRIMARY_LEVEL.get(), 4);
-        result.set(ModComponents.FERMENTABLE.get(), true);
-        result.set(ModComponents.COLOR.get(), 13933125);
-        result.set(ModComponents.DISTILL_PRODUCT_ID.get(), "apple_brandy");
-        result.set(ModComponents.DISTILL_DISPLAY_NAME.get(), "Apple Brandy");
-        result.set(ModComponents.DISTILL_COLOR.get(), 12879668);
-        return result;
     }
 }
