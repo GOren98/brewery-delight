@@ -35,7 +35,7 @@ public final class AromaGrapeSaplingBlock extends BushBlock implements Bonemeala
 
     private void grow(Level level, BlockPos pos) {
         if (!level.getBlockState(pos.above()).canBeReplaced()) return;
-        String aroma = AromaPlantUtil.aromaAt(level, pos, cropId);
+        String aroma = AromaPlantUtil.aromaAt(level, pos, "grape");
         level.setBlock(pos, block("_fruiting_bottom").defaultBlockState(), UPDATE_CLIENTS);
         level.setBlock(pos.above(), block("_fruiting_top").defaultBlockState(), UPDATE_CLIENTS);
         AromaPlantUtil.setAroma(level, pos, aroma);
