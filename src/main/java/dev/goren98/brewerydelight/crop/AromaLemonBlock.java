@@ -101,19 +101,20 @@ public final class AromaLemonBlock extends DoublePlantBlock implements Bonemeala
         }
 
         BlockState nextLower = defaultBlockState().setValue(AGE, age).setValue(HALF, DoubleBlockHalf.LOWER);
-        level.setBlock(lowerPos, nextLower, UPDATE_CLIENTS);
-        AromaPlantUtil.setAroma(level, lowerPos, aroma);
-
         if (age >= DOUBLE_BLOCK_START) {
             BlockState nextUpper = nextLower.setValue(HALF, DoubleBlockHalf.UPPER);
+            // Place the upper half first while the age 0/1 lower half is still valid.
+            // Otherwise neighbor updates can reject an age 2 lower half before its pair exists.
             level.setBlock(lowerPos.above(), nextUpper, UPDATE_CLIENTS);
-            AromaPlantUtil.setAroma(level, lowerPos.above(), aroma);
         } else {
             BlockState above = level.getBlockState(lowerPos.above());
             if (above.is(this) && above.getValue(HALF) == DoubleBlockHalf.UPPER) {
                 level.removeBlock(lowerPos.above(), false);
             }
         }
+        level.setBlock(lowerPos, nextLower, UPDATE_CLIENTS);
+        AromaPlantUtil.setAroma(level, lowerPos, aroma);
+        if (age >= DOUBLE_BLOCK_START) AromaPlantUtil.setAroma(level, lowerPos.above(), aroma);
     }
 
     /** Source DoubleBushBlock only lets vanilla DoublePlantBlock require an upper half after age 2. */
@@ -134,6 +135,12 @@ public final class AromaLemonBlock extends DoublePlantBlock implements Bonemeala
             if (half == DoubleBlockHalf.LOWER && direction == Direction.UP && invalidPair
                     && state.getValue(AGE) >= DOUBLE_BLOCK_START) {
                 return Blocks.AIR.defaultBlockState();
+            }
+            // Wild lemons intentionally start as a single lower block at age 0. Do not
+            // delegate this pre-double stage to DoublePlantBlock's mandatory pair check.
+            if (half == DoubleBlockHalf.LOWER && direction == Direction.UP
+                    && state.getValue(AGE) < DOUBLE_BLOCK_START) {
+                return state;
             }
         }
 

@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","category":"misc","pattern":["PPP","PBP","PPP"],"key":{"P":{"tag":"minecraft:planks"},"B":{"item":"minecraft:blaze_powder"}},"result":{"id":"brewerydelight:brewing_station","count":1}}
