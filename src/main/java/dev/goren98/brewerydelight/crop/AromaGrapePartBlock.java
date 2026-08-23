@@ -41,8 +41,8 @@ public final class AromaGrapePartBlock extends BushBlock implements Bonemealable
     @Override public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) { if (!fruiting) setPair(level, base(pos), true); }
 
     private void setPair(Level level, BlockPos base, boolean withFruit) {
-        String aroma = AromaPlantUtil.aromaAt(level, base, cropId);
-        if (cropId.equals(aroma)) aroma = AromaPlantUtil.aromaAt(level, base.above(), cropId);
+        String aroma = AromaPlantUtil.aromaAt(level, base, "grape");
+        if ("grape".equals(aroma)) aroma = AromaPlantUtil.aromaAt(level, base.above(), "grape");
         level.setBlock(base, block(withFruit ? "_fruiting_bottom" : "_empty_bottom").defaultBlockState(), UPDATE_CLIENTS);
         level.setBlock(base.above(), block(withFruit ? "_fruiting_top" : "_empty_top").defaultBlockState(), UPDATE_CLIENTS);
         AromaPlantUtil.setAroma(level, base, aroma);
@@ -53,7 +53,7 @@ public final class AromaGrapePartBlock extends BushBlock implements Bonemealable
         if (!fruiting) return InteractionResult.PASS;
         if (!level.isClientSide) {
             BlockPos base = base(pos);
-            String aroma = AromaPlantUtil.aromaAt(level, base, cropId);
+            String aroma = AromaPlantUtil.aromaAt(level, base, "grape");
             popResource(level, base, AromaPlantUtil.produce(cropId, aroma));
             setPair(level, base, false);
         }
