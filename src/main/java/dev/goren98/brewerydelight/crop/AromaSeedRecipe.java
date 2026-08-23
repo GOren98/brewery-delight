@@ -5,6 +5,7 @@ import dev.goren98.brewerydelight.registry.ModItems;
 import dev.goren98.brewerydelight.registry.ModRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CustomRecipe;
@@ -28,7 +29,9 @@ public final class AromaSeedRecipe extends CustomRecipe {
         if (cropId == null) return ItemStack.EMPTY;
 
         ItemStack produce = onlyItem(input);
-        ItemStack seed = new ItemStack(ModItems.SEEDS.get(cropId).get());
+        ItemStack seed = cropId.equals("melon")
+                ? Items.MELON_SEEDS.getDefaultInstance()
+                : new ItemStack(ModItems.SEEDS.get(cropId).get());
         String aroma = produce.get(ModComponents.CROP_AROMA.get());
         if (aroma != null && !aroma.isBlank()) {
             seed.set(ModComponents.CROP_AROMA.get(), aroma);
@@ -39,6 +42,7 @@ public final class AromaSeedRecipe extends CustomRecipe {
     private static String findCropId(CraftingInput input) {
         ItemStack item = onlyItem(input);
         if (item.isEmpty()) return null;
+        if (item.is(Items.MELON_SLICE)) return "melon";
         for (var entry : ModItems.CROP_ITEMS.entrySet()) {
             if (item.is(entry.getValue().get()) && ModItems.SEEDS.containsKey(entry.getKey())) return entry.getKey();
         }
