@@ -189,34 +189,30 @@ public final class BrewingStandEvents {
 
     private static boolean isBlendSource(ItemStack stack) {
         int stage = stack.getOrDefault(ModComponents.STAGE.get(), -1);
-        if (stage < 1 || stage > 3) return false;
+        // Liqueur Primary Aroma rules are defined separately in 6-2-7.
+        if (stage < 1 || stage > 2) return false;
         if (stack.getOrDefault(ModComponents.AGE.get(), 0) != 0) return false;
         if (stack.getOrDefault(ModComponents.BARREL_LEVEL.get(), 0) != 0) return false;
-        if (!stack.getOrDefault(ModComponents.BLEND_AROMAS.get(), Map.of()).isEmpty()) return false;
+        if (stack.getOrDefault(ModComponents.CORE_ALCOHOL_ID.get(), "").isEmpty()) return false;
         String primary = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int level = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
-        return !primary.isEmpty() && level > 0 && AromaUtil.hasExactlyOneAroma(stack);
+        return !primary.isEmpty() && level > 0;
     }
 
     private static boolean validBlendTargets(BrewingStandBlockEntity stand, ItemStack source) {
-        int sourceStage = source.getOrDefault(ModComponents.STAGE.get(), -1);
+        String sourceCore = source.getOrDefault(ModComponents.CORE_ALCOHOL_ID.get(), "");
         String sourceAroma = source.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int sourceLevel = source.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
-        String product = "";
         boolean found = false;
         for (int slot = 0; slot < 3; slot++) {
             ItemStack target = stand.getItem(slot);
             if (target.isEmpty()) continue;
             found = true;
             int stage = target.getOrDefault(ModComponents.STAGE.get(), -1);
-            if (stage != sourceStage || stage < 1 || stage > 3) return false;
-            String targetProduct = target.getOrDefault(ModComponents.PRODUCT_ID.get(), "");
-            if (targetProduct.isEmpty()) return false;
-            if (product.isEmpty()) product = targetProduct;
-            else if (!product.equals(targetProduct)) return false;
-            int total = AromaUtil.total(target);
-            if (total < 10 || total >= AromaUtil.MAX_TOTAL_AROMA) return false;
-            if (AromaUtil.blendGain(target, sourceAroma, sourceLevel) <= 0) return false;
+            if (stage < 1 || stage > 2) return false;
+            if (target.getOrDefault(ModComponents.AGE.get(), 0) != 5) return false;
+            if (!sourceCore.equals(target.getOrDefault(ModComponents.CORE_ALCOHOL_ID.get(), ""))) return false;
+            if (!AromaUtil.canApplyBlendFully(target, sourceAroma, sourceLevel)) return false;
         }
         return found;
     }

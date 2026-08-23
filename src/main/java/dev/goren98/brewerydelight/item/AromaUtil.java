@@ -10,6 +10,7 @@ import java.util.Map;
 public final class AromaUtil {
     public static final int MAX_SINGLE_AROMA = 10;
     public static final int MAX_TOTAL_AROMA = 20;
+    public static final int MAX_BLEND_AROMA = 10;
 
     public static Map<String, Integer> merged(ItemStack stack) {
         Map<String, Integer> out = new LinkedHashMap<>();
@@ -62,6 +63,19 @@ public final class AromaUtil {
         int currentAroma = levelOf(target, aroma);
         return Math.max(0, Math.min(sourceLevel,
                 Math.min(MAX_SINGLE_AROMA - currentAroma, MAX_TOTAL_AROMA - currentTotal)));
+    }
+
+    public static int blendTotal(ItemStack stack) {
+        return stack.getOrDefault(ModComponents.BLEND_AROMAS.get(), Map.<String, Integer>of())
+                .values().stream().mapToInt(Integer::intValue).sum();
+    }
+
+    /** Blending consumes a whole source bottle, so its Primary Aroma must fit without clipping. */
+    public static boolean canApplyBlendFully(ItemStack target, String aroma, int sourceLevel) {
+        if (aroma == null || aroma.isEmpty() || sourceLevel <= 0) return false;
+        return blendTotal(target) + sourceLevel <= MAX_BLEND_AROMA
+                && levelOf(target, aroma) + sourceLevel <= MAX_SINGLE_AROMA
+                && total(target) + sourceLevel <= MAX_TOTAL_AROMA;
     }
 
     public static boolean applyBlend(ItemStack target, String aroma, int sourceLevel) {
