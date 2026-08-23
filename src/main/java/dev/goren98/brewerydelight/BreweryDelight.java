@@ -1,6 +1,7 @@
 package dev.goren98.brewerydelight;
 
 import dev.goren98.brewerydelight.crop.AromaCraftingEvents;
+import dev.goren98.brewerydelight.aroma.AromaTooltipEvents;
 import dev.goren98.brewerydelight.registry.ModBlockEntities;
 import dev.goren98.brewerydelight.registry.ModBlocks;
 import dev.goren98.brewerydelight.registry.ModComponents;
@@ -24,5 +25,6 @@ public final class BreweryDelight {
         ModRecipes.RECIPE_TYPES.register(modBus);
         ModRecipes.RECIPE_SERIALIZERS.register(modBus);
         NeoForge.EVENT_BUS.addListener(AromaCraftingEvents::onItemCrafted);
+        NeoForge.EVENT_BUS.addListener(AromaTooltipEvents::onTooltip);
     }
 }

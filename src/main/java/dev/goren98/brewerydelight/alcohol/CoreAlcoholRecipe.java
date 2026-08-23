@@ -109,6 +109,7 @@ public final class CoreAlcoholRecipe implements Recipe<CoreAlcoholInput> {
         result.set(ModComponents.FERMENTABLE.get(), false);
         result.set(ModComponents.BARREL_LEVEL.get(), 0);
         result.set(ModComponents.AGING_AROMAS.get(), Map.of());
+        result.set(ModComponents.INHERITED_AROMAS.get(), Map.of());
         result.set(ModComponents.BLEND_AROMAS.get(), Map.of());
         result.set(ModComponents.SEASONING_COUNTED.get(), false);
         return result;

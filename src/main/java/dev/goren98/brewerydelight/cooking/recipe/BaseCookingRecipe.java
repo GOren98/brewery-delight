@@ -34,7 +34,7 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
             Codec.STRING.fieldOf("display_name").forGetter(BaseCookingRecipe::displayName),
             Codec.INT.optionalFieldOf("color", 0xE6D7B9).forGetter(BaseCookingRecipe::color),
             Codec.INT.optionalFieldOf("cookingtime", 100).forGetter(BaseCookingRecipe::cookingTime),
-            Codec.INT.optionalFieldOf("servings", 4).forGetter(BaseCookingRecipe::servings),
+            Codec.INT.optionalFieldOf("servings", 1).forGetter(BaseCookingRecipe::servings),
             Codec.STRING.optionalFieldOf("brew_core", "").forGetter(BaseCookingRecipe::brewCore),
             Codec.STRING.optionalFieldOf("spirit_core", "").forGetter(BaseCookingRecipe::spiritCore)
     ).apply(instance, BaseCookingRecipe::new));
