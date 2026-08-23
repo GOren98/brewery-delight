@@ -2,7 +2,6 @@ package dev.goren98.brewerydelight.aroma;
 
 import dev.goren98.brewerydelight.crop.AromaProduceItem;
 import dev.goren98.brewerydelight.registry.ModComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -26,8 +25,8 @@ public final class AromaItems {
         if (!hasAroma(stack)) return Optional.empty();
         String component = stack.get(ModComponents.CROP_AROMA.get());
         if (component != null && !component.isBlank()) return Optional.of(component);
-        if (stack.getItem() instanceof AromaProduceItem) {
-            return Optional.of(BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath());
+        if (stack.getItem() instanceof AromaProduceItem produce) {
+            return Optional.of(produce.defaultAroma());
         }
         if (stack.is(Items.APPLE)) return Optional.of("apple");
         if (stack.is(Items.SUGAR_CANE)) return Optional.of("sugar_cane");
