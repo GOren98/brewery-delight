@@ -122,8 +122,6 @@ public final class BarrelInventory implements Container {
     }
 
     public static boolean isSupportedBottle(ItemStack stack) {
-        if (stack.is(ModItems.TEST_SPIRIT.get()) || stack.is(ModItems.TEST_LIQUEUR.get())) return true;
-        if (stack.is(ModItems.TEST_BREW.get())) return stack.getOrDefault(ModComponents.STAGE.get(), 0) >= 1;
         if (stack.is(ModItems.SPIRIT_BOTTLE.get()) || stack.is(ModItems.LIQUEUR_BOTTLE.get())) return true;
         // Brewing Pot Base bottles and stage-0 legacy Brew bottles are deliberately rejected.
         return stack.is(ModItems.BREW_BOTTLE.get()) && stack.getOrDefault(ModComponents.STAGE.get(), 0) >= 1;
@@ -132,9 +130,6 @@ public final class BarrelInventory implements Container {
     public static String productOf(ItemStack stack) {
         String existing = stack.getOrDefault(ModComponents.PRODUCT_ID.get(), "");
         if (!existing.isEmpty()) return existing;
-        if (stack.is(ModItems.TEST_SPIRIT.get())) return "test_spirit";
-        if (stack.is(ModItems.TEST_BREW.get())) return "test_brew";
-        if (stack.is(ModItems.TEST_LIQUEUR.get())) return "test_liqueur";
         return "";
     }
 }

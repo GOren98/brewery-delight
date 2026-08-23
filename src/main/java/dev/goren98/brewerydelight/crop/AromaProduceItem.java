@@ -1,6 +1,7 @@
 package dev.goren98.brewerydelight.crop;
 
 import dev.goren98.brewerydelight.registry.ModComponents;
+import dev.goren98.brewerydelight.item.AromaText;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,17 +24,6 @@ public class AromaProduceItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         String aroma = stack.getOrDefault(ModComponents.CROP_AROMA.get(), defaultAroma);
-        tooltip.add(Component.literal("Aroma: " + pretty(aroma)));
-    }
-
-    private static String pretty(String value) {
-        String[] parts = value.split("_");
-        StringBuilder out = new StringBuilder();
-        for (String part : parts) {
-            if (part.isEmpty()) continue;
-            if (!out.isEmpty()) out.append(' ');
-            out.append(Character.toUpperCase(part.charAt(0))).append(part.substring(1));
-        }
-        return out.toString();
+        tooltip.add(Component.literal("Aroma: " + AromaText.pretty(aroma)));
     }
 }

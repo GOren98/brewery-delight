@@ -3,7 +3,7 @@ package dev.goren98.brewerydelight.cooking.recipe;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import dev.goren98.brewerydelight.aroma.AromaItems;
+import dev.goren98.brewerydelight.aroma.PrimaryAromaCalculator;
 import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModItems;
 import dev.goren98.brewerydelight.registry.ModRecipes;
@@ -19,9 +19,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Shapeless Brewing Pot recipe for the 0th-stage alcohol Base.
@@ -34,9 +32,7 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
             Codec.STRING.fieldOf("display_name").forGetter(BaseCookingRecipe::displayName),
             Codec.INT.optionalFieldOf("color", 0xE6D7B9).forGetter(BaseCookingRecipe::color),
             Codec.INT.optionalFieldOf("cookingtime", 100).forGetter(BaseCookingRecipe::cookingTime),
-            Codec.INT.optionalFieldOf("servings", 1).forGetter(BaseCookingRecipe::servings),
-            Codec.STRING.optionalFieldOf("brew_core", "").forGetter(BaseCookingRecipe::brewCore),
-            Codec.STRING.optionalFieldOf("spirit_core", "").forGetter(BaseCookingRecipe::spiritCore)
+            Codec.INT.optionalFieldOf("servings", 1).forGetter(BaseCookingRecipe::servings)
     ).apply(instance, BaseCookingRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, BaseCookingRecipe> STREAM_CODEC = new StreamCodec<>() {
@@ -50,9 +46,7 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
             int color = buf.readVarInt();
             int cookingTime = buf.readVarInt();
             int servings = buf.readVarInt();
-            String brewCore = ByteBufCodecs.STRING_UTF8.decode(buf);
-            String spiritCore = ByteBufCodecs.STRING_UTF8.decode(buf);
-            return new BaseCookingRecipe(ingredients, baseId, displayName, color, cookingTime, servings, brewCore, spiritCore);
+            return new BaseCookingRecipe(ingredients, baseId, displayName, color, cookingTime, servings);
         }
 
         @Override
@@ -64,8 +58,6 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
             buf.writeVarInt(recipe.color);
             buf.writeVarInt(recipe.cookingTime);
             buf.writeVarInt(recipe.servings);
-            ByteBufCodecs.STRING_UTF8.encode(buf, recipe.brewCore);
-            ByteBufCodecs.STRING_UTF8.encode(buf, recipe.spiritCore);
         }
     };
 
@@ -75,19 +67,15 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
     private final int color;
     private final int cookingTime;
     private final int servings;
-    private final String brewCore;
-    private final String spiritCore;
 
     public BaseCookingRecipe(List<Ingredient> ingredients, String baseId, String displayName, int color,
-                             int cookingTime, int servings, String brewCore, String spiritCore) {
+                             int cookingTime, int servings) {
         this.ingredients = List.copyOf(ingredients);
         this.baseId = baseId;
         this.displayName = displayName;
         this.color = color;
         this.cookingTime = Math.max(1, cookingTime);
         this.servings = Math.max(1, servings);
-        this.brewCore = brewCore;
-        this.spiritCore = spiritCore;
     }
 
     public List<Ingredient> ingredients() { return ingredients; }
@@ -96,8 +84,6 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
     public int color() { return color; }
     public int cookingTime() { return cookingTime; }
     public int servings() { return servings; }
-    public String brewCore() { return brewCore; }
-    public String spiritCore() { return spiritCore; }
 
     @Override
     public boolean matches(BaseCookingInput input, Level level) {
@@ -124,17 +110,11 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
         result.set(ModComponents.DISPLAY_NAME.get(), displayName);
         result.set(ModComponents.STAGE.get(), 0);
         result.set(ModComponents.COLOR.get(), color);
-        result.set(ModComponents.FERMENTABLE.get(), false);
 
-        Map<String, Integer> aromaCounts = new HashMap<>();
-        for (int i = 0; i < input.size(); i++) {
-            AromaItems.currentAromaId(input.getItem(i)).ifPresent(aroma -> aromaCounts.merge(aroma, 1, Integer::sum));
-        }
-        aromaCounts.entrySet().stream()
-                .max(Map.Entry.<String, Integer>comparingByValue().thenComparing(Map.Entry.comparingByKey()))
-                .ifPresent(entry -> {
-                    result.set(ModComponents.PRIMARY_AROMA.get(), entry.getKey());
-                    result.set(ModComponents.PRIMARY_LEVEL.get(), entry.getValue());
+        PrimaryAromaCalculator.calculate(input.stacks())
+                .ifPresent(primary -> {
+                    result.set(ModComponents.PRIMARY_AROMA.get(), primary.aromaId());
+                    result.set(ModComponents.PRIMARY_LEVEL.get(), primary.materialCount());
                 });
         return result;
     }

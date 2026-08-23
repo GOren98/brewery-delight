@@ -91,28 +91,11 @@ public final class CoreAlcoholRecipe implements Recipe<CoreAlcoholInput> {
     public ItemStack assemble(CoreAlcoholInput input, HolderLookup.Provider registries) {
         ItemStack base = input.base();
         boolean spirit = "spirit".equals(process);
-        ItemStack result = new ItemStack(spirit ? ModItems.SPIRIT_BOTTLE.get() : ModItems.BREW_BOTTLE.get());
-
         String aroma = base.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int aromaLevel = base.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         int nextLevel = aromaLevel <= 0 ? 0 : Math.min(5, aromaLevel + aromaLevelBonus);
-
-        result.set(ModComponents.CORE_ALCOHOL_ID.get(), coreAlcoholId);
-        // PRODUCT_ID is kept in sync during MVP migration because Barrel/Blend legacy code still keys by it.
-        result.set(ModComponents.PRODUCT_ID.get(), coreAlcoholId);
-        result.set(ModComponents.DISPLAY_NAME.get(), displayName);
-        result.set(ModComponents.STAGE.get(), spirit ? 2 : 1);
-        result.set(ModComponents.AGE.get(), 0);
-        result.set(ModComponents.PRIMARY_AROMA.get(), aroma);
-        result.set(ModComponents.PRIMARY_LEVEL.get(), nextLevel);
-        result.set(ModComponents.COLOR.get(), color);
-        result.set(ModComponents.FERMENTABLE.get(), false);
-        result.set(ModComponents.BARREL_LEVEL.get(), 0);
-        result.set(ModComponents.AGING_AROMAS.get(), Map.of());
-        result.set(ModComponents.INHERITED_AROMAS.get(), Map.of());
-        result.set(ModComponents.BLEND_AROMAS.get(), Map.of());
-        result.set(ModComponents.SEASONING_COUNTED.get(), false);
-        return result;
+        return AlcoholStackFactory.create(spirit ? ModItems.SPIRIT_BOTTLE.get() : ModItems.BREW_BOTTLE.get(),
+                coreAlcoholId, displayName, spirit ? 2 : 1, color, aroma, nextLevel, Map.of());
     }
 
     @Override public boolean canCraftInDimensions(int width, int height) { return width * height >= 1; }

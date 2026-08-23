@@ -8,6 +8,11 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.ISubtypeRegistration;
+import mezz.jei.api.ingredients.subtypes.ISubtypeInterpreter;
+import mezz.jei.api.ingredients.subtypes.UidContext;
+import dev.goren98.brewerydelight.registry.ModComponents;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 
@@ -18,6 +23,25 @@ public final class BreweryDelightJeiPlugin implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
         return UID;
+    }
+
+    @Override
+    public void registerItemSubtypes(ISubtypeRegistration registration) {
+        ISubtypeInterpreter<ItemStack> interpreter = new ISubtypeInterpreter<>() {
+            @Override public Object getSubtypeData(ItemStack stack, UidContext context) {
+                String product = stack.getOrDefault(ModComponents.PRODUCT_ID.get(), "");
+                int stage = stack.getOrDefault(ModComponents.STAGE.get(), 0);
+                return product.isEmpty() ? null : product + "|" + stage;
+            }
+            @Override public String getLegacyStringSubtypeInfo(ItemStack stack, UidContext context) {
+                Object subtype = getSubtypeData(stack, context);
+                return subtype == null ? "" : subtype.toString();
+            }
+        };
+        registration.registerSubtypeInterpreter(ModItems.BASE_BOTTLE.get(), interpreter);
+        registration.registerSubtypeInterpreter(ModItems.BREW_BOTTLE.get(), interpreter);
+        registration.registerSubtypeInterpreter(ModItems.SPIRIT_BOTTLE.get(), interpreter);
+        registration.registerSubtypeInterpreter(ModItems.LIQUEUR_BOTTLE.get(), interpreter);
     }
 
     @Override

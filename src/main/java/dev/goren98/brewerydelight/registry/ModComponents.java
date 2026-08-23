@@ -27,15 +27,7 @@ public final class ModComponents {
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
     public static final Supplier<DataComponentType<String>> DISPLAY_NAME = COMPONENTS.register("display_name",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
-    public static final Supplier<DataComponentType<String>> DISTILL_PRODUCT_ID = COMPONENTS.register("distill_product_id",
-            () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
-    public static final Supplier<DataComponentType<String>> DISTILL_DISPLAY_NAME = COMPONENTS.register("distill_display_name",
-            () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
-    public static final Supplier<DataComponentType<Boolean>> FERMENTABLE = COMPONENTS.register("fermentable",
-            () -> DataComponentType.<Boolean>builder().persistent(Codec.BOOL).build());
     public static final Supplier<DataComponentType<Integer>> COLOR = COMPONENTS.register("color",
-            () -> DataComponentType.<Integer>builder().persistent(Codec.INT).build());
-    public static final Supplier<DataComponentType<Integer>> DISTILL_COLOR = COMPONENTS.register("distill_color",
             () -> DataComponentType.<Integer>builder().persistent(Codec.INT).build());
     public static final Supplier<DataComponentType<String>> PRIMARY_AROMA = COMPONENTS.register("primary_aroma",
             () -> DataComponentType.<String>builder().persistent(Codec.STRING).build());
