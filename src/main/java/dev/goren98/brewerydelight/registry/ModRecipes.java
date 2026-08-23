@@ -4,6 +4,7 @@ import dev.goren98.brewerydelight.BreweryDelight;
 import dev.goren98.brewerydelight.alcohol.CoreAlcoholRecipe;
 import dev.goren98.brewerydelight.alcohol.AlcoholTransformationRecipe;
 import dev.goren98.brewerydelight.aroma.table.AromaCombinationRecipe;
+import dev.goren98.brewerydelight.crop.AromaSeedRecipe;
 import dev.goren98.brewerydelight.cooking.recipe.BaseCookingRecipe;
 import dev.goren98.brewerydelight.cooking.recipe.DirectAlcoholRecipe;
 import dev.goren98.brewerydelight.cooking.recipe.LiqueurCookingRecipe;
@@ -11,6 +12,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -43,6 +45,9 @@ public final class ModRecipes {
                 @Override public com.mojang.serialization.MapCodec<LiqueurCookingRecipe> codec() { return LiqueurCookingRecipe.CODEC; }
                 @Override public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, LiqueurCookingRecipe> streamCodec() { return LiqueurCookingRecipe.STREAM_CODEC; }
             });
+
+    public static final Supplier<RecipeSerializer<AromaSeedRecipe>> AROMA_SEED_SERIALIZER = RECIPE_SERIALIZERS.register(
+            "aroma_seed", () -> new SimpleCraftingRecipeSerializer<>(AromaSeedRecipe::new));
 
     public static final Supplier<RecipeType<CoreAlcoholRecipe>> CORE_ALCOHOL_TYPE = RECIPE_TYPES.register(
             "core_alcohol", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(BreweryDelight.MOD_ID, "core_alcohol")));
