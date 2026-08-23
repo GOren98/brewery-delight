@@ -22,8 +22,9 @@ public final class ModItems {
     public static final Map<String, Supplier<Item>> SEEDS = new LinkedHashMap<>();
 
     private static void registerCrop(String id) {
-        Supplier<Item> produce = ITEMS.register(id, () -> new AromaProduceItem(new Item.Properties(), id));
-        Supplier<Item> seed = ITEMS.register(id + "_seeds", () -> new AromaSeedItem(ModBlocks.PLANTS.get(id).get(), new Item.Properties(), id));
+        String defaultAroma = id.equals("red_grape") || id.equals("white_grape") ? "grape" : id;
+        Supplier<Item> produce = ITEMS.register(id, () -> new AromaProduceItem(new Item.Properties(), defaultAroma));
+        Supplier<Item> seed = ITEMS.register(id + "_seeds", () -> new AromaSeedItem(ModBlocks.PLANTS.get(id).get(), new Item.Properties(), defaultAroma));
         CROP_ITEMS.put(id, produce); SEEDS.put(id, seed);
     }
     static { ModBlocks.PLANTS.keySet().forEach(ModItems::registerCrop); }
