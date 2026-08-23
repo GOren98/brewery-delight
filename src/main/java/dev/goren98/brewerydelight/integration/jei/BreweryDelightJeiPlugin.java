@@ -22,7 +22,9 @@ public final class BreweryDelightJeiPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
-        registration.addRecipeCategories(new BaseCookingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(
+                new BaseCookingRecipeCategory(registration.getJeiHelpers().getGuiHelper()),
+                new LiqueurCookingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -32,10 +34,13 @@ public final class BreweryDelightJeiPlugin implements IModPlugin {
 
         var recipes = minecraft.level.getRecipeManager().getAllRecipesFor(ModRecipes.BASE_COOKING_TYPE.get());
         registration.addRecipes(BreweryDelightJeiRecipeTypes.BASE_COOKING, recipes);
+        var liqueurs = minecraft.level.getRecipeManager().getAllRecipesFor(ModRecipes.LIQUEUR_COOKING_TYPE.get());
+        registration.addRecipes(BreweryDelightJeiRecipeTypes.LIQUEUR_COOKING, liqueurs);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(ModItems.COOKING_POT_ITEM.get(), BreweryDelightJeiRecipeTypes.BASE_COOKING);
+        registration.addRecipeCatalyst(ModItems.COOKING_POT_ITEM.get(), BreweryDelightJeiRecipeTypes.LIQUEUR_COOKING);
     }
 }
