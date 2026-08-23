@@ -16,6 +16,10 @@ public class AromaProduceItem extends Item {
         this.defaultAroma = defaultAroma;
     }
 
+    public String defaultAroma() {
+        return defaultAroma;
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         String aroma = stack.getOrDefault(ModComponents.CROP_AROMA.get(), defaultAroma);
