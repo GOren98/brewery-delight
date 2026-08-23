@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "grape",
+  "receiver_aroma": "apple",
+  "result_aroma": "fruity",
+  "processing_time": 200
+}
