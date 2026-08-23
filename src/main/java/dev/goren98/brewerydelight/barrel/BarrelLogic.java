@@ -10,8 +10,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class BarrelLogic {
-    // Compatibility only: barrels no longer execute Base -> Brew fermentation in 6-2-4.
-    public static final long FERMENT_MS = 30_000L;
     public static final long BREW_AGE_MS = 10_000L;
     public static final long SPIRIT_AGE_MS = 30_000L;
 
@@ -78,22 +76,8 @@ public final class BarrelLogic {
             changed = true;
         }
 
-        if (stack.is(ModItems.TEST_SPIRIT.get())) {
-            if (!stack.has(ModComponents.STAGE.get())) { stack.set(ModComponents.STAGE.get(), 2); changed = true; }
-            if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), "test"); changed = true; }
-            if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) { stack.set(ModComponents.PRIMARY_LEVEL.get(), 5); changed = true; }
-        } else if (stack.is(ModItems.TEST_LIQUEUR.get())) {
-            if (!stack.has(ModComponents.STAGE.get())) { stack.set(ModComponents.STAGE.get(), 3); changed = true; }
-            if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), "test"); changed = true; }
-            if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) { stack.set(ModComponents.PRIMARY_LEVEL.get(), 1 + level.random.nextInt(5)); changed = true; }
-        } else if (stack.is(ModItems.TEST_BREW.get())) {
-            if (!stack.has(ModComponents.STAGE.get())) { stack.set(ModComponents.STAGE.get(), 1); changed = true; }
-            if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), "test"); changed = true; }
-            if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) { stack.set(ModComponents.PRIMARY_LEVEL.get(), level.random.nextInt(5)); changed = true; }
-        } else {
-            if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), ""); changed = true; }
-            if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) { stack.set(ModComponents.PRIMARY_LEVEL.get(), 0); changed = true; }
-        }
+        if (!stack.has(ModComponents.PRIMARY_AROMA.get())) { stack.set(ModComponents.PRIMARY_AROMA.get(), ""); changed = true; }
+        if (!stack.has(ModComponents.PRIMARY_LEVEL.get())) { stack.set(ModComponents.PRIMARY_LEVEL.get(), 0); changed = true; }
         return changed;
     }
 

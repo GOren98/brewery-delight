@@ -4,7 +4,7 @@ import dev.goren98.brewerydelight.BreweryDelight;
 import dev.goren98.brewerydelight.crop.AromaProduceItem;
 import dev.goren98.brewerydelight.crop.AromaSeedItem;
 import dev.goren98.brewerydelight.item.BaseBottleItem;
-import dev.goren98.brewerydelight.item.TestBrewItem;
+import dev.goren98.brewerydelight.item.AlcoholBottleItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
@@ -37,13 +37,8 @@ public final class ModItems {
 
     public static final Supplier<Item> BASE_BOTTLE = ITEMS.register("base_bottle", () -> new BaseBottleItem(new Item.Properties()));
 
-    public static final Supplier<Item> TEST_BREW = ITEMS.register("test_brew", () -> new TestBrewItem(new Item.Properties(), "test_brew", 0, "Test Brew", "test", 0, 4));
-    public static final Supplier<Item> TEST_SPIRIT = ITEMS.register("test_spirit", () -> new TestBrewItem(new Item.Properties(), "test_spirit", 2, "Test Spirit", "test", 5, 5));
-    public static final Supplier<Item> NEUTRAL_BASE = ITEMS.register("neutral_base", () -> new TestBrewItem(new Item.Properties(), "neutral_base", 0, "Neutral", "", 0, 0));
-    public static final Supplier<Item> NEUTRAL_SPIRIT = ITEMS.register("neutral_spirit", () -> new TestBrewItem(new Item.Properties(), "neutral_spirit", 2, "Neutral Spirit", "", 0, 0));
-    public static final Supplier<Item> TEST_LIQUEUR = ITEMS.register("test_liqueur", () -> new TestBrewItem(new Item.Properties(), "test_liqueur", 3, "Test Liqueur", "test", 1, 5));
-    public static final Supplier<Item> BREW_BOTTLE = ITEMS.register("brew_bottle", () -> new TestBrewItem(new Item.Properties(), "brew", 0, "Brew", "", 0, 4));
-    public static final Supplier<Item> SPIRIT_BOTTLE = ITEMS.register("spirit_bottle", () -> new TestBrewItem(new Item.Properties(), "spirit", 2, "Spirit", "", 0, 0));
-    public static final Supplier<Item> LIQUEUR_BOTTLE = ITEMS.register("liqueur_bottle", () -> new TestBrewItem(new Item.Properties(), "liqueur", 3, "Liqueur", "", 1, 5));
+    public static final Supplier<Item> BREW_BOTTLE = ITEMS.register("brew_bottle", () -> new AlcoholBottleItem(new Item.Properties(), 1, "Brew"));
+    public static final Supplier<Item> SPIRIT_BOTTLE = ITEMS.register("spirit_bottle", () -> new AlcoholBottleItem(new Item.Properties(), 2, "Spirit"));
+    public static final Supplier<Item> LIQUEUR_BOTTLE = ITEMS.register("liqueur_bottle", () -> new AlcoholBottleItem(new Item.Properties(), 3, "Liqueur"));
     private ModItems() {}
 }

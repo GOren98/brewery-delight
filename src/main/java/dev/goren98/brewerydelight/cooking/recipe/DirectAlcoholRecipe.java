@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.goren98.brewerydelight.registry.ModComponents;
+import dev.goren98.brewerydelight.alcohol.AlcoholStackFactory;
 import dev.goren98.brewerydelight.registry.ModItems;
 import dev.goren98.brewerydelight.registry.ModRecipes;
 import net.minecraft.core.HolderLookup;
@@ -62,16 +63,11 @@ public final class DirectAlcoholRecipe implements Recipe<BaseCookingInput> {
         return true;
     }
     @Override public ItemStack assemble(BaseCookingInput input,HolderLookup.Provider registries){
-        ItemStack out=new ItemStack(ModItems.NEUTRAL_SPIRIT.get());
-        out.set(ModComponents.CORE_ALCOHOL_ID.get(),coreAlcoholId); out.set(ModComponents.PRODUCT_ID.get(),coreAlcoholId);
-        out.set(ModComponents.DISPLAY_NAME.get(),displayName); out.set(ModComponents.STAGE.get(),2); out.set(ModComponents.AGE.get(),0);
-        out.set(ModComponents.COLOR.get(),color); out.set(ModComponents.PRIMARY_AROMA.get(),""); out.set(ModComponents.PRIMARY_LEVEL.get(),0);
-        out.set(ModComponents.BARREL_LEVEL.get(),0); out.set(ModComponents.INHERITED_AROMAS.get(),Map.of());
-        out.set(ModComponents.AGING_AROMAS.get(),Map.of()); out.set(ModComponents.BLEND_AROMAS.get(),Map.of());
-        out.set(ModComponents.SEASONING_COUNTED.get(),false); return out;
+        return AlcoholStackFactory.create(ModItems.SPIRIT_BOTTLE.get(), coreAlcoholId, displayName,
+                2, color, "", 0, Map.of());
     }
     @Override public boolean canCraftInDimensions(int w,int h){return w*h>=ingredients.size();}
-    @Override public ItemStack getResultItem(HolderLookup.Provider r){return new ItemStack(ModItems.NEUTRAL_SPIRIT.get());}
+    @Override public ItemStack getResultItem(HolderLookup.Provider r){return new ItemStack(ModItems.SPIRIT_BOTTLE.get());}
     @Override public boolean isSpecial(){return true;} @Override public RecipeSerializer<?> getSerializer(){return ModRecipes.DIRECT_ALCOHOL_SERIALIZER.get();}
     @Override public RecipeType<?> getType(){return ModRecipes.DIRECT_ALCOHOL_TYPE.get();}
 }

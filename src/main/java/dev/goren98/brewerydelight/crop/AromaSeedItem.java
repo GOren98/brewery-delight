@@ -2,6 +2,7 @@ package dev.goren98.brewerydelight.crop;
 
 import dev.goren98.brewerydelight.registry.ModBlocks;
 import dev.goren98.brewerydelight.registry.ModComponents;
+import dev.goren98.brewerydelight.item.AromaText;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -20,7 +21,7 @@ public class AromaSeedItem extends BlockItem {
     public AromaSeedItem(Block block, Properties properties, String defaultAroma) { super(block, properties); this.defaultAroma = defaultAroma; }
 
     @Override public Component getName(ItemStack stack) {
-        if (ModBlocks.TREE_IDS.contains(defaultAroma)) return Component.literal(pretty(defaultAroma) + " Sapling");
+        if (ModBlocks.TREE_IDS.contains(defaultAroma)) return Component.literal(AromaText.pretty(defaultAroma) + " Sapling");
         return super.getName(stack);
     }
     @Override public InteractionResult place(BlockPlaceContext context) {
@@ -36,9 +37,6 @@ public class AromaSeedItem extends BlockItem {
         return result;
     }
     @Override public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("Aroma: " + pretty(stack.getOrDefault(ModComponents.CROP_AROMA.get(), defaultAroma))));
-    }
-    private static String pretty(String value) {
-        StringBuilder out = new StringBuilder(); for (String p : value.split("_")) { if (p.isEmpty()) continue; if (!out.isEmpty()) out.append(' '); out.append(Character.toUpperCase(p.charAt(0))).append(p.substring(1)); } return out.toString();
+        tooltip.add(Component.literal("Aroma: " + AromaText.pretty(stack.getOrDefault(ModComponents.CROP_AROMA.get(), defaultAroma))));
     }
 }
