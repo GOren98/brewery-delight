@@ -45,7 +45,7 @@ public class BrewingStationScreen extends AbstractContainerScreen<BrewingStation
 
     private static void slot(GuiGraphics g, int x, int y) {
         g.fill(x, y, x + 18, y + 18, 0xFF555555);
-        g.fill(x + 1, y + 1, x + 17, y + 17, 0xFFEEEEEE);
+        g.fill(x + 1, y + 1, x + 17, y + 17, 0xFF8B8B8B);
     }
 
     @Override
