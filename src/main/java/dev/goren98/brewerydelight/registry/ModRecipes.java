@@ -2,6 +2,7 @@ package dev.goren98.brewerydelight.registry;
 
 import dev.goren98.brewerydelight.BreweryDelight;
 import dev.goren98.brewerydelight.alcohol.CoreAlcoholRecipe;
+import dev.goren98.brewerydelight.alcohol.AlcoholTransformationRecipe;
 import dev.goren98.brewerydelight.aroma.table.AromaCombinationRecipe;
 import dev.goren98.brewerydelight.cooking.recipe.BaseCookingRecipe;
 import net.minecraft.core.registries.Registries;
@@ -40,6 +41,14 @@ public final class ModRecipes {
             "aroma_combination", () -> new RecipeSerializer<>() {
                 @Override public com.mojang.serialization.MapCodec<AromaCombinationRecipe> codec() { return AromaCombinationRecipe.CODEC; }
                 @Override public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, AromaCombinationRecipe> streamCodec() { return AromaCombinationRecipe.STREAM_CODEC; }
+            });
+
+    public static final Supplier<RecipeType<AlcoholTransformationRecipe>> ALCOHOL_TRANSFORMATION_TYPE = RECIPE_TYPES.register(
+            "alcohol_transformation", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(BreweryDelight.MOD_ID, "alcohol_transformation")));
+    public static final Supplier<RecipeSerializer<AlcoholTransformationRecipe>> ALCOHOL_TRANSFORMATION_SERIALIZER = RECIPE_SERIALIZERS.register(
+            "alcohol_transformation", () -> new RecipeSerializer<>() {
+                @Override public com.mojang.serialization.MapCodec<AlcoholTransformationRecipe> codec() { return AlcoholTransformationRecipe.CODEC; }
+                @Override public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, AlcoholTransformationRecipe> streamCodec() { return AlcoholTransformationRecipe.STREAM_CODEC; }
             });
 
     private ModRecipes() {}

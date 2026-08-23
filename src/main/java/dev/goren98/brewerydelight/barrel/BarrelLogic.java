@@ -1,5 +1,6 @@
 package dev.goren98.brewerydelight.barrel;
 
+import dev.goren98.brewerydelight.alcohol.AlcoholTransformationResolver;
 import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModItems;
 import net.minecraft.server.level.ServerLevel;
@@ -42,6 +43,7 @@ public final class BarrelLogic {
                     stack.set(ModComponents.BARREL_LEVEL.get(), nextAge);
                     changed = true;
                     if (nextAge >= 5) {
+                        AlcoholTransformationResolver.resolve(level, stack);
                         stack.remove(ModComponents.STARTED_AT.get());
                         if (!stack.getOrDefault(ModComponents.SEASONING_COUNTED.get(), false)) {
                             inv.recordFullyAged(stack);

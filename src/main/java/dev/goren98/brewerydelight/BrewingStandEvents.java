@@ -2,6 +2,7 @@ package dev.goren98.brewerydelight;
 
 import dev.goren98.brewerydelight.alcohol.CoreAlcoholInput;
 import dev.goren98.brewerydelight.alcohol.CoreAlcoholRecipe;
+import dev.goren98.brewerydelight.alcohol.AlcoholTransformationResolver;
 import dev.goren98.brewerydelight.item.AromaUtil;
 import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModItems;
@@ -141,7 +142,7 @@ public final class BrewingStandEvents {
             switch (mode) {
                 case DISTILL -> finishDistillation(stand, level);
                 case RECYCLE -> finishRecycling(stand);
-                case BLEND -> finishBlending(stand);
+                case BLEND -> finishBlending(stand, level);
                 case LIQUEUR -> finishLiqueur(stand, level);
                 default -> { }
             }
@@ -226,6 +227,7 @@ public final class BrewingStandEvents {
             Optional<RecipeHolder<CoreAlcoholRecipe>> recipe = findCoreRecipe(base, "spirit", level);
             if (recipe.isPresent()) {
                 ItemStack result = recipe.get().value().assemble(new CoreAlcoholInput(base, "spirit"), level.registryAccess());
+                AlcoholTransformationResolver.resolve(level, result);
                 stand.setItem(slot, result);
             }
         }
@@ -239,14 +241,16 @@ public final class BrewingStandEvents {
         stand.getItem(3).shrink(1);
     }
 
-    private static void finishBlending(BrewingStandBlockEntity stand) {
+    private static void finishBlending(BrewingStandBlockEntity stand, Level level) {
         ItemStack source = stand.getItem(3);
         if (!isBlendSource(source)) return;
         String aroma = source.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
-        int level = source.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
+        int sourceLevel = source.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         for (int slot = 0; slot < 3; slot++) {
             ItemStack target = stand.getItem(slot);
-            if (!target.isEmpty()) AromaUtil.applyBlend(target, aroma, level);
+            if (!target.isEmpty() && AromaUtil.applyBlend(target, aroma, sourceLevel)) {
+                AlcoholTransformationResolver.resolve(level, target);
+            }
         }
         source.shrink(1);
     }
