@@ -113,5 +113,9 @@
   "block.brewerydelight.ginger_crop": "Ginger Crop",
   "item.brewerydelight.nutmeg": "Nutmeg",
   "item.brewerydelight.nutmeg_seeds": "Nutmeg Seeds",
-  "block.brewerydelight.nutmeg_crop": "Nutmeg Crop"
+  "block.brewerydelight.nutmeg_crop": "Nutmeg Crop",
+  "item.brewerydelight.coconut": "Coconut",
+  "item.brewerydelight.coconut_seeds": "Coconut Sapling",
+  "block.brewerydelight.coconut_crop": "Coconut Sapling",
+  "block.brewerydelight.coconut_tree_crop": "Coconut Crop"
 }
