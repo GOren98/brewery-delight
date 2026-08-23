@@ -11,9 +11,12 @@ import java.util.Optional;
 public final class AromaItems {
     public static ItemAromaClass classify(ItemStack stack) {
         if (stack.isEmpty()) return ItemAromaClass.NORMAL_ITEM;
-        if (stack.getItem() instanceof AromaProduceItem || stack.is(Items.HONEYCOMB)) return ItemAromaClass.BREEDABLE_BASE;
+        if (stack.getItem() instanceof AromaProduceItem || stack.is(Items.HONEYCOMB)
+                || stack.is(Items.POTATO) || stack.is(Items.MELON_SLICE) || stack.is(Items.COCOA_BEANS)) {
+            return ItemAromaClass.BREEDABLE_BASE;
+        }
         if (stack.is(Items.APPLE) || stack.is(Items.SUGAR_CANE) || stack.is(Items.EGG)
-                || stack.is(Items.MILK_BUCKET) || stack.is(Items.COCOA_BEANS)) return ItemAromaClass.FIXED_BASE;
+                || stack.is(Items.MILK_BUCKET)) return ItemAromaClass.FIXED_BASE;
         if (stack.has(ModComponents.CROP_AROMA.get())) return ItemAromaClass.AROMA_ONLY;
         return ItemAromaClass.NORMAL_ITEM;
     }
@@ -35,6 +38,8 @@ public final class AromaItems {
         if (stack.is(Items.MILK_BUCKET)) return Optional.of("milk");
         if (stack.is(Items.HONEYCOMB)) return Optional.of("honey");
         if (stack.is(Items.COCOA_BEANS)) return Optional.of("cacao");
+        if (stack.is(Items.POTATO)) return Optional.of("potato");
+        if (stack.is(Items.MELON_SLICE) || stack.is(Items.MELON_SEEDS) || stack.is(Items.MELON)) return Optional.of("melon");
         return Optional.empty();
     }
 
