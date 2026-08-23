@@ -78,9 +78,11 @@ public final class BrewingStandEvents {
     @SubscribeEvent
     public static void registerBrewingContainers(RegisterBrewingRecipesEvent event) {
         registerBottom(event, ModItems.BASE_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
+        registerBottom(event, ModItems.BREW_BOTTLE.get(), ModItems.BREW_BOTTLE.get());
         registerBottom(event, ModItems.SPIRIT_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
         registerBottom(event, ModItems.LIQUEUR_BOTTLE.get(), ModItems.LIQUEUR_BOTTLE.get());
         registerBottom(event, ModItems.NEUTRAL_SPIRIT.get(), ModItems.LIQUEUR_BOTTLE.get());
+        registerTop(event, ModItems.BREW_BOTTLE.get());
         registerTop(event, ModItems.SPIRIT_BOTTLE.get());
         registerTop(event, ModItems.LIQUEUR_BOTTLE.get());
         for (LiqueurRecipe recipe : LIQUEUR_RECIPES) registerTop(event, recipe.ingredient());
