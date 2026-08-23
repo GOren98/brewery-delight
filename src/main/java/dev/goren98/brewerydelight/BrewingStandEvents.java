@@ -73,7 +73,7 @@ public final class BrewingStandEvents {
             tagLiqueur("c:crops/spiceleaf", "aquavit", "Aquavit", "spiced", 14600587)
     );
 
-    private enum Mode { NONE, DISTILL, RECYCLE, BLEND, LIQUEUR }
+    private enum Mode { NONE, DISTILL, RECYCLE, BLEND }
 
     @SubscribeEvent
     public static void registerBrewingContainers(RegisterBrewingRecipesEvent event) {
@@ -81,11 +81,9 @@ public final class BrewingStandEvents {
         registerBottom(event, ModItems.BREW_BOTTLE.get(), ModItems.BREW_BOTTLE.get());
         registerBottom(event, ModItems.SPIRIT_BOTTLE.get(), ModItems.SPIRIT_BOTTLE.get());
         registerBottom(event, ModItems.LIQUEUR_BOTTLE.get(), ModItems.LIQUEUR_BOTTLE.get());
-        registerBottom(event, ModItems.NEUTRAL_SPIRIT.get(), ModItems.LIQUEUR_BOTTLE.get());
         registerTop(event, ModItems.BREW_BOTTLE.get());
         registerTop(event, ModItems.SPIRIT_BOTTLE.get());
         registerTop(event, ModItems.LIQUEUR_BOTTLE.get());
-        for (LiqueurRecipe recipe : LIQUEUR_RECIPES) registerTop(event, recipe.ingredient());
     }
 
     private static void registerBottom(RegisterBrewingRecipesEvent event, Item input, Item output) {
@@ -145,7 +143,6 @@ public final class BrewingStandEvents {
                 case DISTILL -> finishDistillation(stand, level);
                 case RECYCLE -> finishRecycling(stand);
                 case BLEND -> finishBlending(stand, level);
-                case LIQUEUR -> finishLiqueur(stand, level);
                 default -> { }
             }
             stand.setChanged(); PROGRESS.remove(key);
@@ -156,8 +153,6 @@ public final class BrewingStandEvents {
         ItemStack ingredient = stand.getItem(3);
         if (ingredient.is(Items.SUGAR)) return allBottomMatch(stand, BrewingStandEvents::isRecyclableFailedBase) ? Mode.RECYCLE : Mode.NONE;
         if (!ingredient.isEmpty()) {
-            LiqueurRecipe liqueur = findLiqueurRecipe(ingredient);
-            if (liqueur != null) return allBottomMatch(stand, BrewingStandEvents::isNeutralSpirit) ? Mode.LIQUEUR : Mode.NONE;
             return isBlendSource(ingredient) && validBlendTargets(stand, ingredient) ? Mode.BLEND : Mode.NONE;
         }
         return allBottomMatch(stand, stack -> findCoreRecipe(stack, "spirit", level).isPresent()) ? Mode.DISTILL : Mode.NONE;
@@ -191,8 +186,7 @@ public final class BrewingStandEvents {
 
     private static boolean isBlendSource(ItemStack stack) {
         int stage = stack.getOrDefault(ModComponents.STAGE.get(), -1);
-        // Liqueur Primary Aroma rules are defined separately in 6-2-7.
-        if (stage < 1 || stage > 2) return false;
+        if (stage < 1 || stage > 3) return false;
         if (stack.getOrDefault(ModComponents.AGE.get(), 0) != 0) return false;
         if (stack.getOrDefault(ModComponents.BARREL_LEVEL.get(), 0) != 0) return false;
         if (stack.getOrDefault(ModComponents.CORE_ALCOHOL_ID.get(), "").isEmpty()) return false;
@@ -211,7 +205,7 @@ public final class BrewingStandEvents {
             if (target.isEmpty()) continue;
             found = true;
             int stage = target.getOrDefault(ModComponents.STAGE.get(), -1);
-            if (stage < 1 || stage > 2) return false;
+            if (stage < 1 || stage > 3) return false;
             if (target.getOrDefault(ModComponents.AGE.get(), 0) != 5) return false;
             if (!sourceCore.equals(target.getOrDefault(ModComponents.CORE_ALCOHOL_ID.get(), ""))) return false;
             if (!AromaUtil.canApplyBlendFully(target, sourceAroma, sourceLevel)) return false;

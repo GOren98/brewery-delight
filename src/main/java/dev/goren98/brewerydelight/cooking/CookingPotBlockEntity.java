@@ -2,6 +2,9 @@ package dev.goren98.brewerydelight.cooking;
 
 import dev.goren98.brewerydelight.cooking.recipe.BaseCookingInput;
 import dev.goren98.brewerydelight.cooking.recipe.BaseCookingRecipe;
+import dev.goren98.brewerydelight.cooking.recipe.DirectAlcoholRecipe;
+import dev.goren98.brewerydelight.cooking.recipe.LiqueurCookingRecipe;
+import dev.goren98.brewerydelight.alcohol.AlcoholTransformationResolver;
 import dev.goren98.brewerydelight.registry.ModBlockEntities;
 import dev.goren98.brewerydelight.registry.ModItems;
 import dev.goren98.brewerydelight.registry.ModRecipes;
@@ -85,6 +88,26 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
             setChanged(level, pos, state);
         }
 
+        Optional<RecipeHolder<LiqueurCookingRecipe>> liqueur = pot.findLiqueurRecipe(level);
+        Optional<RecipeHolder<DirectAlcoholRecipe>> direct = pot.findDirectRecipe(level);
+        if ((liqueur.isPresent() || direct.isPresent()) && pot.canAcceptDirectOutput()) {
+            int requiredTime = liqueur.map(h -> h.value().cookingTime()).orElseGet(() -> direct.get().value().cookingTime());
+            pot.cookTime = requiredTime;
+            pot.progress++;
+            if (pot.progress >= pot.cookTime) {
+                ItemStack result = liqueur.<ItemStack>map(h -> h.value().assemble(pot.currentInput(), level.registryAccess()))
+                        .orElseGet(() -> direct.get().value().assemble(pot.currentInput(), level.registryAccess()));
+                if (!result.isEmpty()) {
+                    pot.consumeIngredients();
+                    pot.items.set(SLOT_OUTPUT, result);
+                    AlcoholTransformationResolver.resolve(level, result);
+                }
+                pot.progress = 0;
+                setChanged(level, pos, state);
+            }
+            return;
+        }
+
         Optional<RecipeHolder<BaseCookingRecipe>> match = pot.findBaseRecipe(level);
         if (match.isPresent() && pot.items.get(SLOT_MEAL).isEmpty()) {
             BaseCookingRecipe recipe = match.get().value();
@@ -115,6 +138,30 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
         BaseCookingInput input = currentInput();
         if (input.size() == 0) return Optional.empty();
         return level.getRecipeManager().getRecipeFor(ModRecipes.BASE_COOKING_TYPE.get(), input, level);
+    }
+
+    private Optional<RecipeHolder<LiqueurCookingRecipe>> findLiqueurRecipe(Level level) {
+        BaseCookingInput input = currentInput();
+        return level.getRecipeManager().getRecipeFor(ModRecipes.LIQUEUR_COOKING_TYPE.get(), input, level);
+    }
+
+    private Optional<RecipeHolder<DirectAlcoholRecipe>> findDirectRecipe(Level level) {
+        BaseCookingInput input = currentInput();
+        return level.getRecipeManager().getRecipeFor(ModRecipes.DIRECT_ALCOHOL_TYPE.get(), input, level);
+    }
+
+    private boolean canAcceptDirectOutput() {
+        return items.get(SLOT_MEAL).isEmpty() && items.get(SLOT_OUTPUT).isEmpty();
+    }
+
+    private void consumeIngredients() {
+        for (int i = SLOT_INGREDIENT_START; i <= SLOT_INGREDIENT_END; i++) {
+            ItemStack stack = items.get(i);
+            if (stack.isEmpty()) continue;
+            ItemStack remainder = stack.hasCraftingRemainingItem() ? stack.getCraftingRemainingItem() : ItemStack.EMPTY;
+            stack.shrink(1);
+            if (stack.isEmpty() && !remainder.isEmpty()) items.set(i, remainder);
+        }
     }
 
     private void craftBase(BaseCookingRecipe recipe, Level level) {

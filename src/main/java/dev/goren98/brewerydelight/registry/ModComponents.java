@@ -47,6 +47,8 @@ public final class ModComponents {
             () -> DataComponentType.<Integer>builder().persistent(Codec.INT).build());
     public static final Supplier<DataComponentType<Map<String, Integer>>> AGING_AROMAS = COMPONENTS.register("aging_aromas",
             () -> DataComponentType.<Map<String, Integer>>builder().persistent(Codec.unboundedMap(Codec.STRING, Codec.INT)).build());
+    public static final Supplier<DataComponentType<Map<String, Integer>>> INHERITED_AROMAS = COMPONENTS.register("inherited_aromas",
+            () -> DataComponentType.<Map<String, Integer>>builder().persistent(Codec.unboundedMap(Codec.STRING, Codec.INT)).build());
     public static final Supplier<DataComponentType<Map<String, Integer>>> BLEND_AROMAS = COMPONENTS.register("blend_aromas",
             () -> DataComponentType.<Map<String, Integer>>builder().persistent(Codec.unboundedMap(Codec.STRING, Codec.INT)).build());
     public static final Supplier<DataComponentType<Boolean>> SEASONING_COUNTED = COMPONENTS.register("seasoning_counted",

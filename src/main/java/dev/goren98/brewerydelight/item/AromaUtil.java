@@ -10,6 +10,7 @@ import java.util.Map;
 public final class AromaUtil {
     public static final int MAX_SINGLE_AROMA = 10;
     public static final int MAX_TOTAL_AROMA = 20;
+    public static final int MAX_LIQUEUR_TOTAL_AROMA = 25;
     public static final int MAX_BLEND_AROMA = 10;
 
     public static Map<String, Integer> merged(ItemStack stack) {
@@ -18,6 +19,9 @@ public final class AromaUtil {
         String primary = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int primaryLevel = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         mergeCapped(out, primary, primaryLevel);
+
+        Map<String, Integer> inherited = stack.getOrDefault(ModComponents.INHERITED_AROMAS.get(), Map.of());
+        inherited.forEach((aroma, level) -> mergeCapped(out, aroma, level));
 
         if (stack.has(ModComponents.AGING_AROMAS.get())) {
             Map<String, Integer> aging = stack.getOrDefault(ModComponents.AGING_AROMAS.get(), Map.of());
@@ -62,7 +66,7 @@ public final class AromaUtil {
         int currentTotal = total(target);
         int currentAroma = levelOf(target, aroma);
         return Math.max(0, Math.min(sourceLevel,
-                Math.min(MAX_SINGLE_AROMA - currentAroma, MAX_TOTAL_AROMA - currentTotal)));
+                Math.min(MAX_SINGLE_AROMA - currentAroma, maxTotal(target) - currentTotal)));
     }
 
     public static int blendTotal(ItemStack stack) {
@@ -75,7 +79,12 @@ public final class AromaUtil {
         if (aroma == null || aroma.isEmpty() || sourceLevel <= 0) return false;
         return blendTotal(target) + sourceLevel <= MAX_BLEND_AROMA
                 && levelOf(target, aroma) + sourceLevel <= MAX_SINGLE_AROMA
-                && total(target) + sourceLevel <= MAX_TOTAL_AROMA;
+                && total(target) + sourceLevel <= maxTotal(target);
+    }
+
+    public static int maxTotal(ItemStack stack) {
+        return stack.getOrDefault(ModComponents.STAGE.get(), 0) == 3
+                ? MAX_LIQUEUR_TOTAL_AROMA : MAX_TOTAL_AROMA;
     }
 
     public static boolean applyBlend(ItemStack target, String aroma, int sourceLevel) {

@@ -5,6 +5,8 @@ import dev.goren98.brewerydelight.alcohol.CoreAlcoholRecipe;
 import dev.goren98.brewerydelight.alcohol.AlcoholTransformationRecipe;
 import dev.goren98.brewerydelight.aroma.table.AromaCombinationRecipe;
 import dev.goren98.brewerydelight.cooking.recipe.BaseCookingRecipe;
+import dev.goren98.brewerydelight.cooking.recipe.DirectAlcoholRecipe;
+import dev.goren98.brewerydelight.cooking.recipe.LiqueurCookingRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -25,6 +27,21 @@ public final class ModRecipes {
             "base_cooking", () -> new RecipeSerializer<>() {
                 @Override public com.mojang.serialization.MapCodec<BaseCookingRecipe> codec() { return BaseCookingRecipe.CODEC; }
                 @Override public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, BaseCookingRecipe> streamCodec() { return BaseCookingRecipe.STREAM_CODEC; }
+            });
+
+    public static final Supplier<RecipeType<DirectAlcoholRecipe>> DIRECT_ALCOHOL_TYPE = RECIPE_TYPES.register(
+            "direct_alcohol", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(BreweryDelight.MOD_ID, "direct_alcohol")));
+    public static final Supplier<RecipeSerializer<DirectAlcoholRecipe>> DIRECT_ALCOHOL_SERIALIZER = RECIPE_SERIALIZERS.register(
+            "direct_alcohol", () -> new RecipeSerializer<>() {
+                @Override public com.mojang.serialization.MapCodec<DirectAlcoholRecipe> codec() { return DirectAlcoholRecipe.CODEC; }
+                @Override public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, DirectAlcoholRecipe> streamCodec() { return DirectAlcoholRecipe.STREAM_CODEC; }
+            });
+    public static final Supplier<RecipeType<LiqueurCookingRecipe>> LIQUEUR_COOKING_TYPE = RECIPE_TYPES.register(
+            "liqueur_cooking", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(BreweryDelight.MOD_ID, "liqueur_cooking")));
+    public static final Supplier<RecipeSerializer<LiqueurCookingRecipe>> LIQUEUR_COOKING_SERIALIZER = RECIPE_SERIALIZERS.register(
+            "liqueur_cooking", () -> new RecipeSerializer<>() {
+                @Override public com.mojang.serialization.MapCodec<LiqueurCookingRecipe> codec() { return LiqueurCookingRecipe.CODEC; }
+                @Override public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, LiqueurCookingRecipe> streamCodec() { return LiqueurCookingRecipe.STREAM_CODEC; }
             });
 
     public static final Supplier<RecipeType<CoreAlcoholRecipe>> CORE_ALCOHOL_TYPE = RECIPE_TYPES.register(
