@@ -2,6 +2,7 @@ package dev.goren98.brewerydelight.brewing;
 
 import dev.goren98.brewerydelight.alcohol.CoreAlcoholInput;
 import dev.goren98.brewerydelight.alcohol.CoreAlcoholRecipe;
+import dev.goren98.brewerydelight.alcohol.AlcoholTransformationResolver;
 import dev.goren98.brewerydelight.registry.ModBlockEntities;
 import dev.goren98.brewerydelight.registry.ModItems;
 import dev.goren98.brewerydelight.registry.ModRecipes;
@@ -77,6 +78,7 @@ public class BrewingStationBlockEntity extends BaseContainerBlockEntity {
 
         CoreAlcoholRecipe recipe = match.get().value();
         ItemStack result = recipe.assemble(new CoreAlcoholInput(station.items.get(SLOT_INPUT), "brew"), level.registryAccess());
+        AlcoholTransformationResolver.resolve(level, result);
         ItemStack output = station.items.get(SLOT_OUTPUT);
         if (!output.isEmpty() && (!ItemStack.isSameItemSameComponents(output, result) || output.getCount() >= output.getMaxStackSize())) return;
 
