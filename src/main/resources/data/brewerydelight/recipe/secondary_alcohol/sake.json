@@ -1,0 +1,1 @@
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"rice_brew","required_aromas":{},"required_primary_aroma_line":"nuruk","required_aroma_ancestors":{"sake_rice":1},"priority":200,"result":{"product_id":"sake","display_name":"Sake"}}

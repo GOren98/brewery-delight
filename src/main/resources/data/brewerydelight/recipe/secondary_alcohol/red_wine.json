@@ -1,0 +1,1 @@
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"wine","required_aromas":{},"required_primary_aroma_ancestor":"red_grape","priority":100,"result":{"product_id":"red_wine","display_name":"Red Wine"}}

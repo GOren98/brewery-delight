@@ -34,6 +34,14 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
             AROMAS_CODEC.fieldOf("required_aromas").forGetter(AlcoholTransformationRecipe::requiredAromas),
             AROMAS_CODEC.optionalFieldOf("required_ingredient_families", Map.of())
                     .forGetter(AlcoholTransformationRecipe::requiredIngredientFamilies),
+            Codec.STRING.optionalFieldOf("required_primary_aroma", "")
+                    .forGetter(AlcoholTransformationRecipe::requiredPrimaryAroma),
+            Codec.STRING.optionalFieldOf("required_primary_aroma_ancestor", "")
+                    .forGetter(AlcoholTransformationRecipe::requiredPrimaryAromaAncestor),
+            Codec.STRING.optionalFieldOf("required_primary_aroma_line", "")
+                    .forGetter(AlcoholTransformationRecipe::requiredPrimaryAromaLine),
+            AROMAS_CODEC.optionalFieldOf("required_aroma_ancestors", Map.of())
+                    .forGetter(AlcoholTransformationRecipe::requiredAromaAncestors),
             Codec.INT.optionalFieldOf("priority", 0).forGetter(AlcoholTransformationRecipe::priority),
             Result.CODEC.fieldOf("result").forGetter(AlcoholTransformationRecipe::result)
     ).apply(instance, AlcoholTransformationRecipe::new));
@@ -52,8 +60,17 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
             for (int i = 0; i < familyCount; i++) {
                 families.put(ByteBufCodecs.STRING_UTF8.decode(buf), buf.readVarInt());
             }
+            String primaryAroma = ByteBufCodecs.STRING_UTF8.decode(buf);
+            String primaryAncestor = ByteBufCodecs.STRING_UTF8.decode(buf);
+            String primaryLine = ByteBufCodecs.STRING_UTF8.decode(buf);
+            int ancestorCount = buf.readVarInt();
+            Map<String, Integer> ancestors = new LinkedHashMap<>();
+            for (int i = 0; i < ancestorCount; i++) {
+                ancestors.put(ByteBufCodecs.STRING_UTF8.decode(buf), buf.readVarInt());
+            }
             int priority = buf.readVarInt();
-            return new AlcoholTransformationRecipe(coreAlcoholId, aromas, families, priority, Result.STREAM_CODEC.decode(buf));
+            return new AlcoholTransformationRecipe(coreAlcoholId, aromas, families, primaryAroma,
+                    primaryAncestor, primaryLine, ancestors, priority, Result.STREAM_CODEC.decode(buf));
         }
 
         @Override
@@ -69,6 +86,14 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
                 ByteBufCodecs.STRING_UTF8.encode(buf, family);
                 buf.writeVarInt(level);
             });
+            ByteBufCodecs.STRING_UTF8.encode(buf, recipe.requiredPrimaryAroma);
+            ByteBufCodecs.STRING_UTF8.encode(buf, recipe.requiredPrimaryAromaAncestor);
+            ByteBufCodecs.STRING_UTF8.encode(buf, recipe.requiredPrimaryAromaLine);
+            buf.writeVarInt(recipe.requiredAromaAncestors.size());
+            recipe.requiredAromaAncestors.forEach((ancestor, level) -> {
+                ByteBufCodecs.STRING_UTF8.encode(buf, ancestor);
+                buf.writeVarInt(level);
+            });
             buf.writeVarInt(recipe.priority);
             Result.STREAM_CODEC.encode(buf, recipe.result);
         }
@@ -77,14 +102,24 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
     private final String coreAlcoholId;
     private final Map<String, Integer> requiredAromas;
     private final Map<String, Integer> requiredIngredientFamilies;
+    private final String requiredPrimaryAroma;
+    private final String requiredPrimaryAromaAncestor;
+    private final String requiredPrimaryAromaLine;
+    private final Map<String, Integer> requiredAromaAncestors;
     private final int priority;
     private final Result result;
 
     public AlcoholTransformationRecipe(String coreAlcoholId, Map<String, Integer> requiredAromas,
-                                       Map<String, Integer> requiredIngredientFamilies, int priority, Result result) {
+                                       Map<String, Integer> requiredIngredientFamilies, String requiredPrimaryAroma,
+                                       String requiredPrimaryAromaAncestor, String requiredPrimaryAromaLine,
+                                       Map<String, Integer> requiredAromaAncestors, int priority, Result result) {
         this.coreAlcoholId = coreAlcoholId;
         this.requiredAromas = Map.copyOf(requiredAromas);
         this.requiredIngredientFamilies = Map.copyOf(requiredIngredientFamilies);
+        this.requiredPrimaryAroma = requiredPrimaryAroma;
+        this.requiredPrimaryAromaAncestor = requiredPrimaryAromaAncestor;
+        this.requiredPrimaryAromaLine = requiredPrimaryAromaLine;
+        this.requiredAromaAncestors = Map.copyOf(requiredAromaAncestors);
         this.priority = priority;
         this.result = result;
     }
@@ -92,6 +127,10 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
     public String coreAlcoholId() { return coreAlcoholId; }
     public Map<String, Integer> requiredAromas() { return requiredAromas; }
     public Map<String, Integer> requiredIngredientFamilies() { return requiredIngredientFamilies; }
+    public String requiredPrimaryAroma() { return requiredPrimaryAroma; }
+    public String requiredPrimaryAromaAncestor() { return requiredPrimaryAromaAncestor; }
+    public String requiredPrimaryAromaLine() { return requiredPrimaryAromaLine; }
+    public Map<String, Integer> requiredAromaAncestors() { return requiredAromaAncestors; }
     public int priority() { return priority; }
     public Result result() { return result; }
 
@@ -99,9 +138,20 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
     public boolean matches(SingleRecipeInput input, Level level) {
         ItemStack stack = input.item();
         if (!coreAlcoholId.equals(stack.getOrDefault(ModComponents.CORE_ALCOHOL_ID.get(), ""))) return false;
+        String primaryAroma = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
+        if (!requiredPrimaryAroma.isBlank() && !requiredPrimaryAroma.equals(primaryAroma)) return false;
+        if (!requiredPrimaryAromaAncestor.isBlank()
+                && !AromaDefinitions.isSelfOrDescendantOf(primaryAroma, requiredPrimaryAromaAncestor)) return false;
+        if (!requiredPrimaryAromaLine.isBlank()
+                && !requiredPrimaryAromaLine.equals(AromaDefinitions.line(primaryAroma))) return false;
         Map<String, Integer> aromas = AromaUtil.merged(stack);
         if (!requiredAromas.entrySet().stream().allMatch(entry ->
                 entry.getValue() > 0 && aromas.getOrDefault(entry.getKey(), 0) >= entry.getValue())) return false;
+
+        if (!requiredAromaAncestors.entrySet().stream().allMatch(entry -> entry.getValue() > 0
+                && aromas.entrySet().stream()
+                .filter(aroma -> AromaDefinitions.isSelfOrDescendantOf(aroma.getKey(), entry.getKey()))
+                .mapToInt(Map.Entry::getValue).sum() >= entry.getValue())) return false;
 
         Map<String, Integer> familyLevels = new LinkedHashMap<>();
         aromas.forEach((aroma, aromaLevel) -> {

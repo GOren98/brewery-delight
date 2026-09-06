@@ -1,0 +1,1 @@
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"herbal_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"anise","required_aroma_ancestors":{"wormwood":1,"fennel":1},"priority":200,"result":{"product_id":"absinthe","display_name":"Absinthe"}}

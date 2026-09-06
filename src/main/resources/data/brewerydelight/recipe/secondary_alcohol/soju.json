@@ -1,0 +1,1 @@
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"rice_spirit","required_aromas":{},"required_primary_aroma_ancestor":"korean_brewing_rice","priority":100,"result":{"product_id":"soju","display_name":"Soju"}}

@@ -1,0 +1,1 @@
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"banana","priority":100,"result":{"product_id":"banana_liqueur","display_name":"Banana Liqueur"}}

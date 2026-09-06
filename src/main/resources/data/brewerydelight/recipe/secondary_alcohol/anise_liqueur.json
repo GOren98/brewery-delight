@@ -1,0 +1,1 @@
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"herbal_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"anise","priority":100,"result":{"product_id":"anise_liqueur","display_name":"Anise Liqueur"}}

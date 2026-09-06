@@ -1,0 +1,1 @@
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"mango","priority":100,"result":{"product_id":"mango_liqueur","display_name":"Mango Liqueur"}}

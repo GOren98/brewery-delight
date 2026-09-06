@@ -9,10 +9,12 @@ import dev.goren98.brewerydelight.BreweryDelight;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Immutable-at-runtime Aroma metadata registry. Definitions are read from the bundled JSON once
@@ -72,6 +74,15 @@ public final class AromaDefinitions {
             if (!definition.parent().isBlank() && !definitions.containsKey(definition.parent())) {
                 throw new IllegalStateException("Aroma " + definition.id() + " has unknown parent " + definition.parent());
             }
+            Set<String> visited = new HashSet<>();
+            String current = definition.id();
+            while (!current.isBlank()) {
+                if (!visited.add(current)) {
+                    throw new IllegalStateException("Cyclic Aroma parent chain containing " + current);
+                }
+                AromaDefinition currentDefinition = definitions.get(current);
+                current = currentDefinition == null ? "" : currentDefinition.parent();
+            }
         }
     }
 
@@ -112,6 +123,24 @@ public final class AromaDefinitions {
     public static String ingredientFamily(String aromaId) {
         AromaDefinition definition = aromaId == null ? null : DEFINITIONS.get(aromaId);
         return definition == null ? "" : definition.ingredientFamily();
+    }
+
+    public static String line(String aromaId) {
+        AromaDefinition definition = aromaId == null ? null : DEFINITIONS.get(aromaId);
+        return definition == null ? "" : definition.line();
+    }
+
+    /** Returns true when aromaId is the requested ancestor or one of its descendants. */
+    public static boolean isSelfOrDescendantOf(String aromaId, String ancestorId) {
+        if (aromaId == null || aromaId.isBlank() || ancestorId == null || ancestorId.isBlank()) return false;
+        Set<String> visited = new HashSet<>();
+        String current = aromaId;
+        while (!current.isBlank() && visited.add(current)) {
+            if (ancestorId.equals(current)) return true;
+            AromaDefinition definition = DEFINITIONS.get(current);
+            current = definition == null ? "" : definition.parent();
+        }
+        return false;
     }
 
     private AromaDefinitions() {}
