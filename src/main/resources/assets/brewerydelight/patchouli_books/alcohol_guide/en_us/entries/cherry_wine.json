@@ -1,0 +1,14 @@
+{
+  "name": "Cherry Wine",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Cherry Wine",
+      "kind": "Secondary Brew",
+      "core": "Fruit Wine",
+      "conditions": "Primary Aroma lineage: Cherry"
+    }
+  ]
+}

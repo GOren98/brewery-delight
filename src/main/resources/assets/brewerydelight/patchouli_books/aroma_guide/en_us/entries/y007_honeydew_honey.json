@@ -1,0 +1,15 @@
+{
+  "name": "Honeydew Honey",
+  "category": "brewerydelight:honey",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Honeydew Honey",
+      "left": "Herbal",
+      "right": "Honey",
+      "ingredient": "Honeycomb",
+      "time": "200"
+    }
+  ]
+}

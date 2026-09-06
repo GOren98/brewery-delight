@@ -1,0 +1,15 @@
+{
+  "name": "Fuggle",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Fuggle",
+      "left": "Earthy",
+      "right": "British Hops",
+      "ingredient": "Hops",
+      "time": "200"
+    }
+  ]
+}

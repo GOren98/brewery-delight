@@ -1,0 +1,15 @@
+{
+  "name": "Thyme",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Thyme",
+      "left": "Pungent",
+      "right": "Herb",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

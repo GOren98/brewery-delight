@@ -1,0 +1,15 @@
+{
+  "name": "Aromatic Botanical",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Aromatic Botanical",
+      "left": "Botanical",
+      "right": "Floral",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

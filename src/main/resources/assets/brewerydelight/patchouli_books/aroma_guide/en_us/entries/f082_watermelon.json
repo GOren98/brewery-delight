@@ -1,0 +1,15 @@
+{
+  "name": "Watermelon",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Watermelon",
+      "left": "Fresh",
+      "right": "Melon",
+      "ingredient": "Melon Slice",
+      "time": "200"
+    }
+  ]
+}

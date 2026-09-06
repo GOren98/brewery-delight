@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_wine","required_aromas":{},"required_primary_aroma_ancestor":"peach","priority":100,"result":{"product_id":"peach_wine","display_name":"Peach Wine"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_wine","required_aromas":{},"required_primary_aroma_ancestor":"peach","priority":100,"result":{"product_id":"peach_wine","display_name":"Peach Wine","color":16030346}}

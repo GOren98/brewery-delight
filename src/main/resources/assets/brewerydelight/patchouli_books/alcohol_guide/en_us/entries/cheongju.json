@@ -1,0 +1,14 @@
+{
+  "name": "Cheongju",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Cheongju",
+      "kind": "Secondary Brew",
+      "core": "Rice Brew",
+      "conditions": "Primary Aroma line: Nuruk"
+    }
+  ]
+}

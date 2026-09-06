@@ -1,0 +1,15 @@
+{
+  "name": "Gew\u00fcrztraminer",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Gew\u00fcrztraminer",
+      "left": "Floral",
+      "right": "White Grape",
+      "ingredient": "White Grape",
+      "time": "200"
+    }
+  ]
+}

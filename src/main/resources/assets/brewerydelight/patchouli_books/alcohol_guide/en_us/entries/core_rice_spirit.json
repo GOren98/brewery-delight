@@ -1,0 +1,15 @@
+{
+  "name": "Rice Spirit",
+  "category": "brewerydelight:spirit",
+  "icon": "brewerydelight:spirit_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Rice Spirit",
+      "kind": "Core Spirit",
+      "core": "Rice Spirit",
+      "conditions": "Rice Brew Base \u00d71"
+    }
+  ]
+}

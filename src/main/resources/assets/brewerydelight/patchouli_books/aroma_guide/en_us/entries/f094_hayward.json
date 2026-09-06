@@ -1,0 +1,15 @@
+{
+  "name": "Hayward",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Hayward",
+      "left": "Fresh",
+      "right": "Green Kiwi",
+      "ingredient": "Kiwi",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Asian Pear",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Asian Pear",
+      "left": "Crisp",
+      "right": "Pear",
+      "ingredient": "Pear",
+      "time": "200"
+    }
+  ]
+}

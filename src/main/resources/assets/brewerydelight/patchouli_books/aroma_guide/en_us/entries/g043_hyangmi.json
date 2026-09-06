@@ -1,0 +1,15 @@
+{
+  "name": "Hyangmi",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Hyangmi",
+      "left": "Fragrant",
+      "right": "Aromatic Rice",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

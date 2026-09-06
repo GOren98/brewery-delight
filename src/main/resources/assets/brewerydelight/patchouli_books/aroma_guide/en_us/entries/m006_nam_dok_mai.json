@@ -1,0 +1,15 @@
+{
+  "name": "Nam Dok Mai",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Nam Dok Mai",
+      "left": "Fresh",
+      "right": "Floral Mango",
+      "ingredient": "Mango",
+      "time": "200"
+    }
+  ]
+}

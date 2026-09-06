@@ -1,0 +1,15 @@
+{
+  "name": "Mexican Lime",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Mexican Lime",
+      "left": "Herbal",
+      "right": "Lime",
+      "ingredient": "Lime",
+      "time": "200"
+    }
+  ]
+}

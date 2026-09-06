@@ -1,0 +1,15 @@
+{
+  "name": "Fresh Ginger",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Fresh Ginger",
+      "left": "Fresh",
+      "right": "Ginger",
+      "ingredient": "Ginger",
+      "time": "200"
+    }
+  ]
+}

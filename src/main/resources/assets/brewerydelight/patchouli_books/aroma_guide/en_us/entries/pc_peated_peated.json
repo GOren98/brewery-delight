@@ -1,0 +1,15 @@
+{
+  "name": "Peated",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Peated",
+      "left": "Smoked",
+      "right": "Potato",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

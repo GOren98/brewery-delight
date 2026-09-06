@@ -1,0 +1,15 @@
+{
+  "name": "Cider",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Cider",
+      "kind": "Core Brew",
+      "core": "Cider",
+      "conditions": "Water Bottle \u00d71$(br)Apple \u00d74$(br2)Primary Aroma: inherited from the apples"
+    }
+  ]
+}

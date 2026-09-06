@@ -1,0 +1,15 @@
+{
+  "name": "Orange Sweet Potato",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Orange Sweet Potato",
+      "left": "Sweet",
+      "right": "Sweet Potato",
+      "ingredient": "Sweet Potato",
+      "time": "200"
+    }
+  ]
+}

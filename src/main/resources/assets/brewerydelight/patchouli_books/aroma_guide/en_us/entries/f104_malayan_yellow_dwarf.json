@@ -1,0 +1,15 @@
+{
+  "name": "Malayan Yellow Dwarf",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Malayan Yellow Dwarf",
+      "left": "Fresh",
+      "right": "Dwarf Coconut",
+      "ingredient": "Coconut",
+      "time": "200"
+    }
+  ]
+}

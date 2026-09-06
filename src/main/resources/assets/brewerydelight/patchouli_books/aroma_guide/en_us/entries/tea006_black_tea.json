@@ -1,0 +1,15 @@
+{
+  "name": "Black Tea",
+  "category": "brewerydelight:tea",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Black Tea",
+      "left": "Fully Oxidized",
+      "right": "Processed Tea",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

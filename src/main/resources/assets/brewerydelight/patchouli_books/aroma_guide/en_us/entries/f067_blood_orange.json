@@ -1,0 +1,15 @@
+{
+  "name": "Blood Orange",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Blood Orange",
+      "left": "Berry",
+      "right": "Orange",
+      "ingredient": "Orange",
+      "time": "200"
+    }
+  ]
+}

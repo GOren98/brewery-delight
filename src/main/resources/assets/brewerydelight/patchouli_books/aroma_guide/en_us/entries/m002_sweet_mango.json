@@ -1,0 +1,15 @@
+{
+  "name": "Sweet Mango",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Sweet Mango",
+      "left": "Sweet",
+      "right": "Mango",
+      "ingredient": "Mango",
+      "time": "200"
+    }
+  ]
+}

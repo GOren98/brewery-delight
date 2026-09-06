@@ -1,0 +1,15 @@
+{
+  "name": "Kilned",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Kilned",
+      "left": "Dry",
+      "right": "Wheat",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

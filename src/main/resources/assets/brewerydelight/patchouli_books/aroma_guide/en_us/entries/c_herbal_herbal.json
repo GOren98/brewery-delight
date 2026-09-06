@@ -1,0 +1,15 @@
+{
+  "name": "Herbal",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Herbal",
+      "left": "Hops",
+      "right": "Ginger",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

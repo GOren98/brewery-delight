@@ -1,0 +1,15 @@
+{
+  "name": "Green Kiwi",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Green Kiwi",
+      "left": "Tart",
+      "right": "Kiwi",
+      "ingredient": "Kiwi",
+      "time": "200"
+    }
+  ]
+}

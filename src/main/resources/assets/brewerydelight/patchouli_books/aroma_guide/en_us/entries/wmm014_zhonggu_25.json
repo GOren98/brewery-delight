@@ -1,0 +1,15 @@
+{
+  "name": "Zhonggu 25",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Zhonggu 25",
+      "left": "Fresh",
+      "right": "Foxtail Millet",
+      "ingredient": "Millet",
+      "time": "200"
+    }
+  ]
+}

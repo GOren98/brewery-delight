@@ -1,0 +1,15 @@
+{
+  "name": "Navel Orange",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Navel Orange",
+      "left": "Fresh",
+      "right": "Orange",
+      "ingredient": "Orange",
+      "time": "200"
+    }
+  ]
+}

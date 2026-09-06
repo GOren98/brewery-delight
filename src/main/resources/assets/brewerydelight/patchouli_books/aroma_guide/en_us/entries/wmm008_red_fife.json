@@ -1,0 +1,15 @@
+{
+  "name": "Red Fife",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Red Fife",
+      "left": "Robust",
+      "right": "Heritage Red Wheat",
+      "ingredient": "Wheat",
+      "time": "200"
+    }
+  ]
+}

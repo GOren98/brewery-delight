@@ -1,0 +1,15 @@
+{
+  "name": "Pine Nuruk",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Pine Nuruk",
+      "left": "Resinous",
+      "right": "Nuruk",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

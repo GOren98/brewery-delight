@@ -1,0 +1,14 @@
+{
+  "name": "Ale",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Ale",
+      "kind": "Secondary Brew",
+      "core": "Beer",
+      "conditions": "Primary Aroma lineage: Barley"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Full Pint",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Full Pint",
+      "left": "Soft",
+      "right": "Ale Barley",
+      "ingredient": "Barley",
+      "time": "200"
+    }
+  ]
+}

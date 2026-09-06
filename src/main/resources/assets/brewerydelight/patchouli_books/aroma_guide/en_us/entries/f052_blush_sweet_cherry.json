@@ -1,0 +1,15 @@
+{
+  "name": "Blush Sweet Cherry",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Blush Sweet Cherry",
+      "left": "Floral",
+      "right": "Cherry",
+      "ingredient": "Cherry",
+      "time": "200"
+    }
+  ]
+}

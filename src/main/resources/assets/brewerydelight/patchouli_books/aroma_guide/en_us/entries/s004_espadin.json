@@ -1,0 +1,15 @@
+{
+  "name": "Espad\u00edn",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Espad\u00edn",
+      "left": "Herbal",
+      "right": "Mezcal Agave",
+      "ingredient": "Agave",
+      "time": "200"
+    }
+  ]
+}

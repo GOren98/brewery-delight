@@ -1,0 +1,15 @@
+{
+  "name": "Turkey Red",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Turkey Red",
+      "left": "Earthy",
+      "right": "Heritage Red Wheat",
+      "ingredient": "Wheat",
+      "time": "200"
+    }
+  ]
+}

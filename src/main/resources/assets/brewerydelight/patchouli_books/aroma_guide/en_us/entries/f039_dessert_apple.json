@@ -1,0 +1,15 @@
+{
+  "name": "Dessert Apple",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Dessert Apple",
+      "left": "Sweet",
+      "right": "Apple",
+      "ingredient": "Apple",
+      "time": "200"
+    }
+  ]
+}

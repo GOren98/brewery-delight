@@ -1,0 +1,15 @@
+{
+  "name": "Improved Meyer",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Improved Meyer",
+      "left": "Zesty",
+      "right": "Hybrid Lemon",
+      "ingredient": "Lemon",
+      "time": "200"
+    }
+  ]
+}

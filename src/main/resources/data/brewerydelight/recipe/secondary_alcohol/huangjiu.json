@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"rice_brew","required_aromas":{},"required_primary_aroma":"whole_grain_nuruk","priority":300,"result":{"product_id":"huangjiu","display_name":"Huangjiu"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"rice_brew","required_aromas":{},"required_primary_aroma":"whole_grain_nuruk","priority":300,"result":{"product_id":"huangjiu","display_name":"Huangjiu","color":12024107}}

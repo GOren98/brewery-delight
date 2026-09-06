@@ -1,0 +1,15 @@
+{
+  "name": "Lemon Balm",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Lemon Balm",
+      "left": "Citrus",
+      "right": "Herb",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

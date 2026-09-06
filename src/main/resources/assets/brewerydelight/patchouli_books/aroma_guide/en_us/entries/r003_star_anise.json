@@ -1,0 +1,15 @@
+{
+  "name": "Star Anise",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Star Anise",
+      "left": "Herbal",
+      "right": "Anise Spice",
+      "ingredient": "Anise",
+      "time": "200"
+    }
+  ]
+}

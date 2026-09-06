@@ -1,0 +1,15 @@
+{
+  "name": "Gr\u00fcner Veltliner",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Gr\u00fcner Veltliner",
+      "left": "Peppery",
+      "right": "White Grape",
+      "ingredient": "White Grape",
+      "time": "200"
+    }
+  ]
+}

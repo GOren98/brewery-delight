@@ -1,0 +1,15 @@
+{
+  "name": "Processed Tea",
+  "category": "brewerydelight:tea",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Processed Tea",
+      "left": "Prepared",
+      "right": "Tea",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

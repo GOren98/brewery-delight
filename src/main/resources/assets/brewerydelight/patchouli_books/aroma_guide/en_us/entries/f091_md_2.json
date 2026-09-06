@@ -1,0 +1,15 @@
+{
+  "name": "MD-2",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "MD-2",
+      "left": "Lively",
+      "right": "Hybrid Pineapple",
+      "ingredient": "Pineapple",
+      "time": "200"
+    }
+  ]
+}

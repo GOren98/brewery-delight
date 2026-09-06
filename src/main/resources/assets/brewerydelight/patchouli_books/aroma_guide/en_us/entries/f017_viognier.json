@@ -1,0 +1,15 @@
+{
+  "name": "Viognier",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Viognier",
+      "left": "Ripe",
+      "right": "White Grape",
+      "ingredient": "White Grape",
+      "time": "200"
+    }
+  ]
+}

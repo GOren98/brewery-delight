@@ -38,7 +38,7 @@ public class AromaSeedItem extends BlockItem {
     }
     @Override public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         String aroma = stack.getOrDefault(ModComponents.CROP_AROMA.get(), defaultAroma);
-        tooltip.add(Component.literal("Aroma: " + AromaText.displayName(aroma)));
+        tooltip.add(AromaText.aromaLine("Aroma: ", aroma, ""));
         String family = AromaText.ingredientFamily(aroma);
         if (!family.isBlank()) tooltip.add(Component.literal("Ingredient: " + family));
     }

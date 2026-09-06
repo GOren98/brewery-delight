@@ -1,0 +1,15 @@
+{
+  "name": "Tepeztate",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Tepeztate",
+      "left": "Lively",
+      "right": "Mezcal Agave",
+      "ingredient": "Agave",
+      "time": "200"
+    }
+  ]
+}

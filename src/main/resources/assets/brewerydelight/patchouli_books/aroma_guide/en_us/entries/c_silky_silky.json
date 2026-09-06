@@ -1,0 +1,15 @@
+{
+  "name": "Silky",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Silky",
+      "left": "Soft",
+      "right": "Creamy",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

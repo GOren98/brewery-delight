@@ -1,0 +1,15 @@
+{
+  "name": "Blakeney Red",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Blakeney Red",
+      "left": "Tart",
+      "right": "Perry Pear",
+      "ingredient": "Pear",
+      "time": "200"
+    }
+  ]
+}

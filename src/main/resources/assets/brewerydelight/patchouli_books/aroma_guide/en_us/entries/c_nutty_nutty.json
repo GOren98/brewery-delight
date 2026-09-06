@@ -1,0 +1,15 @@
+{
+  "name": "Nutty",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Nutty",
+      "left": "Almond",
+      "right": "Walnut",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

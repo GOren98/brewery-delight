@@ -1,0 +1,15 @@
+{
+  "name": "Rosemary",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Rosemary",
+      "left": "Camphorous",
+      "right": "Herb",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Bearss",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Bearss",
+      "left": "Crisp",
+      "right": "Persian Lime",
+      "ingredient": "Lime",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Smooth Cayenne",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Smooth Cayenne",
+      "left": "Fresh",
+      "right": "Cayenne Pineapple",
+      "ingredient": "Pineapple",
+      "time": "200"
+    }
+  ]
+}

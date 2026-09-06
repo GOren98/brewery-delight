@@ -1,0 +1,15 @@
+{
+  "name": "Syrah",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Syrah",
+      "left": "Bold",
+      "right": "Red Grape",
+      "ingredient": "Red Grape",
+      "time": "200"
+    }
+  ]
+}

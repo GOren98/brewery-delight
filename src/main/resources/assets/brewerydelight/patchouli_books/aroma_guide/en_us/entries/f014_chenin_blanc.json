@@ -1,0 +1,15 @@
+{
+  "name": "Chenin Blanc",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Chenin Blanc",
+      "left": "Tart",
+      "right": "White Grape",
+      "ingredient": "White Grape",
+      "time": "200"
+    }
+  ]
+}

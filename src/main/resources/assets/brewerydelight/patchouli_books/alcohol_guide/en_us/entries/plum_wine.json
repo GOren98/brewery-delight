@@ -1,0 +1,14 @@
+{
+  "name": "Plum Wine",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Plum Wine",
+      "kind": "Secondary Brew",
+      "core": "Fruit Wine",
+      "conditions": "Primary Aroma lineage: Plum"
+    }
+  ]
+}

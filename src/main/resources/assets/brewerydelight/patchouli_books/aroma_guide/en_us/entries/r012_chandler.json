@@ -1,0 +1,15 @@
+{
+  "name": "Chandler",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Chandler",
+      "left": "Crisp",
+      "right": "California Walnut",
+      "ingredient": "Walnut",
+      "time": "200"
+    }
+  ]
+}

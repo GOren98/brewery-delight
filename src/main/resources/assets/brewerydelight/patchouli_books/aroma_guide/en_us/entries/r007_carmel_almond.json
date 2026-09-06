@@ -1,0 +1,15 @@
+{
+  "name": "Carmel",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Carmel",
+      "left": "Creamy",
+      "right": "California Almond",
+      "ingredient": "Almond",
+      "time": "200"
+    }
+  ]
+}

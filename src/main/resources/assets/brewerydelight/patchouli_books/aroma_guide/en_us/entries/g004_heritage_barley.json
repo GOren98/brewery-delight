@@ -1,0 +1,15 @@
+{
+  "name": "Heritage Barley",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Heritage Barley",
+      "left": "Earthy",
+      "right": "Barley",
+      "ingredient": "Barley",
+      "time": "200"
+    }
+  ]
+}

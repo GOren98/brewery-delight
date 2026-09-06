@@ -1,0 +1,14 @@
+{
+  "name": "Sake",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Sake",
+      "kind": "Secondary Brew",
+      "core": "Rice Brew",
+      "conditions": "Primary Aroma line: Nuruk$(br)Additional Aroma lineage: Sake Rice 1+"
+    }
+  ]
+}

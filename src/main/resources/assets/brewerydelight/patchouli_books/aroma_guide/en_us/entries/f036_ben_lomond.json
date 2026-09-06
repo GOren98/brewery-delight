@@ -1,0 +1,15 @@
+{
+  "name": "Ben Lomond",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Ben Lomond",
+      "left": "Herbal",
+      "right": "Blackcurrant",
+      "ingredient": "Berry",
+      "time": "200"
+    }
+  ]
+}

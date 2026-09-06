@@ -1,0 +1,15 @@
+{
+  "name": "Rich Mango",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Rich Mango",
+      "left": "Rich",
+      "right": "Mango",
+      "ingredient": "Mango",
+      "time": "200"
+    }
+  ]
+}

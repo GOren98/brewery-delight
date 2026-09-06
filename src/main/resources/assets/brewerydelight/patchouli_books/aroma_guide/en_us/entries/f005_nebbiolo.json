@@ -1,0 +1,15 @@
+{
+  "name": "Nebbiolo",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Nebbiolo",
+      "left": "Earthy",
+      "right": "Red Grape",
+      "ingredient": "Red Grape",
+      "time": "200"
+    }
+  ]
+}

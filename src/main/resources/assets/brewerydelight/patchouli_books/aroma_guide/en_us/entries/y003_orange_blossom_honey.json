@@ -1,0 +1,15 @@
+{
+  "name": "Orange Blossom Honey",
+  "category": "brewerydelight:honey",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Orange Blossom Honey",
+      "left": "Citrus",
+      "right": "Honey",
+      "ingredient": "Honeycomb",
+      "time": "200"
+    }
+  ]
+}

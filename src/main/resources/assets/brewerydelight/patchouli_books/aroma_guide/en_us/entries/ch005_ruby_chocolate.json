@@ -1,0 +1,15 @@
+{
+  "name": "Ruby Chocolate",
+  "category": "brewerydelight:chocolate",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Ruby Chocolate",
+      "left": "Fruity",
+      "right": "Chocolate",
+      "ingredient": "Cocoa Beans",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Anise Liqueur",
+  "category": "brewerydelight:liqueur",
+  "icon": "brewerydelight:liqueur_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Anise Liqueur",
+      "kind": "Secondary Liqueur",
+      "core": "Herbal Liqueur",
+      "conditions": "Primary Aroma lineage: Anise"
+    }
+  ]
+}

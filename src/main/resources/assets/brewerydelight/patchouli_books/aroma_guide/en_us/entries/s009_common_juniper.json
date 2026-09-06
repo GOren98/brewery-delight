@@ -1,0 +1,15 @@
+{
+  "name": "Common Juniper",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Common Juniper",
+      "left": "Structured",
+      "right": "European Juniper",
+      "ingredient": "Juniper",
+      "time": "200"
+    }
+  ]
+}

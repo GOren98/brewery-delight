@@ -1,0 +1,14 @@
+{
+  "name": "Cacao Liqueur",
+  "category": "brewerydelight:liqueur",
+  "icon": "brewerydelight:liqueur_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Cacao Liqueur",
+      "kind": "Secondary Liqueur",
+      "core": "Nut Liqueur",
+      "conditions": "Primary Aroma lineage: Cacao"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Rum",
+  "category": "brewerydelight:spirit",
+  "icon": "brewerydelight:spirit_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Rum",
+      "kind": "Core Spirit",
+      "core": "Rum",
+      "conditions": "Water Bottle \u00d71$(br)Sugar Cane \u00d74"
+    }
+  ]
+}

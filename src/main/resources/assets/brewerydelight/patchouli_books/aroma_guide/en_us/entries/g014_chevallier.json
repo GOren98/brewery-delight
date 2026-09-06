@@ -1,0 +1,15 @@
+{
+  "name": "Chevallier",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Chevallier",
+      "left": "Rich",
+      "right": "Heritage Barley",
+      "ingredient": "Barley",
+      "time": "200"
+    }
+  ]
+}

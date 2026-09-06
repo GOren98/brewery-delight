@@ -1,0 +1,15 @@
+{
+  "name": "Green Tea",
+  "category": "brewerydelight:tea",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Green Tea",
+      "left": "Fixed",
+      "right": "Processed Tea",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

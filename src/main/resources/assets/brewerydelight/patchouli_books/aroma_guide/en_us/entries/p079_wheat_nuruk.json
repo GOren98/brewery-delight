@@ -1,0 +1,15 @@
+{
+  "name": "Wheat Nuruk",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Wheat Nuruk",
+      "left": "Wheat",
+      "right": "Nuruk",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

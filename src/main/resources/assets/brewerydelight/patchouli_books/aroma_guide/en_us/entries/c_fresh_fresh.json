@@ -1,0 +1,15 @@
+{
+  "name": "Fresh",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Fresh",
+      "left": "Lemon",
+      "right": "Apple",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

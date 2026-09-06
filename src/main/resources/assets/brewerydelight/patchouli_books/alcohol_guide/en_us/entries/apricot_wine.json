@@ -1,0 +1,14 @@
+{
+  "name": "Apricot Wine",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Apricot Wine",
+      "kind": "Secondary Brew",
+      "core": "Fruit Wine",
+      "conditions": "Primary Aroma lineage: Apricot"
+    }
+  ]
+}

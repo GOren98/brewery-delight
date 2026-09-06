@@ -1,0 +1,15 @@
+{
+  "name": "Whole-grain Nuruk",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Whole-grain Nuruk",
+      "left": "Earthy",
+      "right": "Nuruk",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

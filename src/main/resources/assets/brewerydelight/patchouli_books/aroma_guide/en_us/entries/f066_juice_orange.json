@@ -1,0 +1,15 @@
+{
+  "name": "Juice Orange",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Juice Orange",
+      "left": "Fruity",
+      "right": "Orange",
+      "ingredient": "Orange",
+      "time": "200"
+    }
+  ]
+}

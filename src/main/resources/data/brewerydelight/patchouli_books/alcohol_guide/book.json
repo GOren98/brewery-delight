@@ -1,0 +1,14 @@
+{
+  "name": "Alcohol Codex",
+  "landing_text": "Core alcohol recipes and the Aroma conditions used to classify secondary alcohol styles.",
+  "book_texture": "patchouli:textures/gui/book_brown.png",
+  "model": "patchouli:book_brown",
+  "header_color": "7A431D",
+  "nameplate_color": "D9A441",
+  "version": "1",
+  "subtitle": "Brewery Delight",
+  "creative_tab": "ingredients",
+  "use_resource_pack": true,
+  "show_progress": false,
+  "i18n": false
+}

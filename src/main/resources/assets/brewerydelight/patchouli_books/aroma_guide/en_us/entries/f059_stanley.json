@@ -1,0 +1,15 @@
+{
+  "name": "Stanley",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Stanley",
+      "left": "Rich",
+      "right": "European Plum",
+      "ingredient": "Plum",
+      "time": "200"
+    }
+  ]
+}

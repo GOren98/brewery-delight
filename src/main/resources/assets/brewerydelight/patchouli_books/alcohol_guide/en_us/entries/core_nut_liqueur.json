@@ -1,0 +1,15 @@
+{
+  "name": "Nut Liqueur",
+  "category": "brewerydelight:liqueur",
+  "icon": "brewerydelight:liqueur_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Nut Liqueur",
+      "kind": "Core Liqueur",
+      "core": "Nut Liqueur",
+      "conditions": "Spirit \u00d71$(br)Almond, Walnut, Coffee or Cacao \u00d74$(br2)All four ingredients must match"
+    }
+  ]
+}

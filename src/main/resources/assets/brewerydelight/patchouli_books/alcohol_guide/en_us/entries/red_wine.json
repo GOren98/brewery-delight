@@ -1,0 +1,14 @@
+{
+  "name": "Red Wine",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Red Wine",
+      "kind": "Secondary Brew",
+      "core": "Wine",
+      "conditions": "Primary Aroma lineage: Red Grape"
+    }
+  ]
+}

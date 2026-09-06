@@ -1,0 +1,15 @@
+{
+  "name": "Tempranillo",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Tempranillo",
+      "left": "Ripe",
+      "right": "Red Grape",
+      "ingredient": "Red Grape",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Dark Tea",
+  "category": "brewerydelight:tea",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Dark Tea",
+      "left": "Post-Fermented",
+      "right": "Processed Tea",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Dark Sweet Cherry",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Dark Sweet Cherry",
+      "left": "Rich",
+      "right": "Cherry",
+      "ingredient": "Cherry",
+      "time": "200"
+    }
+  ]
+}

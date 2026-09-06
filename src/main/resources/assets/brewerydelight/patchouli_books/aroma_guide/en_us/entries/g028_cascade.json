@@ -1,0 +1,15 @@
+{
+  "name": "Cascade",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Cascade",
+      "left": "Vibrant",
+      "right": "New World Hops",
+      "ingredient": "Hops",
+      "time": "200"
+    }
+  ]
+}

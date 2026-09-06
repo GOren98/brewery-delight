@@ -1,0 +1,14 @@
+{
+  "name": "Soju",
+  "category": "brewerydelight:spirit",
+  "icon": "brewerydelight:spirit_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Soju",
+      "kind": "Secondary Spirit",
+      "core": "Rice Spirit",
+      "conditions": "Primary Aroma lineage: Korean Brewing Rice"
+    }
+  ]
+}

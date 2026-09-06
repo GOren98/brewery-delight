@@ -1,0 +1,15 @@
+{
+  "name": "Anise Spice",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Anise Spice",
+      "left": "Aniseed",
+      "right": "Anise",
+      "ingredient": "Anise",
+      "time": "200"
+    }
+  ]
+}

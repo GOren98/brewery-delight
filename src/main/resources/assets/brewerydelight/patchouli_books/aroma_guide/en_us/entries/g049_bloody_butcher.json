@@ -1,0 +1,15 @@
+{
+  "name": "Bloody Butcher",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Bloody Butcher",
+      "left": "Robust",
+      "right": "Heritage Corn",
+      "ingredient": "Corn",
+      "time": "200"
+    }
+  ]
+}

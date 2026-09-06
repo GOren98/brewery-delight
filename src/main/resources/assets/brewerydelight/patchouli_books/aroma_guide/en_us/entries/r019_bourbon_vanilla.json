@@ -1,0 +1,15 @@
+{
+  "name": "Bourbon Vanilla",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Bourbon Vanilla",
+      "left": "Silky",
+      "right": "Classic Vanilla",
+      "ingredient": "Vanilla",
+      "time": "200"
+    }
+  ]
+}

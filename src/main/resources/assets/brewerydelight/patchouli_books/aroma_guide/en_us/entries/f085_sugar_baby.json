@@ -1,0 +1,15 @@
+{
+  "name": "Sugar Baby",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Sugar Baby",
+      "left": "Sweet",
+      "right": "Watermelon",
+      "ingredient": "Melon Slice",
+      "time": "200"
+    }
+  ]
+}

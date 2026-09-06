@@ -1,0 +1,15 @@
+{
+  "name": "Mint",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Mint",
+      "left": "Cooling",
+      "right": "Herb",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

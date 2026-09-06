@@ -1,0 +1,15 @@
+{
+  "name": "Fixed",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Fixed",
+      "left": "Fresh",
+      "right": "Tea",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

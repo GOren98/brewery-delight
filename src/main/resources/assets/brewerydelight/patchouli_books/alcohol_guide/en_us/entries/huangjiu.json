@@ -1,0 +1,14 @@
+{
+  "name": "Huangjiu",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Huangjiu",
+      "kind": "Secondary Brew",
+      "core": "Rice Brew",
+      "conditions": "Primary Aroma: Whole-grain Nuruk"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Persian Lime",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Persian Lime",
+      "left": "Fresh",
+      "right": "Lime",
+      "ingredient": "Lime",
+      "time": "200"
+    }
+  ]
+}

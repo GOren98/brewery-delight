@@ -1,0 +1,15 @@
+{
+  "name": "Beer",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Beer",
+      "kind": "Core Brew",
+      "core": "Beer",
+      "conditions": "Water Bottle \u00d71$(br)Barley \u00d72$(br)Hops \u00d72"
+    }
+  ]
+}

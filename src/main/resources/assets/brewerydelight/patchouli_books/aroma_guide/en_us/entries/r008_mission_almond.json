@@ -1,0 +1,15 @@
+{
+  "name": "Mission",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Mission",
+      "left": "Rich",
+      "right": "California Almond",
+      "ingredient": "Almond",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Maran",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Maran",
+      "left": "Dry",
+      "right": "Pungent Ginger",
+      "ingredient": "Ginger",
+      "time": "200"
+    }
+  ]
+}

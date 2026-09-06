@@ -1,0 +1,15 @@
+{
+  "name": "Caramelized",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Caramelized",
+      "left": "Sweet",
+      "right": "Cacao",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

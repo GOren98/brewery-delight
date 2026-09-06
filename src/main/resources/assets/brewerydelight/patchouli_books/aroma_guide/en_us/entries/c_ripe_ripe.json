@@ -1,0 +1,15 @@
+{
+  "name": "Ripe",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Ripe",
+      "left": "Banana",
+      "right": "Mango",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

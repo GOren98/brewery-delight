@@ -1,0 +1,15 @@
+{
+  "name": "Berry Note",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Berry Note",
+      "left": "Grape",
+      "right": "Cherry",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

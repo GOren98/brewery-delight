@@ -1,0 +1,15 @@
+{
+  "name": "Ceylon Cinnamon",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Ceylon Cinnamon",
+      "left": "Elegant",
+      "right": "True Cinnamon",
+      "ingredient": "Cinnamon",
+      "time": "200"
+    }
+  ]
+}

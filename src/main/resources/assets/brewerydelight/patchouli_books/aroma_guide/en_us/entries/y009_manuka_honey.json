@@ -1,0 +1,15 @@
+{
+  "name": "M\u0101nuka Honey",
+  "category": "brewerydelight:honey",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "M\u0101nuka Honey",
+      "left": "Robust",
+      "right": "Honey",
+      "ingredient": "Honeycomb",
+      "time": "200"
+    }
+  ]
+}

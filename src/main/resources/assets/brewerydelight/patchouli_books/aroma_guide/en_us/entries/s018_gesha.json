@@ -1,0 +1,15 @@
+{
+  "name": "Gesha",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Gesha",
+      "left": "Elegant",
+      "right": "Arabica Coffee",
+      "ingredient": "Coffee",
+      "time": "200"
+    }
+  ]
+}

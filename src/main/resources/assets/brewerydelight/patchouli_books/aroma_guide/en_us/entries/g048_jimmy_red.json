@@ -1,0 +1,15 @@
+{
+  "name": "Jimmy Red",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Jimmy Red",
+      "left": "Nutty",
+      "right": "Heritage Corn",
+      "ingredient": "Corn",
+      "time": "200"
+    }
+  ]
+}

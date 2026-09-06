@@ -1,0 +1,15 @@
+{
+  "name": "Arabica Coffee",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Arabica Coffee",
+      "left": "Floral",
+      "right": "Coffee",
+      "ingredient": "Coffee",
+      "time": "200"
+    }
+  ]
+}

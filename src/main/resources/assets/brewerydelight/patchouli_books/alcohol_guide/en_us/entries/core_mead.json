@@ -1,0 +1,15 @@
+{
+  "name": "Mead",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Mead",
+      "kind": "Core Brew",
+      "core": "Mead",
+      "conditions": "Water Bottle \u00d71$(br)Honeycomb \u00d74"
+    }
+  ]
+}

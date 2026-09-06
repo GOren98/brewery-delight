@@ -1,0 +1,15 @@
+{
+  "name": "Matina",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Matina",
+      "left": "Earthy",
+      "right": "Traditional Cacao",
+      "ingredient": "Cocoa Beans",
+      "time": "200"
+    }
+  ]
+}

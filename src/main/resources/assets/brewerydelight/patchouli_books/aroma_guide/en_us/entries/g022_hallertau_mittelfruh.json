@@ -1,0 +1,15 @@
+{
+  "name": "Hallertau Mittelfr\u00fch",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Hallertau Mittelfr\u00fch",
+      "left": "Elegant",
+      "right": "Noble Hops",
+      "ingredient": "Hops",
+      "time": "200"
+    }
+  ]
+}

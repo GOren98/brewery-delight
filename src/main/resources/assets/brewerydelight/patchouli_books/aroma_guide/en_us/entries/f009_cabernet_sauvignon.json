@@ -1,0 +1,15 @@
+{
+  "name": "Cabernet Sauvignon",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Cabernet Sauvignon",
+      "left": "Structured",
+      "right": "Red Grape",
+      "ingredient": "Red Grape",
+      "time": "200"
+    }
+  ]
+}

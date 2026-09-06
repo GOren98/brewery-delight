@@ -1,0 +1,15 @@
+{
+  "name": "Hakuho",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Hakuho",
+      "left": "Elegant",
+      "right": "White Peach",
+      "ingredient": "Peach",
+      "time": "200"
+    }
+  ]
+}

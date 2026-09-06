@@ -1,0 +1,15 @@
+{
+  "name": "Japanese Plum",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Japanese Plum",
+      "left": "Fruity",
+      "right": "Plum",
+      "ingredient": "Plum",
+      "time": "200"
+    }
+  ]
+}

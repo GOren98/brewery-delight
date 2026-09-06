@@ -1,0 +1,15 @@
+{
+  "name": "Pungent Ginger",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Pungent Ginger",
+      "left": "Pungent",
+      "right": "Ginger",
+      "ingredient": "Ginger",
+      "time": "200"
+    }
+  ]
+}

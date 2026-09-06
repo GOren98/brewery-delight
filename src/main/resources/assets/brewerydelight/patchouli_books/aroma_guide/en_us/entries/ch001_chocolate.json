@@ -1,0 +1,15 @@
+{
+  "name": "Chocolate",
+  "category": "brewerydelight:chocolate",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Chocolate",
+      "left": "Roasted",
+      "right": "Cacao",
+      "ingredient": "Cocoa Beans",
+      "time": "200"
+    }
+  ]
+}

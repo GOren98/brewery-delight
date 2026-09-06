@@ -1,0 +1,15 @@
+{
+  "name": "Dark Chocolate",
+  "category": "brewerydelight:chocolate",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Dark Chocolate",
+      "left": "Bitter",
+      "right": "Chocolate",
+      "ingredient": "Cocoa Beans",
+      "time": "200"
+    }
+  ]
+}

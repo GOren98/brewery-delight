@@ -1,0 +1,15 @@
+{
+  "name": "Fruit Wine",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Fruit Wine",
+      "kind": "Core Brew",
+      "core": "Fruit Wine",
+      "conditions": "Water Bottle \u00d71$(br)Pear, Cherry, Plum, Apricot, Peach or Berry \u00d74$(br2)All four fruits must match"
+    }
+  ]
+}

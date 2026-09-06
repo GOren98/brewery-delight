@@ -1,0 +1,14 @@
+{
+  "name": "Orange Liqueur",
+  "category": "brewerydelight:liqueur",
+  "icon": "brewerydelight:liqueur_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Orange Liqueur",
+      "kind": "Secondary Liqueur",
+      "core": "Citrus Liqueur",
+      "conditions": "Primary Aroma lineage: Orange"
+    }
+  ]
+}

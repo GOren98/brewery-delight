@@ -1,0 +1,15 @@
+{
+  "name": "Yellow Dent Corn",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Yellow Dent Corn",
+      "left": "Sweet",
+      "right": "Corn",
+      "ingredient": "Corn",
+      "time": "200"
+    }
+  ]
+}

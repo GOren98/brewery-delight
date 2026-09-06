@@ -1,0 +1,15 @@
+{
+  "name": "Vodka",
+  "category": "brewerydelight:spirit",
+  "icon": "brewerydelight:spirit_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Vodka",
+      "kind": "Core Spirit",
+      "core": "Vodka",
+      "conditions": "Water Bottle \u00d71$(br)Potato \u00d74"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Conilon",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Conilon",
+      "left": "Earthy",
+      "right": "Robusta Coffee",
+      "ingredient": "Coffee",
+      "time": "200"
+    }
+  ]
+}

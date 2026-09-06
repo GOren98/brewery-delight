@@ -1,0 +1,15 @@
+{
+  "name": "Heritage Corn",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Heritage Corn",
+      "left": "Earthy",
+      "right": "Corn",
+      "ingredient": "Corn",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Stone Fruit",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Stone Fruit",
+      "left": "Cherry",
+      "right": "Plum",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Miyama Nishiki",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Miyama Nishiki",
+      "left": "Fresh",
+      "right": "Sake Rice",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

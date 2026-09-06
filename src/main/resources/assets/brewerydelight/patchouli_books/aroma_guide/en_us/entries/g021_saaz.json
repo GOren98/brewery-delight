@@ -1,0 +1,15 @@
+{
+  "name": "Saaz",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Saaz",
+      "left": "Delicate",
+      "right": "Noble Hops",
+      "ingredient": "Hops",
+      "time": "200"
+    }
+  ]
+}

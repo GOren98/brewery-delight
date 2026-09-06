@@ -1,0 +1,15 @@
+{
+  "name": "Hybrid Lemon",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Hybrid Lemon",
+      "left": "Sweet",
+      "right": "Lemon",
+      "ingredient": "Lemon",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Processing Aromas",
+  "description": "Processing traits used to create malt, nuruk, tea and other ingredients.",
+  "icon": "minecraft:blast_furnace",
+  "sortnum": 6
+}

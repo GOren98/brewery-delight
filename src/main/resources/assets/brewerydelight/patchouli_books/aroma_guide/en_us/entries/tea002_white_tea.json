@@ -1,0 +1,15 @@
+{
+  "name": "White Tea",
+  "category": "brewerydelight:tea",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "White Tea",
+      "left": "Withered",
+      "right": "Processed Tea",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_wine","required_aromas":{},"required_primary_aroma_ancestor":"plum","priority":100,"result":{"product_id":"plum_wine","display_name":"Plum Wine"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_wine","required_aromas":{},"required_primary_aroma_ancestor":"plum","priority":100,"result":{"product_id":"plum_wine","display_name":"Plum Wine","color":7746920}}

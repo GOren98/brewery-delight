@@ -1,0 +1,15 @@
+{
+  "name": "Meeker",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Meeker",
+      "left": "Ripe",
+      "right": "Raspberry",
+      "ingredient": "Berry",
+      "time": "200"
+    }
+  ]
+}

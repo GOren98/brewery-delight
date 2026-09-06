@@ -1,0 +1,15 @@
+{
+  "name": "Bittersharp Apple",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Bittersharp Apple",
+      "left": "Tart",
+      "right": "Apple",
+      "ingredient": "Apple",
+      "time": "200"
+    }
+  ]
+}

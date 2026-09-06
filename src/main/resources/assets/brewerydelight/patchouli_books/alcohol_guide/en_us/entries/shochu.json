@@ -1,0 +1,14 @@
+{
+  "name": "Shochu",
+  "category": "brewerydelight:spirit",
+  "icon": "brewerydelight:spirit_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Shochu",
+      "kind": "Secondary Spirit",
+      "core": "Rice Spirit",
+      "conditions": "Primary Aroma line: Nuruk$(br)Additional Aroma lineage: Sake Rice 1+"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Herbal Liqueur",
+  "category": "brewerydelight:liqueur",
+  "icon": "brewerydelight:liqueur_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Herbal Liqueur",
+      "kind": "Core Liqueur",
+      "core": "Herbal Liqueur",
+      "conditions": "Spirit \u00d71$(br)Herb or Anise \u00d74$(br2)All four ingredients must match"
+    }
+  ]
+}

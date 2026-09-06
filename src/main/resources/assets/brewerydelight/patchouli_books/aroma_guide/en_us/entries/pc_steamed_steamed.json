@@ -1,0 +1,15 @@
+{
+  "name": "Steamed",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Steamed",
+      "left": "Creamy",
+      "right": "Rice",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

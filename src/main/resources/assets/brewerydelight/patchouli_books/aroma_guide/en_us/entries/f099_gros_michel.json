@@ -1,0 +1,15 @@
+{
+  "name": "Gros Michel",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Gros Michel",
+      "left": "Mellow",
+      "right": "Heritage Banana",
+      "ingredient": "Banana",
+      "time": "200"
+    }
+  ]
+}

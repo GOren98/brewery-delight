@@ -1,0 +1,15 @@
+{
+  "name": "West African Tall",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "West African Tall",
+      "left": "Nutty",
+      "right": "Tall Coconut",
+      "ingredient": "Coconut",
+      "time": "200"
+    }
+  ]
+}

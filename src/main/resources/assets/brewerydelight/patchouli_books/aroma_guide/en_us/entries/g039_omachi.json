@@ -1,0 +1,15 @@
+{
+  "name": "Omachi",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Omachi",
+      "left": "Robust",
+      "right": "Sake Rice",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

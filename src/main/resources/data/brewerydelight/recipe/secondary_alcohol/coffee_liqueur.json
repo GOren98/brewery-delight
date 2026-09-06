@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"nut_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"coffee","priority":100,"result":{"product_id":"coffee_liqueur","display_name":"Coffee Liqueur"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"nut_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"coffee","priority":100,"result":{"product_id":"coffee_liqueur","display_name":"Coffee Liqueur","color":5912613}}

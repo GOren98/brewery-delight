@@ -1,0 +1,15 @@
+{
+  "name": "Mediterranean Almond",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Mediterranean Almond",
+      "left": "Floral",
+      "right": "Almond",
+      "ingredient": "Almond",
+      "time": "200"
+    }
+  ]
+}

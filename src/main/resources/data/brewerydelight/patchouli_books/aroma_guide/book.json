@@ -1,0 +1,14 @@
+{
+  "name": "Aroma Codex",
+  "landing_text": "A complete guide to Aroma Table combinations. Recipes are directional: the left Aroma is consumed and the right Aroma belongs to the receiver item.",
+  "book_texture": "patchouli:textures/gui/book_green.png",
+  "model": "patchouli:book_green",
+  "header_color": "2E6B3A",
+  "nameplate_color": "55AA55",
+  "version": "1",
+  "subtitle": "Brewery Delight",
+  "creative_tab": "ingredients",
+  "use_resource_pack": true,
+  "show_progress": false,
+  "i18n": false
+}

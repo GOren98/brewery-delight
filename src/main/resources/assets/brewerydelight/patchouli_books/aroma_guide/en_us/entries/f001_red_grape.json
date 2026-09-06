@@ -1,0 +1,15 @@
+{
+  "name": "Red Grape",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Red Grape",
+      "left": "Berry",
+      "right": "Grape",
+      "ingredient": "Red Grape",
+      "time": "200"
+    }
+  ]
+}

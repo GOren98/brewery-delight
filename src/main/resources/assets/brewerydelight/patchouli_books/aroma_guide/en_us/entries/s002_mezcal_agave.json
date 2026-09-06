@@ -1,0 +1,15 @@
+{
+  "name": "Mezcal Agave",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Mezcal Agave",
+      "left": "Earthy",
+      "right": "Agave",
+      "ingredient": "Agave",
+      "time": "200"
+    }
+  ]
+}

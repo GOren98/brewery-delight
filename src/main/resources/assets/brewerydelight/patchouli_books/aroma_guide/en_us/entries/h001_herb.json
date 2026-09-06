@@ -1,0 +1,15 @@
+{
+  "name": "Herb",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Herb",
+      "left": "Herbal",
+      "right": "Tea",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

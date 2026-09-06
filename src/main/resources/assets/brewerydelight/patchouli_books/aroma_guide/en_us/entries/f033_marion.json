@@ -1,0 +1,15 @@
+{
+  "name": "Marion",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Marion",
+      "left": "Rich",
+      "right": "Blackberry",
+      "ingredient": "Berry",
+      "time": "200"
+    }
+  ]
+}

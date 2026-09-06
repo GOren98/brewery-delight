@@ -1,0 +1,14 @@
+{
+  "name": "Absinthe",
+  "category": "brewerydelight:liqueur",
+  "icon": "brewerydelight:liqueur_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Absinthe",
+      "kind": "Secondary Liqueur",
+      "core": "Herbal Liqueur",
+      "conditions": "Primary Aroma lineage: Anise$(br)Additional Aroma lineage: Wormwood 1+$(br)Additional Aroma lineage: Fennel 1+"
+    }
+  ]
+}

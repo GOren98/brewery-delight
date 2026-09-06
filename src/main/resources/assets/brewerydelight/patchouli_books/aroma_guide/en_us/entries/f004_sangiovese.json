@@ -1,0 +1,15 @@
+{
+  "name": "Sangiovese",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Sangiovese",
+      "left": "Tart",
+      "right": "Red Grape",
+      "ingredient": "Red Grape",
+      "time": "200"
+    }
+  ]
+}

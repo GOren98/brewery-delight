@@ -1,0 +1,15 @@
+{
+  "name": "European Pear",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "European Pear",
+      "left": "Soft",
+      "right": "Pear",
+      "ingredient": "Pear",
+      "time": "200"
+    }
+  ]
+}

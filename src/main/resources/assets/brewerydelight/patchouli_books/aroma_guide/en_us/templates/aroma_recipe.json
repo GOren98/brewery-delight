@@ -1,0 +1,60 @@
+{
+  "components": [
+    {
+      "type": "patchouli:header",
+      "text": "#result",
+      "x": -1,
+      "y": -1
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Left Aroma$()",
+      "x": 8,
+      "y": 28,
+      "color": "555555"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "#left",
+      "x": 8,
+      "y": 40,
+      "max_width": 90
+    },
+    {
+      "type": "patchouli:text",
+      "text": "+",
+      "x": 53,
+      "y": 58,
+      "color": "777777"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Right Aroma$()",
+      "x": 8,
+      "y": 75,
+      "color": "555555"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "#right",
+      "x": 8,
+      "y": 87,
+      "max_width": 90
+    },
+    {
+      "type": "patchouli:text",
+      "text": "\u2192  #result",
+      "x": 8,
+      "y": 108,
+      "color": "2E6B3A",
+      "max_width": 95
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Right Ingredient$()$(br)#ingredient$(br2)Processing: #time ticks",
+      "x": 8,
+      "y": 126,
+      "max_width": 100
+    }
+  ]
+}

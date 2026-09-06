@@ -1,0 +1,15 @@
+{
+  "name": "White Chocolate",
+  "category": "brewerydelight:chocolate",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "White Chocolate",
+      "left": "Creamy",
+      "right": "Chocolate",
+      "ingredient": "Cocoa Beans",
+      "time": "200"
+    }
+  ]
+}

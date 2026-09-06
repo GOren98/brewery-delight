@@ -1,0 +1,15 @@
+{
+  "name": "Anthus",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Anthus",
+      "left": "Crisp",
+      "right": "Malting Wheat",
+      "ingredient": "Wheat",
+      "time": "200"
+    }
+  ]
+}

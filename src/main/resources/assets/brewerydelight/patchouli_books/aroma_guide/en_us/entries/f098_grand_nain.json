@@ -1,0 +1,15 @@
+{
+  "name": "Grand Nain",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Grand Nain",
+      "left": "Ripe",
+      "right": "Cavendish Banana",
+      "ingredient": "Banana",
+      "time": "200"
+    }
+  ]
+}

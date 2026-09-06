@@ -1,0 +1,15 @@
+{
+  "name": "Mellow",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Mellow",
+      "left": "Soft",
+      "right": "Ripe",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

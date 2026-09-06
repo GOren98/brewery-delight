@@ -1,0 +1,15 @@
+{
+  "name": "Yellowed",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Yellowed",
+      "left": "Sweet",
+      "right": "Tea",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

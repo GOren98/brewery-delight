@@ -1,0 +1,15 @@
+{
+  "name": "Korean Wheat",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Korean Wheat",
+      "left": "Fresh",
+      "right": "Wheat",
+      "ingredient": "Wheat",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Herbal Nuruk",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Herbal Nuruk",
+      "left": "Herbal Cultured",
+      "right": "Nuruk",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

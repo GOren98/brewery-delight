@@ -1,0 +1,15 @@
+{
+  "name": "Lavender Honey",
+  "category": "brewerydelight:honey",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Lavender Honey",
+      "left": "Floral",
+      "right": "Honey",
+      "ingredient": "Honeycomb",
+      "time": "200"
+    }
+  ]
+}

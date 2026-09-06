@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_wine","required_aromas":{},"required_primary_aroma_ancestor":"pear","priority":100,"result":{"product_id":"perry","display_name":"Perry"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_wine","required_aromas":{},"required_primary_aroma_ancestor":"pear","priority":100,"result":{"product_id":"perry","display_name":"Perry","color":13095791}}

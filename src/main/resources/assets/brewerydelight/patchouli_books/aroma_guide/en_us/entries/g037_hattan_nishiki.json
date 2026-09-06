@@ -1,0 +1,15 @@
+{
+  "name": "Hattan Nishiki",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Hattan Nishiki",
+      "left": "Dry",
+      "right": "Sake Rice",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

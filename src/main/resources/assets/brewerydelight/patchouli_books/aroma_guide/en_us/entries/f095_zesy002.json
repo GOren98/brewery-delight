@@ -1,0 +1,15 @@
+{
+  "name": "Zesy002",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Zesy002",
+      "left": "Lively",
+      "right": "Gold Kiwi",
+      "ingredient": "Kiwi",
+      "time": "200"
+    }
+  ]
+}

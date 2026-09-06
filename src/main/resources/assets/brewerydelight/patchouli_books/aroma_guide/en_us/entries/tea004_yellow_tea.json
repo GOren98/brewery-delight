@@ -1,0 +1,15 @@
+{
+  "name": "Yellow Tea",
+  "category": "brewerydelight:tea",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Yellow Tea",
+      "left": "Yellowed",
+      "right": "Processed Tea",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

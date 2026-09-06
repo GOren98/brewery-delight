@@ -1,0 +1,14 @@
+{
+  "name": "Melon Liqueur",
+  "category": "brewerydelight:liqueur",
+  "icon": "brewerydelight:liqueur_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Melon Liqueur",
+      "kind": "Secondary Liqueur",
+      "core": "Fruit Liqueur",
+      "conditions": "Primary Aroma lineage: Melon"
+    }
+  ]
+}

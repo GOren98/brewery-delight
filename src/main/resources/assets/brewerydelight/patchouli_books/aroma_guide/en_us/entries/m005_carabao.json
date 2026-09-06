@@ -1,0 +1,15 @@
+{
+  "name": "Carabao",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Carabao",
+      "left": "Ripe",
+      "right": "Sweet Mango",
+      "ingredient": "Mango",
+      "time": "200"
+    }
+  ]
+}

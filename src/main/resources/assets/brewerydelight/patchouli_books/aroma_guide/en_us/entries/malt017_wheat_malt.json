@@ -1,0 +1,15 @@
+{
+  "name": "Wheat Malt",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Wheat Malt",
+      "left": "Wheat",
+      "right": "Malt",
+      "ingredient": "Barley",
+      "time": "200"
+    }
+  ]
+}

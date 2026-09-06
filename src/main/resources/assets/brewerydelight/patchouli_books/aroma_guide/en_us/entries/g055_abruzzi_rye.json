@@ -1,0 +1,15 @@
+{
+  "name": "Abruzzi Rye",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Abruzzi Rye",
+      "left": "Robust",
+      "right": "Heritage Rye",
+      "ingredient": "Rye",
+      "time": "200"
+    }
+  ]
+}

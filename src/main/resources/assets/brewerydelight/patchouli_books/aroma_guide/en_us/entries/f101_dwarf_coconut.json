@@ -1,0 +1,15 @@
+{
+  "name": "Dwarf Coconut",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Dwarf Coconut",
+      "left": "Sweet",
+      "right": "Coconut",
+      "ingredient": "Coconut",
+      "time": "200"
+    }
+  ]
+}

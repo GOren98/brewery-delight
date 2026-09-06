@@ -1,0 +1,15 @@
+{
+  "name": "Powdery",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Powdery",
+      "left": "Vanilla",
+      "right": "Rice",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

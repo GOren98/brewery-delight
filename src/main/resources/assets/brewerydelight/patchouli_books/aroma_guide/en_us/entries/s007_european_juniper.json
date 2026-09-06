@@ -1,0 +1,15 @@
+{
+  "name": "European Juniper",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "European Juniper",
+      "left": "Fresh",
+      "right": "Juniper Berry",
+      "ingredient": "Juniper",
+      "time": "200"
+    }
+  ]
+}

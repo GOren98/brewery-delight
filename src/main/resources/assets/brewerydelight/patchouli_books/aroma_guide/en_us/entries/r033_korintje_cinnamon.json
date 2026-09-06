@@ -1,0 +1,15 @@
+{
+  "name": "Korintje Cinnamon",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Korintje Cinnamon",
+      "left": "Earthy",
+      "right": "Cassia Cinnamon",
+      "ingredient": "Cinnamon",
+      "time": "200"
+    }
+  ]
+}

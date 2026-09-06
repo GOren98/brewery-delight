@@ -1,0 +1,15 @@
+{
+  "name": "True Nutmeg",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "True Nutmeg",
+      "left": "Rich",
+      "right": "Nutmeg",
+      "ingredient": "Nutmeg",
+      "time": "200"
+    }
+  ]
+}

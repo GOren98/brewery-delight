@@ -1,0 +1,15 @@
+{
+  "name": "Delicate",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Delicate",
+      "left": "Fresh",
+      "right": "Floral",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

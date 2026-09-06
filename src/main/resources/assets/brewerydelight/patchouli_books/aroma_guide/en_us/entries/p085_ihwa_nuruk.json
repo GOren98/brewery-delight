@@ -1,0 +1,15 @@
+{
+  "name": "Ihwa Nuruk",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Ihwa Nuruk",
+      "left": "Polished",
+      "right": "Rice Nuruk",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

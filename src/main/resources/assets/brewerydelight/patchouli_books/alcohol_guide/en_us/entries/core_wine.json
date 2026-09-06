@@ -1,0 +1,15 @@
+{
+  "name": "Wine",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "priority": true,
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Wine",
+      "kind": "Core Brew",
+      "core": "Wine",
+      "conditions": "Water Bottle \u00d71$(br)Wine Grape \u00d74$(br2)Primary Aroma: inherited from the grapes"
+    }
+  ]
+}

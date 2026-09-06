@@ -1,0 +1,15 @@
+{
+  "name": "Gold Kiwi",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Gold Kiwi",
+      "left": "Sweet",
+      "right": "Kiwi",
+      "ingredient": "Kiwi",
+      "time": "200"
+    }
+  ]
+}

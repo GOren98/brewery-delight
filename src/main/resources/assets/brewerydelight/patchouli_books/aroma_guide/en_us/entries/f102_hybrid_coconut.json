@@ -1,0 +1,15 @@
+{
+  "name": "Hybrid Coconut",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Hybrid Coconut",
+      "left": "Creamy",
+      "right": "Coconut",
+      "ingredient": "Coconut",
+      "time": "200"
+    }
+  ]
+}

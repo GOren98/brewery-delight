@@ -1,0 +1,15 @@
+{
+  "name": "Rio de Janeiro",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Rio de Janeiro",
+      "left": "Rich",
+      "right": "Pungent Ginger",
+      "ingredient": "Ginger",
+      "time": "200"
+    }
+  ]
+}

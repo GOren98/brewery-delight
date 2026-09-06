@@ -1,0 +1,15 @@
+{
+  "name": "True Cinnamon",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "True Cinnamon",
+      "left": "Floral",
+      "right": "Cinnamon",
+      "ingredient": "Cinnamon",
+      "time": "200"
+    }
+  ]
+}

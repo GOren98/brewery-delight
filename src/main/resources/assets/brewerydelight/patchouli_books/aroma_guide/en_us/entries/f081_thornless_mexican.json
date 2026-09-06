@@ -1,0 +1,15 @@
+{
+  "name": "Thornless Mexican",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Thornless Mexican",
+      "left": "Tart",
+      "right": "Mexican Lime",
+      "ingredient": "Lime",
+      "time": "200"
+    }
+  ]
+}

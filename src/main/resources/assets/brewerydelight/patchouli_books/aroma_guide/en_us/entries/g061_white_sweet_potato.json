@@ -1,0 +1,15 @@
+{
+  "name": "White Sweet Potato",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "White Sweet Potato",
+      "left": "Dry",
+      "right": "Sweet Potato",
+      "ingredient": "Sweet Potato",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Vibrant",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Vibrant",
+      "left": "Fresh",
+      "right": "Tart",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Buckwheat Honey",
+  "category": "brewerydelight:honey",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Buckwheat Honey",
+      "left": "Earthy",
+      "right": "Honey",
+      "ingredient": "Honeycomb",
+      "time": "200"
+    }
+  ]
+}

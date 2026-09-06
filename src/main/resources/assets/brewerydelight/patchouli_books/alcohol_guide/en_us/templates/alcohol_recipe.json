@@ -1,0 +1,17 @@
+{
+  "components": [
+    {
+      "type": "patchouli:header",
+      "text": "#name",
+      "x": -1,
+      "y": -1
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Type$()$(br)#kind$(br2)$(bold)Core$()$(br)#core$(br2)$(bold)Recipe / Conditions$()$(br)#conditions",
+      "x": 8,
+      "y": 28,
+      "max_width": 100
+    }
+  ]
+}

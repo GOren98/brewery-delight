@@ -1,0 +1,14 @@
+{
+  "name": "Baijiu",
+  "category": "brewerydelight:spirit",
+  "icon": "brewerydelight:spirit_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Baijiu",
+      "kind": "Secondary Spirit",
+      "core": "Rice Spirit",
+      "conditions": "Primary Aroma: Whole-grain Nuruk"
+    }
+  ]
+}

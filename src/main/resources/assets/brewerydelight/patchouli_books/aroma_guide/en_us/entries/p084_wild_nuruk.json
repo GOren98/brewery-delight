@@ -1,0 +1,15 @@
+{
+  "name": "Wild Nuruk",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Wild Nuruk",
+      "left": "Wild Fermented",
+      "right": "Nuruk",
+      "ingredient": "Rice",
+      "time": "200"
+    }
+  ]
+}

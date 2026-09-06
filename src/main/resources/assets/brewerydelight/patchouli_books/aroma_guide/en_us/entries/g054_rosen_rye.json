@@ -1,0 +1,15 @@
+{
+  "name": "Rosen Rye",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Rosen Rye",
+      "left": "Rich",
+      "right": "Heritage Rye",
+      "ingredient": "Rye",
+      "time": "200"
+    }
+  ]
+}

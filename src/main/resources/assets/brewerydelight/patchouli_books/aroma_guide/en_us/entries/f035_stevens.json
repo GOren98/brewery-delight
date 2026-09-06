@@ -1,0 +1,15 @@
+{
+  "name": "Stevens",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Stevens",
+      "left": "Tart",
+      "right": "Cranberry",
+      "ingredient": "Berry",
+      "time": "200"
+    }
+  ]
+}

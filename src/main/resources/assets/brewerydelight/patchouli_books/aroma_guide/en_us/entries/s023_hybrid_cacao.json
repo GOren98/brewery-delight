@@ -1,0 +1,15 @@
+{
+  "name": "Hybrid Cacao",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Hybrid Cacao",
+      "left": "Fruity",
+      "right": "Cacao",
+      "ingredient": "Cocoa Beans",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Rye Malt",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Rye Malt",
+      "left": "Rye",
+      "right": "Malt",
+      "ingredient": "Barley",
+      "time": "200"
+    }
+  ]
+}

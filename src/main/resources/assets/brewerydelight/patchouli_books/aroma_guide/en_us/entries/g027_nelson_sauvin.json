@@ -1,0 +1,15 @@
+{
+  "name": "Nelson Sauvin",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Nelson Sauvin",
+      "left": "Crisp",
+      "right": "New World Hops",
+      "ingredient": "Hops",
+      "time": "200"
+    }
+  ]
+}

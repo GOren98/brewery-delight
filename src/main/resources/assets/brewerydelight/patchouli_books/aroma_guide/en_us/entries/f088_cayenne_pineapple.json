@@ -1,0 +1,15 @@
+{
+  "name": "Cayenne Pineapple",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Cayenne Pineapple",
+      "left": "Tart",
+      "right": "Pineapple",
+      "ingredient": "Pineapple",
+      "time": "200"
+    }
+  ]
+}

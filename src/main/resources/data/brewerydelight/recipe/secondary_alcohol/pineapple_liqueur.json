@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"pineapple","priority":100,"result":{"product_id":"pineapple_liqueur","display_name":"Pineapple Liqueur"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"pineapple","priority":100,"result":{"product_id":"pineapple_liqueur","display_name":"Pineapple Liqueur","color":16106045}}

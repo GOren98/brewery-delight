@@ -1,0 +1,15 @@
+{
+  "name": "Foxtail Millet",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Foxtail Millet",
+      "left": "Crisp",
+      "right": "Millet",
+      "ingredient": "Millet",
+      "time": "200"
+    }
+  ]
+}

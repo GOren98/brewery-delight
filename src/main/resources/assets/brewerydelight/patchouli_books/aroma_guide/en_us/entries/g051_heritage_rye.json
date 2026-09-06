@@ -1,0 +1,15 @@
+{
+  "name": "Heritage Rye",
+  "category": "brewerydelight:grain",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Heritage Rye",
+      "left": "Earthy",
+      "right": "Rye",
+      "ingredient": "Rye",
+      "time": "200"
+    }
+  ]
+}

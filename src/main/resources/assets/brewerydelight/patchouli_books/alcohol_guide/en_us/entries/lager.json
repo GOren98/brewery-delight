@@ -1,0 +1,14 @@
+{
+  "name": "Lager",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Lager",
+      "kind": "Secondary Brew",
+      "core": "Beer",
+      "conditions": "Primary Aroma lineage: Hops"
+    }
+  ]
+}

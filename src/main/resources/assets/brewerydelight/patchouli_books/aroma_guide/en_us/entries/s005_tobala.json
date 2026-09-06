@@ -1,0 +1,15 @@
+{
+  "name": "Tobal\u00e1",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Tobal\u00e1",
+      "left": "Delicate",
+      "right": "Mezcal Agave",
+      "ingredient": "Agave",
+      "time": "200"
+    }
+  ]
+}

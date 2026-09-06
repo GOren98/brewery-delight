@@ -1,0 +1,15 @@
+{
+  "name": "Sauvignon Blanc",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Sauvignon Blanc",
+      "left": "Vibrant",
+      "right": "White Grape",
+      "ingredient": "White Grape",
+      "time": "200"
+    }
+  ]
+}

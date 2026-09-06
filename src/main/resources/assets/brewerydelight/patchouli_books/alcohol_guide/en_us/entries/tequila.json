@@ -1,0 +1,14 @@
+{
+  "name": "Tequila",
+  "category": "brewerydelight:spirit",
+  "icon": "brewerydelight:spirit_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "Tequila",
+      "kind": "Secondary Spirit",
+      "core": "Agave Spirit",
+      "conditions": "Primary Aroma lineage: Tequila Agave"
+    }
+  ]
+}

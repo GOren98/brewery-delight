@@ -1,0 +1,15 @@
+{
+  "name": "Mediterranean Juniper",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Mediterranean Juniper",
+      "left": "Herbal",
+      "right": "Juniper Berry",
+      "ingredient": "Juniper",
+      "time": "200"
+    }
+  ]
+}

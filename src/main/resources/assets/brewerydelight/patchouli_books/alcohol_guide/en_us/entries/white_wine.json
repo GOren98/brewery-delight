@@ -1,0 +1,14 @@
+{
+  "name": "White Wine",
+  "category": "brewerydelight:brew",
+  "icon": "brewerydelight:brew_bottle",
+  "pages": [
+    {
+      "type": "brewerydelight:alcohol_recipe",
+      "name": "White Wine",
+      "kind": "Secondary Brew",
+      "core": "Wine",
+      "conditions": "Primary Aroma lineage: White Grape"
+    }
+  ]
+}

@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"beer","required_aromas":{},"required_primary_aroma_ancestor":"barley","priority":100,"result":{"product_id":"ale","display_name":"Ale"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"beer","required_aromas":{},"required_primary_aroma_ancestor":"barley","priority":100,"result":{"product_id":"ale","display_name":"Ale","color":11097630}}

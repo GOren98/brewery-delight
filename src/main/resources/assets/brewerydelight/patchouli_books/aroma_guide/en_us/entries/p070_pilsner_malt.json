@@ -1,0 +1,15 @@
+{
+  "name": "Pilsner Malt",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Pilsner Malt",
+      "left": "Crisp",
+      "right": "Malt",
+      "ingredient": "Barley",
+      "time": "200"
+    }
+  ]
+}

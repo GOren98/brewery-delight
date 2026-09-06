@@ -1,0 +1,15 @@
+{
+  "name": "Pale Malt",
+  "category": "brewerydelight:processing",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Pale Malt",
+      "left": "Kilned",
+      "right": "Malt",
+      "ingredient": "Barley",
+      "time": "200"
+    }
+  ]
+}

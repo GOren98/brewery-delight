@@ -1,0 +1,15 @@
+{
+  "name": "Chamomile",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Chamomile",
+      "left": "Soft",
+      "right": "Herb",
+      "ingredient": "Tea",
+      "time": "200"
+    }
+  ]
+}

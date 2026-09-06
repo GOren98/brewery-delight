@@ -1,0 +1,15 @@
+{
+  "name": "Mexican Vanilla",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Mexican Vanilla",
+      "left": "Peppery",
+      "right": "Classic Vanilla",
+      "ingredient": "Vanilla",
+      "time": "200"
+    }
+  ]
+}

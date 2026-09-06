@@ -1,0 +1,15 @@
+{
+  "name": "California Walnut",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "California Walnut",
+      "left": "Fresh",
+      "right": "Walnut",
+      "ingredient": "Walnut",
+      "time": "200"
+    }
+  ]
+}

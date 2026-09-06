@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"citrus_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"orange","priority":100,"result":{"product_id":"orange_liqueur","display_name":"Orange Liqueur"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"citrus_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"orange","priority":100,"result":{"product_id":"orange_liqueur","display_name":"Orange Liqueur","color":15232791}}

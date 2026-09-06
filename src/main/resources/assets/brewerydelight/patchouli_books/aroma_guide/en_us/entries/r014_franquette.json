@@ -1,0 +1,15 @@
+{
+  "name": "Franquette",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Franquette",
+      "left": "Dry",
+      "right": "European Walnut",
+      "ingredient": "Walnut",
+      "time": "200"
+    }
+  ]
+}

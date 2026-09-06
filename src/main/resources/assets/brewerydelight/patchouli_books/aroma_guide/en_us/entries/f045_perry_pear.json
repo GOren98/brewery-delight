@@ -1,0 +1,15 @@
+{
+  "name": "Perry Pear",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Perry Pear",
+      "left": "Dry",
+      "right": "Pear",
+      "ingredient": "Pear",
+      "time": "200"
+    }
+  ]
+}

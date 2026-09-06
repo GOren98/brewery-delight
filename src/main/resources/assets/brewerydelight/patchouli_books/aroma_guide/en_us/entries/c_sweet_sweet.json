@@ -1,0 +1,15 @@
+{
+  "name": "Sweet",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Sweet",
+      "left": "Honey",
+      "right": "Banana",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

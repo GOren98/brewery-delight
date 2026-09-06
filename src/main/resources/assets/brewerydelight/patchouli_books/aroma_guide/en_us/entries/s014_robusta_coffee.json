@@ -1,0 +1,15 @@
+{
+  "name": "Robusta Coffee",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Robusta Coffee",
+      "left": "Bitter",
+      "right": "Coffee",
+      "ingredient": "Coffee",
+      "time": "200"
+    }
+  ]
+}

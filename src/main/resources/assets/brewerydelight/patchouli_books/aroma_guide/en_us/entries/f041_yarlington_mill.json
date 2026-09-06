@@ -1,0 +1,15 @@
+{
+  "name": "Yarlington Mill",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Yarlington Mill",
+      "left": "Ripe",
+      "right": "Bittersweet Apple",
+      "ingredient": "Apple",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Cade Juniper",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Cade Juniper",
+      "left": "Peppery",
+      "right": "Mediterranean Juniper",
+      "ingredient": "Juniper",
+      "time": "200"
+    }
+  ]
+}

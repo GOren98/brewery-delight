@@ -1,0 +1,15 @@
+{
+  "name": "Clean",
+  "category": "brewerydelight:character",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Clean",
+      "left": "Lemon",
+      "right": "Rice",
+      "ingredient": "Any Aroma-compatible item",
+      "time": "200"
+    }
+  ]
+}

@@ -35,7 +35,7 @@ public final class AlcoholBottleItem extends Item {
         Map<String, Integer> aromas = AromaUtil.merged(stack);
         if (aromas.isEmpty()) tooltip.add(Component.literal("No Aroma").withStyle(ChatFormatting.DARK_GRAY));
         else aromas.forEach((aroma, level) -> {
-            tooltip.add(Component.literal(AromaText.displayName(aroma) + " " + AromaText.roman(level)).withStyle(ChatFormatting.LIGHT_PURPLE));
+            tooltip.add(AromaText.aromaLine("", aroma, " " + AromaText.roman(level)));
             String family = AromaText.ingredientFamily(aroma);
             if (!family.isBlank()) tooltip.add(Component.literal("Ingredient: " + family).withStyle(ChatFormatting.DARK_GRAY));
         });

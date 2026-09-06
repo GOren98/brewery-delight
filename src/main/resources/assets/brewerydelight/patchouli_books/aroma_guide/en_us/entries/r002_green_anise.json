@@ -1,0 +1,15 @@
+{
+  "name": "Green Anise",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Green Anise",
+      "left": "Aromatic Botanical",
+      "right": "Anise Spice",
+      "ingredient": "Anise",
+      "time": "200"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Greek Juniper",
+  "category": "brewerydelight:botanical",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Greek Juniper",
+      "left": "Rich",
+      "right": "European Juniper",
+      "ingredient": "Juniper",
+      "time": "200"
+    }
+  ]
+}

@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"melon","priority":100,"result":{"product_id":"melon_liqueur","display_name":"Melon Liqueur"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"fruit_liqueur","required_aromas":{},"required_primary_aroma_ancestor":"melon","priority":100,"result":{"product_id":"melon_liqueur","display_name":"Melon Liqueur","color":10210133}}

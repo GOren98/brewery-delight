@@ -1,1 +1,1 @@
-{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"beer","required_aromas":{},"required_primary_aroma_ancestor":"hops","priority":100,"result":{"product_id":"lager","display_name":"Lager"}}
+{"type":"brewerydelight:alcohol_transformation","core_alcohol_id":"beer","required_aromas":{},"required_primary_aroma_ancestor":"hops","priority":100,"result":{"product_id":"lager","display_name":"Lager","color":16041282}}

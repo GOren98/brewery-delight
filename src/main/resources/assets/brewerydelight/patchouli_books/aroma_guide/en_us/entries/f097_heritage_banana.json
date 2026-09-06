@@ -1,0 +1,15 @@
+{
+  "name": "Heritage Banana",
+  "category": "brewerydelight:fruit",
+  "icon": "brewerydelight:aroma_table",
+  "pages": [
+    {
+      "type": "brewerydelight:aroma_recipe",
+      "result": "Heritage Banana",
+      "left": "Rich",
+      "right": "Banana",
+      "ingredient": "Banana",
+      "time": "200"
+    }
+  ]
+}
