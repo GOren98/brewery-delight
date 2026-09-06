@@ -74,7 +74,7 @@ public final class BarrelInventory implements Container {
         }
 
         if (seasoningCount >= SEASONING_REQUIRED) {
-            aroma = primary;
+            aroma = BarrelSeasoningAromas.resolve(aroma, primary);
             seasoningTarget = "";
             seasoningCount = 0;
         }

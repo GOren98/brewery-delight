@@ -3671,6 +3671,127 @@
       "type": "processing_character",
       "rank": "rare",
       "line": "tea"
+    },
+    {
+      "id": "oak",
+      "display_name": "Oak",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "oak"
+    },
+    {
+      "id": "american_oak",
+      "display_name": "American Oak",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "oak",
+      "parent": "oak"
+    },
+    {
+      "id": "french_oak",
+      "display_name": "French Oak",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "oak",
+      "parent": "oak"
+    },
+    {
+      "id": "hungarian_oak",
+      "display_name": "Hungarian Oak",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "oak",
+      "parent": "oak"
+    },
+    {
+      "id": "slavonian_oak",
+      "display_name": "Slavonian Oak",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "oak",
+      "parent": "oak"
+    },
+    {
+      "id": "mizunara_oak",
+      "display_name": "Mizunara Oak",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "oak",
+      "parent": "oak"
+    },
+    {
+      "id": "birch",
+      "display_name": "Birch",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "birch"
+    },
+    {
+      "id": "silver_birch",
+      "display_name": "Silver Birch",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "birch",
+      "parent": "birch"
+    },
+    {
+      "id": "paper_birch",
+      "display_name": "Paper Birch",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "birch",
+      "parent": "birch"
+    },
+    {
+      "id": "yellow_birch",
+      "display_name": "Yellow Birch",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "birch",
+      "parent": "birch"
+    },
+    {
+      "id": "sweet_birch",
+      "display_name": "Sweet Birch",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "birch",
+      "parent": "birch"
+    },
+    {
+      "id": "bamboo",
+      "display_name": "Bamboo",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "bamboo"
+    },
+    {
+      "id": "spruce",
+      "display_name": "Spruce",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "spruce"
+    },
+    {
+      "id": "acacia",
+      "display_name": "Acacia",
+      "type": "aging",
+      "rank": "unique",
+      "ingredient_family": "wood",
+      "line": "acacia"
     }
   ]
 }

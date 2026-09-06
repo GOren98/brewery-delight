@@ -10,7 +10,11 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Half;
 
+import java.util.Set;
+
 public final class SmallBarrelPattern {
+    private static final Set<String> SUPPORTED_WOODS = Set.of("oak", "birch", "bamboo", "spruce", "acacia");
+
     public record Match(BlockPos controller, ResourceLocation woodId, String displayName) {}
 
     public static Match find(Level level, BlockPos signPos) {
@@ -55,6 +59,7 @@ public final class SmallBarrelPattern {
 
         if (stairId == null || !stairId.getPath().endsWith("_stairs")) return null;
         String woodPath = stairId.getPath().substring(0, stairId.getPath().length() - "_stairs".length());
+        if (!stairId.getNamespace().equals("minecraft") || !SUPPORTED_WOODS.contains(woodPath)) return null;
         if (!signMatchesWood(signId, stairId.getNamespace(), woodPath)) return null;
 
         ResourceLocation woodId = ResourceLocation.fromNamespaceAndPath(stairId.getNamespace(), woodPath);
