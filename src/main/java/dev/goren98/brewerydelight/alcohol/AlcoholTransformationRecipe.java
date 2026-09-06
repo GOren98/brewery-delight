@@ -104,9 +104,9 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
                 entry.getValue() > 0 && aromas.getOrDefault(entry.getKey(), 0) >= entry.getValue())) return false;
 
         Map<String, Integer> familyLevels = new LinkedHashMap<>();
-        aromas.forEach((aroma, level) -> {
+        aromas.forEach((aroma, aromaLevel) -> {
             String family = AromaDefinitions.ingredientFamily(aroma);
-            if (!family.isBlank()) familyLevels.merge(family, level, Integer::sum);
+            if (!family.isBlank()) familyLevels.merge(family, aromaLevel, Integer::sum);
         });
         return requiredIngredientFamilies.entrySet().stream().allMatch(entry ->
                 entry.getValue() > 0 && familyLevels.getOrDefault(entry.getKey(), 0) >= entry.getValue());
