@@ -13,6 +13,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -32,7 +33,8 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
             Codec.STRING.fieldOf("display_name").forGetter(BaseCookingRecipe::displayName),
             Codec.INT.optionalFieldOf("color", 0xE6D7B9).forGetter(BaseCookingRecipe::color),
             Codec.INT.optionalFieldOf("cookingtime", 100).forGetter(BaseCookingRecipe::cookingTime),
-            Codec.INT.optionalFieldOf("servings", 1).forGetter(BaseCookingRecipe::servings)
+            Codec.INT.optionalFieldOf("servings", 1).forGetter(BaseCookingRecipe::servings),
+            Codec.BOOL.optionalFieldOf("homogeneous_materials", false).forGetter(BaseCookingRecipe::homogeneousMaterials)
     ).apply(instance, BaseCookingRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, BaseCookingRecipe> STREAM_CODEC = new StreamCodec<>() {
@@ -46,7 +48,8 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
             int color = buf.readVarInt();
             int cookingTime = buf.readVarInt();
             int servings = buf.readVarInt();
-            return new BaseCookingRecipe(ingredients, baseId, displayName, color, cookingTime, servings);
+            boolean homogeneousMaterials = buf.readBoolean();
+            return new BaseCookingRecipe(ingredients, baseId, displayName, color, cookingTime, servings, homogeneousMaterials);
         }
 
         @Override
@@ -58,6 +61,7 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
             buf.writeVarInt(recipe.color);
             buf.writeVarInt(recipe.cookingTime);
             buf.writeVarInt(recipe.servings);
+            buf.writeBoolean(recipe.homogeneousMaterials);
         }
     };
 
@@ -67,15 +71,17 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
     private final int color;
     private final int cookingTime;
     private final int servings;
+    private final boolean homogeneousMaterials;
 
     public BaseCookingRecipe(List<Ingredient> ingredients, String baseId, String displayName, int color,
-                             int cookingTime, int servings) {
+                             int cookingTime, int servings, boolean homogeneousMaterials) {
         this.ingredients = List.copyOf(ingredients);
         this.baseId = baseId;
         this.displayName = displayName;
         this.color = color;
         this.cookingTime = Math.max(1, cookingTime);
         this.servings = Math.max(1, servings);
+        this.homogeneousMaterials = homogeneousMaterials;
     }
 
     public List<Ingredient> ingredients() { return ingredients; }
@@ -84,6 +90,7 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
     public int color() { return color; }
     public int cookingTime() { return cookingTime; }
     public int servings() { return servings; }
+    public boolean homogeneousMaterials() { return homogeneousMaterials; }
 
     @Override
     public boolean matches(BaseCookingInput input, Level level) {
@@ -100,7 +107,15 @@ public final class BaseCookingRecipe implements Recipe<BaseCookingInput> {
             }
             if (!found) return false;
         }
-        return true;
+        if (!homogeneousMaterials) return true;
+        ItemStack firstMaterial = ItemStack.EMPTY;
+        for (int i = 0; i < input.size(); i++) {
+            ItemStack stack = input.getItem(i);
+            if (stack.is(Items.WATER_BUCKET)) continue;
+            if (firstMaterial.isEmpty()) firstMaterial = stack;
+            else if (!stack.is(firstMaterial.getItem())) return false;
+        }
+        return !firstMaterial.isEmpty();
     }
 
     @Override

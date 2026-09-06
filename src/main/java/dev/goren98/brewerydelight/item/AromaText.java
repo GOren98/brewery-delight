@@ -1,5 +1,7 @@
 package dev.goren98.brewerydelight.item;
 
+import dev.goren98.brewerydelight.aroma.AromaDefinitions;
+
 public final class AromaText {
     public static String pretty(String value) {
         StringBuilder out = new StringBuilder();
@@ -16,6 +18,15 @@ public final class AromaText {
         String[] numerals = {"0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
                 "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"};
         return value < numerals.length ? numerals[value] : Integer.toString(value);
+    }
+
+    public static String displayName(String aromaId) {
+        return AromaDefinitions.find(aromaId).map(definition -> definition.displayName()).orElseGet(() -> pretty(aromaId));
+    }
+
+    public static String ingredientFamily(String aromaId) {
+        String family = AromaDefinitions.ingredientFamily(aromaId);
+        return family.isBlank() ? "" : pretty(family);
     }
 
     private AromaText() {}

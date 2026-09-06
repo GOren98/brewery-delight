@@ -26,7 +26,9 @@ public class BaseBottleItem extends Item {
         String aroma = stack.getOrDefault(ModComponents.PRIMARY_AROMA.get(), "");
         int level = stack.getOrDefault(ModComponents.PRIMARY_LEVEL.get(), 0);
         if (!aroma.isBlank()) {
-            tooltip.add(Component.literal(AromaText.pretty(aroma) + " " + AromaText.roman(level)).withStyle(ChatFormatting.LIGHT_PURPLE));
+            tooltip.add(Component.literal(AromaText.displayName(aroma) + " " + AromaText.roman(level)).withStyle(ChatFormatting.LIGHT_PURPLE));
+            String family = AromaText.ingredientFamily(aroma);
+            if (!family.isBlank()) tooltip.add(Component.literal("Ingredient: " + family).withStyle(ChatFormatting.DARK_GRAY));
         } else {
             tooltip.add(Component.literal("No Aroma").withStyle(ChatFormatting.DARK_GRAY));
         }

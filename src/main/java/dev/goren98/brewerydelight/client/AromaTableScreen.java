@@ -6,7 +6,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-/** Brewing Station-style UI for donor + receiver Aroma processing. */
+/** Batch Aroma processing UI: donor + receiver -> output. */
 public class AromaTableScreen extends AbstractContainerScreen<AromaTableMenu> {
     public AromaTableScreen(AromaTableMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
@@ -19,10 +19,13 @@ public class AromaTableScreen extends AbstractContainerScreen<AromaTableMenu> {
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xFFC6C6C6);
         graphics.fill(leftPos + 7, topPos + 83, leftPos + 169, topPos + 84, 0xFF555555);
 
-        slot(graphics, leftPos + 55, topPos + 34);
-        slot(graphics, leftPos + 115, topPos + 34);
+        slot(graphics, leftPos + 37, topPos + 34);
+        slot(graphics, leftPos + 73, topPos + 34);
+        slot(graphics, leftPos + 133, topPos + 34);
 
-        int arrowX = leftPos + 79;
+        graphics.drawString(font, "+", leftPos + 61, topPos + 39, 0xFF404040, false);
+
+        int arrowX = leftPos + 98;
         int arrowY = topPos + 39;
         graphics.fill(arrowX, arrowY + 4, arrowX + 28, arrowY + 10, 0xFF777777);
         graphics.fill(arrowX + 22, arrowY, arrowX + 28, arrowY + 14, 0xFF777777);

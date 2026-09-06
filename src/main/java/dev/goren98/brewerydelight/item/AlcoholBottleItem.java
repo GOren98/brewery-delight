@@ -34,7 +34,11 @@ public final class AlcoholBottleItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         Map<String, Integer> aromas = AromaUtil.merged(stack);
         if (aromas.isEmpty()) tooltip.add(Component.literal("No Aroma").withStyle(ChatFormatting.DARK_GRAY));
-        else aromas.forEach((aroma, level) -> tooltip.add(Component.literal(AromaText.pretty(aroma) + " " + AromaText.roman(level)).withStyle(ChatFormatting.LIGHT_PURPLE)));
+        else aromas.forEach((aroma, level) -> {
+            tooltip.add(Component.literal(AromaText.displayName(aroma) + " " + AromaText.roman(level)).withStyle(ChatFormatting.LIGHT_PURPLE));
+            String family = AromaText.ingredientFamily(aroma);
+            if (!family.isBlank()) tooltip.add(Component.literal("Ingredient: " + family).withStyle(ChatFormatting.DARK_GRAY));
+        });
 
         int stage = stack.getOrDefault(ModComponents.STAGE.get(), defaultStage);
         tooltip.add(Component.literal(stage == 1 ? "Brew" : stage == 2 ? "Spirit" : "Liqueur").withStyle(ChatFormatting.GRAY));

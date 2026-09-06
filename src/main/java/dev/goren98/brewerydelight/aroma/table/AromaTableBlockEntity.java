@@ -2,7 +2,6 @@ package dev.goren98.brewerydelight.aroma.table;
 
 import dev.goren98.brewerydelight.aroma.AromaItems;
 import dev.goren98.brewerydelight.registry.ModBlockEntities;
-import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -26,7 +25,8 @@ import java.util.Optional;
 public class AromaTableBlockEntity extends BaseContainerBlockEntity {
     public static final int SLOT_DONOR = 0;
     public static final int SLOT_RECEIVER = 1;
-    public static final int SIZE = 2;
+    public static final int SLOT_OUTPUT = 2;
+    public static final int SIZE = 3;
     public static final int DEFAULT_PROCESS_TIME = 200;
 
     private NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
@@ -49,7 +49,7 @@ public class AromaTableBlockEntity extends BaseContainerBlockEntity {
     @Override protected NonNullList<ItemStack> getItems() { return items; }
     @Override protected void setItems(NonNullList<ItemStack> items) { this.items = items; }
     @Override public int getContainerSize() { return SIZE; }
-    @Override public int getMaxStackSize() { return 1; }
+    @Override public int getMaxStackSize() { return 64; }
 
     @Override
     public boolean canPlaceItem(int slot, ItemStack stack) {
@@ -62,8 +62,10 @@ public class AromaTableBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     public void setItem(int slot, ItemStack stack) {
-        progress = 0;
-        processTime = DEFAULT_PROCESS_TIME;
+        if (slot == SLOT_DONOR || slot == SLOT_RECEIVER) {
+            progress = 0;
+            processTime = DEFAULT_PROCESS_TIME;
+        }
         super.setItem(slot, stack);
     }
 
@@ -93,29 +95,35 @@ public class AromaTableBlockEntity extends BaseContainerBlockEntity {
             return;
         }
 
-        Optional<String> donorAroma = AromaItems.currentAromaId(donor);
-        Optional<String> receiverAroma = AromaItems.currentAromaId(receiver);
-        if (donorAroma.isEmpty() || receiverAroma.isEmpty()) {
-            table.resetProgress(level, pos, state);
-            return;
-        }
-
         Optional<RecipeHolder<AromaCombinationRecipe>> recipe = table.findRecipe(level, donor, receiver);
-        String resultAroma = recipe.map(holder -> holder.value().resultAroma()).orElse(donorAroma.get());
-        if (resultAroma.isBlank() || resultAroma.equals(receiverAroma.get())) {
+        if (recipe.isEmpty()) {
+            table.resetProgress(level, pos, state);
+            return;
+        }
+        ItemStack result = recipe.get().value().assemble(new AromaCombinationInput(donor, receiver), level.registryAccess());
+        if (result.isEmpty() || !table.canAcceptResult(result)) {
             table.resetProgress(level, pos, state);
             return;
         }
 
-        table.processTime = recipe.map(holder -> holder.value().processingTime()).orElse(DEFAULT_PROCESS_TIME);
+        table.processTime = recipe.get().value().processingTime();
         table.progress++;
         if (table.progress < table.processTime) return;
 
         donor.shrink(1);
-        receiver.set(ModComponents.CROP_AROMA.get(), resultAroma);
+        receiver.shrink(1);
+        ItemStack output = table.items.get(SLOT_OUTPUT);
+        if (output.isEmpty()) table.items.set(SLOT_OUTPUT, result);
+        else output.grow(result.getCount());
         table.progress = 0;
         table.processTime = DEFAULT_PROCESS_TIME;
         setChanged(level, pos, state);
+    }
+
+    private boolean canAcceptResult(ItemStack result) {
+        ItemStack output = items.get(SLOT_OUTPUT);
+        return output.isEmpty() || (ItemStack.isSameItemSameComponents(output, result)
+                && output.getCount() + result.getCount() <= Math.min(output.getMaxStackSize(), getMaxStackSize()));
     }
 
     private Optional<RecipeHolder<AromaCombinationRecipe>> findRecipe(Level level, ItemStack donor, ItemStack receiver) {

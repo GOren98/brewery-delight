@@ -28,13 +28,14 @@ public class AromaTableMenu extends AbstractContainerMenu {
         this.data = data;
         container.startOpen(inventory.player);
 
-        addSlot(new Slot(container, AromaTableBlockEntity.SLOT_DONOR, 56, 35) {
+        addSlot(new Slot(container, AromaTableBlockEntity.SLOT_DONOR, 38, 35) {
             @Override public boolean mayPlace(ItemStack stack) { return AromaItems.hasAroma(stack); }
-            @Override public int getMaxStackSize() { return 1; }
         });
-        addSlot(new Slot(container, AromaTableBlockEntity.SLOT_RECEIVER, 116, 35) {
+        addSlot(new Slot(container, AromaTableBlockEntity.SLOT_RECEIVER, 74, 35) {
             @Override public boolean mayPlace(ItemStack stack) { return AromaItems.canReceiveAroma(stack); }
-            @Override public int getMaxStackSize() { return 1; }
+        });
+        addSlot(new Slot(container, AromaTableBlockEntity.SLOT_OUTPUT, 134, 35) {
+            @Override public boolean mayPlace(ItemStack stack) { return false; }
         });
 
         addDataSlots(data);

@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.goren98.brewerydelight.item.AromaUtil;
+import dev.goren98.brewerydelight.aroma.AromaDefinitions;
 import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModRecipes;
 import net.minecraft.core.HolderLookup;
@@ -31,6 +32,8 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
     public static final MapCodec<AlcoholTransformationRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.STRING.fieldOf("core_alcohol_id").forGetter(AlcoholTransformationRecipe::coreAlcoholId),
             AROMAS_CODEC.fieldOf("required_aromas").forGetter(AlcoholTransformationRecipe::requiredAromas),
+            AROMAS_CODEC.optionalFieldOf("required_ingredient_families", Map.of())
+                    .forGetter(AlcoholTransformationRecipe::requiredIngredientFamilies),
             Codec.INT.optionalFieldOf("priority", 0).forGetter(AlcoholTransformationRecipe::priority),
             Result.CODEC.fieldOf("result").forGetter(AlcoholTransformationRecipe::result)
     ).apply(instance, AlcoholTransformationRecipe::new));
@@ -44,8 +47,13 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
             for (int i = 0; i < aromaCount; i++) {
                 aromas.put(ByteBufCodecs.STRING_UTF8.decode(buf), buf.readVarInt());
             }
+            int familyCount = buf.readVarInt();
+            Map<String, Integer> families = new LinkedHashMap<>();
+            for (int i = 0; i < familyCount; i++) {
+                families.put(ByteBufCodecs.STRING_UTF8.decode(buf), buf.readVarInt());
+            }
             int priority = buf.readVarInt();
-            return new AlcoholTransformationRecipe(coreAlcoholId, aromas, priority, Result.STREAM_CODEC.decode(buf));
+            return new AlcoholTransformationRecipe(coreAlcoholId, aromas, families, priority, Result.STREAM_CODEC.decode(buf));
         }
 
         @Override
@@ -56,6 +64,11 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
                 ByteBufCodecs.STRING_UTF8.encode(buf, aroma);
                 buf.writeVarInt(level);
             });
+            buf.writeVarInt(recipe.requiredIngredientFamilies.size());
+            recipe.requiredIngredientFamilies.forEach((family, level) -> {
+                ByteBufCodecs.STRING_UTF8.encode(buf, family);
+                buf.writeVarInt(level);
+            });
             buf.writeVarInt(recipe.priority);
             Result.STREAM_CODEC.encode(buf, recipe.result);
         }
@@ -63,19 +76,22 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
 
     private final String coreAlcoholId;
     private final Map<String, Integer> requiredAromas;
+    private final Map<String, Integer> requiredIngredientFamilies;
     private final int priority;
     private final Result result;
 
     public AlcoholTransformationRecipe(String coreAlcoholId, Map<String, Integer> requiredAromas,
-                                       int priority, Result result) {
+                                       Map<String, Integer> requiredIngredientFamilies, int priority, Result result) {
         this.coreAlcoholId = coreAlcoholId;
         this.requiredAromas = Map.copyOf(requiredAromas);
+        this.requiredIngredientFamilies = Map.copyOf(requiredIngredientFamilies);
         this.priority = priority;
         this.result = result;
     }
 
     public String coreAlcoholId() { return coreAlcoholId; }
     public Map<String, Integer> requiredAromas() { return requiredAromas; }
+    public Map<String, Integer> requiredIngredientFamilies() { return requiredIngredientFamilies; }
     public int priority() { return priority; }
     public Result result() { return result; }
 
@@ -84,8 +100,16 @@ public final class AlcoholTransformationRecipe implements Recipe<SingleRecipeInp
         ItemStack stack = input.item();
         if (!coreAlcoholId.equals(stack.getOrDefault(ModComponents.CORE_ALCOHOL_ID.get(), ""))) return false;
         Map<String, Integer> aromas = AromaUtil.merged(stack);
-        return requiredAromas.entrySet().stream().allMatch(entry ->
-                entry.getValue() > 0 && aromas.getOrDefault(entry.getKey(), 0) >= entry.getValue());
+        if (!requiredAromas.entrySet().stream().allMatch(entry ->
+                entry.getValue() > 0 && aromas.getOrDefault(entry.getKey(), 0) >= entry.getValue())) return false;
+
+        Map<String, Integer> familyLevels = new LinkedHashMap<>();
+        aromas.forEach((aroma, level) -> {
+            String family = AromaDefinitions.ingredientFamily(aroma);
+            if (!family.isBlank()) familyLevels.merge(family, level, Integer::sum);
+        });
+        return requiredIngredientFamilies.entrySet().stream().allMatch(entry ->
+                entry.getValue() > 0 && familyLevels.getOrDefault(entry.getKey(), 0) >= entry.getValue());
     }
 
     public void applyTo(ItemStack stack) {
