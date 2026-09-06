@@ -1,0 +1,13 @@
+{
+  "name": "Sweet Birch",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "pages": [
+    {
+      "type": "brewerydelight:barrel_seasoning",
+      "result": "Sweet Birch",
+      "wood": "Birch",
+      "aroma": "Sweet"
+    }
+  ]
+}

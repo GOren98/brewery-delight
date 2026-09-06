@@ -13,8 +13,10 @@ public final class AromaTooltipEvents {
                 || event.getItemStack().getItem() instanceof AromaSeedItem) return;
         AromaItems.currentAromaId(event.getItemStack()).ifPresent(aroma -> {
             event.getToolTip().add(AromaText.aromaLine("Aroma: ", aroma, ""));
-            String family = AromaText.ingredientFamily(aroma);
-            if (!family.isBlank()) event.getToolTip().add(Component.literal("Ingredient: " + family));
+            if (AromaText.showDetails()) {
+                String family = AromaText.ingredientFamily(aroma);
+                if (!family.isBlank()) event.getToolTip().add(Component.literal("Ingredient: " + family));
+            }
         });
     }
 

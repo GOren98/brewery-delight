@@ -36,8 +36,10 @@ public final class AlcoholBottleItem extends Item {
         if (aromas.isEmpty()) tooltip.add(Component.literal("No Aroma").withStyle(ChatFormatting.DARK_GRAY));
         else aromas.forEach((aroma, level) -> {
             tooltip.add(AromaText.aromaLine("", aroma, " " + AromaText.roman(level)));
-            String family = AromaText.ingredientFamily(aroma);
-            if (!family.isBlank()) tooltip.add(Component.literal("Ingredient: " + family).withStyle(ChatFormatting.DARK_GRAY));
+            if (AromaText.showDetails()) {
+                String family = AromaText.ingredientFamily(aroma);
+                if (!family.isBlank()) tooltip.add(Component.literal("Ingredient: " + family).withStyle(ChatFormatting.DARK_GRAY));
+            }
         });
 
         int stage = stack.getOrDefault(ModComponents.STAGE.get(), defaultStage);

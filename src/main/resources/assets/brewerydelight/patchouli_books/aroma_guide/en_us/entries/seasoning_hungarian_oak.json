@@ -1,0 +1,13 @@
+{
+  "name": "Hungarian Oak",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "pages": [
+    {
+      "type": "brewerydelight:barrel_seasoning",
+      "result": "Hungarian Oak",
+      "wood": "Oak",
+      "aroma": "Structured"
+    }
+  ]
+}

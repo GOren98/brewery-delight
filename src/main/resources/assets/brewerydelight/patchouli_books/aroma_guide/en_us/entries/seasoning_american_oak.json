@@ -1,0 +1,13 @@
+{
+  "name": "American Oak",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "pages": [
+    {
+      "type": "brewerydelight:barrel_seasoning",
+      "result": "American Oak",
+      "wood": "Oak",
+      "aroma": "Bold"
+    }
+  ]
+}

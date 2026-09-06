@@ -1,0 +1,13 @@
+{
+  "name": "Mizunara Oak",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "pages": [
+    {
+      "type": "brewerydelight:barrel_seasoning",
+      "result": "Mizunara Oak",
+      "wood": "Oak",
+      "aroma": "Fragrant"
+    }
+  ]
+}

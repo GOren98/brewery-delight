@@ -1,0 +1,13 @@
+{
+  "name": "Yellow Birch",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "pages": [
+    {
+      "type": "brewerydelight:barrel_seasoning",
+      "result": "Yellow Birch",
+      "wood": "Birch",
+      "aroma": "Rich"
+    }
+  ]
+}

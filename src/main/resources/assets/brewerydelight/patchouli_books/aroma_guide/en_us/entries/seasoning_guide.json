@@ -1,0 +1,17 @@
+{
+  "name": "How Seasoning Works",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "priority": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A fresh Oak, Birch, Bamboo, Spruce, or Acacia Barrel can be seasoned by alcohol.$(br2)Use Brew or Spirit whose Primary Aroma is level 5 or higher. Five bottles with the same Primary Aroma must finish aging in that barrel."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Seasoning Result",
+      "text": "A listed special combination creates its Unique wood Aroma. Any other Primary Aroma replaces the fresh wood Aroma directly.$(br2)Example: Oak + Red Grape \u2192 Red Grape Barrel.$(br2)Liqueurs do not count toward seasoning. Once seasoned, a barrel keeps its Aroma."
+    }
+  ]
+}

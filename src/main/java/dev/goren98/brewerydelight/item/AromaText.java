@@ -2,6 +2,7 @@ package dev.goren98.brewerydelight.item;
 
 import dev.goren98.brewerydelight.aroma.AromaDefinitions;
 import dev.goren98.brewerydelight.aroma.AromaRank;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
@@ -47,6 +48,10 @@ public final class AromaText {
 
     public static Component aromaLine(String prefix, String aromaId, String suffix) {
         return Component.literal(prefix + displayName(aromaId) + suffix).withStyle(rankColor(aromaId));
+    }
+
+    public static boolean showDetails() {
+        return Screen.hasControlDown();
     }
 
     private AromaText() {}

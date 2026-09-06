@@ -1,0 +1,13 @@
+{
+  "name": "Paper Birch",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "pages": [
+    {
+      "type": "brewerydelight:barrel_seasoning",
+      "result": "Paper Birch",
+      "wood": "Birch",
+      "aroma": "Delicate"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Silver Birch",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "pages": [
+    {
+      "type": "brewerydelight:barrel_seasoning",
+      "result": "Silver Birch",
+      "wood": "Birch",
+      "aroma": "Fresh"
+    }
+  ]
+}

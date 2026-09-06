@@ -1,0 +1,13 @@
+{
+  "name": "French Oak",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "pages": [
+    {
+      "type": "brewerydelight:barrel_seasoning",
+      "result": "French Oak",
+      "wood": "Oak",
+      "aroma": "Elegant"
+    }
+  ]
+}

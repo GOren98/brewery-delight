@@ -25,7 +25,9 @@ public class AromaProduceItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         String aroma = stack.getOrDefault(ModComponents.CROP_AROMA.get(), defaultAroma);
         tooltip.add(AromaText.aromaLine("Aroma: ", aroma, ""));
-        String family = AromaText.ingredientFamily(aroma);
-        if (!family.isBlank()) tooltip.add(Component.literal("Ingredient: " + family));
+        if (AromaText.showDetails()) {
+            String family = AromaText.ingredientFamily(aroma);
+            if (!family.isBlank()) tooltip.add(Component.literal("Ingredient: " + family));
+        }
     }
 }

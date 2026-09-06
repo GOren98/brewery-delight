@@ -105,7 +105,12 @@ public final class BarrelInventory implements Container {
         items.set(slot, stack); if (stack.getCount() > 1) stack.setCount(1);
         if (!stack.isEmpty()) {
             String product = productOf(stack); if (lockedProduct.isEmpty()) lockedProduct = product;
-            if (stack.getOrDefault(ModComponents.STARTED_AT.get(), 0L) == 0L) stack.set(ModComponents.STARTED_AT.get(), System.currentTimeMillis());
+            int age = stack.getOrDefault(ModComponents.AGE.get(), 0);
+            if (age < 5 && stack.getOrDefault(ModComponents.STARTED_AT.get(), 0L) == 0L) {
+                stack.set(ModComponents.STARTED_AT.get(), System.currentTimeMillis());
+            } else if (age >= 5) {
+                stack.remove(ModComponents.STARTED_AT.get());
+            }
         }
         refreshLockIfEmpty(); setChanged();
     }

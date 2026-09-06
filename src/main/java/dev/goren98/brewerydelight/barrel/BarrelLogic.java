@@ -26,6 +26,11 @@ public final class BarrelLogic {
 
             int stage = stack.getOrDefault(ModComponents.STAGE.get(), 0);
             int age = stack.getOrDefault(ModComponents.AGE.get(), 0);
+            if (age >= 5 && stack.has(ModComponents.STARTED_AT.get())) {
+                stack.remove(ModComponents.STARTED_AT.get());
+                changed = true;
+            }
+            if (age >= 5) continue;
             long started = stack.getOrDefault(ModComponents.STARTED_AT.get(), 0L);
             if (started == 0L) { stack.set(ModComponents.STARTED_AT.get(), now); changed = true; continue; }
 

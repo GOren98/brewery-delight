@@ -1,0 +1,13 @@
+{
+  "name": "Slavonian Oak",
+  "category": "brewerydelight:seasoning",
+  "icon": "minecraft:barrel",
+  "pages": [
+    {
+      "type": "brewerydelight:barrel_seasoning",
+      "result": "Slavonian Oak",
+      "wood": "Oak",
+      "aroma": "Mellow"
+    }
+  ]
+}
