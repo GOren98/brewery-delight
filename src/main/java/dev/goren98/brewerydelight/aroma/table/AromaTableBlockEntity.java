@@ -2,6 +2,7 @@ package dev.goren98.brewerydelight.aroma.table;
 
 import dev.goren98.brewerydelight.aroma.AromaItems;
 import dev.goren98.brewerydelight.registry.ModBlockEntities;
+import dev.goren98.brewerydelight.registry.ModComponents;
 import dev.goren98.brewerydelight.registry.ModRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -95,18 +96,32 @@ public class AromaTableBlockEntity extends BaseContainerBlockEntity {
             return;
         }
 
-        Optional<RecipeHolder<AromaCombinationRecipe>> recipe = table.findRecipe(level, donor, receiver);
-        if (recipe.isEmpty()) {
+        Optional<String> donorAroma = AromaItems.currentAromaId(donor);
+        Optional<String> receiverAroma = AromaItems.currentAromaId(receiver);
+        if (donorAroma.isEmpty() || receiverAroma.isEmpty()) {
             table.resetProgress(level, pos, state);
             return;
         }
-        ItemStack result = recipe.get().value().assemble(new AromaCombinationInput(donor, receiver), level.registryAccess());
+
+        Optional<RecipeHolder<AromaCombinationRecipe>> recipe = table.findRecipe(level, donor, receiver);
+        ItemStack result;
+        if (recipe.isPresent()) {
+            result = recipe.get().value().assemble(new AromaCombinationInput(donor, receiver), level.registryAccess());
+        } else {
+            if (donorAroma.get().equals(receiverAroma.get())) {
+                table.resetProgress(level, pos, state);
+                return;
+            }
+            result = receiver.copy();
+            result.setCount(1);
+            result.set(ModComponents.CROP_AROMA.get(), donorAroma.get());
+        }
         if (result.isEmpty() || !table.canAcceptResult(result)) {
             table.resetProgress(level, pos, state);
             return;
         }
 
-        table.processTime = recipe.get().value().processingTime();
+        table.processTime = recipe.map(holder -> holder.value().processingTime()).orElse(DEFAULT_PROCESS_TIME);
         table.progress++;
         if (table.progress < table.processTime) return;
 
