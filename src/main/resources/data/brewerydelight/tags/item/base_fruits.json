@@ -1,1 +1,11 @@
-{"replace":false,"values":["brewerydelight:pear","brewerydelight:cherry","brewerydelight:plum","brewerydelight:berry","brewerydelight:apricot","brewerydelight:peach"]}
+{
+  "replace": false,
+  "values": [
+    "brewerydelight:pear",
+    "brewerydelight:cherry",
+    "brewerydelight:plum",
+    "brewerydelight:berry",
+    "brewerydelight:apricot",
+    "brewerydelight:peach"
+  ]
+}
