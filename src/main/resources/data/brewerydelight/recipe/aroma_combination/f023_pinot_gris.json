@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "delicate",
+  "receiver_aroma": "white_grape",
+  "ingredient": {
+    "item": "brewerydelight:white_grape"
+  },
+  "result_aroma": "pinot_gris",
+  "processing_time": 200
+}

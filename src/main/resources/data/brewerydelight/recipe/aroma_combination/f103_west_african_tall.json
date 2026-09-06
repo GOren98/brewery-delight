@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "nutty",
+  "receiver_aroma": "tall_coconut",
+  "ingredient": {
+    "item": "brewerydelight:coconut"
+  },
+  "result_aroma": "west_african_tall",
+  "processing_time": 200
+}

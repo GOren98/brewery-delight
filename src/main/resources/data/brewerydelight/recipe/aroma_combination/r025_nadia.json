@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "soft",
+  "receiver_aroma": "fresh_ginger",
+  "ingredient": {
+    "item": "brewerydelight:ginger"
+  },
+  "result_aroma": "nadia",
+  "processing_time": 200
+}

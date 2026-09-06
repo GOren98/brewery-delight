@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "earthy",
+  "result_aroma": "robust",
+  "processing_time": 200
+}

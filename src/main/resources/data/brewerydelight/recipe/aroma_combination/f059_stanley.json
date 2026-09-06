@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "european_plum",
+  "ingredient": {
+    "item": "brewerydelight:plum"
+  },
+  "result_aroma": "stanley",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dry",
+  "receiver_aroma": "potato",
+  "ingredient": {
+    "item": "minecraft:potato"
+  },
+  "result_aroma": "starchy_potato",
+  "processing_time": 200
+}

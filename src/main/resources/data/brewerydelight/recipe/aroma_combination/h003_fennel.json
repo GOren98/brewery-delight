@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "aniseed",
+  "receiver_aroma": "herb",
+  "ingredient": {
+    "item": "brewerydelight:tea"
+  },
+  "result_aroma": "fennel",
+  "processing_time": 200
+}

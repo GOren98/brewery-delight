@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fruity",
+  "receiver_aroma": "plum",
+  "ingredient": {
+    "item": "brewerydelight:plum"
+  },
+  "result_aroma": "japanese_plum",
+  "processing_time": 200
+}

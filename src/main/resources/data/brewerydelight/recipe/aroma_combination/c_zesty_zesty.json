@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "citrus",
+  "receiver_aroma": "fresh",
+  "result_aroma": "zesty",
+  "processing_time": 200
+}

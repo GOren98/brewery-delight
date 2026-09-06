@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dry",
+  "receiver_aroma": "european_walnut",
+  "ingredient": {
+    "item": "brewerydelight:walnut"
+  },
+  "result_aroma": "franquette",
+  "processing_time": 200
+}

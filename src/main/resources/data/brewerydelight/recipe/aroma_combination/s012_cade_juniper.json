@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "peppery",
+  "receiver_aroma": "mediterranean_juniper",
+  "ingredient": {
+    "item": "brewerydelight:juniper"
+  },
+  "result_aroma": "cade_juniper",
+  "processing_time": 200
+}

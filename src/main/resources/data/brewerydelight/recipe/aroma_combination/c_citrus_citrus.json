@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "orange",
+  "receiver_aroma": "lime",
+  "result_aroma": "citrus",
+  "processing_time": 200
+}

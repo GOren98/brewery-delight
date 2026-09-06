@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "honey",
+  "ingredient": {
+    "item": "minecraft:honeycomb"
+  },
+  "result_aroma": "buckwheat_honey",
+  "processing_time": 200
+}

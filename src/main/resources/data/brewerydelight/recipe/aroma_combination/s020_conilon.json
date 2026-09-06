@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "robusta_coffee",
+  "ingredient": {
+    "item": "brewerydelight:coffee"
+  },
+  "result_aroma": "conilon",
+  "processing_time": 200
+}

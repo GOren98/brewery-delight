@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "creamy",
+  "receiver_aroma": "waxy_potato",
+  "ingredient": {
+    "item": "minecraft:potato"
+  },
+  "result_aroma": "yukon_gold",
+  "processing_time": 200
+}

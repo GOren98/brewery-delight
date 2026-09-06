@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "steamed",
+  "receiver_aroma": "nuruk",
+  "ingredient": {
+    "item": "brewerydelight:rice"
+  },
+  "result_aroma": "rice_nuruk",
+  "processing_time": 200
+}

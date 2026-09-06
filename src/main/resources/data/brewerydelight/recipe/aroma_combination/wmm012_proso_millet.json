@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dry",
+  "receiver_aroma": "millet",
+  "ingredient": {
+    "item": "brewerydelight:millet"
+  },
+  "result_aroma": "proso_millet",
+  "processing_time": 200
+}

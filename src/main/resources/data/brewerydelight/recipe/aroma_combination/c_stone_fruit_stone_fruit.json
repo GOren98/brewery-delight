@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "cherry",
+  "receiver_aroma": "plum",
+  "result_aroma": "stone_fruit",
+  "processing_time": 200
+}

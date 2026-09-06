@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "lively",
+  "receiver_aroma": "gold_kiwi",
+  "ingredient": {
+    "item": "brewerydelight:kiwi"
+  },
+  "result_aroma": "zesy002",
+  "processing_time": 200
+}

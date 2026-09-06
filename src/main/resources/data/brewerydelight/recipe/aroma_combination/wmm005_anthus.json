@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "crisp",
+  "receiver_aroma": "malting_wheat",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result_aroma": "anthus",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "silky",
+  "receiver_aroma": "european_pear",
+  "ingredient": {
+    "item": "brewerydelight:pear"
+  },
+  "result_aroma": "doyenne_du_comice",
+  "processing_time": 200
+}

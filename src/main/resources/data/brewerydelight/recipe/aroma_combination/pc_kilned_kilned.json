@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dry",
+  "receiver_aroma": "wheat",
+  "result_aroma": "kilned",
+  "processing_time": 200
+}

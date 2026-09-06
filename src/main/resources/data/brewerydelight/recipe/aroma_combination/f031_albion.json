@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "strawberry",
+  "ingredient": {
+    "item": "brewerydelight:berry"
+  },
+  "result_aroma": "albion",
+  "processing_time": 200
+}

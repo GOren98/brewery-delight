@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "crisp",
+  "receiver_aroma": "california_walnut",
+  "ingredient": {
+    "item": "brewerydelight:walnut"
+  },
+  "result_aroma": "chandler",
+  "processing_time": 200
+}

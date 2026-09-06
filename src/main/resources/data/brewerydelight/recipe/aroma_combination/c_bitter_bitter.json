@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "coffee",
+  "receiver_aroma": "cacao",
+  "result_aroma": "bitter",
+  "processing_time": 200
+}

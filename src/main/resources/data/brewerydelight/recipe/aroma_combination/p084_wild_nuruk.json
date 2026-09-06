@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "wild_fermented",
+  "receiver_aroma": "nuruk",
+  "ingredient": {
+    "item": "brewerydelight:rice"
+  },
+  "result_aroma": "wild_nuruk",
+  "processing_time": 200
+}

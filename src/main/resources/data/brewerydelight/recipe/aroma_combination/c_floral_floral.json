@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "honey",
+  "receiver_aroma": "vanilla",
+  "result_aroma": "floral",
+  "processing_time": 200
+}

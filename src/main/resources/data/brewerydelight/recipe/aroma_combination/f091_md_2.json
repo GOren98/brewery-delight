@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "lively",
+  "receiver_aroma": "hybrid_pineapple",
+  "ingredient": {
+    "item": "brewerydelight:pineapple"
+  },
+  "result_aroma": "md_2",
+  "processing_time": 200
+}

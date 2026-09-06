@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "mellow",
+  "receiver_aroma": "soft_white_wheat",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result_aroma": "white_sonora",
+  "processing_time": 200
+}

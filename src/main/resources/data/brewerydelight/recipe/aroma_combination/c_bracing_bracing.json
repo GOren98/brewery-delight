@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "juniper_berry",
+  "receiver_aroma": "lemon",
+  "result_aroma": "bracing",
+  "processing_time": 200
+}

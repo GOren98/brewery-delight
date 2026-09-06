@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "green_kiwi",
+  "ingredient": {
+    "item": "brewerydelight:kiwi"
+  },
+  "result_aroma": "hayward",
+  "processing_time": 200
+}

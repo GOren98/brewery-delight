@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "clean",
+  "receiver_aroma": "lager_barley",
+  "ingredient": {
+    "item": "brewerydelight:barley"
+  },
+  "result_aroma": "rgt_planet",
+  "processing_time": 200
+}

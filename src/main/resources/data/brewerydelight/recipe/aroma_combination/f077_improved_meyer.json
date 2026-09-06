@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "zesty",
+  "receiver_aroma": "hybrid_lemon",
+  "ingredient": {
+    "item": "brewerydelight:lemon"
+  },
+  "result_aroma": "improved_meyer",
+  "processing_time": 200
+}

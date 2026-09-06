@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "hops",
+  "receiver_aroma": "kiwi",
+  "result_aroma": "green",
+  "processing_time": 200
+}

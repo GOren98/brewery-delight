@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "vibrant",
+  "receiver_aroma": "navel_orange",
+  "ingredient": {
+    "item": "brewerydelight:orange"
+  },
+  "result_aroma": "cara_cara",
+  "processing_time": 200
+}

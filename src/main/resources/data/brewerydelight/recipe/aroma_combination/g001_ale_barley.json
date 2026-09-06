@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "barley",
+  "ingredient": {
+    "item": "brewerydelight:barley"
+  },
+  "result_aroma": "ale_barley",
+  "processing_time": 200
+}

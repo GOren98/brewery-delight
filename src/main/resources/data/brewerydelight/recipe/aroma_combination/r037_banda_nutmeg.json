@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "robust",
+  "receiver_aroma": "true_nutmeg",
+  "ingredient": {
+    "item": "brewerydelight:nutmeg"
+  },
+  "result_aroma": "banda_nutmeg",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "structured",
+  "receiver_aroma": "korean_wheat",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result_aroma": "keumkang",
+  "processing_time": 200
+}

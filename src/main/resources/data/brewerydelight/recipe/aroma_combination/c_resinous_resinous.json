@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "juniper_berry",
+  "receiver_aroma": "walnut",
+  "result_aroma": "resinous",
+  "processing_time": 200
+}

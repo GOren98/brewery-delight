@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "watermelon",
+  "ingredient": {
+    "item": "minecraft:melon_slice"
+  },
+  "result_aroma": "sugar_baby",
+  "processing_time": 200
+}

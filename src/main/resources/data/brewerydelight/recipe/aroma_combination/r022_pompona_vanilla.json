@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fruity",
+  "receiver_aroma": "wild_vanilla",
+  "ingredient": {
+    "item": "brewerydelight:vanilla"
+  },
+  "result_aroma": "pompona_vanilla",
+  "processing_time": 200
+}

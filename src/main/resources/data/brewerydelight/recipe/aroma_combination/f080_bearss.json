@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "crisp",
+  "receiver_aroma": "persian_lime",
+  "ingredient": {
+    "item": "brewerydelight:lime"
+  },
+  "result_aroma": "bearss",
+  "processing_time": 200
+}

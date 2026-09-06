@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "barley",
+  "receiver_aroma": "millet",
+  "result_aroma": "savory",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "ripe",
+  "receiver_aroma": "cavendish_banana",
+  "ingredient": {
+    "item": "brewerydelight:banana"
+  },
+  "result_aroma": "grand_nain",
+  "processing_time": 200
+}

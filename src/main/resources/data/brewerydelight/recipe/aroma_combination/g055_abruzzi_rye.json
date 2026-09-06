@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "robust",
+  "receiver_aroma": "heritage_rye",
+  "ingredient": {
+    "item": "brewerydelight:rye"
+  },
+  "result_aroma": "abruzzi_rye",
+  "processing_time": 200
+}

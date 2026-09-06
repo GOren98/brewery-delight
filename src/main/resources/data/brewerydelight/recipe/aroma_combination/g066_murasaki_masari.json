@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "white_sweet_potato",
+  "ingredient": {
+    "item": "brewerydelight:sweet_potato"
+  },
+  "result_aroma": "murasaki_masari",
+  "processing_time": 200
+}

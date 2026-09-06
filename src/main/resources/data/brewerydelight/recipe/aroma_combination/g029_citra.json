@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "lively",
+  "receiver_aroma": "new_world_hops",
+  "ingredient": {
+    "item": "brewerydelight:hops"
+  },
+  "result_aroma": "citra",
+  "processing_time": 200
+}

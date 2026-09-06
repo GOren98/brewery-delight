@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "chocolate",
+  "ingredient": {
+    "item": "minecraft:cocoa_beans"
+  },
+  "result_aroma": "milk_chocolate",
+  "processing_time": 200
+}

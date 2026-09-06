@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "pungent",
+  "receiver_aroma": "cinnamon",
+  "ingredient": {
+    "item": "brewerydelight:cinnamon"
+  },
+  "result_aroma": "cassia_cinnamon",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "melon",
+  "ingredient": {
+    "item": "minecraft:melon_slice"
+  },
+  "result_aroma": "muskmelon",
+  "processing_time": 200
+}

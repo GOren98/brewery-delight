@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "resinous",
+  "receiver_aroma": "barley",
+  "result_aroma": "smoked",
+  "processing_time": 200
+}

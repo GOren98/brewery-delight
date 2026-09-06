@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "vanilla",
+  "ingredient": {
+    "item": "brewerydelight:vanilla"
+  },
+  "result_aroma": "wild_vanilla",
+  "processing_time": 200
+}

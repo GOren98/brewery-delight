@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "cooling",
+  "receiver_aroma": "herb",
+  "ingredient": {
+    "item": "brewerydelight:tea"
+  },
+  "result_aroma": "mint",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "sweet_potato",
+  "ingredient": {
+    "item": "brewerydelight:sweet_potato"
+  },
+  "result_aroma": "purple_sweet_potato",
+  "processing_time": 200
+}

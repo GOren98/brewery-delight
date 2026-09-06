@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "bitter",
+  "receiver_aroma": "new_world_hops",
+  "ingredient": {
+    "item": "brewerydelight:hops"
+  },
+  "result_aroma": "centennial",
+  "processing_time": 200
+}

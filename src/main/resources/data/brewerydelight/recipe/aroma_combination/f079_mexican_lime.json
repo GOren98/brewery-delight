@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "herbal",
+  "receiver_aroma": "lime",
+  "ingredient": {
+    "item": "brewerydelight:lime"
+  },
+  "result_aroma": "mexican_lime",
+  "processing_time": 200
+}

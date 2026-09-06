@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "tea",
+  "result_aroma": "fully_oxidized",
+  "processing_time": 200
+}

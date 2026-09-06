@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "lemon",
+  "ingredient": {
+    "item": "brewerydelight:lemon"
+  },
+  "result_aroma": "hybrid_lemon",
+  "processing_time": 200
+}

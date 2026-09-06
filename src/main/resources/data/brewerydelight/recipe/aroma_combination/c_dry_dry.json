@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "barley",
+  "receiver_aroma": "rice",
+  "result_aroma": "dry",
+  "processing_time": 200
+}

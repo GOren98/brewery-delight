@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "savory",
+  "receiver_aroma": "herb",
+  "ingredient": {
+    "item": "brewerydelight:tea"
+  },
+  "result_aroma": "sage",
+  "processing_time": 200
+}

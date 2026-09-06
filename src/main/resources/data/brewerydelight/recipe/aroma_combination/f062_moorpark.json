@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "perfumed",
+  "receiver_aroma": "common_apricot",
+  "ingredient": {
+    "item": "brewerydelight:apricot"
+  },
+  "result_aroma": "moorpark",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "mellow",
+  "receiver_aroma": "white_sweet_potato",
+  "ingredient": {
+    "item": "brewerydelight:sweet_potato"
+  },
+  "result_aroma": "koganesengan",
+  "processing_time": 200
+}

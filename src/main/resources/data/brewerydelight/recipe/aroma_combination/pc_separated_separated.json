@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dry",
+  "receiver_aroma": "nutmeg",
+  "result_aroma": "separated",
+  "processing_time": 200
+}

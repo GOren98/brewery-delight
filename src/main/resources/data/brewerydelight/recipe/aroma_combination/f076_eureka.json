@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "crisp",
+  "receiver_aroma": "true_lemon",
+  "ingredient": {
+    "item": "brewerydelight:lemon"
+  },
+  "result_aroma": "eureka",
+  "processing_time": 200
+}

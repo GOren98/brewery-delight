@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "herbal",
+  "receiver_aroma": "blackcurrant",
+  "ingredient": {
+    "item": "brewerydelight:berry"
+  },
+  "result_aroma": "ben_lomond",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dry",
+  "receiver_aroma": "bitter_orange",
+  "ingredient": {
+    "item": "brewerydelight:orange"
+  },
+  "result_aroma": "seville",
+  "processing_time": 200
+}

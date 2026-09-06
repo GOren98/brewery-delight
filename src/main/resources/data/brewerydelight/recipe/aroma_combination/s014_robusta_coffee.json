@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "bitter",
+  "receiver_aroma": "coffee",
+  "ingredient": {
+    "item": "brewerydelight:coffee"
+  },
+  "result_aroma": "robusta_coffee",
+  "processing_time": 200
+}

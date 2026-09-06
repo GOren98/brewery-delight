@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "european_walnut",
+  "ingredient": {
+    "item": "brewerydelight:walnut"
+  },
+  "result_aroma": "lara_walnut",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "ripe",
+  "receiver_aroma": "raspberry",
+  "ingredient": {
+    "item": "brewerydelight:berry"
+  },
+  "result_aroma": "meeker",
+  "processing_time": 200
+}

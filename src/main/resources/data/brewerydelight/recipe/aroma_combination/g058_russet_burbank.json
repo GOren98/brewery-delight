@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dry",
+  "receiver_aroma": "starchy_potato",
+  "ingredient": {
+    "item": "minecraft:potato"
+  },
+  "result_aroma": "russet_burbank",
+  "processing_time": 200
+}

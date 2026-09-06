@@ -1,3 +1,3676 @@
 {
-  "aromas": []
+  "aromas": [
+    {
+      "id": "grape",
+      "display_name": "Grape",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "grape",
+      "line": "grape"
+    },
+    {
+      "id": "red_grape",
+      "display_name": "Red Grape",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "grape"
+    },
+    {
+      "id": "white_grape",
+      "display_name": "White Grape",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "grape"
+    },
+    {
+      "id": "tempranillo",
+      "display_name": "Tempranillo",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "sangiovese",
+      "display_name": "Sangiovese",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "nebbiolo",
+      "display_name": "Nebbiolo",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "grenache",
+      "display_name": "Grenache",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "malbec",
+      "display_name": "Malbec",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "gamay",
+      "display_name": "Gamay",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "cabernet_sauvignon",
+      "display_name": "Cabernet Sauvignon",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "merlot",
+      "display_name": "Merlot",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "pinot_noir",
+      "display_name": "Pinot Noir",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "syrah",
+      "display_name": "Syrah",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "ruby_roman",
+      "display_name": "Ruby Roman",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "red_grape"
+    },
+    {
+      "id": "chenin_blanc",
+      "display_name": "Chenin Blanc",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "gewurztraminer",
+      "display_name": "Gewürztraminer",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "muscat",
+      "display_name": "Muscat",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "viognier",
+      "display_name": "Viognier",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "semillon",
+      "display_name": "Sémillon",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "gruner_veltliner",
+      "display_name": "Grüner Veltliner",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "chardonnay",
+      "display_name": "Chardonnay",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "sauvignon_blanc",
+      "display_name": "Sauvignon Blanc",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "riesling",
+      "display_name": "Riesling",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "pinot_gris",
+      "display_name": "Pinot Gris",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "shine_muscat",
+      "display_name": "Shine Muscat",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "grape",
+      "line": "grape",
+      "parent": "white_grape"
+    },
+    {
+      "id": "berry",
+      "display_name": "Berry",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "berry",
+      "line": "berry"
+    },
+    {
+      "id": "strawberry",
+      "display_name": "Strawberry",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "berry"
+    },
+    {
+      "id": "raspberry",
+      "display_name": "Raspberry",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "berry"
+    },
+    {
+      "id": "blackberry",
+      "display_name": "Blackberry",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "berry"
+    },
+    {
+      "id": "blueberry",
+      "display_name": "Blueberry",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "berry"
+    },
+    {
+      "id": "cranberry",
+      "display_name": "Cranberry",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "berry"
+    },
+    {
+      "id": "blackcurrant",
+      "display_name": "Blackcurrant",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "berry"
+    },
+    {
+      "id": "albion",
+      "display_name": "Albion",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "strawberry"
+    },
+    {
+      "id": "meeker",
+      "display_name": "Meeker",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "raspberry"
+    },
+    {
+      "id": "marion",
+      "display_name": "Marion",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "blackberry"
+    },
+    {
+      "id": "duke",
+      "display_name": "Duke",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "blueberry"
+    },
+    {
+      "id": "stevens",
+      "display_name": "Stevens",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "cranberry"
+    },
+    {
+      "id": "ben_lomond",
+      "display_name": "Ben Lomond",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "berry",
+      "line": "berry",
+      "parent": "blackcurrant"
+    },
+    {
+      "id": "apple",
+      "display_name": "Apple",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "apple",
+      "line": "apple"
+    },
+    {
+      "id": "bittersweet_apple",
+      "display_name": "Bittersweet Apple",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "apple",
+      "line": "apple",
+      "parent": "apple"
+    },
+    {
+      "id": "bittersharp_apple",
+      "display_name": "Bittersharp Apple",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "apple",
+      "line": "apple",
+      "parent": "apple"
+    },
+    {
+      "id": "dessert_apple",
+      "display_name": "Dessert Apple",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "apple",
+      "line": "apple",
+      "parent": "apple"
+    },
+    {
+      "id": "dabinett",
+      "display_name": "Dabinett",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "apple",
+      "line": "apple",
+      "parent": "bittersweet_apple"
+    },
+    {
+      "id": "yarlington_mill",
+      "display_name": "Yarlington Mill",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "apple",
+      "line": "apple",
+      "parent": "bittersweet_apple"
+    },
+    {
+      "id": "kingston_black",
+      "display_name": "Kingston Black",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "apple",
+      "line": "apple",
+      "parent": "bittersharp_apple"
+    },
+    {
+      "id": "honeycrisp",
+      "display_name": "Honeycrisp",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "apple",
+      "line": "apple",
+      "parent": "dessert_apple"
+    },
+    {
+      "id": "fuji",
+      "display_name": "Fuji",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "apple",
+      "line": "apple",
+      "parent": "dessert_apple"
+    },
+    {
+      "id": "pear",
+      "display_name": "Pear",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "pear",
+      "line": "pear"
+    },
+    {
+      "id": "perry_pear",
+      "display_name": "Perry Pear",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "pear",
+      "line": "pear",
+      "parent": "pear"
+    },
+    {
+      "id": "european_pear",
+      "display_name": "European Pear",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "pear",
+      "line": "pear",
+      "parent": "pear"
+    },
+    {
+      "id": "asian_pear",
+      "display_name": "Asian Pear",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "pear",
+      "line": "pear",
+      "parent": "pear"
+    },
+    {
+      "id": "blakeney_red",
+      "display_name": "Blakeney Red",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "pear",
+      "line": "pear",
+      "parent": "perry_pear"
+    },
+    {
+      "id": "doyenne_du_comice",
+      "display_name": "Doyenné du Comice",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "pear",
+      "line": "pear",
+      "parent": "european_pear"
+    },
+    {
+      "id": "hosui",
+      "display_name": "Hosui",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "pear",
+      "line": "pear",
+      "parent": "asian_pear"
+    },
+    {
+      "id": "cherry",
+      "display_name": "Cherry",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "cherry",
+      "line": "cherry"
+    },
+    {
+      "id": "dark_sweet_cherry",
+      "display_name": "Dark Sweet Cherry",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "cherry",
+      "line": "cherry",
+      "parent": "cherry"
+    },
+    {
+      "id": "blush_sweet_cherry",
+      "display_name": "Blush Sweet Cherry",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "cherry",
+      "line": "cherry",
+      "parent": "cherry"
+    },
+    {
+      "id": "sour_cherry",
+      "display_name": "Sour Cherry",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "cherry",
+      "line": "cherry",
+      "parent": "cherry"
+    },
+    {
+      "id": "bing",
+      "display_name": "Bing",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "cherry",
+      "line": "cherry",
+      "parent": "dark_sweet_cherry"
+    },
+    {
+      "id": "rainier",
+      "display_name": "Rainier",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "cherry",
+      "line": "cherry",
+      "parent": "blush_sweet_cherry"
+    },
+    {
+      "id": "montmorency",
+      "display_name": "Montmorency",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "cherry",
+      "line": "cherry",
+      "parent": "sour_cherry"
+    },
+    {
+      "id": "plum",
+      "display_name": "Plum",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "plum",
+      "line": "plum"
+    },
+    {
+      "id": "european_plum",
+      "display_name": "European Plum",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "plum",
+      "line": "plum",
+      "parent": "plum"
+    },
+    {
+      "id": "japanese_plum",
+      "display_name": "Japanese Plum",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "plum",
+      "line": "plum",
+      "parent": "plum"
+    },
+    {
+      "id": "stanley",
+      "display_name": "Stanley",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "plum",
+      "line": "plum",
+      "parent": "european_plum"
+    },
+    {
+      "id": "santa_rosa",
+      "display_name": "Santa Rosa",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "plum",
+      "line": "plum",
+      "parent": "japanese_plum"
+    },
+    {
+      "id": "apricot",
+      "display_name": "Apricot",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "apricot",
+      "line": "apricot"
+    },
+    {
+      "id": "common_apricot",
+      "display_name": "Common Apricot",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "apricot",
+      "line": "apricot",
+      "parent": "apricot"
+    },
+    {
+      "id": "moorpark",
+      "display_name": "Moorpark",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "apricot",
+      "line": "apricot",
+      "parent": "common_apricot"
+    },
+    {
+      "id": "peach",
+      "display_name": "Peach",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "peach",
+      "line": "peach"
+    },
+    {
+      "id": "white_peach",
+      "display_name": "White Peach",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "peach",
+      "line": "peach",
+      "parent": "peach"
+    },
+    {
+      "id": "hakuho",
+      "display_name": "Hakuho",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "peach",
+      "line": "peach",
+      "parent": "white_peach"
+    },
+    {
+      "id": "orange",
+      "display_name": "Orange",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "orange",
+      "line": "orange"
+    },
+    {
+      "id": "navel_orange",
+      "display_name": "Navel Orange",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "orange",
+      "line": "orange",
+      "parent": "orange"
+    },
+    {
+      "id": "juice_orange",
+      "display_name": "Juice Orange",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "orange",
+      "line": "orange",
+      "parent": "orange"
+    },
+    {
+      "id": "blood_orange",
+      "display_name": "Blood Orange",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "orange",
+      "line": "orange",
+      "parent": "orange"
+    },
+    {
+      "id": "bitter_orange",
+      "display_name": "Bitter Orange",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "orange",
+      "line": "orange",
+      "parent": "orange"
+    },
+    {
+      "id": "washington_navel",
+      "display_name": "Washington Navel",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "orange",
+      "line": "orange",
+      "parent": "navel_orange"
+    },
+    {
+      "id": "cara_cara",
+      "display_name": "Cara Cara",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "orange",
+      "line": "orange",
+      "parent": "navel_orange"
+    },
+    {
+      "id": "valencia",
+      "display_name": "Valencia",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "orange",
+      "line": "orange",
+      "parent": "juice_orange"
+    },
+    {
+      "id": "moro",
+      "display_name": "Moro",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "orange",
+      "line": "orange",
+      "parent": "blood_orange"
+    },
+    {
+      "id": "seville",
+      "display_name": "Seville",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "orange",
+      "line": "orange",
+      "parent": "bitter_orange"
+    },
+    {
+      "id": "lemon",
+      "display_name": "Lemon",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "lemon",
+      "line": "lemon"
+    },
+    {
+      "id": "true_lemon",
+      "display_name": "True Lemon",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "lemon",
+      "line": "lemon",
+      "parent": "lemon"
+    },
+    {
+      "id": "hybrid_lemon",
+      "display_name": "Hybrid Lemon",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "lemon",
+      "line": "lemon",
+      "parent": "lemon"
+    },
+    {
+      "id": "eureka",
+      "display_name": "Eureka",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "lemon",
+      "line": "lemon",
+      "parent": "true_lemon"
+    },
+    {
+      "id": "improved_meyer",
+      "display_name": "Improved Meyer",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "lemon",
+      "line": "lemon",
+      "parent": "hybrid_lemon"
+    },
+    {
+      "id": "lime",
+      "display_name": "Lime",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "lime",
+      "line": "lime"
+    },
+    {
+      "id": "persian_lime",
+      "display_name": "Persian Lime",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "lime",
+      "line": "lime",
+      "parent": "lime"
+    },
+    {
+      "id": "mexican_lime",
+      "display_name": "Mexican Lime",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "lime",
+      "line": "lime",
+      "parent": "lime"
+    },
+    {
+      "id": "bearss",
+      "display_name": "Bearss",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "lime",
+      "line": "lime",
+      "parent": "persian_lime"
+    },
+    {
+      "id": "thornless_mexican",
+      "display_name": "Thornless Mexican",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "lime",
+      "line": "lime",
+      "parent": "mexican_lime"
+    },
+    {
+      "id": "melon",
+      "display_name": "Melon",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "melon",
+      "line": "melon"
+    },
+    {
+      "id": "watermelon",
+      "display_name": "Watermelon",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "melon",
+      "line": "melon",
+      "parent": "melon"
+    },
+    {
+      "id": "muskmelon",
+      "display_name": "Muskmelon",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "melon",
+      "line": "melon",
+      "parent": "melon"
+    },
+    {
+      "id": "oriental_melon",
+      "display_name": "Oriental Melon",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "melon",
+      "line": "melon",
+      "parent": "melon"
+    },
+    {
+      "id": "sugar_baby",
+      "display_name": "Sugar Baby",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "melon",
+      "line": "melon",
+      "parent": "watermelon"
+    },
+    {
+      "id": "yubari_king",
+      "display_name": "Yubari King",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "melon",
+      "line": "melon",
+      "parent": "muskmelon"
+    },
+    {
+      "id": "euncheon",
+      "display_name": "Euncheon",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "melon",
+      "line": "melon",
+      "parent": "oriental_melon"
+    },
+    {
+      "id": "pineapple",
+      "display_name": "Pineapple",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "pineapple",
+      "line": "pineapple"
+    },
+    {
+      "id": "cayenne_pineapple",
+      "display_name": "Cayenne Pineapple",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "pineapple",
+      "line": "pineapple",
+      "parent": "pineapple"
+    },
+    {
+      "id": "hybrid_pineapple",
+      "display_name": "Hybrid Pineapple",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "pineapple",
+      "line": "pineapple",
+      "parent": "pineapple"
+    },
+    {
+      "id": "smooth_cayenne",
+      "display_name": "Smooth Cayenne",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "pineapple",
+      "line": "pineapple",
+      "parent": "cayenne_pineapple"
+    },
+    {
+      "id": "md_2",
+      "display_name": "MD-2",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "pineapple",
+      "line": "pineapple",
+      "parent": "hybrid_pineapple"
+    },
+    {
+      "id": "kiwi",
+      "display_name": "Kiwi",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "kiwi",
+      "line": "kiwi"
+    },
+    {
+      "id": "green_kiwi",
+      "display_name": "Green Kiwi",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "kiwi",
+      "line": "kiwi",
+      "parent": "kiwi"
+    },
+    {
+      "id": "gold_kiwi",
+      "display_name": "Gold Kiwi",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "kiwi",
+      "line": "kiwi",
+      "parent": "kiwi"
+    },
+    {
+      "id": "hayward",
+      "display_name": "Hayward",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "kiwi",
+      "line": "kiwi",
+      "parent": "green_kiwi"
+    },
+    {
+      "id": "zesy002",
+      "display_name": "Zesy002",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "kiwi",
+      "line": "kiwi",
+      "parent": "gold_kiwi"
+    },
+    {
+      "id": "banana",
+      "display_name": "Banana",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "banana",
+      "line": "banana"
+    },
+    {
+      "id": "cavendish_banana",
+      "display_name": "Cavendish Banana",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "banana",
+      "line": "banana",
+      "parent": "banana"
+    },
+    {
+      "id": "heritage_banana",
+      "display_name": "Heritage Banana",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "banana",
+      "line": "banana",
+      "parent": "banana"
+    },
+    {
+      "id": "grand_nain",
+      "display_name": "Grand Nain",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "banana",
+      "line": "banana",
+      "parent": "cavendish_banana"
+    },
+    {
+      "id": "gros_michel",
+      "display_name": "Gros Michel",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "banana",
+      "line": "banana",
+      "parent": "heritage_banana"
+    },
+    {
+      "id": "coconut",
+      "display_name": "Coconut",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "coconut",
+      "line": "coconut"
+    },
+    {
+      "id": "tall_coconut",
+      "display_name": "Tall Coconut",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "coconut",
+      "line": "coconut",
+      "parent": "coconut"
+    },
+    {
+      "id": "dwarf_coconut",
+      "display_name": "Dwarf Coconut",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "coconut",
+      "line": "coconut",
+      "parent": "coconut"
+    },
+    {
+      "id": "hybrid_coconut",
+      "display_name": "Hybrid Coconut",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "coconut",
+      "line": "coconut",
+      "parent": "coconut"
+    },
+    {
+      "id": "west_african_tall",
+      "display_name": "West African Tall",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "coconut",
+      "line": "coconut",
+      "parent": "tall_coconut"
+    },
+    {
+      "id": "malayan_yellow_dwarf",
+      "display_name": "Malayan Yellow Dwarf",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "coconut",
+      "line": "coconut",
+      "parent": "dwarf_coconut"
+    },
+    {
+      "id": "mawa",
+      "display_name": "MAWA",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "coconut",
+      "line": "coconut",
+      "parent": "hybrid_coconut"
+    },
+    {
+      "id": "mango",
+      "display_name": "Mango",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "mango",
+      "line": "mango"
+    },
+    {
+      "id": "rich_mango",
+      "display_name": "Rich Mango",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "mango",
+      "line": "mango",
+      "parent": "mango"
+    },
+    {
+      "id": "sweet_mango",
+      "display_name": "Sweet Mango",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "mango",
+      "line": "mango",
+      "parent": "mango"
+    },
+    {
+      "id": "floral_mango",
+      "display_name": "Floral Mango",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "mango",
+      "line": "mango",
+      "parent": "mango"
+    },
+    {
+      "id": "alphonso",
+      "display_name": "Alphonso",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "mango",
+      "line": "mango",
+      "parent": "rich_mango"
+    },
+    {
+      "id": "carabao",
+      "display_name": "Carabao",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "mango",
+      "line": "mango",
+      "parent": "sweet_mango"
+    },
+    {
+      "id": "nam_dok_mai",
+      "display_name": "Nam Dok Mai",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "mango",
+      "line": "mango",
+      "parent": "floral_mango"
+    },
+    {
+      "id": "barley",
+      "display_name": "Barley",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "barley",
+      "line": "barley"
+    },
+    {
+      "id": "ale_barley",
+      "display_name": "Ale Barley",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "barley"
+    },
+    {
+      "id": "lager_barley",
+      "display_name": "Lager Barley",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "barley"
+    },
+    {
+      "id": "distilling_barley",
+      "display_name": "Distilling Barley",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "barley"
+    },
+    {
+      "id": "heritage_barley",
+      "display_name": "Heritage Barley",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "barley"
+    },
+    {
+      "id": "full_pint",
+      "display_name": "Full Pint",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "ale_barley"
+    },
+    {
+      "id": "maris_otter",
+      "display_name": "Maris Otter",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "ale_barley"
+    },
+    {
+      "id": "golden_promise",
+      "display_name": "Golden Promise",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "ale_barley"
+    },
+    {
+      "id": "rgt_planet",
+      "display_name": "RGT Planet",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "lager_barley"
+    },
+    {
+      "id": "odyssey",
+      "display_name": "Odyssey",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "lager_barley"
+    },
+    {
+      "id": "hana",
+      "display_name": "Hana",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "lager_barley"
+    },
+    {
+      "id": "laureate",
+      "display_name": "Laureate",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "distilling_barley"
+    },
+    {
+      "id": "concerto",
+      "display_name": "Concerto",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "distilling_barley"
+    },
+    {
+      "id": "optic",
+      "display_name": "Optic",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "distilling_barley"
+    },
+    {
+      "id": "chevallier",
+      "display_name": "Chevallier",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "heritage_barley"
+    },
+    {
+      "id": "bere",
+      "display_name": "Bere",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "heritage_barley"
+    },
+    {
+      "id": "plumage_archer",
+      "display_name": "Plumage Archer",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "barley",
+      "parent": "heritage_barley"
+    },
+    {
+      "id": "hops",
+      "display_name": "Hops",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "hops",
+      "line": "hops"
+    },
+    {
+      "id": "noble_hops",
+      "display_name": "Noble Hops",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "hops"
+    },
+    {
+      "id": "british_hops",
+      "display_name": "British Hops",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "hops"
+    },
+    {
+      "id": "new_world_hops",
+      "display_name": "New World Hops",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "hops"
+    },
+    {
+      "id": "tettnanger",
+      "display_name": "Tettnanger",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "noble_hops"
+    },
+    {
+      "id": "saaz",
+      "display_name": "Saaz",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "noble_hops"
+    },
+    {
+      "id": "hallertau_mittelfruh",
+      "display_name": "Hallertau Mittelfrüh",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "noble_hops"
+    },
+    {
+      "id": "fuggle",
+      "display_name": "Fuggle",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "british_hops"
+    },
+    {
+      "id": "east_kent_goldings",
+      "display_name": "East Kent Goldings",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "british_hops"
+    },
+    {
+      "id": "centennial",
+      "display_name": "Centennial",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "new_world_hops"
+    },
+    {
+      "id": "mosaic",
+      "display_name": "Mosaic",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "new_world_hops"
+    },
+    {
+      "id": "nelson_sauvin",
+      "display_name": "Nelson Sauvin",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "new_world_hops"
+    },
+    {
+      "id": "cascade",
+      "display_name": "Cascade",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "new_world_hops"
+    },
+    {
+      "id": "citra",
+      "display_name": "Citra",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "hops",
+      "line": "hops",
+      "parent": "new_world_hops"
+    },
+    {
+      "id": "rice",
+      "display_name": "Rice",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "rice",
+      "line": "rice"
+    },
+    {
+      "id": "sake_rice",
+      "display_name": "Sake Rice",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "rice"
+    },
+    {
+      "id": "korean_brewing_rice",
+      "display_name": "Korean Brewing Rice",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "rice"
+    },
+    {
+      "id": "glutinous_rice",
+      "display_name": "Glutinous Rice",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "rice"
+    },
+    {
+      "id": "aromatic_rice",
+      "display_name": "Aromatic Rice",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "rice"
+    },
+    {
+      "id": "gohyakumangoku",
+      "display_name": "Gohyakumangoku",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "sake_rice"
+    },
+    {
+      "id": "miyama_nishiki",
+      "display_name": "Miyama Nishiki",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "sake_rice"
+    },
+    {
+      "id": "dewasansan",
+      "display_name": "Dewasansan",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "sake_rice"
+    },
+    {
+      "id": "hattan_nishiki",
+      "display_name": "Hattan Nishiki",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "sake_rice"
+    },
+    {
+      "id": "yamada_nishiki",
+      "display_name": "Yamada Nishiki",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "sake_rice"
+    },
+    {
+      "id": "omachi",
+      "display_name": "Omachi",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "sake_rice"
+    },
+    {
+      "id": "sulgaeng",
+      "display_name": "Sulgaeng",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "korean_brewing_rice"
+    },
+    {
+      "id": "hangaru",
+      "display_name": "Hangaru",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "korean_brewing_rice"
+    },
+    {
+      "id": "heukjinju",
+      "display_name": "Heukjinju",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "glutinous_rice"
+    },
+    {
+      "id": "hyangmi",
+      "display_name": "Hyangmi",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "rice",
+      "parent": "aromatic_rice"
+    },
+    {
+      "id": "corn",
+      "display_name": "Corn",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "corn",
+      "line": "corn"
+    },
+    {
+      "id": "yellow_dent_corn",
+      "display_name": "Yellow Dent Corn",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "corn",
+      "line": "corn",
+      "parent": "corn"
+    },
+    {
+      "id": "heritage_corn",
+      "display_name": "Heritage Corn",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "corn",
+      "line": "corn",
+      "parent": "corn"
+    },
+    {
+      "id": "reids_yellow_dent",
+      "display_name": "Reid's Yellow Dent",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "corn",
+      "line": "corn",
+      "parent": "yellow_dent_corn"
+    },
+    {
+      "id": "wapsie_valley",
+      "display_name": "Wapsie Valley",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "corn",
+      "line": "corn",
+      "parent": "heritage_corn"
+    },
+    {
+      "id": "jimmy_red",
+      "display_name": "Jimmy Red",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "corn",
+      "line": "corn",
+      "parent": "heritage_corn"
+    },
+    {
+      "id": "bloody_butcher",
+      "display_name": "Bloody Butcher",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "corn",
+      "line": "corn",
+      "parent": "heritage_corn"
+    },
+    {
+      "id": "rye",
+      "display_name": "Rye",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "rye",
+      "line": "rye"
+    },
+    {
+      "id": "distilling_rye",
+      "display_name": "Distilling Rye",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "rye",
+      "line": "rye",
+      "parent": "rye"
+    },
+    {
+      "id": "heritage_rye",
+      "display_name": "Heritage Rye",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "rye",
+      "line": "rye",
+      "parent": "rye"
+    },
+    {
+      "id": "danko",
+      "display_name": "Danko",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rye",
+      "line": "rye",
+      "parent": "distilling_rye"
+    },
+    {
+      "id": "hazlet",
+      "display_name": "Hazlet",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rye",
+      "line": "rye",
+      "parent": "distilling_rye"
+    },
+    {
+      "id": "rosen_rye",
+      "display_name": "Rosen Rye",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "rye",
+      "line": "rye",
+      "parent": "heritage_rye"
+    },
+    {
+      "id": "abruzzi_rye",
+      "display_name": "Abruzzi Rye",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "rye",
+      "line": "rye",
+      "parent": "heritage_rye"
+    },
+    {
+      "id": "potato",
+      "display_name": "Potato",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "potato",
+      "line": "potato"
+    },
+    {
+      "id": "starchy_potato",
+      "display_name": "Starchy Potato",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "potato",
+      "line": "potato",
+      "parent": "potato"
+    },
+    {
+      "id": "waxy_potato",
+      "display_name": "Waxy Potato",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "potato",
+      "line": "potato",
+      "parent": "potato"
+    },
+    {
+      "id": "russet_burbank",
+      "display_name": "Russet Burbank",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "potato",
+      "line": "potato",
+      "parent": "starchy_potato"
+    },
+    {
+      "id": "yukon_gold",
+      "display_name": "Yukon Gold",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "potato",
+      "line": "potato",
+      "parent": "waxy_potato"
+    },
+    {
+      "id": "maris_piper",
+      "display_name": "Maris Piper",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "potato",
+      "line": "potato",
+      "parent": "waxy_potato"
+    },
+    {
+      "id": "sweet_potato",
+      "display_name": "Sweet Potato",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "sweet_potato",
+      "line": "sweet_potato"
+    },
+    {
+      "id": "white_sweet_potato",
+      "display_name": "White Sweet Potato",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "sweet_potato",
+      "line": "sweet_potato",
+      "parent": "sweet_potato"
+    },
+    {
+      "id": "orange_sweet_potato",
+      "display_name": "Orange Sweet Potato",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "sweet_potato",
+      "line": "sweet_potato",
+      "parent": "sweet_potato"
+    },
+    {
+      "id": "purple_sweet_potato",
+      "display_name": "Purple Sweet Potato",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "sweet_potato",
+      "line": "sweet_potato",
+      "parent": "sweet_potato"
+    },
+    {
+      "id": "beniazuma",
+      "display_name": "Beniazuma",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "sweet_potato",
+      "line": "sweet_potato",
+      "parent": "orange_sweet_potato"
+    },
+    {
+      "id": "ayamurasaki",
+      "display_name": "Ayamurasaki",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "sweet_potato",
+      "line": "sweet_potato",
+      "parent": "purple_sweet_potato"
+    },
+    {
+      "id": "murasaki_masari",
+      "display_name": "Murasaki Masari",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "sweet_potato",
+      "line": "sweet_potato",
+      "parent": "white_sweet_potato"
+    },
+    {
+      "id": "koganesengan",
+      "display_name": "Koganesengan",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "sweet_potato",
+      "line": "sweet_potato",
+      "parent": "white_sweet_potato"
+    },
+    {
+      "id": "wheat",
+      "display_name": "Wheat",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "wheat",
+      "line": "wheat"
+    },
+    {
+      "id": "malting_wheat",
+      "display_name": "Malting Wheat",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "wheat"
+    },
+    {
+      "id": "heritage_red_wheat",
+      "display_name": "Heritage Red Wheat",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "wheat"
+    },
+    {
+      "id": "soft_white_wheat",
+      "display_name": "Soft White Wheat",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "wheat"
+    },
+    {
+      "id": "korean_wheat",
+      "display_name": "Korean Wheat",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "wheat"
+    },
+    {
+      "id": "anthus",
+      "display_name": "Anthus",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "malting_wheat"
+    },
+    {
+      "id": "hermann",
+      "display_name": "Hermann",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "malting_wheat"
+    },
+    {
+      "id": "turkey_red",
+      "display_name": "Turkey Red",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "heritage_red_wheat"
+    },
+    {
+      "id": "red_fife",
+      "display_name": "Red Fife",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "heritage_red_wheat"
+    },
+    {
+      "id": "white_sonora",
+      "display_name": "White Sonora",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "soft_white_wheat"
+    },
+    {
+      "id": "keumkang",
+      "display_name": "Keumkang",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "wheat",
+      "line": "wheat",
+      "parent": "korean_wheat"
+    },
+    {
+      "id": "millet",
+      "display_name": "Millet",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "millet",
+      "line": "millet"
+    },
+    {
+      "id": "foxtail_millet",
+      "display_name": "Foxtail Millet",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "millet",
+      "line": "millet",
+      "parent": "millet"
+    },
+    {
+      "id": "proso_millet",
+      "display_name": "Proso Millet",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "millet",
+      "line": "millet",
+      "parent": "millet"
+    },
+    {
+      "id": "finger_millet",
+      "display_name": "Finger Millet",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "millet",
+      "line": "millet",
+      "parent": "millet"
+    },
+    {
+      "id": "zhonggu_25",
+      "display_name": "Zhonggu 25",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "millet",
+      "line": "millet",
+      "parent": "foxtail_millet"
+    },
+    {
+      "id": "huntsman",
+      "display_name": "Huntsman",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "millet",
+      "line": "millet",
+      "parent": "proso_millet"
+    },
+    {
+      "id": "gpu_28",
+      "display_name": "GPU 28",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "millet",
+      "line": "millet",
+      "parent": "finger_millet"
+    },
+    {
+      "id": "agave",
+      "display_name": "Agave",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "agave",
+      "line": "agave"
+    },
+    {
+      "id": "tequila_agave",
+      "display_name": "Tequila Agave",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "agave",
+      "line": "agave",
+      "parent": "agave"
+    },
+    {
+      "id": "mezcal_agave",
+      "display_name": "Mezcal Agave",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "agave",
+      "line": "agave",
+      "parent": "agave"
+    },
+    {
+      "id": "blue_weber",
+      "display_name": "Blue Weber",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "agave",
+      "line": "agave",
+      "parent": "tequila_agave"
+    },
+    {
+      "id": "espadin",
+      "display_name": "Espadín",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "agave",
+      "line": "agave",
+      "parent": "mezcal_agave"
+    },
+    {
+      "id": "tobala",
+      "display_name": "Tobalá",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "agave",
+      "line": "agave",
+      "parent": "mezcal_agave"
+    },
+    {
+      "id": "tepeztate",
+      "display_name": "Tepeztate",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "agave",
+      "line": "agave",
+      "parent": "mezcal_agave"
+    },
+    {
+      "id": "juniper_berry",
+      "display_name": "Juniper Berry",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "juniper_berry",
+      "line": "juniper_berry"
+    },
+    {
+      "id": "european_juniper",
+      "display_name": "European Juniper",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "juniper_berry",
+      "line": "juniper_berry",
+      "parent": "juniper_berry"
+    },
+    {
+      "id": "mediterranean_juniper",
+      "display_name": "Mediterranean Juniper",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "juniper_berry",
+      "line": "juniper_berry",
+      "parent": "juniper_berry"
+    },
+    {
+      "id": "common_juniper",
+      "display_name": "Common Juniper",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "juniper_berry",
+      "line": "juniper_berry",
+      "parent": "european_juniper"
+    },
+    {
+      "id": "greek_juniper",
+      "display_name": "Greek Juniper",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "juniper_berry",
+      "line": "juniper_berry",
+      "parent": "european_juniper"
+    },
+    {
+      "id": "phoenician_juniper",
+      "display_name": "Phoenician Juniper",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "juniper_berry",
+      "line": "juniper_berry",
+      "parent": "mediterranean_juniper"
+    },
+    {
+      "id": "cade_juniper",
+      "display_name": "Cade Juniper",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "juniper_berry",
+      "line": "juniper_berry",
+      "parent": "mediterranean_juniper"
+    },
+    {
+      "id": "coffee",
+      "display_name": "Coffee",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "coffee",
+      "line": "coffee"
+    },
+    {
+      "id": "arabica_coffee",
+      "display_name": "Arabica Coffee",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "coffee",
+      "line": "coffee",
+      "parent": "coffee"
+    },
+    {
+      "id": "robusta_coffee",
+      "display_name": "Robusta Coffee",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "coffee",
+      "line": "coffee",
+      "parent": "coffee"
+    },
+    {
+      "id": "typica",
+      "display_name": "Typica",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "coffee",
+      "line": "coffee",
+      "parent": "arabica_coffee"
+    },
+    {
+      "id": "bourbon_coffee",
+      "display_name": "Bourbon",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "coffee",
+      "line": "coffee",
+      "parent": "arabica_coffee"
+    },
+    {
+      "id": "sl28",
+      "display_name": "SL28",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "coffee",
+      "line": "coffee",
+      "parent": "arabica_coffee"
+    },
+    {
+      "id": "gesha",
+      "display_name": "Gesha",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "coffee",
+      "line": "coffee",
+      "parent": "arabica_coffee"
+    },
+    {
+      "id": "pacamara",
+      "display_name": "Pacamara",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "coffee",
+      "line": "coffee",
+      "parent": "arabica_coffee"
+    },
+    {
+      "id": "conilon",
+      "display_name": "Conilon",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "coffee",
+      "line": "coffee",
+      "parent": "robusta_coffee"
+    },
+    {
+      "id": "cacao",
+      "display_name": "Cacao",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "cacao",
+      "line": "cacao"
+    },
+    {
+      "id": "fine_cacao",
+      "display_name": "Fine Cacao",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "cacao",
+      "line": "cacao",
+      "parent": "cacao"
+    },
+    {
+      "id": "traditional_cacao",
+      "display_name": "Traditional Cacao",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "cacao",
+      "line": "cacao",
+      "parent": "cacao"
+    },
+    {
+      "id": "hybrid_cacao",
+      "display_name": "Hybrid Cacao",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "cacao",
+      "line": "cacao",
+      "parent": "cacao"
+    },
+    {
+      "id": "porcelana",
+      "display_name": "Porcelana",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "cacao",
+      "line": "cacao",
+      "parent": "fine_cacao"
+    },
+    {
+      "id": "nacional",
+      "display_name": "Nacional",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "cacao",
+      "line": "cacao",
+      "parent": "fine_cacao"
+    },
+    {
+      "id": "chuncho",
+      "display_name": "Chuncho",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "cacao",
+      "line": "cacao",
+      "parent": "fine_cacao"
+    },
+    {
+      "id": "amelonado",
+      "display_name": "Amelonado",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "cacao",
+      "line": "cacao",
+      "parent": "traditional_cacao"
+    },
+    {
+      "id": "matina",
+      "display_name": "Matina",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "cacao",
+      "line": "cacao",
+      "parent": "traditional_cacao"
+    },
+    {
+      "id": "trinitario",
+      "display_name": "Trinitario",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "cacao",
+      "line": "cacao",
+      "parent": "hybrid_cacao"
+    },
+    {
+      "id": "herb",
+      "display_name": "Herb",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "tea"
+    },
+    {
+      "id": "wormwood",
+      "display_name": "Wormwood",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "fennel",
+      "display_name": "Fennel",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "hyssop",
+      "display_name": "Hyssop",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "lemon_balm",
+      "display_name": "Lemon Balm",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "coriander",
+      "display_name": "Coriander",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "angelica",
+      "display_name": "Angelica",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "orris",
+      "display_name": "Orris",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "licorice",
+      "display_name": "Licorice",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "gentian",
+      "display_name": "Gentian",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "mint",
+      "display_name": "Mint",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "basil",
+      "display_name": "Basil",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "rosemary",
+      "display_name": "Rosemary",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "chamomile",
+      "display_name": "Chamomile",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "lavender",
+      "display_name": "Lavender",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "sage",
+      "display_name": "Sage",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "thyme",
+      "display_name": "Thyme",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "herb",
+      "line": "herb",
+      "parent": "herb"
+    },
+    {
+      "id": "anise",
+      "display_name": "Anise",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "anise",
+      "line": "anise"
+    },
+    {
+      "id": "anise_spice",
+      "display_name": "Anise Spice",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "anise",
+      "line": "anise",
+      "parent": "anise"
+    },
+    {
+      "id": "green_anise",
+      "display_name": "Green Anise",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "anise",
+      "line": "anise",
+      "parent": "anise_spice"
+    },
+    {
+      "id": "star_anise",
+      "display_name": "Star Anise",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "anise",
+      "line": "anise",
+      "parent": "anise_spice"
+    },
+    {
+      "id": "almond",
+      "display_name": "Almond",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "almond",
+      "line": "almond"
+    },
+    {
+      "id": "california_almond",
+      "display_name": "California Almond",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "almond",
+      "line": "almond",
+      "parent": "almond"
+    },
+    {
+      "id": "mediterranean_almond",
+      "display_name": "Mediterranean Almond",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "almond",
+      "line": "almond",
+      "parent": "almond"
+    },
+    {
+      "id": "nonpareil",
+      "display_name": "Nonpareil",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "almond",
+      "line": "almond",
+      "parent": "california_almond"
+    },
+    {
+      "id": "carmel_almond",
+      "display_name": "Carmel",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "almond",
+      "line": "almond",
+      "parent": "california_almond"
+    },
+    {
+      "id": "mission_almond",
+      "display_name": "Mission",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "almond",
+      "line": "almond",
+      "parent": "california_almond"
+    },
+    {
+      "id": "marcona",
+      "display_name": "Marcona",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "almond",
+      "line": "almond",
+      "parent": "mediterranean_almond"
+    },
+    {
+      "id": "walnut",
+      "display_name": "Walnut",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "walnut",
+      "line": "walnut"
+    },
+    {
+      "id": "california_walnut",
+      "display_name": "California Walnut",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "walnut",
+      "line": "walnut",
+      "parent": "walnut"
+    },
+    {
+      "id": "european_walnut",
+      "display_name": "European Walnut",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "walnut",
+      "line": "walnut",
+      "parent": "walnut"
+    },
+    {
+      "id": "chandler",
+      "display_name": "Chandler",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "walnut",
+      "line": "walnut",
+      "parent": "california_walnut"
+    },
+    {
+      "id": "hartley",
+      "display_name": "Hartley",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "walnut",
+      "line": "walnut",
+      "parent": "california_walnut"
+    },
+    {
+      "id": "franquette",
+      "display_name": "Franquette",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "walnut",
+      "line": "walnut",
+      "parent": "european_walnut"
+    },
+    {
+      "id": "lara_walnut",
+      "display_name": "Lara",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "walnut",
+      "line": "walnut",
+      "parent": "european_walnut"
+    },
+    {
+      "id": "vanilla",
+      "display_name": "Vanilla",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "vanilla",
+      "line": "vanilla"
+    },
+    {
+      "id": "classic_vanilla",
+      "display_name": "Classic Vanilla",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "vanilla",
+      "line": "vanilla",
+      "parent": "vanilla"
+    },
+    {
+      "id": "floral_vanilla",
+      "display_name": "Floral Vanilla",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "vanilla",
+      "line": "vanilla",
+      "parent": "vanilla"
+    },
+    {
+      "id": "wild_vanilla",
+      "display_name": "Wild Vanilla",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "vanilla",
+      "line": "vanilla",
+      "parent": "vanilla"
+    },
+    {
+      "id": "bourbon_vanilla",
+      "display_name": "Bourbon Vanilla",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "vanilla",
+      "line": "vanilla",
+      "parent": "classic_vanilla"
+    },
+    {
+      "id": "mexican_vanilla",
+      "display_name": "Mexican Vanilla",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "vanilla",
+      "line": "vanilla",
+      "parent": "classic_vanilla"
+    },
+    {
+      "id": "tahitian_vanilla",
+      "display_name": "Tahitian Vanilla",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "vanilla",
+      "line": "vanilla",
+      "parent": "floral_vanilla"
+    },
+    {
+      "id": "pompona_vanilla",
+      "display_name": "Pompona Vanilla",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "vanilla",
+      "line": "vanilla",
+      "parent": "wild_vanilla"
+    },
+    {
+      "id": "ginger",
+      "display_name": "Ginger",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "ginger",
+      "line": "ginger"
+    },
+    {
+      "id": "fresh_ginger",
+      "display_name": "Fresh Ginger",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "ginger",
+      "line": "ginger",
+      "parent": "ginger"
+    },
+    {
+      "id": "pungent_ginger",
+      "display_name": "Pungent Ginger",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "ginger",
+      "line": "ginger",
+      "parent": "ginger"
+    },
+    {
+      "id": "nadia",
+      "display_name": "Nadia",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "ginger",
+      "line": "ginger",
+      "parent": "fresh_ginger"
+    },
+    {
+      "id": "wayanad",
+      "display_name": "Wayanad",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "ginger",
+      "line": "ginger",
+      "parent": "fresh_ginger"
+    },
+    {
+      "id": "rio_de_janeiro_ginger",
+      "display_name": "Rio de Janeiro",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "ginger",
+      "line": "ginger",
+      "parent": "pungent_ginger"
+    },
+    {
+      "id": "maran",
+      "display_name": "Maran",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "ginger",
+      "line": "ginger",
+      "parent": "pungent_ginger"
+    },
+    {
+      "id": "cinnamon",
+      "display_name": "Cinnamon",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "cinnamon",
+      "line": "cinnamon"
+    },
+    {
+      "id": "true_cinnamon",
+      "display_name": "True Cinnamon",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "cinnamon",
+      "line": "cinnamon",
+      "parent": "cinnamon"
+    },
+    {
+      "id": "cassia_cinnamon",
+      "display_name": "Cassia Cinnamon",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "cinnamon",
+      "line": "cinnamon",
+      "parent": "cinnamon"
+    },
+    {
+      "id": "ceylon_cinnamon",
+      "display_name": "Ceylon Cinnamon",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "cinnamon",
+      "line": "cinnamon",
+      "parent": "true_cinnamon"
+    },
+    {
+      "id": "chinese_cassia",
+      "display_name": "Chinese Cassia",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "cinnamon",
+      "line": "cinnamon",
+      "parent": "cassia_cinnamon"
+    },
+    {
+      "id": "korintje_cinnamon",
+      "display_name": "Korintje Cinnamon",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "cinnamon",
+      "line": "cinnamon",
+      "parent": "cassia_cinnamon"
+    },
+    {
+      "id": "saigon_cinnamon",
+      "display_name": "Saigon Cinnamon",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "cinnamon",
+      "line": "cinnamon",
+      "parent": "cassia_cinnamon"
+    },
+    {
+      "id": "nutmeg",
+      "display_name": "Nutmeg",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "nutmeg",
+      "line": "nutmeg"
+    },
+    {
+      "id": "true_nutmeg",
+      "display_name": "True Nutmeg",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "nutmeg",
+      "line": "nutmeg",
+      "parent": "nutmeg"
+    },
+    {
+      "id": "papuan_nutmeg",
+      "display_name": "Papuan Nutmeg",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "nutmeg",
+      "line": "nutmeg",
+      "parent": "nutmeg"
+    },
+    {
+      "id": "banda_nutmeg",
+      "display_name": "Banda Nutmeg",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "nutmeg",
+      "line": "nutmeg",
+      "parent": "true_nutmeg"
+    },
+    {
+      "id": "grenada_nutmeg",
+      "display_name": "Grenada Nutmeg",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "nutmeg",
+      "line": "nutmeg",
+      "parent": "true_nutmeg"
+    },
+    {
+      "id": "papua_nutmeg",
+      "display_name": "Papua Nutmeg",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "nutmeg",
+      "line": "nutmeg",
+      "parent": "papuan_nutmeg"
+    },
+    {
+      "id": "honey",
+      "display_name": "Honey",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "honey",
+      "line": "honey"
+    },
+    {
+      "id": "clover_honey",
+      "display_name": "Clover Honey",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "honey",
+      "line": "honey",
+      "parent": "honey"
+    },
+    {
+      "id": "acacia_honey",
+      "display_name": "Acacia Honey",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "honey",
+      "line": "honey",
+      "parent": "honey"
+    },
+    {
+      "id": "orange_blossom_honey",
+      "display_name": "Orange Blossom Honey",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "honey",
+      "line": "honey",
+      "parent": "honey"
+    },
+    {
+      "id": "lavender_honey",
+      "display_name": "Lavender Honey",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "honey",
+      "line": "honey",
+      "parent": "honey"
+    },
+    {
+      "id": "buckwheat_honey",
+      "display_name": "Buckwheat Honey",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "honey",
+      "line": "honey",
+      "parent": "honey"
+    },
+    {
+      "id": "chestnut_honey",
+      "display_name": "Chestnut Honey",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "honey",
+      "line": "honey",
+      "parent": "honey"
+    },
+    {
+      "id": "honeydew_honey",
+      "display_name": "Honeydew Honey",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "honey",
+      "line": "honey",
+      "parent": "honey"
+    },
+    {
+      "id": "tupelo_honey",
+      "display_name": "Tupelo Honey",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "honey",
+      "line": "honey",
+      "parent": "honey"
+    },
+    {
+      "id": "manuka_honey",
+      "display_name": "Mānuka Honey",
+      "type": "ingredient",
+      "rank": "legendary",
+      "ingredient_family": "honey",
+      "line": "honey",
+      "parent": "honey"
+    },
+    {
+      "id": "tea",
+      "display_name": "Tea",
+      "type": "ingredient",
+      "rank": "normal",
+      "ingredient_family": "tea",
+      "line": "tea"
+    },
+    {
+      "id": "processed_tea",
+      "display_name": "Processed Tea",
+      "type": "ingredient",
+      "rank": "rare",
+      "ingredient_family": "tea",
+      "line": "tea",
+      "parent": "tea"
+    },
+    {
+      "id": "white_tea",
+      "display_name": "White Tea",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "tea",
+      "line": "tea",
+      "parent": "processed_tea"
+    },
+    {
+      "id": "green_tea",
+      "display_name": "Green Tea",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "tea",
+      "line": "tea",
+      "parent": "processed_tea"
+    },
+    {
+      "id": "yellow_tea",
+      "display_name": "Yellow Tea",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "tea",
+      "line": "tea",
+      "parent": "processed_tea"
+    },
+    {
+      "id": "oolong_tea",
+      "display_name": "Oolong Tea",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "tea",
+      "line": "tea",
+      "parent": "processed_tea"
+    },
+    {
+      "id": "black_tea",
+      "display_name": "Black Tea",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "tea",
+      "line": "tea",
+      "parent": "processed_tea"
+    },
+    {
+      "id": "dark_tea",
+      "display_name": "Dark Tea",
+      "type": "ingredient",
+      "rank": "epic",
+      "ingredient_family": "tea",
+      "line": "tea",
+      "parent": "processed_tea"
+    },
+    {
+      "id": "berry_note",
+      "display_name": "Berry Note",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "bitter",
+      "display_name": "Bitter",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "botanical",
+      "display_name": "Botanical",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "creamy",
+      "display_name": "Creamy",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "crisp",
+      "display_name": "Crisp",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "citrus",
+      "display_name": "Citrus",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "dry",
+      "display_name": "Dry",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "earthy",
+      "display_name": "Earthy",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "floral",
+      "display_name": "Floral",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "fresh",
+      "display_name": "Fresh",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "fruity",
+      "display_name": "Fruity",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "herbal",
+      "display_name": "Herbal",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "nutty",
+      "display_name": "Nutty",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "peppery",
+      "display_name": "Peppery",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "rich",
+      "display_name": "Rich",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "ripe",
+      "display_name": "Ripe",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "soft",
+      "display_name": "Soft",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "stone_fruit",
+      "display_name": "Stone Fruit",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "sweet",
+      "display_name": "Sweet",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "tart",
+      "display_name": "Tart",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "aromatic_botanical",
+      "display_name": "Aromatic Botanical",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "bold",
+      "display_name": "Bold",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "dark_berry",
+      "display_name": "Dark Berry",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "delicate",
+      "display_name": "Delicate",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "elegant",
+      "display_name": "Elegant",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "lively",
+      "display_name": "Lively",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "mellow",
+      "display_name": "Mellow",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "perfumed",
+      "display_name": "Perfumed",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "silky",
+      "display_name": "Silky",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "structured",
+      "display_name": "Structured",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "vibrant",
+      "display_name": "Vibrant",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "zesty",
+      "display_name": "Zesty",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "aniseed",
+      "display_name": "Aniseed",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "medicinal",
+      "display_name": "Medicinal",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "musky",
+      "display_name": "Musky",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "powdery",
+      "display_name": "Powdery",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "bracing",
+      "display_name": "Bracing",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "cooling",
+      "display_name": "Cooling",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "green",
+      "display_name": "Green",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "camphorous",
+      "display_name": "Camphorous",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "savory",
+      "display_name": "Savory",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "pungent",
+      "display_name": "Pungent",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "malted",
+      "display_name": "Malted",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "cultured",
+      "display_name": "Cultured",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "kilned",
+      "display_name": "Kilned",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "roasted",
+      "display_name": "Roasted",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "toasted",
+      "display_name": "Toasted",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "caramelized",
+      "display_name": "Caramelized",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "smoked",
+      "display_name": "Smoked",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "peated",
+      "display_name": "Peated",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "polished",
+      "display_name": "Polished",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "steamed",
+      "display_name": "Steamed",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "wild_fermented",
+      "display_name": "Wild Fermented",
+      "type": "processing_character",
+      "rank": "epic",
+      "line": "processing_character"
+    },
+    {
+      "id": "herbal_cultured",
+      "display_name": "Herbal Cultured",
+      "type": "processing_character",
+      "rank": "epic",
+      "line": "processing_character"
+    },
+    {
+      "id": "separated",
+      "display_name": "Separated",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "processing_character"
+    },
+    {
+      "id": "malt",
+      "display_name": "Malt",
+      "type": "fermentation",
+      "rank": "rare",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "barley"
+    },
+    {
+      "id": "pale_malt",
+      "display_name": "Pale Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "pilsner_malt",
+      "display_name": "Pilsner Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "vienna_malt",
+      "display_name": "Vienna Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "munich_malt",
+      "display_name": "Munich Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "crystal_malt",
+      "display_name": "Crystal Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "chocolate_malt",
+      "display_name": "Chocolate Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "smoked_malt",
+      "display_name": "Smoked Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "peated_malt",
+      "display_name": "Peated Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "nuruk",
+      "display_name": "Nuruk",
+      "type": "fermentation",
+      "rank": "rare",
+      "ingredient_family": "rice",
+      "line": "nuruk",
+      "parent": "rice"
+    },
+    {
+      "id": "rice_nuruk",
+      "display_name": "Rice Nuruk",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "nuruk",
+      "parent": "nuruk"
+    },
+    {
+      "id": "wheat_nuruk",
+      "display_name": "Wheat Nuruk",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "nuruk",
+      "parent": "nuruk"
+    },
+    {
+      "id": "barley_nuruk",
+      "display_name": "Barley Nuruk",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "nuruk",
+      "parent": "nuruk"
+    },
+    {
+      "id": "whole_grain_nuruk",
+      "display_name": "Whole-grain Nuruk",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "nuruk",
+      "parent": "nuruk"
+    },
+    {
+      "id": "herbal_nuruk",
+      "display_name": "Herbal Nuruk",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "nuruk",
+      "parent": "nuruk"
+    },
+    {
+      "id": "pine_nuruk",
+      "display_name": "Pine Nuruk",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "rice",
+      "line": "nuruk",
+      "parent": "nuruk"
+    },
+    {
+      "id": "wild_nuruk",
+      "display_name": "Wild Nuruk",
+      "type": "fermentation",
+      "rank": "legendary",
+      "ingredient_family": "rice",
+      "line": "nuruk",
+      "parent": "nuruk"
+    },
+    {
+      "id": "ihwa_nuruk",
+      "display_name": "Ihwa Nuruk",
+      "type": "fermentation",
+      "rank": "legendary",
+      "ingredient_family": "rice",
+      "line": "nuruk",
+      "parent": "rice_nuruk"
+    },
+    {
+      "id": "wheat_malt",
+      "display_name": "Wheat Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "rye_malt",
+      "display_name": "Rye Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "millet_malt",
+      "display_name": "Millet Malt",
+      "type": "fermentation",
+      "rank": "epic",
+      "ingredient_family": "barley",
+      "line": "malt",
+      "parent": "malt"
+    },
+    {
+      "id": "chocolate",
+      "display_name": "Chocolate",
+      "type": "processing_character",
+      "rank": "rare",
+      "ingredient_family": "cacao",
+      "line": "chocolate",
+      "parent": "cacao"
+    },
+    {
+      "id": "dark_chocolate",
+      "display_name": "Dark Chocolate",
+      "type": "processing_character",
+      "rank": "epic",
+      "ingredient_family": "cacao",
+      "line": "chocolate",
+      "parent": "chocolate"
+    },
+    {
+      "id": "milk_chocolate",
+      "display_name": "Milk Chocolate",
+      "type": "processing_character",
+      "rank": "epic",
+      "ingredient_family": "cacao",
+      "line": "chocolate",
+      "parent": "chocolate"
+    },
+    {
+      "id": "white_chocolate",
+      "display_name": "White Chocolate",
+      "type": "processing_character",
+      "rank": "epic",
+      "ingredient_family": "cacao",
+      "line": "chocolate",
+      "parent": "chocolate"
+    },
+    {
+      "id": "ruby_chocolate",
+      "display_name": "Ruby Chocolate",
+      "type": "processing_character",
+      "rank": "epic",
+      "ingredient_family": "cacao",
+      "line": "chocolate",
+      "parent": "chocolate"
+    },
+    {
+      "id": "mace",
+      "display_name": "Mace",
+      "type": "processing_character",
+      "rank": "rare",
+      "ingredient_family": "nutmeg",
+      "line": "nutmeg",
+      "parent": "nutmeg"
+    },
+    {
+      "id": "clean",
+      "display_name": "Clean",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "fragrant",
+      "display_name": "Fragrant",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "resinous",
+      "display_name": "Resinous",
+      "type": "character",
+      "rank": "rare",
+      "line": "character"
+    },
+    {
+      "id": "robust",
+      "display_name": "Robust",
+      "type": "character",
+      "rank": "epic",
+      "line": "character"
+    },
+    {
+      "id": "prepared",
+      "display_name": "Prepared",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "tea"
+    },
+    {
+      "id": "withered",
+      "display_name": "Withered",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "tea"
+    },
+    {
+      "id": "fixed",
+      "display_name": "Fixed",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "tea"
+    },
+    {
+      "id": "yellowed",
+      "display_name": "Yellowed",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "tea"
+    },
+    {
+      "id": "partially_oxidized",
+      "display_name": "Partially Oxidized",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "tea"
+    },
+    {
+      "id": "fully_oxidized",
+      "display_name": "Fully Oxidized",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "tea"
+    },
+    {
+      "id": "post_fermented",
+      "display_name": "Post-Fermented",
+      "type": "processing_character",
+      "rank": "rare",
+      "line": "tea"
+    }
+  ]
 }

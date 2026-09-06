@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "clean",
+  "receiver_aroma": "rice",
+  "result_aroma": "polished",
+  "processing_time": 200
+}

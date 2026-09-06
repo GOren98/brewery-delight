@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "post_fermented",
+  "receiver_aroma": "processed_tea",
+  "ingredient": {
+    "item": "brewerydelight:tea"
+  },
+  "result_aroma": "dark_tea",
+  "processing_time": 200
+}

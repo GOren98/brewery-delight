@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "polished",
+  "receiver_aroma": "rice_nuruk",
+  "ingredient": {
+    "item": "brewerydelight:rice"
+  },
+  "result_aroma": "ihwa_nuruk",
+  "processing_time": 200
+}

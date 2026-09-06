@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "mellow",
+  "receiver_aroma": "ale_barley",
+  "ingredient": {
+    "item": "brewerydelight:barley"
+  },
+  "result_aroma": "golden_promise",
+  "processing_time": 200
+}

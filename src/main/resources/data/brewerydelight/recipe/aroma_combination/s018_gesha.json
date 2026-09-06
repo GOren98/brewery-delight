@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "elegant",
+  "receiver_aroma": "arabica_coffee",
+  "ingredient": {
+    "item": "brewerydelight:coffee"
+  },
+  "result_aroma": "gesha",
+  "processing_time": 200
+}

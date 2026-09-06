@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "smoked",
+  "receiver_aroma": "potato",
+  "result_aroma": "peated",
+  "processing_time": 200
+}

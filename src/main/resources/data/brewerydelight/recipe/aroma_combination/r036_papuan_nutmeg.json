@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "nutmeg",
+  "ingredient": {
+    "item": "brewerydelight:nutmeg"
+  },
+  "result_aroma": "papuan_nutmeg",
+  "processing_time": 200
+}

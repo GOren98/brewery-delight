@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "nutmeg",
+  "receiver_aroma": "walnut",
+  "result_aroma": "musky",
+  "processing_time": 200
+}

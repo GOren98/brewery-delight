@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "banana",
+  "receiver_aroma": "mango",
+  "result_aroma": "ripe",
+  "processing_time": 200
+}

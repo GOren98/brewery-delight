@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "mellow",
+  "receiver_aroma": "muskmelon",
+  "ingredient": {
+    "item": "minecraft:melon_slice"
+  },
+  "result_aroma": "yubari_king",
+  "processing_time": 200
+}

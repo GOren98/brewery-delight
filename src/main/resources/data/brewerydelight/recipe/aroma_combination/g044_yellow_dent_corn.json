@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "corn",
+  "ingredient": {
+    "item": "brewerydelight:corn"
+  },
+  "result_aroma": "yellow_dent_corn",
+  "processing_time": 200
+}

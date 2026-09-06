@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "botanical",
+  "receiver_aroma": "white_grape",
+  "ingredient": {
+    "item": "brewerydelight:white_grape"
+  },
+  "result_aroma": "shine_muscat",
+  "processing_time": 200
+}

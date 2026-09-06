@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "pear",
+  "receiver_aroma": "peach",
+  "result_aroma": "soft",
+  "processing_time": 200
+}

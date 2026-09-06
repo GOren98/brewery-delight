@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "ripe",
+  "receiver_aroma": "juice_orange",
+  "ingredient": {
+    "item": "brewerydelight:orange"
+  },
+  "result_aroma": "valencia",
+  "processing_time": 200
+}

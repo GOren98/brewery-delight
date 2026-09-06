@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "soft",
+  "receiver_aroma": "creamy",
+  "result_aroma": "silky",
+  "processing_time": 200
+}

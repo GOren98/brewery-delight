@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "elegant",
+  "receiver_aroma": "blush_sweet_cherry",
+  "ingredient": {
+    "item": "brewerydelight:cherry"
+  },
+  "result_aroma": "rainier",
+  "processing_time": 200
+}

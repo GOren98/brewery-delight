@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "smoked",
+  "receiver_aroma": "malt",
+  "ingredient": {
+    "item": "brewerydelight:barley"
+  },
+  "result_aroma": "smoked_malt",
+  "processing_time": 200
+}

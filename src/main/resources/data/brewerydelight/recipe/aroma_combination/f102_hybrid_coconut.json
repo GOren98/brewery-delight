@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "creamy",
+  "receiver_aroma": "coconut",
+  "ingredient": {
+    "item": "brewerydelight:coconut"
+  },
+  "result_aroma": "hybrid_coconut",
+  "processing_time": 200
+}

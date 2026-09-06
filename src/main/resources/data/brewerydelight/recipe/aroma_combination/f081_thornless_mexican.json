@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "tart",
+  "receiver_aroma": "mexican_lime",
+  "ingredient": {
+    "item": "brewerydelight:lime"
+  },
+  "result_aroma": "thornless_mexican",
+  "processing_time": 200
+}

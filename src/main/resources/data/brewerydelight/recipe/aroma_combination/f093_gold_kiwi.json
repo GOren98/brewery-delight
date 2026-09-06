@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "kiwi",
+  "ingredient": {
+    "item": "brewerydelight:kiwi"
+  },
+  "result_aroma": "gold_kiwi",
+  "processing_time": 200
+}

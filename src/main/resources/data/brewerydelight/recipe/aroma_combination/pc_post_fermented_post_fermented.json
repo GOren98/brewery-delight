@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "tea",
+  "result_aroma": "post_fermented",
+  "processing_time": 200
+}

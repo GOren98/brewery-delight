@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "orange_sweet_potato",
+  "ingredient": {
+    "item": "brewerydelight:sweet_potato"
+  },
+  "result_aroma": "beniazuma",
+  "processing_time": 200
+}

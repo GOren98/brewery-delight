@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "vibrant",
+  "receiver_aroma": "japanese_plum",
+  "ingredient": {
+    "item": "brewerydelight:plum"
+  },
+  "result_aroma": "santa_rosa",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dry",
+  "receiver_aroma": "distilling_rye",
+  "ingredient": {
+    "item": "brewerydelight:rye"
+  },
+  "result_aroma": "hazlet",
+  "processing_time": 200
+}

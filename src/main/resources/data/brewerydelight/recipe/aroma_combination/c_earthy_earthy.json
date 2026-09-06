@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "potato",
+  "receiver_aroma": "walnut",
+  "result_aroma": "earthy",
+  "processing_time": 200
+}

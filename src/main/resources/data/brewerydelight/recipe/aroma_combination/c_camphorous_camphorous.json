@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "juniper_berry",
+  "receiver_aroma": "cinnamon",
+  "result_aroma": "camphorous",
+  "processing_time": 200
+}

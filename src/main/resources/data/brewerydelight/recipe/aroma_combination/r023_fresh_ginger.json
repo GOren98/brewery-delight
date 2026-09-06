@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "ginger",
+  "ingredient": {
+    "item": "brewerydelight:ginger"
+  },
+  "result_aroma": "fresh_ginger",
+  "processing_time": 200
+}

@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "fruity",
+  "result_aroma": "lively",
+  "processing_time": 200
+}

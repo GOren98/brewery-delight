@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "hops",
+  "ingredient": {
+    "item": "brewerydelight:hops"
+  },
+  "result_aroma": "british_hops",
+  "processing_time": 200
+}

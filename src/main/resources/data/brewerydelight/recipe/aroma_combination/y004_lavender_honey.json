@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "floral",
+  "receiver_aroma": "honey",
+  "ingredient": {
+    "item": "minecraft:honeycomb"
+  },
+  "result_aroma": "lavender_honey",
+  "processing_time": 200
+}

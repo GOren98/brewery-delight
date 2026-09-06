@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "walnut",
+  "ingredient": {
+    "item": "brewerydelight:walnut"
+  },
+  "result_aroma": "european_walnut",
+  "processing_time": 200
+}

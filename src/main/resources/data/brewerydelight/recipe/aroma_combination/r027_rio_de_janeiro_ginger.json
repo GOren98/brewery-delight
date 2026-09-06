@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "pungent_ginger",
+  "ingredient": {
+    "item": "brewerydelight:ginger"
+  },
+  "result_aroma": "rio_de_janeiro_ginger",
+  "processing_time": 200
+}

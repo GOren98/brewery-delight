@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "waxy_potato",
+  "ingredient": {
+    "item": "minecraft:potato"
+  },
+  "result_aroma": "maris_piper",
+  "processing_time": 200
+}

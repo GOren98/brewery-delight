@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "dessert_apple",
+  "ingredient": {
+    "item": "brewerydelight:apple"
+  },
+  "result_aroma": "fuji",
+  "processing_time": 200
+}

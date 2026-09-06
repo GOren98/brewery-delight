@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "hops",
+  "receiver_aroma": "ginger",
+  "result_aroma": "herbal",
+  "processing_time": 200
+}

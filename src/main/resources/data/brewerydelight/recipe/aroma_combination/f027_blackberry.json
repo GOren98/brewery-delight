@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "berry",
+  "ingredient": {
+    "item": "brewerydelight:berry"
+  },
+  "result_aroma": "blackberry",
+  "processing_time": 200
+}

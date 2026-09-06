@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dry",
+  "receiver_aroma": "tea",
+  "result_aroma": "prepared",
+  "processing_time": 200
+}

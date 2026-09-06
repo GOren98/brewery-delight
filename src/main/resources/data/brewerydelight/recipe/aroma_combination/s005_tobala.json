@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "delicate",
+  "receiver_aroma": "mezcal_agave",
+  "ingredient": {
+    "item": "brewerydelight:agave"
+  },
+  "result_aroma": "tobala",
+  "processing_time": 200
+}

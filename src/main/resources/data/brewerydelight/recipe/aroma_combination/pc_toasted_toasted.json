@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "nutty",
+  "receiver_aroma": "wheat",
+  "result_aroma": "toasted",
+  "processing_time": 200
+}

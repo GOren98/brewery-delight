@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "bold",
+  "receiver_aroma": "bittersharp_apple",
+  "ingredient": {
+    "item": "brewerydelight:apple"
+  },
+  "result_aroma": "kingston_black",
+  "processing_time": 200
+}

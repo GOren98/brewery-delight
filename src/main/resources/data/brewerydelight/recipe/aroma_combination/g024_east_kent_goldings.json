@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "floral",
+  "receiver_aroma": "british_hops",
+  "ingredient": {
+    "item": "brewerydelight:hops"
+  },
+  "result_aroma": "east_kent_goldings",
+  "processing_time": 200
+}

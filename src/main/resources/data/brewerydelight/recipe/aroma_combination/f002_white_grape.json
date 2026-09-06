@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "pear",
+  "receiver_aroma": "grape",
+  "ingredient": {
+    "item": "brewerydelight:white_grape"
+  },
+  "result_aroma": "white_grape",
+  "processing_time": 200
+}

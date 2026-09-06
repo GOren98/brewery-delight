@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "juniper_berry",
+  "ingredient": {
+    "item": "brewerydelight:juniper"
+  },
+  "result_aroma": "european_juniper",
+  "processing_time": 200
+}

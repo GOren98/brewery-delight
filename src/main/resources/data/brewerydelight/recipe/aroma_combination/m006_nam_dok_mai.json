@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "floral_mango",
+  "ingredient": {
+    "item": "brewerydelight:mango"
+  },
+  "result_aroma": "nam_dok_mai",
+  "processing_time": 200
+}

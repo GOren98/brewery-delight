@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "ginger",
+  "receiver_aroma": "anise",
+  "result_aroma": "pungent",
+  "processing_time": 200
+}

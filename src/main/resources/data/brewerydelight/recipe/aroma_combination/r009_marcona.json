@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "silky",
+  "receiver_aroma": "mediterranean_almond",
+  "ingredient": {
+    "item": "brewerydelight:almond"
+  },
+  "result_aroma": "marcona",
+  "processing_time": 200
+}

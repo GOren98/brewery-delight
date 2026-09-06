@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "elegant",
+  "receiver_aroma": "true_cinnamon",
+  "ingredient": {
+    "item": "brewerydelight:cinnamon"
+  },
+  "result_aroma": "ceylon_cinnamon",
+  "processing_time": 200
+}

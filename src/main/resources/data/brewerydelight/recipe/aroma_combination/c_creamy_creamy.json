@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "coconut",
+  "receiver_aroma": "vanilla",
+  "result_aroma": "creamy",
+  "processing_time": 200
+}

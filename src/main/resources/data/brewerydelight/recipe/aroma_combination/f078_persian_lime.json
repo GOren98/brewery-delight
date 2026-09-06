@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "lime",
+  "ingredient": {
+    "item": "brewerydelight:lime"
+  },
+  "result_aroma": "persian_lime",
+  "processing_time": 200
+}

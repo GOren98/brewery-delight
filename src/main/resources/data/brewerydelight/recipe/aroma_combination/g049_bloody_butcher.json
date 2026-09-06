@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "robust",
+  "receiver_aroma": "heritage_corn",
+  "ingredient": {
+    "item": "brewerydelight:corn"
+  },
+  "result_aroma": "bloody_butcher",
+  "processing_time": 200
+}

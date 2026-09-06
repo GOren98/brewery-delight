@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "aniseed",
+  "receiver_aroma": "anise",
+  "ingredient": {
+    "item": "brewerydelight:anise"
+  },
+  "result_aroma": "anise_spice",
+  "processing_time": 200
+}

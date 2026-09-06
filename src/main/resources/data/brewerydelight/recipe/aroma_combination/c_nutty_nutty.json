@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "almond",
+  "receiver_aroma": "walnut",
+  "result_aroma": "nutty",
+  "processing_time": 200
+}

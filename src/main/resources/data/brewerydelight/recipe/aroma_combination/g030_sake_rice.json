@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "polished",
+  "receiver_aroma": "rice",
+  "ingredient": {
+    "item": "brewerydelight:rice"
+  },
+  "result_aroma": "sake_rice",
+  "processing_time": 200
+}

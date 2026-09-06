@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "structured",
+  "receiver_aroma": "red_grape",
+  "ingredient": {
+    "item": "brewerydelight:red_grape"
+  },
+  "result_aroma": "cabernet_sauvignon",
+  "processing_time": 200
+}

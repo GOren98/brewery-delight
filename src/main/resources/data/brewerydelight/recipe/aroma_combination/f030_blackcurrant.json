@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "herbal",
+  "receiver_aroma": "berry",
+  "ingredient": {
+    "item": "brewerydelight:berry"
+  },
+  "result_aroma": "blackcurrant",
+  "processing_time": 200
+}

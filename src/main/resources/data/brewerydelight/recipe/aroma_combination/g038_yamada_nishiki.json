@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "elegant",
+  "receiver_aroma": "sake_rice",
+  "ingredient": {
+    "item": "brewerydelight:rice"
+  },
+  "result_aroma": "yamada_nishiki",
+  "processing_time": 200
+}

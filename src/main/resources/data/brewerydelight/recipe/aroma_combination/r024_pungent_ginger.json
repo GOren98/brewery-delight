@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "pungent",
+  "receiver_aroma": "ginger",
+  "ingredient": {
+    "item": "brewerydelight:ginger"
+  },
+  "result_aroma": "pungent_ginger",
+  "processing_time": 200
+}

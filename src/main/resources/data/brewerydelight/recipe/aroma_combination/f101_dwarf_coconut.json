@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "coconut",
+  "ingredient": {
+    "item": "brewerydelight:coconut"
+  },
+  "result_aroma": "dwarf_coconut",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "dark_berry",
+  "receiver_aroma": "blood_orange",
+  "ingredient": {
+    "item": "brewerydelight:orange"
+  },
+  "result_aroma": "moro",
+  "processing_time": 200
+}

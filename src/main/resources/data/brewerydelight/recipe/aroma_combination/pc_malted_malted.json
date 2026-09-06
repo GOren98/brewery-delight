@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "barley",
+  "result_aroma": "malted",
+  "processing_time": 200
+}

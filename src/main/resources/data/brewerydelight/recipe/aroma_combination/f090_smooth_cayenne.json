@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "cayenne_pineapple",
+  "ingredient": {
+    "item": "brewerydelight:pineapple"
+  },
+  "result_aroma": "smooth_cayenne",
+  "processing_time": 200
+}

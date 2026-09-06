@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "dwarf_coconut",
+  "ingredient": {
+    "item": "brewerydelight:coconut"
+  },
+  "result_aroma": "malayan_yellow_dwarf",
+  "processing_time": 200
+}

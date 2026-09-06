@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "finger_millet",
+  "ingredient": {
+    "item": "brewerydelight:millet"
+  },
+  "result_aroma": "gpu_28",
+  "processing_time": 200
+}

@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "vanilla",
+  "receiver_aroma": "rice",
+  "result_aroma": "powdery",
+  "processing_time": 200
+}

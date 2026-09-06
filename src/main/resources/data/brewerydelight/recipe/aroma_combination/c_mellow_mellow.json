@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "soft",
+  "receiver_aroma": "ripe",
+  "result_aroma": "mellow",
+  "processing_time": 200
+}

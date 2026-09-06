@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "sweet",
+  "receiver_aroma": "apple",
+  "ingredient": {
+    "item": "brewerydelight:apple"
+  },
+  "result_aroma": "dessert_apple",
+  "processing_time": 200
+}

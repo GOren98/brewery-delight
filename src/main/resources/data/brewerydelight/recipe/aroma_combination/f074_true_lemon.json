@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "tart",
+  "receiver_aroma": "lemon",
+  "ingredient": {
+    "item": "brewerydelight:lemon"
+  },
+  "result_aroma": "true_lemon",
+  "processing_time": 200
+}

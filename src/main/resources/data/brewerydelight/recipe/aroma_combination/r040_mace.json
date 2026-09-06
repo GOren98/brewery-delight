@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "separated",
+  "receiver_aroma": "nutmeg",
+  "ingredient": {
+    "item": "brewerydelight:nutmeg"
+  },
+  "result_aroma": "mace",
+  "processing_time": 200
+}

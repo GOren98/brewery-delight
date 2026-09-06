@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "rich",
+  "receiver_aroma": "european_juniper",
+  "ingredient": {
+    "item": "brewerydelight:juniper"
+  },
+  "result_aroma": "greek_juniper",
+  "processing_time": 200
+}

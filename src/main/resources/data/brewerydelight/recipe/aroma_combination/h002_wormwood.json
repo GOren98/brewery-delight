@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "bitter",
+  "receiver_aroma": "herb",
+  "ingredient": {
+    "item": "brewerydelight:tea"
+  },
+  "result_aroma": "wormwood",
+  "processing_time": 200
+}

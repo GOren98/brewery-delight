@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "kilned",
+  "receiver_aroma": "malt",
+  "ingredient": {
+    "item": "brewerydelight:barley"
+  },
+  "result_aroma": "pale_malt",
+  "processing_time": 200
+}

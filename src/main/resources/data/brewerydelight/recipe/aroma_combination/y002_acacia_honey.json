@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "fresh",
+  "receiver_aroma": "honey",
+  "ingredient": {
+    "item": "minecraft:honeycomb"
+  },
+  "result_aroma": "acacia_honey",
+  "processing_time": 200
+}

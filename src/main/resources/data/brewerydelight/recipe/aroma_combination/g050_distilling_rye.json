@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "peppery",
+  "receiver_aroma": "rye",
+  "ingredient": {
+    "item": "brewerydelight:rye"
+  },
+  "result_aroma": "distilling_rye",
+  "processing_time": 200
+}

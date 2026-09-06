@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "earthy",
+  "receiver_aroma": "heritage_red_wheat",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result_aroma": "turkey_red",
+  "processing_time": 200
+}

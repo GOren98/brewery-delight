@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "ripe",
+  "receiver_aroma": "dark_sweet_cherry",
+  "ingredient": {
+    "item": "brewerydelight:cherry"
+  },
+  "result_aroma": "bing",
+  "processing_time": 200
+}

@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "silky",
+  "receiver_aroma": "classic_vanilla",
+  "ingredient": {
+    "item": "brewerydelight:vanilla"
+  },
+  "result_aroma": "bourbon_vanilla",
+  "processing_time": 200
+}

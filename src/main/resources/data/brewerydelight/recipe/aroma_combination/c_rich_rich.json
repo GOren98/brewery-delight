@@ -1,0 +1,7 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "cacao",
+  "receiver_aroma": "vanilla",
+  "result_aroma": "rich",
+  "processing_time": 200
+}

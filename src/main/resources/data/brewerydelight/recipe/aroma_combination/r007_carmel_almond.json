@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "creamy",
+  "receiver_aroma": "california_almond",
+  "ingredient": {
+    "item": "brewerydelight:almond"
+  },
+  "result_aroma": "carmel_almond",
+  "processing_time": 200
+}

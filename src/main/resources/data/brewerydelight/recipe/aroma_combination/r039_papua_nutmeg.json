@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "pungent",
+  "receiver_aroma": "papuan_nutmeg",
+  "ingredient": {
+    "item": "brewerydelight:nutmeg"
+  },
+  "result_aroma": "papua_nutmeg",
+  "processing_time": 200
+}

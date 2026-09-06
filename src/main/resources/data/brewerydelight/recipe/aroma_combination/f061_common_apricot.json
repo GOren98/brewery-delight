@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "stone_fruit",
+  "receiver_aroma": "apricot",
+  "ingredient": {
+    "item": "brewerydelight:apricot"
+  },
+  "result_aroma": "common_apricot",
+  "processing_time": 200
+}

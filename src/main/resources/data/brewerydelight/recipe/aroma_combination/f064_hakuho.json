@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "elegant",
+  "receiver_aroma": "white_peach",
+  "ingredient": {
+    "item": "brewerydelight:peach"
+  },
+  "result_aroma": "hakuho",
+  "processing_time": 200
+}

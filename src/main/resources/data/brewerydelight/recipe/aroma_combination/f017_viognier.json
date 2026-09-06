@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "ripe",
+  "receiver_aroma": "white_grape",
+  "ingredient": {
+    "item": "brewerydelight:white_grape"
+  },
+  "result_aroma": "viognier",
+  "processing_time": 200
+}

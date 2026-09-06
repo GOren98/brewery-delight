@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "creamy",
+  "receiver_aroma": "banana",
+  "ingredient": {
+    "item": "brewerydelight:banana"
+  },
+  "result_aroma": "cavendish_banana",
+  "processing_time": 200
+}

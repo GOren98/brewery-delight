@@ -1,0 +1,10 @@
+{
+  "type": "brewerydelight:aroma_combination",
+  "donor_aroma": "camphorous",
+  "receiver_aroma": "herb",
+  "ingredient": {
+    "item": "brewerydelight:tea"
+  },
+  "result_aroma": "rosemary",
+  "processing_time": 200
+}
